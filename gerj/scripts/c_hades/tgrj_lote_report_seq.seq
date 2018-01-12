@@ -1,0 +1,2 @@
+CREATE SEQUENCE tgrj_lote_report_seq INCREMENT BY 1 START WITH 1 maxvalue 999999999999999 nocache
+/

@@ -1,0 +1,3 @@
+ALTER TABLE tgrj_rub_elemento_despesa
+    ADD CONSTRAINT tgrj_rub_elemento_despesa_pk PRIMARY KEY (id)
+/

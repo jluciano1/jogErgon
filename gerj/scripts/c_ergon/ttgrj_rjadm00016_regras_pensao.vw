@@ -1,0 +1,50 @@
+CREATE OR REPLACE VIEW TTGRJ_RJADM00016_REGRAS_PENSAO AS
+SELECT  b.descricao,
+          d.numero,
+          d.nome,
+          r.numfunc,
+          pack_ergon.get_ident_func(r.numfunc, null) AS nomefunc,
+          r.numvinc,
+          r.numdep,
+          r.dtini,
+          r.dtfim,
+          r.base,
+          (select base || ' - ' || descricao descr from base_pensao where base = r.base) AS base_desc,
+          r.percentual,
+          r.tiporeaj,
+          (select tipo || ' - ' || obs obs from tipo_reaj_pa where  tipo = r.tiporeaj ) AS tiporeaj_desc,
+          r.numsalfam,
+          r.paga_13,
+          r.paga_adiant_fer,
+          r.paga_abono_const,
+          r.paga_abono,
+          r.obs,
+          r.emp_codigo,
+          r.chavepa,
+          r.pontlei,
+          r.pontpubl,
+          rowidtochar(r.rowid)                AS rowid_reg,
+          had_formata_publicacoes(r.pontpubl) AS texto_publ,
+          r.flex_campo_01, r.flex_campo_02, r.flex_campo_03,
+          r.flex_campo_04, r.flex_campo_05, r.flex_campo_06,
+          r.flex_campo_07, r.flex_campo_08, r.flex_campo_09,
+          r.flex_campo_10, r.flex_campo_11, r.flex_campo_12,
+          r.flex_campo_13, r.flex_campo_14, r.flex_campo_15,
+          to_char(to_date(r.flex_campo_15,'dd/mm/yyyy'),'mm/yyyy') as flex_campo_15_mesano,
+          r.flex_campo_16, r.flex_campo_17, r.flex_campo_18,
+          r.flex_campo_19, r.flex_campo_20, r.flex_campo_21,
+          r.flex_campo_22, r.flex_campo_23, r.flex_campo_24,
+          r.flex_campo_25, r.flex_campo_26, r.flex_campo_27,
+          r.flex_campo_28, r.flex_campo_29, r.flex_campo_30,
+          d.parentesco,
+          (select nome from pensionistas where numfunc = r.numfunc and numvinc = r.numvinc and numero =r.flex_campo_03) nome_pens,
+          b.E_VALOR_FIXO
+  FROM    regras_pensao_al r,
+          dependentes d,
+          base_pensao b
+  WHERE   r.numfunc = d.numfunc
+  AND     r.numdep  = d.numero
+  AND     r.base    = b.base
+  AND     ep__filtra_dependentes (r.numfunc, d.numero) = 1
+  AND     d.flex_campo_03 = 'TERCEIRO';
+/

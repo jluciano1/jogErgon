@@ -1,0 +1,25 @@
+DECLARE
+  CURSOR cur_email_acao
+  IS
+    SELECT rowid as id FROM pgov_email_acao WHERE ID_EMAIL_ACAO IS NULL;    
+  rid  VARCHAR2(2000);
+  seq  NUMBER;
+  cont NUMBER := 0;
+BEGIN
+  --
+  FOR i IN cur_email_acao
+  LOOP
+    seq := 0;
+	  rid := i.id;
+    SELECT pgov_email_acao_seq.NEXTVAL INTO seq FROM DUAL;
+    UPDATE pgov_email_acao SET ID_EMAIL_ACAO = seq WHERE rowid = rid;
+    cont   := cont + 1;
+    IF cont = 10000 THEN
+      COMMIT;
+      cont := 0;
+    END IF;
+  END LOOP;
+  COMMIT;
+  --
+END;
+/

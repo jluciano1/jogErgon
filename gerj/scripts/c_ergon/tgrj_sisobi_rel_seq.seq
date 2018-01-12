@@ -1,0 +1,2 @@
+CREATE SEQUENCE tgrj_sisobi_rel_seq INCREMENT BY 1 START WITH 1
+/

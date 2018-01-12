@@ -1,0 +1,7 @@
+/*
+Comentado até resolução do BUG https://technecloud.atlassian.net/browse/RIOPNG-832
+ 
+ALTER TABLE TGRJ_SISOBI_REL ADD CONSTRAINT TGRJ_SISOBI_REL_PK PRIMARY KEY (REFPROC,CPFSISOBI,CPFRHFOLHA)
+/
+
+*/

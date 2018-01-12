@@ -1,0 +1,3 @@
+ALTER TABLE tgrj_rubrica_pensao
+    ADD CONSTRAINT tgrj_rubrica_pensao_pk PRIMARY KEY (id)
+/

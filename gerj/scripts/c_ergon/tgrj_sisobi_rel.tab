@@ -1,0 +1,12 @@
+ALTER TABLE tgrj_sisobi_rel ADD (chave NUMBER)
+/
+
+BEGIN
+      ERG_GERA_OBJETOS_TABELA(P_TABELA               => 'TGRJ_SISOBI_REL',
+                              P_GERA_TRG_DML         =>  TRUE,
+                              P_GERA_TRG_AUDHD       =>  FALSE,
+                              P_GERA_TRG_AUDIT       =>  FALSE,
+                              P_GERA_PROC_DML        =>  FALSE,
+                              P_GERA_PROC_DML_PUBL   =>  FALSE);
+END; 
+/

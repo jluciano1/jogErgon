@@ -1,0 +1,33 @@
+DECLARE
+ v_count number;
+BEGIN
+
+
+  select count(1) INTO v_count 
+  from   all_constraints 
+  where  table_name      = 'TGRJ_RUB_ELEMENTO_DESPESA' 
+  AND    constraint_name = 'TGRJ_RUB_EDESPESA_INDEX1'; 
+
+  IF (v_count = 1) THEN
+    EXECUTE IMMEDIATE 'ALTER TABLE TGRJ_RUB_ELEMENTO_DESPESA DROP CONSTRAINT TGRJ_RUB_EDESPESA_INDEX1';
+  END IF;
+
+
+  v_count := 0;
+
+  select count(1) INTO v_count 
+  from   all_indexes 
+  where  table_name = 'TGRJ_RUB_ELEMENTO_DESPESA' 
+  AND    INDEX_NAME = 'TGRJ_RUB_EDESPESA_INDEX1'; 
+
+  IF (v_count = 1) THEN
+    EXECUTE IMMEDIATE 'drop index TGRJ_RUB_EDESPESA_INDEX1';
+  END IF;
+END;
+/
+
+alter table TGRJ_RUB_ELEMENTO_DESPESA
+ADD CONSTRAINT TGRJ_RUB_EDESPESA_INDEX1
+UNIQUE (RUBRICA, COMPLEMENTO, SITUACAO, TEMPORALIDADE, ELEMENTO)
+USING INDEX TABLESPACE c_ergon_ts_idx
+/

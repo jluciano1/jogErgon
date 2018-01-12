@@ -1,0 +1,37 @@
+create or replace view ttgrj_rjadm00007_vw as
+select v.numfunc,
+         f.nome,
+         v.numero,
+         v.dtexerc,
+         v.flex_campo_07 orgao_ext_req,
+         v.funcao_req,
+         v.flex_campo_06 tipoorg_req,
+         v.tipo_req,
+         v.tipo_onus_req,
+         v.tipo_ressarc_req,
+         v.emp_codigo,
+         null flex_campo_01,
+         null flex_campo_02,
+         null flex_campo_03,
+         null flex_campo_04,
+         null flex_campo_05,
+         null flex_campo_06,
+         null flex_campo_07,
+         v.flex_campo_08  flex_campo_08,
+         null flex_campo_09,
+         null flex_campo_10,
+         null flex_campo_11,
+         null flex_campo_12,
+         null flex_campo_13,
+         null flex_campo_14,
+         null flex_campo_15,
+         null flex_campo_16,
+         null flex_campo_17,
+         null flex_campo_18,
+         null flex_campo_19,
+         null flex_campo_20
+    from vinculos v,
+         funcionarios f
+   where v.numfunc = f.numero
+     and v.tipo_req is not null;
+/
