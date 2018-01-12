@@ -1,0 +1,29 @@
+ALTER TABLE tgrj_sisobi_rel DISABLE ALL TRIGGERS
+/
+
+DECLARE
+  CURSOR cur_sisobi
+  IS
+    SELECT rowid FROM tgrj_sisobi_rel WHERE chave IS NULL;
+  seq  NUMBER;
+  cont NUMBER := 0;
+BEGIN
+  --
+  FOR i IN cur_sisobi
+  LOOP
+    seq := 0;
+    SELECT tgrj_sisobi_rel_seq.NEXTVAL INTO seq FROM DUAL;
+    UPDATE tgrj_sisobi_rel SET chave = seq WHERE rowid = i.rowid;
+    cont   := cont + 1;
+    IF cont = 10000 THEN
+      COMMIT;
+      cont := 0;
+    END IF;
+  END LOOP;
+  COMMIT;
+  --
+END;
+/
+
+ALTER TABLE tgrj_sisobi_rel ENABLE ALL TRIGGERS
+/

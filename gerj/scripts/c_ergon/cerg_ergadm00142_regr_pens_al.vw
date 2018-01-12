@@ -1,0 +1,45 @@
+create or replace view cerg_ergadm00142_regr_pens_al as
+select  b.DESCRICAO,
+            D.NUMERO,
+      D.NOME,
+      R.NUMFUNC,
+      PACK_ERGON.GET_IDENT_FUNC(r.numfunc, null) nomefunc,
+      R.NUMVINC,
+      R.NUMDEP,
+      R.DTINI,
+      R.DTFIM,
+      R.BASE,
+      (select base || ' - ' || descricao descr from base_pensao where base = R.BASE)base_desc,
+      R.PERCENTUAL,
+      R.TIPOREAJ,
+      (select tipo || ' - ' || obs obs from tipo_reaj_pa where  tipo = R.TIPOREAJ )tiporeaj_desc,
+      R.NUMSALFAM,
+      R.PAGA_13,
+      R.PAGA_ADIANT_FER,
+      R.PAGA_ABONO_CONST,
+      R.PAGA_ABONO,
+      R.OBS,
+      R.EMP_CODIGO,
+      R.CHAVEPA,
+      r.PONTLEI,
+      r.PONTPUBL,
+      rowidtochar(r.rowid) ROWID_REG,
+      R.FLEX_CAMPO_01, R.FLEX_CAMPO_02, R.FLEX_CAMPO_03,
+      R.FLEX_CAMPO_04, R.FLEX_CAMPO_05, R.FLEX_CAMPO_06,
+      R.FLEX_CAMPO_07, R.FLEX_CAMPO_08, R.FLEX_CAMPO_09,
+      R.FLEX_CAMPO_10, R.FLEX_CAMPO_11, R.FLEX_CAMPO_12,
+      R.FLEX_CAMPO_13, R.FLEX_CAMPO_14, R.FLEX_CAMPO_15,
+      R.FLEX_CAMPO_16, R.FLEX_CAMPO_17, R.FLEX_CAMPO_18,
+      R.FLEX_CAMPO_19, R.FLEX_CAMPO_20, R.FLEX_CAMPO_21,
+      R.FLEX_CAMPO_22, R.FLEX_CAMPO_23, R.FLEX_CAMPO_24,
+      r.FLEX_CAMPO_25, r.FLEX_CAMPO_26, r.FLEX_CAMPO_27,
+      r.FLEX_CAMPO_28, r.FLEX_CAMPO_29, r.FLEX_CAMPO_30,
+      HAD_FORMATA_PUBLICACOES(r.PONTPUBL) TEXTO_PUBL
+   FROM REGRAS_PENSAO_AL R ,
+        DEPENDENTES D,
+        BASE_PENSAO B
+  where r.numfunc  = d.numfunc
+    AND r.numdep    = d.numero
+    AND R.BASE    = B.BASE
+    and D.Flex_Campo_03 is null;
+/

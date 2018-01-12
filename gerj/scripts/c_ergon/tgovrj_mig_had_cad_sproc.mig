@@ -1,0 +1,53 @@
+--
+--MIGRA OS EP´S CADASTRADOS PARA ESQUEMA MULTI-EPS
+--
+declare
+  --LÊ OS EP´S CADASTRADOS
+  cursor c1 is
+    select *
+    from had_cad_sproc;
+
+begin
+  begin
+    dbms_output.put_line('Início');
+    --GERA O REGISTRO NA ESTRUTUDA DE MULTI EP
+    for rr in c1 loop
+      begin
+        insert into had_cad_mult_eps(sproc,    ep,       ordem, exec,    sintaxe,    auditar,    descricao) values
+                                    (rr.sproc, rr.sproc, 2,     rr.exec, rr.sintaxe, rr.auditar, rr.descricao);
+      
+      exception
+        when dup_val_on_index then 
+          null;
+        when others then 
+          dbms_output.put_line('ERRO: sproc:'||rr.sproc||' já está cadastrada como MULTI-EP');
+      end;
+    end loop;
+    --
+    commit;
+    --
+  end;
+  /*
+  Ao fazer o insert a rotina do produto modifica o valor existente no campo SINTAXE. 
+  O update abaixo é feito para gravar a codificação existente, já que a modificação só ocorre no INSERT
+  */
+  begin 
+    for rr in c1 loop
+      update had_cad_mult_eps
+         set sintaxe = rr.sintaxe
+     where sproc = rr.sproc
+       and ep    = rr.sproc;
+    end loop;
+    --
+    commit;
+    --
+    --ALTERA O CADASTRO DO PROCEDIMENTO PARA QUE O MESMO PASSE A FUNCIONAR COMO MULTI EP
+    update had_cad_sproc
+       set exec_mult_eps = 'S',
+         exec = 'N';
+    --
+    commit;   
+    
+  end;
+end;
+/

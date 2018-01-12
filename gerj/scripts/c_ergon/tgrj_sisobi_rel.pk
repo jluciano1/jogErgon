@@ -1,0 +1,2 @@
+ALTER TABLE tgrj_sisobi_rel ADD CONSTRAINT tgrj_sisobi_rel_pk PRIMARY KEY (chave)
+/

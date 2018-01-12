@@ -1,0 +1,6 @@
+ALTER TABLE PGOV_PONTUACAO_SETOR ADD CONSTRAINT pgov_pontuacao_setor_fk FOREIGN KEY (emp_codigo,subemp_codigo,processo,data_avaliacao) REFERENCES PGOV_PONTUACAO_SUBEMPRESA (emp_codigo,subemp_codigo,processo,data_avaliacao)
+DISABLE NOVALIDATE
+/
+
+ALTER TABLE PGOV_PONTUACAO_SETOR MODIFY CONSTRAINT pgov_pontuacao_setor_fk ENABLE NOVALIDATE
+/

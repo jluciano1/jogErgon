@@ -1,0 +1,3 @@
+ALTER TABLE pgov_email_acao
+	ADD CONSTRAINT pgov_email_acao_CK UNIQUE (numfunc, acao)
+/

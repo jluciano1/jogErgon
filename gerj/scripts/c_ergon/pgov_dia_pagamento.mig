@@ -1,0 +1,27 @@
+ALTER TABLE pgov_dia_pagamento DISABLE ALL TRIGGERS;
+DECLARE
+  CURSOR cur_dia_pagamento
+  IS
+    SELECT rowid as id FROM pgov_dia_pagamento WHERE ID_DIA_PAGAMENTO IS NULL;
+  rid  VARCHAR2(2000);
+  seq  NUMBER;
+  cont NUMBER := 0;
+BEGIN
+  --
+  FOR i IN cur_dia_pagamento
+  LOOP
+    seq := 0;
+  rid := i.id;
+    SELECT pgov_dia_pagamento_seq.NEXTVAL INTO seq FROM DUAL;
+    UPDATE pgov_dia_pagamento SET ID_DIA_PAGAMENTO = seq WHERE rowid = rid;
+    cont   := cont + 1;
+    IF cont = 10000 THEN
+      COMMIT;
+      cont := 0;
+    END IF;
+  END LOOP;
+  COMMIT;
+  --
+END;
+/
+ALTER TABLE pgov_dia_pagamento ENABLE ALL TRIGGERS;

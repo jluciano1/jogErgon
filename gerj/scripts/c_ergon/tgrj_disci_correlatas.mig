@@ -1,0 +1,25 @@
+ALTER TABLE tgrj_disci_correlatas DISABLE ALL TRIGGERS;
+DECLARE
+  CURSOR cur_correlatas
+  IS
+    SELECT rowid FROM tgrj_disci_correlatas WHERE chave IS NULL;
+  seq  NUMBER;
+  cont NUMBER := 0;
+BEGIN
+  --
+  FOR i IN cur_correlatas
+  LOOP
+    seq := 0;
+    SELECT tgrj_disci_correlatas_seq.NEXTVAL INTO seq FROM DUAL;
+    UPDATE tgrj_disci_correlatas SET chave = seq WHERE rowid = i.rowid;
+    cont   := cont + 1;
+    IF cont = 10000 THEN
+      COMMIT;
+      cont := 0;
+    END IF;
+  END LOOP;
+  COMMIT;
+  --
+END;
+/
+ALTER TABLE tgrj_disci_correlatas ENABLE ALL TRIGGERS;

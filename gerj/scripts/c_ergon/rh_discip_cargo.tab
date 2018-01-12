@@ -1,0 +1,10 @@
+BEGIN
+  ERG_GERA_OBJETOS_TABELA(
+    P_TABELA               => 'RH_DISCIP_CARGO',
+    P_GERA_TRG_DML         =>  FALSE ,
+    P_GERA_TRG_AUDHD       =>  FALSE,
+    P_GERA_TRG_AUDIT       =>  FALSE,
+    P_GERA_PROC_DML        =>  TRUE,
+    P_GERA_PROC_DML_PUBL   =>  FALSE);
+END; 
+/

@@ -1,0 +1,2 @@
+ALTER TABLE pgov_subemp_subcat ADD CONSTRAINT pgov_subemp_subcat_fk01 FOREIGN KEY (categoria) REFERENCES CATEGORIAS_ (sigla) enable novalidate
+/
