@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="08/11/2017 11:07" nome="RJadm00045">
+  <layout>
+    <componente classe="component/page" nome="RJadm00045">
+      <propriedades>
+        <propriedade nome="title" valor="Parâmetros de Atributos"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="tpgInstr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="txpBtUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltro">
+              <propriedades>
+                <propriedade nome="title" valor="Filtros de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/searchBox" nome="sbxFiltro">
+                  <propriedades>
+                    <propriedade nome="argsCaption" valor="Atributo, Descrição"/>
+                    <propriedade nome="caption" valor="Atributo"/>
+                    <propriedade nome="sql" valor="select vantagem, nome &#10;from tipo_vantagem &#10;where busca_searchbox_varchar2(vantagem, ?, nome, ?) = 1 &#10;order by vantagem"/>
+                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                    <propriedade nome="width" valor="715"/>
+                    <propriedade nome="widthKey" valor="150"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdParamAtrib">
+              <propriedades>
+                <propriedade nome="caption" valor="Parâmetros de Atributos"/>
+                <propriedade nome="sqlParameters" valor="#sbxFiltro#"/>
+                <propriedade nome="sqlSelect" valor="SELECT P.VANTAGEM&#10; ,P.VANTAGEM_DESCR&#10; ,P.DTFIM        &#10; ,P.INFO         &#10; ,P.OBS          &#10; ,P.INFO2        &#10; ,P.LANC_UNICO   &#10; ,P.INFO4        &#10; ,P.INFO5 &#10; ,ROWIDTOCHAR(P.ROWID) ROWID_REG&#10; FROM RJADM00045_PARAMETROS_ATRIB P&#10;WHERE P.VANTAGEM = NVL(?, P.VANTAGEM)&#10;ORDER BY P.VANTAGEM"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldVantagem">
+                  <propriedades>
+                    <propriedade nome="caption" valor="VANTAGEM"/>
+                    <propriedade nome="dataType" valor="VARCHAR2"/>
+                    <propriedade nome="field" valor="vantagem"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="maxLength" valor=""/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldVantagemDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Atributo"/>
+                    <propriedade nome="dataType" valor="VARCHAR2"/>
+                    <propriedade nome="field" valor="vantagem_descr"/>
+                    <propriedade nome="maxLength" valor=""/>
+                    <propriedade nome="width" valor="500"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkDtfim">
+                  <propriedades>
+                    <propriedade nome="caption" valor="DTFIM"/>
+                    <propriedade nome="field" valor="dtfim"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkInfo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="INFO"/>
+                    <propriedade nome="field" valor="info"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkObs">
+                  <propriedades>
+                    <propriedade nome="caption" valor="OBS"/>
+                    <propriedade nome="field" valor="obs"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkInfo2">
+                  <propriedades>
+                    <propriedade nome="caption" valor="INFO2"/>
+                    <propriedade nome="field" valor="info2"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkInfo4">
+                  <propriedades>
+                    <propriedade nome="caption" valor="INFO4"/>
+                    <propriedade nome="field" valor="info4"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkInfo5">
+                  <propriedades>
+                    <propriedade nome="caption" valor="INFO5"/>
+                    <propriedade nome="field" valor="info5"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkLancUnico">
+                  <propriedades>
+                    <propriedade nome="caption" valor="LANC_UNICO"/>
+                    <propriedade nome="field" valor="lanc_unico"/>
+                    <propriedade nome="toolTip" valor="Lançamento Único"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowidReg">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="caption" valor="ROWID_REG"/>
+                    <propriedade nome="dataType" valor="VARCHAR2"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="maxLength" valor=""/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="tpgInstr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="txpBtUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;     &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recpParamAtrib">
+              <propriedades>
+                <propriedade nome="caption" valor="Detalhes"/>
+                <propriedade nome="master" valor="grdParamAtrib"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recv"/>
+                <layouts>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txtVantagemDescr">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Atributo"/>
+                        <propriedade nome="dataType" valor="VARCHAR2"/>
+                        <propriedade nome="field" valor="vantagem_descr"/>
+                        <propriedade nome="width" valor="715"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtDtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="DTFIM"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtInfo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="info"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtObs">
+                          <propriedades>
+                            <propriedade nome="caption" valor="OBS"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="obs"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtInfo2">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO2"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="info2"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtInfo4">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO4"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="info4"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtInfo5">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO5"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="info5"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txtLancUnico">
+                          <propriedades>
+                            <propriedade nome="caption" valor="LANC_UNICO"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="lanc_unico"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/hiddenField" nome="hidRowidReg">
+                      <propriedades>
+                        <propriedade nome="caption" valor="ROWID_REG"/>
+                        <propriedade nome="dataType" valor="VARCHAR2"/>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/hiddenField" nome="hidvfVantagem">
+                      <propriedades>
+                        <propriedade nome="field" valor="vantagem"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanelEdit" nome="rece">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="dataTable" valor="PGOV_PARAM_ATRIBUTO"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/editField/searchBox" nome="srcVantagem">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Atributo,Nome"/>
+                        <propriedade nome="caption" valor="Atributo"/>
+                        <propriedade nome="field" valor="vantagem"/>
+                        <propriedade nome="fieldTarget" valor="vantagem"/>
+                        <propriedade nome="sql" valor="select vantagem, nome &#10;from tipo_vantagem &#10;where busca_searchbox_varchar2(vantagem, ?, nome, ?) = 1 &#10;order by vantagem"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                        <propriedade nome="validators" valor="required(); length(0,20);"/>
+                        <propriedade nome="width" valor="715"/>
+                        <propriedade nome="widthKey" valor="150"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Dtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="DTFIM"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                            <propriedade nome="fieldTarget" valor="dtfim"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Info">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO"/>
+                            <propriedade nome="field" valor="info"/>
+                            <propriedade nome="fieldTarget" valor="info"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Obs">
+                          <propriedades>
+                            <propriedade nome="caption" valor="OBS"/>
+                            <propriedade nome="field" valor="obs"/>
+                            <propriedade nome="fieldTarget" valor="obs"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Info2">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO2"/>
+                            <propriedade nome="field" valor="info2"/>
+                            <propriedade nome="fieldTarget" valor="info2"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Info4">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO4"/>
+                            <propriedade nome="field" valor="info4"/>
+                            <propriedade nome="fieldTarget" valor="info4"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Info5">
+                          <propriedades>
+                            <propriedade nome="caption" valor="INFO5"/>
+                            <propriedade nome="field" valor="info5"/>
+                            <propriedade nome="fieldTarget" valor="info5"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2LancUnico">
+                          <propriedades>
+                            <propriedade nome="caption" valor="LANC_UNICO"/>
+                            <propriedade nome="field" valor="lanc_unico"/>
+                            <propriedade nome="fieldTarget" valor="lanc_unico"/>
+                            <propriedade nome="width" valor="18"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

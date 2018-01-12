@@ -1,0 +1,58 @@
+@CHARSET "ISO-8859-1";
+
+/* Botões de setas - controle linkMethod - AMC */
+
+.techneSetDir {
+  background-image: url(../../../image/PadInclusao/botaoSetDir.png);
+  height: 28px;
+  width: 28px!important;
+  display: block;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.techneSetDir .icon, .techneSetDir span {
+  display: none;
+}
+
+.techneSetDir:hover {
+  background: #FFF;
+  background-image: url(../../../image/PadInclusao/botaoSetDirOver.png);
+}
+
+.techneSetDir .t-link-c, .techneSetDir .t-link-r {
+  display: none;
+}
+
+.techneSetDir .t-link-l {
+  width: 28px!important;
+  background-image: none!important;
+}
+
+.techneSetEsq {
+  background-image: url(../../../image/PadInclusao/botaoSetEsq.png);
+  height: 28px;
+  width: 28px!important;
+  display: block;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.techneSetEsq .icon, .techneSetEsq span {
+  display: none;
+}
+
+.techneSetEsq:hover {
+  background: #FFF;
+  background-image: url(../../../image/PadInclusao/botaoSetEsqOver.png);
+}
+
+.techneSetEsq .t-link-c, .techneSetEsq .t-link-r {
+  display: none;
+}
+
+.techneSetEsq .t-link-l {
+  width: 28px!important;
+  background-image: none!important;
+}
+

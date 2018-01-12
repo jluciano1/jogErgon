@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/18/2017 11:40" nome="ERGadm00308">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumdep" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumpens" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumrepr" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumvinc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pTipoRelac"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00308"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltros"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcFunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpVinc"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcDep"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcPensionista"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltro2"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcRepLegal"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltro3"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoRelac_"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsulta">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT ID_ENDER, TIPORELAC, TIPORELACDESC, TIPOENDER, NUMFUNC,nome_func, NUMVINC,NUMDEP, nome_dep, NUMPENS,   nome_pens, NUMREP, nome_rep, TIPOLOGR, ENDERECO ,NUM ,COMPLEMENTO, BAIRRO, CIDADE ,UF , ufdesc,  lpad(cep,8,'0')CEP, OBS, TIPOENDERDESC, rowid_reg, tipologrdesc,   cidadedesc, cidade_cod, cidade_cod_desc, relacionado, ident_vinc, FLEX_CAMPO_03, FLEX_CAMPO_01, FLEX_CAMPO_02, FLEX_CAMPO_04, FLEX_CAMPO_05,&#10;decode(pack_hades.get_opcao('Hades','HADES','CONTROLA_MUNICIPIO_POR_CODIGO'),'N',cidadedesc,'S',cidade_cod_desc)cid_opcao_gen&#10;FROM ergadm00308_erg_enderecos   WHERE  id_ender IN (SELECT id_ender FROM TABLE(CAST(erg_preenche_enderecos(?,?,?,?,?) AS erg_typ_tab_enderecos))) and tiporelac = nvl(?,tiporelac)&#10;&#10;"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpRelac"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpRelacdesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRelacionado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEndereco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNum"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeFunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumdep"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumpens"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomePens"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeDep"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpLogr"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldBairro"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCep"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpEnderdesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdEnder"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipologdesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldUf"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldUfdesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCidadedesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumrep"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomerep"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCidadeCod"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCidadeCodDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGetOpcao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc"/>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo03">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Estado no exterior"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_03"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="País"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Telefone"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo04">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Telefone no exterior"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_04"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo05">
+                  <propriedades>
+                    <propriedade nome="caption" valor="E-mail"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_05"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recEnderecos"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvEnderecos"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfTipoRelac"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfNumfunc"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtVinculo"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDependente"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfNumpens"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfNomeRep"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfTipoender"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfCep"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtTipoLogr"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfEndereco"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfNum"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfComplemento"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfUf"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfBairro"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Estado no exterior"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_03"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfCidade">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Município/Cidade"/>
+                            <propriedade nome="width" valor="417"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="90"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfCidadeCod"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="País"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                            <propriedade nome="width" valor="440"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="1"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo02">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Telefone"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo04">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Telefone no exterior"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_04"/>
+                            <propriedade nome="width" valor="417"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo05">
+                          <propriedades>
+                            <propriedade nome="caption" valor="E-mail"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_05"/>
+                            <propriedade nome="width" valor="715"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="1"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipoender"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTiporelac"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumdep"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumpens"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumrep"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidUf"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCidade"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidIdEnder"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCidadeCod"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receEnderecos"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipoRelac"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcFuncionario">
+                          <propriedades>
+                            <propriedade nome="width" valor="439"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpVinculo"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcNumdep"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcNumPens"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcNumRep"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipoEndereco">
+                          <propriedades>
+                            <propriedade nome="onChanged" valor="var tipoEndereco = getParameter(&quot;#drpTipoEndereco#&quot;);&#10;var opcaoEsconde = &quot;Residencial Exterior&quot;;&#10;&#10;if (tipoEndereco.localeCompare(opcaoEsconde)) {&#10;hide('txtFlexCampo03');&#10;hide('txtFlexCampo01');&#10;hide('txtFlexCampo04');&#10;}else{&#10;show('txtFlexCampo03');&#10;show('txtFlexCampo01');&#10;show('txtFlexCampo04');&#10;}"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtCep"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipoLogr"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEndereco"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtNum"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtComplemento"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpUf"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtBairro"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlexCampo03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Estado no exterior"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_03"/>
+                            <propriedade nome="validators" valor="length(0,20);"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcCidade">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Município/Cidade"/>
+                            <propriedade nome="width" valor="417"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcCidadeCod"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="País"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                            <propriedade nome="validators" valor="length(0,50);"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="440"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="1"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlexCampo02">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Telefone"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                            <propriedade nome="validators" valor="length(0,20);"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlexCampo04">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Telefone no exterior"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_04"/>
+                            <propriedade nome="validators" valor="length(0,20);"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="417"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlexCampo05">
+                          <propriedades>
+                            <propriedade nome="caption" valor="E-mail"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_05"/>
+                            <propriedade nome="validators" valor="length(0,100);"/>
+                            <propriedade nome="width" valor="715"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="1"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtobs"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpCep"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpControllerCep"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidIdEnder2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpControllerTipoRelac"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpControleCidade"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

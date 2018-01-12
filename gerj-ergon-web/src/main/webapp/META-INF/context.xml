@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context mapperContextRootRedirectEnabled="true" mapperDirectoryRedirectEnabled="true">
+
+  <!--
+    Força enconding para formulário de autenticação utilizado em aplicações com "Form-Based Authentication"
+
+    Util quando a aplicação permite utilização de caracteres especiais para usuários e senhas.
+  -->
+  <Valve className="org.apache.catalina.authenticator.FormAuthenticator" characterEncoding="UTF-8"/>
+
+  <!--
+    Evita uso incorreto do Realm por acesso direto à página de login.
+    Mais detalhes em: https://tomcat.apache.org/tomcat-7.0-doc/config/valve.html
+  -->
+  <Valve className="org.apache.catalina.authenticator.FormAuthenticator" landingPage=""/>
+
+
+
+  <!--
+    Contém lista de Jars (produção) ou diretórios de .class (desenvolvimento) das aplicações
+
+    searchVirtualFirst: Se true prioriza bibliotecas do VirtualWebappLoader em relação as do WAR (default:false)
+
+    (separador é o ponto e vírgula)
+  -->
+  <Loader
+    className="org.apache.catalina.loader.VirtualWebappLoader"
+    searchVirtualFirst="true"
+    virtualClasspath="${user.home}/.techne/Ergon/external-libs/*.jar"
+  />
+
+
+
+  <!--
+    Deve ser utilizado em ambiente de desenvolvimento:
+
+    Trata qualquer diretório do classpath com subdiretório META-INF como um JAR expandido.
+
+    Detalhes em: http://tomcat.apache.org/tomcat-7.0-doc/config/context.html#Virtual_webapp
+
+  -->
+  <JarScanner scanAllDirectories="true" />
+
+
+
+  <!--
+    Lista de resources web das aplicações (separador é a vírgula)
+
+    Necessário se scanAllDirectories="false"
+
+  -->
+  <Resources className="org.apache.naming.resources.VirtualDirContext"
+    extraResourcePaths="/=${user.home}/.techne/Ergon/ext-resources/"
+  />
+
+  <!--
+   | Banco CronosFramework
+   -->
+   
+  <Resource name="jdbc/Cronos"
+            type="javax.sql.DataSource"
+            driverClassName="org.h2.Driver"
+            url="jdbc:h2:file:${user.home}/cronosdb/gerj_cronos;DATABASE_TO_UPPER=false;ALIAS_COLUMN_NAME=true;AUTO_SERVER=true"
+            username="cronos"
+            password="cronos"
+            accessToUnderlyingConnectionAllowed="true"
+            initialSize="30"
+            maxActive="300"
+            maxIdle="200"
+            minIdle="80"
+            timeBetweenEvictionRunsMillis="34000"
+            minEvictableIdleTimeMillis="55000"
+            validationQuery="SELECT 1 FROM DUAL"
+            validationInterval="34000"
+            testOnBorrow="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="55"/>           
+ 
+  <!--
+   | Banco HADES
+  -->
+   
+  <Resource name="jdbc/Hades"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@10.113.7.248:1521:techne"
+            username="hades"
+            password="hades"
+            accessToUnderlyingConnectionAllowed="true"
+            initialSize="30"
+            maxActive="300"
+            maxIdle="200"
+            minIdle="80"
+            timeBetweenEvictionRunsMillis="34000"
+            minEvictableIdleTimeMillis="55000"
+            validationQuery="SELECT 1 FROM DUAL"
+            validationInterval="34000"
+            testOnBorrow="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="55"/>
+            
+  <!--
+   | Banco ERGON
+  -->
+   
+  <Resource name="jdbc/Ergon"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@10.113.7.248:1521:techne"
+            username="ergon"
+            password="ergon"
+            accessToUnderlyingConnectionAllowed="true"
+            initialSize="30"
+            maxActive="300"
+            maxIdle="200"
+            minIdle="80"
+            timeBetweenEvictionRunsMillis="34000"
+            minEvictableIdleTimeMillis="55000"
+            validationQuery="SELECT 1 FROM DUAL"
+            validationInterval="34000"
+            testOnBorrow="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="55"/>  
+
+  <!--
+   | Banco C_HADES
+  -->
+   
+  <Resource name="jdbc/C_Hades"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@10.113.7.248:1521:techne"
+            username="c_hades"
+            password="c_hades"
+            accessToUnderlyingConnectionAllowed="true"
+            initialSize="30"
+            maxActive="300"
+            maxIdle="200"
+            minIdle="80"
+            timeBetweenEvictionRunsMillis="34000"
+            minEvictableIdleTimeMillis="55000"
+            validationQuery="SELECT 1 FROM DUAL"
+            validationInterval="34000"
+            testOnBorrow="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="55"/>
+            
+  <!--
+   | Banco C_ERGON
+  -->
+   
+  <Resource name="jdbc/C_Ergon"
+            type="javax.sql.DataSource"
+            driverClassName="oracle.jdbc.OracleDriver"
+            url="jdbc:oracle:thin:@10.113.7.248:1521:techne"
+            username="c_ergon"
+            password="c_ergon"
+            accessToUnderlyingConnectionAllowed="true"
+            initialSize="30"
+            maxActive="300"
+            maxIdle="200"
+            minIdle="80"
+            timeBetweenEvictionRunsMillis="34000"
+            minEvictableIdleTimeMillis="55000"
+            validationQuery="SELECT 1 FROM DUAL"
+            validationInterval="34000"
+            testOnBorrow="true"
+            removeAbandoned="true"
+            removeAbandonedTimeout="55"/>
+
+</Context>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="08/11/2017 15:23" nome="ERGadm00344">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumvinc" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00344"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk001" nome="blkVinc"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdVincConta">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select numvinc_conta,matric,detalhe,emp_codigo,numfunc,numvinc, rowid_reg,ident_vinc, TO_DATE(flex_campo_01,'dd/mm/yyyy') flex_campo_01 from ergadm00344_vinculo_que_conta&#10;where numfunc=? and numvinc=?&#10;order by numvinc_conta"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdent_vinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVinculo">
+                  <propriedades>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMatricula"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDetalhe">
+                  <propriedades>
+                    <propriedade nome="width" valor="710"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtvalidade">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data de Validade"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpcod"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_reg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recVincConta">
+                      <propriedades>
+                        <propriedade nome="onCommit" valor="getControl('recVincConta').setDateFormat('d/m/Y', 'txbDtvalidade');&#10;proceed();&#10;"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvView"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfVincConta">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetalhe"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDtvalidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data de Validade"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfMatric">
+                              <propriedades>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvRowidReg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvNumvinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvNumfunc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvEmp_codigo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfVinculo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receEdit">
+                          <propriedades>
+                            <propriedade nome="onEnterEdit" valor="var funcionario = getParameter('#blkVinc.srcServidores#');&#10;&#10;getControl('recVincConta').setDateFormat('d/m/Y', 'txbDtvalidade');&#10;&#10;if (Techne.Hades.validaFiltrosObrigatorios([funcionario],['o vínculo']))&#10; {&#10;   proceed();&#10; }&#10;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpNumvinc_conta">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbDtvalidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data de validade"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvinc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hideEmp_codigo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocs"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

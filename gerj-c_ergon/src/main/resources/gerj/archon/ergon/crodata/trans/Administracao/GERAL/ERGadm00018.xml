@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="09/08/2016 16:45" nome="ERGadm00018">
+  <parametros>
+    <parametro ancest="true" id="pCargo"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00018"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panCargo"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="defaults" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="monitorResize" valor="true"/>
+                  <propriedade nome="style" valor=""/>
+                  <propriedade nome="title" valor=""/>
+                  <propriedade nome="width" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCargo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/checkBox" nome="chkListarCargos"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsulta">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT  cargo1,descr_cargo1, cargo2, descr_cargo2, pontlei,dtini,dtfim,cargo1_descr,cargo2_descr, FLEX_CAMPO_01,          rowid_reg  from ( SELECT e.cargo1,e.descr_cargo1, e.cargo2, e.descr_cargo2, e.pontlei,e.dtini,e.dtfim,e.cargo1_descr,e.cargo2_descr,e.FLEX_CAMPO_01,             e.rowid_reg  FROM ergadm00015_acumcargo e , cargos_empresa ce, had_usuario_empresa u              WHERE  ce.empresa = u.empresa  AND ce.cargo = e.cargo1  AND u.usuario = flag_pack.get_usuario              and ? ='S' and cargo1 =nvl(?,cargo1)          union  SELECT e.cargo1,e.descr_cargo1, e.cargo2, e.descr_cargo2, e.pontlei,e.dtini,e.dtfim,e.cargo1_descr,e.cargo2_descr,e.FLEX_CAMPO_01,             e.rowid_reg  FROM ergadm00015_acumcargo e , cargos_empresa ce,  had_usuario_empresa u              WHERE  ce.empresa = u.empresa     AND ce.cargo = e.cargo2   AND u.usuario = flag_pack.get_usuario              and ? ='S' AND cargo2 =nvl(?,cargo2)   union all SELECT e.cargo1,e.descr_cargo1, e.cargo2, e.descr_cargo2, e.pontlei,e.dtini,e.dtfim,e.cargo1_descr,e.cargo2_descr,e.FLEX_CAMPO_01,         e.rowid_reg  FROM ergadm00015_acumcargo e  WHERE nvl(?,'N')= 'N'  AND (e.cargo1 = nvl(?,e.cargo1) OR e.cargo2 = nvl(?,e.cargo2)))  order by cargo1,cargo2,dtini desc "/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtinicio"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTermino"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDCargo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDCargo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fld2Cargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontlei"/>
+                <componente classe="component/gridPanelField" nome="fldObs">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Obs."/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <propriedades>
+              <propriedade nome="activeTab" valor="0"/>
+              <propriedade nome="border" valor="false"/>
+              <propriedade nome="cssClass" valor=""/>
+              <propriedade nome="deferredRender" valor="false"/>
+              <propriedade nome="layoutOnTabChange" valor="true"/>
+              <propriedade nome="plain" valor="true"/>
+              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+              <propriedade nome="width" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="style" valor=""/>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="rec"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recv"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtini">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Inícioo"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtfim"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescr_cargo1"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescr_cargo2"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfObs">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Obs."/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                                    <propriedade nome="height" valor="44"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="labelAlign" valor="left"/>
+                                  <propriedade nome="labelWidth" valor="100"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="rece"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtini"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtfim"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcCargo1"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcCargo2"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="defaults" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="monitorResize" valor="true"/>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                              <propriedade nome="title" valor=""/>
+                              <propriedade nome="width" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbObs">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Obs."/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                                    <propriedade nome="height" valor="44"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="validators" valor="length(0,2000);"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="columnWidth" valor="0.9"/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="labelAlign" valor="left"/>
+                                  <propriedade nome="labelWidth" valor="100"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="style" valor=""/>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blk004"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="hidCargo"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

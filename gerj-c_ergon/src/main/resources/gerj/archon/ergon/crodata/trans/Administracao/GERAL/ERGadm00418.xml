@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="09/06/2016 13:29" nome="ERGadm00418">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00418">
+      <propriedades>
+        <propriedade nome="title" valor="Banco e Edição de Fatores para Questionários em Elaboração"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <propriedades>
+              <propriedade nome="autoHeight" valor="true"/>
+              <propriedade nome="border" valor="false"/>
+              <propriedade nome="cssClass" valor=""/>
+              <propriedade nome="frame" valor="false"/>
+              <propriedade nome="style" valor=""/>
+              <propriedade nome="title" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout>
+                <bloco ancest="true" classe="component/HADadm_blk003" nome="blkEmp"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuFiltro"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisa"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdFat">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select valor      &#10;      ,fator  &#10;      ,sigla              &#10;      ,descricao      &#10;      ,criterio       &#10;      ,pontos         &#10;      ,pontos_minimo  &#10;      ,pontos_maximo  &#10;      ,regras_score   &#10;      ,calculado      &#10;      ,grupo  &#10;      ,descr_grupo&#10;      ,finalidade  &#10;      ,descr_finalidade&#9;&#9;         &#10;      ,rowid_reg&#10;      ,flex_campo_01&#10;      ,'Empresa' link_emp&#10;from ergadm00418_prom_fator&#10;where busca_searchbox_number ( fator, null, sigla ||' - '||descricao, nvl(?, ' ') ) = 1&#10;and valor = ?&#10;order by decode ( to_char (fator), sigla, lpad (sigla, 20, '0'), sigla )"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValor02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFator"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCriterio"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontosMinimo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontosMaximo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRegrasScore"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCalculado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrGrupo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFinalidade02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrFinalidade02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinkEmp02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg02"/>
+                <componente classe="component/gridPanelField" nome="fldFlex01Descricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="680"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="inst03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso3"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recpFat"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recv02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtSigla02"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescricao02">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nome"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex01Descricao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="height" valor="60"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="width" valor="715"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="labelAlign" valor="left"/>
+                      <propriedade nome="labelWidth" valor="100"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtCriterio"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtPontosMinimo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtPontosMaximo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hyperLink" nome="hplListaVal">
+                          <propriedades>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescrGrupo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Aspecto Avaliado"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtPontos">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor=""/>
+                    </propriedades>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtRegrasScore">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtCalculado">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescrFinalidade02">
+                      <propriedades>
+                        <propriedade nome="height" valor="0"/>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvfFator"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvfFinalidade"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvfGrupo"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rece02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtSigla03"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao03">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nome"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbeFlex01Descricao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="height" valor="60"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="width" valor="715"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="labelAlign" valor="left"/>
+                      <propriedade nome="labelWidth" valor="100"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtCriterio02"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPontosMinimo02"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPontosMaximo02"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcGrupo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Aspecto Avaliado"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtPontos02">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcRegrasScore">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="ckb2Calculado">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcFinalidade02">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidfFator"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

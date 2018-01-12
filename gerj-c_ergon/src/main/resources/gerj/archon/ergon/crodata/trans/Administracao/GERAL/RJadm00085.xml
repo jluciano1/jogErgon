@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="09/19/2016 16:30" nome="RJadm00085">
+  <layout>
+    <componente classe="component/page" nome="RJadm00085">
+      <propriedades>
+        <propriedade nome="title" valor="Associação Subespecialidades"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione a empresa para a qual você deseja consultar as informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Aqui você pode alterar o  modo de consulta utilizado pela página. Os seguintes modos estão disponíveis:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;(Todas): Ao selecionar esta opção, o sistema  consultará todos os registros existentes, independente da empresa corrente;&lt;/li&gt;       &lt;li&gt;(Sem empresa associada): Ao selecionar esta  opção, o sistema consultará todos os registros que não estejam associados a  nenhuma empresa;&lt;/li&gt;       &lt;li&gt;As demais opções apresentadas listam as empresas  existentes. Neste modo, é possível consultar apenas os registros válidos para a  empresa selecionada.&lt;/li&gt;     &lt;/ul&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/HADadm_blk003" nome="blkEmpresa">
+              <blocoComponente classe="component/control/value/unbound/dropDown" nome="blkEmpresa.drpSelecEmpresa">
+                <propriedades>
+                  <propriedade nome="minListWidth" valor="415"/>
+                  <propriedade nome="validators" valor="required();"/>
+                </propriedades>
+              </blocoComponente>
+            </bloco>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltro">
+              <propriedades>
+                <propriedade nome="title" valor="Filtro de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpTipoArea">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Tipo área"/>
+                        <propriedade nome="sqlSelect" valor="SELECT item, item||' - '||descr as descr FROM itemtabela WHERE tab = 'GOVRJ_TIPO_ATIVIDADE'&#10;order by item"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcEspecialidade">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                        <propriedade nome="caption" valor="Especialidade"/>
+                        <propriedade nome="hideValue" valor="true"/>
+                        <propriedade nome="sql" valor="SELECT codigo CODIGO,&#10;  nome || ' - ' || flex_campo_01 DESCRICAO&#10;FROM RH_ATIVIDADE A&#10;WHERE BUSCA_SEARCHBOX_VARCHAR2(codigo, ?, (nome || ' - ' || flex_campo_01), ?) = 1&#10;AND flex_campo_01       = ?&#10;ORDER BY nome"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description, #drpTipoArea#"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdEspecialidades">
+              <propriedades>
+                <propriedade nome="caption" valor="Especialidades"/>
+                <propriedade nome="sqlParameters" valor="#blkEmpresa.drpSelecEmpresa#, $drpTipoArea.item$"/>
+                <propriedade nome="sqlSelect" valor="SELECT r.codigo ,&#10;  r.nome ,&#10;  r.flex_campo_01 ,&#10;  r.flex_campo_02 ,&#10;  r.rowid_reg&#10;FROM rjadm00085_especialidades r,&#10;  RH_ATIVIDADE_EMPRESA a,&#10;  EMPRESAS e&#10;WHERE &#10;e.empresa = a.empresa&#10;AND a.codigo = r.codigo&#10;AND e.empresa  = ?&#10;AND r.flex_campo_01   = nvl(?,r.flex_campo_01)&#10;order by 1"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldEspecialidade">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Especialidade"/>
+                    <propriedade nome="field" valor="codigo"/>
+                    <propriedade nome="width" valor="130"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoArea">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Área"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldAtividade">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Atividade de"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                  <propriedades>
+                    <propriedade nome="caption" valor="ROWID_REG"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdSubEspecialidades">
+              <propriedades>
+                <propriedade nome="caption" valor="Subespecialidades"/>
+                <propriedade nome="sqlParameters" valor="$grdEspecialidades.codigo$, $grdEspecialidades.flex_campo_01$"/>
+                <propriedade nome="sqlSelect" valor="SELECT disciplina ,&#10;  atividade ,&#10;  tipo_area ,&#10;  desc_disc ,&#10;  flex_campo_01 ,&#10;  flex_campo_02,&#10;  atividade||' - '||desc_disc as descricao,&#10;  rowid_reg&#10;FROM rjadm00085_subespecialidades&#10;WHERE atividade = ?&#10;  and flex_campo_01 = ?&#10;order by disciplina"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldSubespecialidade">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Subespecialidade"/>
+                    <propriedade nome="field" valor="disciplina"/>
+                    <propriedade nome="width" valor="130"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="field" valor="desc_disc"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldAtividadeSubesp">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Atividade"/>
+                    <propriedade nome="field" valor="atividade"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoAreaSubesp2">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Área"/>
+                    <propriedade nome="field" valor="tipo_area"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoAreaSubesp">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo área subesp"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina de"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowIdRegSubEsp">
+                  <propriedades>
+                    <propriedade nome="caption" valor="ROWID_REG"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldCod_descricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr03">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;3&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso03">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Associação das Subespecialidades&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recSubEspecialidades">
+              <propriedades>
+                <propriedade nome="caption" valor="Associação das Subespecialidades"/>
+                <propriedade nome="master" valor="grdSubEspecialidades"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvSubEspecialidades"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfCodDescricao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subespecialidade"/>
+                            <propriedade nome="field" valor="descricao"/>
+                            <propriedade nome="width" valor="648"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoAreaSubesp">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo/Área"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="width" valor="250"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfDisciplinade">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Disciplina de"/>
+                            <propriedade nome="field" valor="flex_campo_02"/>
+                            <propriedade nome="width" valor="250"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfSubEspecialidade">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subespecialidade"/>
+                            <propriedade nome="field" valor="disciplina"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfAtividadeSubesp">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Atividade"/>
+                            <propriedade nome="field" valor="atividade"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                      <propriedades>
+                        <propriedade nome="caption" valor="ROWID_REG"/>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanelEdit" nome="receSubEspecialidade">
+                  <propriedades>
+                    <propriedade nome="rotina" valor="db:cerg_dml_rh_ativ_disciplina"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/searchBox" nome="srcSubEspecialidade">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                            <propriedade nome="caption" valor="Subespecialidade"/>
+                            <propriedade nome="field" valor="disciplina"/>
+                            <propriedade nome="fieldTarget" valor="pb_disciplina"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="SELECT DISCIPLINA, DISCIPLINA||' - '||DESCRICAO||' - '||FLEX_CAMPO_01 AS TIPO_AREA&#10;  FROM RH_DISCIPLINAS&#10; WHERE busca_searchbox_varchar2(disciplina, ? , DISCIPLINA||' - '||DESCRICAO||' - '||FLEX_CAMPO_01, ?) = 1 &#10;   and FLEX_CAMPO_01 = ?&#10;"/>
+                            <propriedade nome="sqlParameters" valor="search.value, search.description, $grdEspecialidades.flex_campo_01$"/>
+                            <propriedade nome="validators" valor="length(0,20)"/>
+                            <propriedade nome="width" valor="648"/>
+                            <propriedade nome="widthKey" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbAtividadeSubesp">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Atividade"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="atividade"/>
+                            <propriedade nome="fieldTarget" valor="pb_atividade"/>
+                            <propriedade nome="initialValue" valor="$grdEspecialidades.codigo$"/>
+                            <propriedade nome="mask" valor="number"/>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/hiddenField" nome="hidfRowIdReg">
+                          <propriedades>
+                            <propriedade nome="caption" valor="ROWID_REG"/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="fieldTarget" valor="p_rowid_reg"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr04">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt; &lt;div class=&quot;techneInsItem&quot;&gt; 4 &lt;/div&gt; Cadastro das subespecialidades &lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso04">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt; Ao acionar o link você será levado a uma nova página. &lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuLink"/>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/hyperLink" nome="hlkSubespecialidades">
+                  <propriedades>
+                    <propriedade nome="text" valor="Subespecialidades"/>
+                    <propriedade nome="transacao" valor="Administracao.RJadm00005"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

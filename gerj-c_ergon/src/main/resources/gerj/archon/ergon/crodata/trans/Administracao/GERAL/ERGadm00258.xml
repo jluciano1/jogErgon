@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_6" data="07/13/2017 16:38" nome="ERGadm00258">
+  <parametros>
+    <parametro ancest="true" id="pQuestionario"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00258"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/HADadm_blk003" nome="blk003"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltrosQuest"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpQuest"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdQuestionario">
+                  <propriedades>
+                    <propriedade nome="sqlSelect" valor="SELECT questionario,&#10;  empcod ,&#10;  rowid_reg,&#10;  valor,&#10;  flex_campo_01&#10;FROM ergadm00258_prom_quest&#10;WHERE questionario = NVL(?,questionario)&#10;AND valor          = ?&#10;ORDER BY questionario"/>
+                  </propriedades>
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldQuestionario">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Tipo de questionário"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Formulário de considerações do avaliador"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmp_codigo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+                  </componentes>
+                </componente>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.5"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanel" nome="recQuestionario"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.5"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanelView" nome="recvQuest"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfQuest">
+                          <propriedades>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Form. cons. do avaliador"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="width" valor="350"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvQuestEmpcod"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvQuestRowid"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanelEdit" nome="receQuest"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtQuest">
+                          <propriedades>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Form. cons. do avaliador"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="validators" valor="required();length(1,100)"/>
+                            <propriedade nome="width" valor="350"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltrosGrupo"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcGrupo"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcMaximoPontos"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdGrupos">
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo_descr"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldMaximoPonto"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldQuest"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCod"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowId_reg"/>
+                  </componentes>
+                </componente>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.5"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanel" nome="recGrupo"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.5"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanelView" nome="recvGrupo"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfGrupo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfMaximoPonto"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvGrupGrupo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvGrupoRowid"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvGrupoEmpcod"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanelEdit" nome="receGrupo"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpGrupo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtMaximoPonto"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/hiddenField" nome="hidQuestionario"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr04"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso04"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltroItem"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtItem"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtPonderacao"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisa"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdItem">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldItem"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFator"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPonderacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQuestionarios"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidreg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_fator"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recItem"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvItem"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfItem"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfPonderacao"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfSigla"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvItemEmpcod"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvItemRowid"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvfFator"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receItem"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtItens"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPonderacoes"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcFator"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmp_codigo"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidfQuestionario"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidfGrupo"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

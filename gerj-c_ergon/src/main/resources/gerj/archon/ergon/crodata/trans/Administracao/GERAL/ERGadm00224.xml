@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 13:45" nome="ERGadm00224">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumdep" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00224"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <bloco ancest="true" classe="component/ERGadm_blk002" nome="blk002"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdREGPEND">
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSis"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTrans"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldUser"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldtext_link"/>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/panelu" nome="panFiltro"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcDependente">
+                      <propriedades>
+                        <propriedade nome="sql" valor="select numero, nome &#10;  from dependentes  &#10;  where numfunc = ?&#10;    and 1 = busca_searchbox_number(numero, ?, nome, ?)  &#10;    and flex_campo_03 is null&#10;    order by numero"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsulta">
+                  <propriedades>
+                    <propriedade nome="sqlParameters" valor="#blk002.srcFunc#, #srcDependente#, #blk002.srcFunc#, #srcDependente#"/>
+                    <propriedade nome="sqlSelect" valor="select nome, dtini, dtfim, tipodepen_descr, rowid_reg, numfunc, numdep, tipodepen, observacao, nome_descr, pontpubl, tipodepen_cod, ' ' atos, flex_campo_01, &#10;       (SELECT DISTINCT rp.numpens||' - '||p.nome ||' - pensão:'|| rp.tipopens as descr&#10;          FROM regras_pensao rp, pensionistas p, dependencias dep&#10;         WHERE p.numfunc = rp.numfunc&#10;           AND p.numvinc   = rp.numvinc&#10;           AND p.numero    = rp.numpens&#10;           AND p.numfunc   = dep.numfunc&#10;           and p.numero    = dep.flex_campo_01&#10;           and dep.numfunc = ?&#10;           and dep.numdep  = ?) flex_01_descr&#10; from ergadm00224_dependencia where numfunc = ? and numdep = ?&#10;  and exists(select 1 from dependentes de&#10;              where de.numfunc = ergadm00224_dependencia.numfunc&#10;                and de.numero = ergadm00224_dependencia.numdep&#10;                and de.flex_campo_03 is null)"/>
+                  </propriedades>
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNumdep"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldDependente"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldInicio"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTermino"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipoInvalidez"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTpdepen"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNomeDescr"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipodepenCod"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl_"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldAtosIndiv"/>
+                    <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Pensionista"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldflex_01_descr">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Pensionista"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="flex_01_descr"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr04"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso04"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="TAB">
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Detalhes"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="rec"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recv"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfInicio"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfTermino"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipodepen"/>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfflex_01_descr">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pensionista"/>
+                                    <propriedade nome="field" valor="flex_01_descr"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pensionista"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumdep"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTpDepen"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid_reg"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfDependente"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvPontPubl"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="rece"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc2"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="dtbIni"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="dtbFim"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipodepen"/>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pensionista"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_01"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="sql" valor="select numpens, descr&#10;  from (&#10;          SELECT DISTINCT rp.numpens numpens,p.nome ||' - pensão:'|| rp.tipopens as descr&#10;          FROM regras_pensao rp, pensionistas p&#10;          WHERE p.numfunc = rp.numfunc&#10;          AND p.numvinc   = rp.numvinc&#10;          AND p.numero    = rp.numpens&#10;          AND p.numfunc   = ? )&#10; where BUSCA_SEARCHBOX_NUMBER(numpens,?,descr,?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="#blk002.srcFunc#, search.value,search.description"/>
+                                    <propriedade nome="toolTip" valor="Pensionista associado ao tipo de dependência"/>
+                                    <propriedade nome="validators" valor="length(0,2); "/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtObs"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidRowid"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidePontPubl"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hideNumdep"/>
+                              </layout>
+                              <layout>
+                                <bloco ancest="true" classe="component/HADadm_blk002" nome="blkNPubl"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Publicações"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <bloco ancest="true" classe="component/HADadm_blk001" nome="blkPubl"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpPontPubl"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpVinculo"/>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,356 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+
+  <!-- **************** -->
+  <!-- Dados da empresa -->
+  <!-- **************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- **************** -->
+  <!-- Dados do projeto -->
+  <!-- **************** -->
+  <artifactId>gerj-ergon-web</artifactId>
+  <packaging>war</packaging>
+  <!-- groupId e version herdam do parent -->
+
+
+
+  <!-- ************** -->
+  <!-- Projeto parent -->
+  <!-- ************** -->
+  <parent>
+    <groupId>br.com.techne.gerj</groupId>
+    <artifactId>gerj-ergon-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>../gerj-ergon-parent</relativePath>
+  </parent>
+
+
+
+  <!-- ************ -->
+  <!-- Propriedades -->
+  <!-- ************ -->
+
+  <properties>
+    <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+    <tomcat.version>7.0.62</tomcat.version>
+  </properties>
+
+
+
+  <!-- ***************************** -->
+  <!-- Gerenciamento de dependencias -->
+  <!-- ***************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- ************ -->
+  <!-- Dependencias -->
+  <!-- ************ -->
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>cronos-security</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>cronos-web</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon-ergon</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon-hades</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne.gerj</groupId>
+      <artifactId>gerj-c_hades</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne.gerj</groupId>
+      <artifactId>gerj-c_ergon</artifactId>
+      <scope>runtime</scope>
+    </dependency>    
+  </dependencies>
+
+
+
+  <!-- ********************** -->
+  <!-- Configuracoes de build -->
+  <!-- ********************** -->
+  <build>
+
+    <plugins>
+    <plugin>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+
+
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Built-In>${buildTimestamp}</Built-In>
+              <Git-Hash>${buildNumber}</Git-Hash>
+            </manifestEntries>
+          </archive>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+        </configuration>
+
+        <executions>
+          <!--
+           | WAR Tomcat
+          -->
+          <execution>
+            <id>default-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+            <configuration>
+              <classifier>tomcat</classifier>
+              <packagingExcludes>
+                WEB-INF/classes/log4j2.xml,
+                WEB-INF/jboss-deployment-structure.xml,
+                WEB-INF/jboss-web.xml,
+                WEB-INF/weblogic.xml
+              </packagingExcludes>
+            </configuration>
+          </execution>
+
+          <!--
+           | WAR JBoss
+          -->
+          <execution>
+            <id>jboss-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+            <configuration>
+              <webResources>
+                <resource>
+                  <directory>src/main/resources-jboss711</directory>
+                  <targetPath>WEB-INF</targetPath>
+                </resource>
+              </webResources>
+              <packagingExcludes>
+                WEB-INF/classes/log4j2.xml,
+                WEB-INF/lib/orai18n*.jar,
+                WEB-INF/lib/ojdbc7*.jar,
+                WEB-INF/lib/sqljdbc4*.jar,
+                WEB-INF/lib/h2*.jar,
+                WEB-INF/weblogic.xml,
+                META-INF/context.xml
+              </packagingExcludes>
+              <classifier>jboss</classifier>
+            </configuration>
+          </execution>
+
+          <!--
+           | WAR Weblogic
+          -->
+          <execution>
+            <id>weblogic-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+            <configuration>
+              <webResources>
+                <resource>
+                  <directory>src/main/resources-weblogic12c</directory>
+                  <targetPath>WEB-INF</targetPath>
+                </resource>
+              </webResources>
+              <packagingExcludes>
+                WEB-INF/classes/log4j2.xml,
+                WEB-INF/jboss-deployment-structure.xml,
+                WEB-INF/jboss-web.xml,
+                WEB-INF/lib/xml-apis-*.jar,
+                META-INF/context.xml
+              </packagingExcludes>
+              <classifier>weblogic</classifier>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+
+        <!--
+          Execução com tomcat7 maven plugin:
+          $ mvn -pl techne-archon-ergon-web -am package tomcat7:run-war
+        -->
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        
+        <configuration>
+          <path>/</path>
+          <port>8080</port>
+          <useSeparateTomcatClassLoader>true</useSeparateTomcatClassLoader>          
+        </configuration>
+
+        <dependencies>
+
+          <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-util</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-coyote</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-api</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jsp-api</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper-el</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-el-api</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-tribes</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina-ha</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-annotations-api</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-juli</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+          <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-log4j</artifactId>
+            <version>${tomcat.version}</version>
+          </dependency>
+
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para baixar) -->
+  <!-- ************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para deploy) -->
+  <!-- ************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+</project>

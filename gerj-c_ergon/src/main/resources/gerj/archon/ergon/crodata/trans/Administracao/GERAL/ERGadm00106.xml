@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/11/2017 13:29" nome="ERGadm00106">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00106">
+      <propriedades>
+        <propriedade nome="title" valor="Formações do servidor"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk002" nome="blkFunc"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuFormacoes"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="schCurso"/>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbIni"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbFim"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdFormacoes">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCursoDescr"/>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nível do curso"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="300"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo10">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Documento autorizativo"/>
+                    <propriedade nome="field" valor="flex_campo_10"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="180"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data início remuneração"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="180"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo03">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data fim remuneração"/>
+                    <propriedade nome="field" valor="flex_campo_03"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="180"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldHabilitacao">
+                  <propriedades>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargahor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDt_Contou_Pts"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEscola"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPts_Que_Conta"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldBolsa"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldRecinst"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldPontolib"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCursoform"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_Reg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCodHabilitacao"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="Formacoes">
+              <propriedades>
+                <propriedade nome="onCommit" valor="var func = getParameter('#blkFunc.srcFunc#');  var ini = getParameter('#txtDtini#');  var fim = getParameter('#txtDtfim#');  var msgVerd = 'Data de término deve ser posterior ao início.';  var msgErr;   if (func === null || func == '') {     alert('É necessário informar o número do funcionário para incluir um novo registro'); } else {     if (!Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)) {     proceed();    } }&#10;&#10;getControl('Formacoes').setDateFormat('d/m/Y', 'txbFlexCampo02');&#10;getControl('Formacoes').setDateFormat('d/m/Y', 'txbFlexCampo03');"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvFormacoes"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvDtini"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvDtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data de conclusão"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvCursoform"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível do curso"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="toolTip" valor="Nível de ensino do curso de formação"/>
+                            <propriedade nome="width" valor="718"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfvHabilitacao">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvEscola"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo10">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Documento autorizativo"/>
+                            <propriedade nome="field" valor="flex_campo_10"/>
+                            <propriedade nome="toolTip" valor="Documento autorizativo"/>
+                            <propriedade nome="width" valor="718"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvObs"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html1"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvCargahor"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvDt_Contou_Pts"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvPts_Que_Conta">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo02">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data início remuneração"/>
+                            <propriedade nome="field" valor="flex_campo_02"/>
+                            <propriedade nome="toolTip" valor="Data início do período remunerado"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlexCampo03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data fim remuneração"/>
+                            <propriedade nome="field" valor="flex_campo_03"/>
+                            <propriedade nome="toolTip" valor="Data término do período remunerado"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvBolsa">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvRecinst">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfvPontolib">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCurso_"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid_reg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidHabilitacao"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receFormacoes">
+                  <propriedades>
+                    <propriedade nome="onEnterEdit" valor="getControl('Formacoes').setDateFormat('d/m/Y', 'txbFlexCampo02');&#10;getControl('Formacoes').setDateFormat('d/m/Y', 'txbFlexCampo03');&#10;&#10;proceed(); "/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDtini"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data de conclusão"/>
+                            <propriedade nome="required" valor="S"/>
+                            <propriedade nome="validators" valor="required();"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="schCursoform">
+                          <propriedades>
+                            <propriedade nome="width" valor="718"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/dropDownSelect" nome="ddsFlexCampo01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível do curso"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="sqlParameters" valor="#schCursoform#"/>
+                            <propriedade nome="sqlSelect" valor="Select item, descr&#10;  from itemtabela&#10; where tab = 'ERG_NIVEL_CURSO'&#10;   and exists (select 1&#10;          from habilitacoes&#10;         where nivel_curso = item&#10;           and cursoform = ?)"/>
+                            <propriedade nome="toolTip" valor="Nível de ensino do curso de formação"/>
+                            <propriedade nome="validators" valor="required();"/>
+                            <propriedade nome="width" valor="718"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDown" nome="drpHabilitacao">
+                      <propriedades>
+                        <propriedade nome="validators" valor=""/>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEscola"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbFlexCampo10">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Documento autorizativo"/>
+                            <propriedade nome="field" valor="flex_campo_10"/>
+                            <propriedade nome="toolTip" valor="Documento autorizativo"/>
+                            <propriedade nome="validators" valor="length(0,100);"/>
+                            <propriedade nome="width" valor="718"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtObs"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html2"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtCargahor">
+                          <propriedades>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDt_Contou_Pts"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPts_Que_Conta">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbFlexCampo02">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data início remuneração"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="flex_campo_02"/>
+                            <propriedade nome="toolTip" valor="Data início do período remunerado"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbFlexCampo03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data fim remuneração"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="flex_campo_03"/>
+                            <propriedade nome="toolTip" valor="Data término do período remunerado"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkBolsa">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkRecinst">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkPontolib">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hideNumfunc"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

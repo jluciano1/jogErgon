@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="09/29/2017 15:37" nome="ERGadm00153">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+    <parametro ancest="true" id="pNumvinc"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00153">
+      <propriedades>
+        <propriedade nome="title" valor="Forma de desligamento"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk001" nome="blk001"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdREGPEND">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSis"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTrans"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldUser"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldtexto_link"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="border" valor="true"/>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recVacanciaView"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvVacanciaView"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtnom"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtposse"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtexerc"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfTipovinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfRegimejur"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfCategoria"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtinicontr"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtfimcontr"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtprorrogcontr"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvRowid_reg02"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recVacancia">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Forma de desligamento"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvVacancia"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvNumfunc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvNumvinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvRowid_Reg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvPontlei"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvPontpubl"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtvac"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDt_Pgto_Ate">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDesc_Formavac"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSigla_Desc"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex11">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="SISOBI?"/>
+                                    <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                    <propriedade nome="field" valor="flex_campo_11"/>
+                                    <propriedade nome="isImageURL" valor="S"/>
+                                    <propriedade nome="toolTip" valor="É proveniente do SISOBI?"/>
+                                    <propriedade nome="width" valor="20"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfMotivovac"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receVacancia"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hideRowid_Reg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidPontPubl"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtvac"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDt_Pgto_Ate">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/dropDown" nome="drpFormavac"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/checkBox" nome="ckb2Flex11">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="SISOBI?"/>
+                                    <propriedade nome="field" valor="flex_campo_11"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_11"/>
+                                    <propriedade nome="toolTip" valor="É proveniente do SISOBI?"/>
+                                    <propriedade nome="width" valor="16"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtMotivovac"/>
+                          </layout>
+                          <layout>
+                            <bloco ancest="true" classe="component/HADadm_blk002" nome="blkNovaPubl"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panuAtos"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypAtosIndiv"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Publicações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/HADadm_blk001" nome="blkPubl_"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="DocLeg"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

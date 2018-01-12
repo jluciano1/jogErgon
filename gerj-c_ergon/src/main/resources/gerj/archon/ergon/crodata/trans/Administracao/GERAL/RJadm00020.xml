@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 15:07" nome="RJadm00020">
+  <layout>
+    <componente classe="component/page" nome="RJadm00020">
+      <propriedades>
+        <propriedade nome="title" valor="Agendamento de Relatórios"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Informe os dados para o carregamento no painel abaixo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btnUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Em &quot;Carregamento&quot; deverá ser selecionadas as informações necessárias, a ação que se deseja realizar e o arquivo a ser carregado.&lt;/p&gt; &lt;/div&gt;&#10;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltros"/>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/searchBox" nome="sbxListaDistribuicao">
+                  <propriedades>
+                    <propriedade nome="argsCaption" valor="Id, Sigla"/>
+                    <propriedade nome="caption" valor="Lista de Distribuição"/>
+                    <propriedade nome="hideValue" valor="true"/>
+                    <propriedade nome="sql" valor="select idlista, idlista || ' - ' || sigla || ' - ' || nome as sigla from HAD_LISTADISTR where SIGLA like 'AGENDA%' AND busca_searchbox_varchar2(idLista, ?, sigla, ?) = 1"/>
+                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdPesquisa">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="sqlParameters" valor="#sbxListaDistribuicao#"/>
+                    <propriedade nome="sqlSelect" valor="select  ROWIDTOCHAR(ROWID) AS ROWID_REG, idlista, sigla, nome from HAD_LISTADISTR where SIGLA like 'AGENDA%' AND idLista = nvl(?, idLista)"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldIdLista">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Id Lista"/>
+                        <propriedade nome="field" valor="idLista"/>
+                        <propriedade nome="maxLength" valor="15"/>
+                        <propriedade nome="width" valor="100"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldSigla">
+                      <propriedades>
+                        <propriedade nome="field" valor="sigla"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNome">
+                      <propriedades>
+                        <propriedade nome="field" valor="nome"/>
+                        <propriedade nome="width" valor="400"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdEmpresas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Empresas"/>
+                    <propriedade nome="multiSelect" valor="true"/>
+                    <propriedade nome="sqlParameters" valor="$grdPesquisa.idLista$"/>
+                    <propriedade nome="sqlSelect" valor="select EMPRESA, NOME from empresas where nome not like 'A DEFINIR%' AND FLEX_CAMPO_05 IS NOT NULL AND empresa = ? order by empresa"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldEmpresa">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nome"/>
+                        <propriedade nome="field" valor="empresa"/>
+                        <propriedade nome="width" valor="100"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNomeEmpresa">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Relatório"/>
+                        <propriedade nome="field" valor="nome"/>
+                        <propriedade nome="width" valor="600"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdRelatorios">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Relatórios"/>
+                    <propriedade nome="multiSelect" valor="true"/>
+                    <propriedade nome="sqlParameters" valor="$grdPesquisa.idLista$"/>
+                    <propriedade nome="sqlSelect" valor="select idLista, relatorio from HAD_LISTADISTR_RELAT where idLista = ? order by idLista"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldRelatorio">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nome"/>
+                        <propriedade nome="field" valor="relatorio"/>
+                        <propriedade nome="width" valor="350"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldArquivoRelatorio">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Arquivo"/>
+                        <propriedade nome="width" valor="350"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdSecretarias">
+                  <propriedades>
+                    <propriedade nome="autoRefresh" valor=""/>
+                    <propriedade nome="caption" valor="Secretarias"/>
+                    <propriedade nome="multiSelect" valor="true"/>
+                    <propriedade nome="sqlParameters" valor="$grdPesquisa.idLista$, $grdPesquisa.idLista$"/>
+                    <propriedade nome="sqlSelect" valor="select distinct 'N' checar, sub.codigo, sub.nome &#10;from subempresas sub &#10;where sub.emp_codigo in (select item &#10;&#9;&#9;&#9;&#9;&#9;&#9; from PGOV_REL_PARAM_AGEND &#10;&#9;&#9;&#9;&#9;&#9;&#9; where tab = 'PGOV_IDEMP_AGENDADOS' &#10;&#9;&#9;&#9;&#9;&#9;&#9;   and item1 = USERENV('sessionid') ) &#10;  AND SUB.NOME NOT LIKE 'A DEFINIR%' &#10;  and (( 0 = ( select count(1) &#10;&#9;&#9;&#9;   from PGOV_REL_PARAM_AGEND &#10;&#9;&#9;&#9;   where tab = 'PGOV_REL_AGENDADOS' &#10;&#9;&#9;&#9;     and item1 = USERENV('sessionid') &#10;&#9;&#9;&#9;&#9; and item2 = 'pgrj0534p' ) &#10;&#9;&#9;&#9;&#9; and sub.codigo &lt;&gt; 0 ) &#10;&#9;    or ( 0 &lt;&gt; ( select count(1) &#10;&#9;&#9;&#9;&#9;&#9;from PGOV_REL_PARAM_AGEND &#10;&#9;&#9;&#9;&#9;&#9;where tab = 'PGOV_REL_AGENDADOS' &#10;&#9;&#9;&#9;&#9;&#9;  and item1 = USERENV('sessionid') &#10;&#9;&#9;&#9;&#9;&#9;  and item2 = 'pgrj0534p' ) &#10;&#9;&#9;&#9;&#9;&#9;  and sub.codigo = 0 ))&#10;  and ((? = 41 AND codigo &lt;&gt; 37) OR (? &lt;&gt; 41 ) )&#10;order by codigo&#10;"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldCodigoSub">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Código"/>
+                        <propriedade nome="field" valor="codigo"/>
+                        <propriedade nome="width" valor="350"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNomeSub">
+                      <propriedades>
+                        <propriedade nome="field" valor="nome"/>
+                        <propriedade nome="width" valor="350"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdParametros">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Parâmetros"/>
+                    <propriedade nome="sqlSelect" valor="select distinct PARAMETRO, ordem, PROMPT ,  VALOR_DEFAULT , OBRIGATORIO , TIPO , DESCRICAO , TIPO_LOV , TITULO_LOV , NOME_COL_VALOR, NOME_COL_DESC , SQL_TEXTO , COD_SQL , VALIDA_LOV &#10;from HAD_PARAM_RELAT&#10;where relatorio in ( select pgov_elemento(item,2,';') &#10;&#9;&#9;&#9;&#9;&#9; from PGOV_REL_PARAM_AGEND &#10;&#9;&#9;&#9;&#9;&#9; where tab='PGOV_REL_AGENDADOS'&#10;                     and item1 = USERENV('sessionid') )&#10;and parametro not in ('P_TITULO', 'DESTYPE','DESFORMAT','DESNAME','P_SELECAO_CHAR','P_REGIONAL','P_SETOR')&#10;order by ordem&#10;"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldParametroTitulo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Título"/>
+                        <propriedade nome="field" valor="parametro"/>
+                        <propriedade nome="width" valor="233"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor"/>
+                        <propriedade nome="field" valor="valor_default"/>
+                        <propriedade nome="width" valor="233"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValoresParametros">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valores de Parâmetros"/>
+                        <propriedade nome="width" valor="233"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/hyperLink" nome="hlkAgendar">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="popup" valor="S"/>
+                    <propriedade nome="popupHeight" valor="220"/>
+                    <propriedade nome="popupWidth" valor="1070"/>
+                    <propriedade nome="text" valor="Agendar"/>
+                    <propriedade nome="transacao" valor="Administracao.RJadm00020_agendar_popup"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/18/2017 14:47" nome="ERGadm00444">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+    <parametro ancest="true" id="pNumvinc"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00444"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuPesquisa"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbFiltroInicio"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbFiltroFim"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisa"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdApos">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select ident_vinc,&#10;       nome_func,&#10;       dtini,&#10;       dtfim,&#10;       anostrab,&#10;       anosapos,&#10;       fracao1,&#10;       fracao2,&#10;       diastrab,&#10;       ' ' atos,&#10;       had_formata_publicacoes(pontpubl) texto_publ,&#10;       ident_vinc || ' - ' || nome_func identnomefunc,&#10;       flex_campo_01,&#10;       rowid_reg&#10;  from table(erg_fnc_ergadm00444_apos_prop(?, ?, null))&#10; where busca_searchbox_varchar2('null',&#10;                                null,&#10;                                ident_vinc || nome_func,&#10;                                nvl(?, ' ')) = 1&#10; order by nome_func, dtini asc&#10;"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeFunc"/>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fundamentação legal"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini06"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim06"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAnostrab"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAnosapos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFracao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFracao2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiastrab"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTextoPubl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldidentnomefunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_reg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Aposentadorias"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recpApos"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recv10"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtNomeFunc"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Fundamentação legal"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtDtini06"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtDtfim06"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtAnostrab"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtAnosapos"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtFracao1"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtFracao2"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txtDiastrab"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txtIdentVinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txtAtos"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txtTextoPubl"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfRowid"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

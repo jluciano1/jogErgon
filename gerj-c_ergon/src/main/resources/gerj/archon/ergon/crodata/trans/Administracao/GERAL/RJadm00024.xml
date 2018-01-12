@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/12/2017 10:32" nome="RJadm00024">
+  <layout>
+    <componente classe="component/page" nome="RJadm00024">
+      <propriedades>
+        <propriedade nome="title" valor="Carga de Capacitações"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="title" valor="Carga de Capacitações"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o layout que você deseja editar:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Para a verificação/carga do arquivo de consignatárias, deverá ser selecionado o layout do arquivo que será utilizado. Como facilitador o botão Layout de Arquivos navegará para a página de edição de Layouts dos Arquivos.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panFiltro"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpLayout">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Layout"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="sqlSelect" valor="select NUMERO, NOME from CARGA_LAYOUT where tipo_layout = 'ATRIBUTO'&#10;order by nome"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/hyperLink" nome="hypNovoLayout">
+                      <propriedades>
+                        <propriedade nome="parametros" valor="#drpLayout#,'ATRIBUTO'"/>
+                        <propriedade nome="popup" valor="S"/>
+                        <propriedade nome="text" valor="LAYOUT DE ARQUIVOS"/>
+                        <propriedade nome="transacao" valor="Administracao.RJadm00024_popup"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Informe os dados para o carregamento no painel abaixo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Em &quot;Carregamento&quot; deverá ser selecionadas as informações necessárias, a ação que se deseja realizar e o arquivo a ser carregado.&lt;/p&gt; &lt;/div&gt;&#10;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuCarga"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpAction">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Ação"/>
+                        <propriedade nome="sqlParametersTypes" valor="&#10;"/>
+                        <propriedade nome="sqlSelect" valor="select 2 cod, 'Efetuar Carga' descr from dual &#10;"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpOperacao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Operação"/>
+                        <propriedade nome="displayProperty" valor="descricao"/>
+                        <propriedade nome="sqlParameters" valor="#drpAction#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT COD, DESCRICAO &#10;FROM (SELECT 'I' COD, 'Somente inserir os registros novos'                         DESCRICAO FROM DUAL UNION &#10;      SELECT 'E' COD, 'Encerramento de Atributos'                                  DESCRICAO FROM DUAL)&#10;WHERE ? &lt;&gt; 1 &#10;order by cod desc&#10;"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.45"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/fileUpload" nome="fluArqErros">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Arquivo"/>
+                        <propriedade nome="paramMensagem" valor="p_mens"/>
+                        <propriedade nome="parameters" valor="upload.arquivo,upload.nome,upload.tipo, #drpLayout#, #chkVerificar#, #drpDelimitador#, #drpOperacao#, #sbxAtributo#, #txbFuncionarios#, #txbLinhas#, #txbValor1#, #txbValor2#, #txbValor3#, #txbValor4#, #txbValor5#, #txbValor6#, #drpAction#, #ddsChave#"/>
+                        <propriedade nome="rotina" valor="Carregar Atributo"/>
+                        <propriedade nome="rotinaGrupo" valor="Ergon ADM"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.9"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/checkBox" nome="chkVerificar">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Verificar arquivo antes da carga"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="180"/>
+                </propriedades>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="sbxAtributo">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Atributo, Atributos"/>
+                        <propriedade nome="caption" valor="Atributo"/>
+                        <propriedade nome="hideValue" valor="true"/>
+                        <propriedade nome="sql" valor="select vantagem,vantagem||' - '|| nome nome from tipo_vantagem where busca_searchbox_varchar2(vantagem, ?, vantagem||' - '|| nome, ?) = 1 order by 1"/>
+                        <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                        <propriedade nome="width" valor="422"/>
+                        <propriedade nome="widthKey" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbFuncionarios">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Núm. funcionários"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="number"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbLinhas">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Linhas no arquivo"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="number"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor1">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 01"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor2">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 02"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor3">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 03"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor4">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 04"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor5">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 05"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbValor6">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor 06"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="money"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdRotina">
+                  <propriedades>
+                    <propriedade nome="sqlParameters" valor="#ddsChave#, #ddsChave#"/>
+                    <propriedade nome="sqlSelect" valor="select nvl(pack_verif_arq_atributo.get_id_rotina(?),'99999') rotina, &#10;       nvl(pack_verif_arq_atributo.get_nomearquivo(?),'não encontrado') arquivo  from funcionarios where rownum &lt; 2 "/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldRotina">
+                      <propriedades>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="rotina"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldArquivo">
+                      <propriedades>
+                        <propriedade nome="field" valor="arquivo"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dropDownSelect" nome="drpDelimitador">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Delimitador"/>
+                    <propriedade nome="sqlParameters" valor="#drpLayout#"/>
+                    <propriedade nome="sqlSelect" valor="select delimitador from carga_layout where numero = ?"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtIdRotina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="IdRotina"/>
+                    <propriedade nome="initialValue" valor="$grdRotina.rotina$"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtNomeArq">
+                  <propriedades>
+                    <propriedade nome="initialValue" valor="$grdRotina.arquivo$"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsChave">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Chave"/>
+                    <propriedade nome="sqlParameters" valor="%usuario%"/>
+                    <propriedade nome="sqlSelect" valor="select trim(?)||TO_CHAR(sysdate,'hhmiss') chave from funcionarios where rownum &lt; 2 "/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdExecucao">
+              <propriedades>
+                <propriedade nome="autoRefresh" valor="10"/>
+                <propriedade nome="caption" valor="Arquivos"/>
+                <propriedade nome="pageSize" valor="1"/>
+                <propriedade nome="sqlParameters" valor="$grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.arquivo$, $grdRotina.rotina$"/>
+                <propriedade nome="sqlSelect" valor="select ID_ROTINA_EXEC, ID_TIPO_ROT,TIMESTAMP_CAD,DATAHORA_INICIO,DATAHORA_FIM,USUARIO_CAD&#10;,  (select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL) STATUS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO'&#10;, SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.ac', '') ACEITOS&#10;, DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO',SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.err', '') ERROS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO',SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.rej', '') REJEITADOS,&#10;(select id_exec&#10;from LOG_PROCESSO_HEADER&#10;where upper(param) like upper('%' || ? || '%')) log_processo&#10;from had_rotina_exec where id_rotina_exec = ?"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldId">
+                  <propriedades>
+                    <propriedade nome="caption" valor="ID rotina"/>
+                    <propriedade nome="field" valor="id_rotina_exec"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTimeStamp">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Time stamp"/>
+                    <propriedade nome="field" valor="timestamp_cad"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtInicio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Início"/>
+                    <propriedade nome="field" valor="datahora_inicio"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtTermino">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Término"/>
+                    <propriedade nome="field" valor="datahora_fim"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldUsuario_cad">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Usuário"/>
+                    <propriedade nome="field" valor="usuario_cad"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldStatus">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqErros">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Erros"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.erros$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="erros"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqAceitos">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Aceitos"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.aceitos$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="aceitos"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqRej">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rejeitados"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.rejeitados$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="rejeitados"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldLog_processo">
+                  <propriedades>
+                    <propriedade nome="application" valor="Hades"/>
+                    <propriedade nome="caption" valor="Auditoria"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="log_processo"/>
+                    <propriedade nome="linkAplicacao" valor="Hades"/>
+                    <propriedade nome="linkParametros" valor="$grdExecucao.log_processo$"/>
+                    <propriedade nome="linkTransacao" valor="Administracao.HADadm00049"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

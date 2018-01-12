@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="09/26/2017 13:45" nome="ERGadm00265">
+  <parametros>
+    <parametro ancest="true" id="pPerfil"/>
+    <parametro ancest="true" id="pDescricao"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00265"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panTipoProcesso"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcTipo"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/gridPanel" nome="grdTipoProcesso">
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldDescCurta"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldDescLonga"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldEHPromocao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Progressão?"/>
+                      </propriedades>
+                    </componente>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldEHEstagioProb"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldAvalAuto"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldAvalChefe"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSqlEleitos"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldCadAvalAuto"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldCadAvalChefe"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSiglaTipoAval"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldHabSitFichasResp"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowidreg"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSis"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTrans"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTransDescr"/>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recTipoProcesso"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvTipoProcesso"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescCurta"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescLonga"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="html1"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfEHPromocao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Progressão?"/>
+                                    <propriedade nome="toolTip" valor="Gera progressão?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.14"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfEHEstagioProb">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Estágio Probatório"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAvalAuto">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAvalAutoChefe">
+                                  <propriedades>
+                                    <propriedade nome="toolTip" valor="Gerar Avaliação do Chefe Automaticamente?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.16"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCadAvalAuto">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCadAvalChefe">
+                                  <propriedades>
+                                    <propriedade nome="toolTip" valor="Permite cadastro manual de Avaliação pelo Chefe?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.16"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfSiglaTipoAval"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfHabSitFichasResp"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfSis"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTransDescr"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.68"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfSqlEleitos"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvTProcRowid"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvTipo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfTrans"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receTipoProcesso"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtTipo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescCurta"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescLonga"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="html2"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkPromocao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Progressão?"/>
+                                    <propriedade nome="toolTip" valor="Gera progressão?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.16"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkEstagioProbatorio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Estágio Probatório"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkAvalAuto">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkAvalAutoChefe">
+                                  <propriedades>
+                                    <propriedade nome="toolTip" valor="Gerar Avaliação do Chefe Automaticamente?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.16"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkCadAvalAuto">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkCadAvalChefe">
+                                  <propriedades>
+                                    <propriedade nome="toolTip" valor="Permite cadastro manual de Avaliação pelo Chefe?"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.16"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtSiglaTipoAval"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkHabSitFichasResp"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpSis"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.32"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcTrans"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.68"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtSqlEleitos"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hideTipo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Fases e ações"/>
+                </propriedades>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/gridPanel" nome="grdFases">
+                          <componentes>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldSiglaFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldTipoFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldFaseDescr"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigoFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldRowidregFases"/>
+                          </componentes>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="recFases"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recvFases"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfFaseDescr"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvFase"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvFasesRowid_reg"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSiglaFase"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="receFases"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpFase"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipoFase"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigoFase"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/gridPanel" nome="grdAcoesFase">
+                          <componentes>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldSiglaAcao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldTipoAcaoFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldFaseAcao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldAcao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigoAcao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldDescricaoCurta"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldOrdem"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldTipoAcao"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldRowidregAcoesFase"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldAcao_descr"/>
+                          </componentes>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="recAcoesFase"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recvAcoesFase"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAcao_descr"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfOrdem"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvAcao"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="receAcoesFase"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipoAcaoFase"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidFaseAcao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigoAcao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDown" nome="drpAcao"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtOrdem"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="50"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Parametrização adicional"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanel" nome="grdParametrizacao">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTipoParam"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCampoProc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigoParam"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTituloCampo"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescricaoParam"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowidregParam"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recParametrizacao"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvParametrizacao"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCampoProc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTituloCampo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescricaoParam"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvParamRowid"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receParametrizacao"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDown" nome="drpCampo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtTituloCampo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigoParam"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Informações funcionais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanel" nome="grdInfAdicionais">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTipoInfAd"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCampoServ"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodInfAd"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTituloCampoInfAd"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescricaoInfAd"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowidregInfAd"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recInfAdicionais"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvInfAdicionais"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCampoServ"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTituloCampoInfAd"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescricaoInfAd"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvIndAdRowid"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receInfAdicionais"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpCamposerv"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtTituloCampoInfAd"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescricaoInfAd"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipoInfAd"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodInfAd"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

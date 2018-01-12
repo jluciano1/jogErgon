@@ -1,0 +1,373 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+
+  <!-- **************** -->
+  <!-- Dados da empresa -->
+  <!-- **************** -->
+  <organization>
+    <name>TECHNE Engenharia e Sistemas</name>
+    <url>http://www.techne.com.br/</url>
+  </organization>
+
+  <!-- **************** -->
+  <!-- Dados do projeto -->
+  <!-- **************** -->
+  <groupId>br.com.techne.gerj</groupId>
+  <artifactId>gerj-ergon-parent</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>gerj-ergon-parent</name>
+
+  <scm>
+    <connection>scm:git:https://github.com/technecloud/gov-erg-gerj.git</connection>
+  </scm>
+
+  <!-- ************ -->
+  <!-- Propriedades -->
+  <!-- ************ -->
+  <properties>
+
+    <!-- Versao do JDK -->
+    <jdk.version>1.8</jdk.version>
+
+    <!-- Encoding dos fontes para compilacao -->
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+
+    <!-- Formato do timestamp usado nos builds -->
+    <maven.build.timestamp.format>dd-MM-yyyy HH:mm:ss</maven.build.timestamp.format>
+    <buildTimestamp>${maven.build.timestamp}</buildTimestamp>
+
+    <!-- Bibliotecas da Techne -->
+    <cronos.version>2.6.0-SNAPSHOT</cronos.version>
+    <ergon.version>6.6.0-SNAPSHOT</ergon.version>
+
+    <!-- Bibliotecas de Terceiros -->
+    <ojdbc7.version>12.1.0.1.0</ojdbc7.version>
+    <servlet-api.version>3.0.1</servlet-api.version>
+    <spring.version>4.3.9.RELEASE</spring.version>
+
+    <!-- 
+     | Maven Plugins Versions 
+    -->
+
+    <buildnumber-maven-plugin.version>  1.4    </buildnumber-maven-plugin.version>
+    <exec-maven-plugin.version>         1.5.0  </exec-maven-plugin.version>
+    <maven-compiler-plugin.version>     3.5.1  </maven-compiler-plugin.version>
+    <maven-dependency-plugin.version>   2.2    </maven-dependency-plugin.version>
+    <maven-deploy-plugin.version>       2.8.2  </maven-deploy-plugin.version>
+    <maven-install-plugin.version>      2.5.2  </maven-install-plugin.version>
+    <maven-jar-plugin.version>          3.0.2  </maven-jar-plugin.version>
+    <maven-javadoc-plugin.version>      2.10.3 </maven-javadoc-plugin.version>
+    <maven-source-plugin.version>       3.0.0  </maven-source-plugin.version>
+    <maven-war-plugin.version>          3.0.0  </maven-war-plugin.version>
+    <minify-maven-plugin.version>       1.7.4  </minify-maven-plugin.version>
+    
+  </properties>
+
+
+
+  <!-- ***************************** -->
+  <!-- Gerenciamento de dependencias -->
+  <!-- ***************************** -->
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- Dependencias de outros projetos Archon -->
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>techne-archon</artifactId>
+        <version>${ergon.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>techne-archon-ergon</artifactId>
+        <version>${ergon.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>techne-archon-hades</artifactId>
+        <version>${ergon.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>techne-archon-ergon-tools</artifactId>
+        <version>${ergon.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne.gerj</groupId>
+        <artifactId>gerj-c_ergon</artifactId>
+        <version>${project.version}</version>
+      </dependency>      
+      <dependency>
+        <groupId>br.com.techne.gerj</groupId>
+        <artifactId>gerj-c_hades</artifactId>
+        <version>${project.version}</version>
+      </dependency>    
+
+      <!-- Bibliotecas da Techne -->
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-core</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-data</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-datamanager</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-reports</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-response-csv</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-response-html</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-response-json</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-security</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>br.com.techne</groupId>
+        <artifactId>cronos-web</artifactId>
+        <version>${cronos.version}</version>
+      </dependency>
+
+      <!-- Bibliotecas de Terceiros -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>      
+      <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc7</artifactId>
+        <version>${ojdbc7.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+
+  <!-- *********************** -->
+  <!-- Configuracoes de build -->
+  <!-- *********************** -->
+  <build>
+
+    <finalName>${project.artifactId}-${project.version}</finalName>
+
+    <pluginManagement>
+      <plugins>
+        <plugin><artifactId> buildnumber-maven-plugin  </artifactId><groupId> org.codehaus.mojo                     </groupId><version>  ${buildnumber-maven-plugin.version} </version></plugin>
+        <plugin><artifactId> exec-maven-plugin         </artifactId><groupId> org.codehaus.mojo                     </groupId><version>         ${exec-maven-plugin.version} </version></plugin>        
+        <plugin><artifactId> maven-compiler-plugin     </artifactId><groupId> org.apache.maven.plugins              </groupId><version>     ${maven-compiler-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-dependency-plugin   </artifactId><groupId> org.apache.maven.plugins              </groupId><version>   ${maven-dependency-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-deploy-plugin       </artifactId><groupId> org.apache.maven.plugins              </groupId><version>       ${maven-deploy-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-install-plugin      </artifactId><groupId> org.apache.maven.plugins              </groupId><version>      ${maven-install-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-jar-plugin          </artifactId><groupId> org.apache.maven.plugins              </groupId><version>          ${maven-jar-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-javadoc-plugin      </artifactId><groupId> org.apache.maven.plugins              </groupId><version>      ${maven-javadoc-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-source-plugin       </artifactId><groupId> org.apache.maven.plugins              </groupId><version>       ${maven-source-plugin.version} </version></plugin>
+        <plugin><artifactId> maven-war-plugin          </artifactId><groupId> org.apache.maven.plugins              </groupId><version>          ${maven-war-plugin.version} </version></plugin>        
+        <plugin><artifactId> minify-maven-plugin       </artifactId><groupId> com.samaxes.maven                     </groupId><version>       ${minify-maven-plugin.version} </version></plugin>
+      </plugins>      
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+
+          <!-- true: Falha se houver arquivos modificados no repositório local -->
+          <doCheck>false</doCheck>
+
+          <!-- false: evita que plugin atualize o repositório local automaticamente. No momento esta 
+            tarefa é manual e deve ser alterado para true quando a mesma for automatizada. -->
+          <doUpdate>false</doUpdate>
+
+          <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+
+          <!-- https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Short-SHA-1 -->
+          <shortRevisionLength>10</shortRevisionLength>
+
+          <!-- Em caso de falha de comunição com o Git -->
+          <revisionOnScmFailure>UNKNOWN_HASH</revisionOnScmFailure>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Built-In>${buildTimestamp}</Built-In>
+              <Git-Hash>${buildNumber}</Git-Hash>
+              <JarInfo-version>${project.version}</JarInfo-version>
+              <JarInfo-name>${project.artifactId}</JarInfo-name>
+            </manifestEntries>
+          </archive>
+
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <archive>
+                <manifest>
+                  <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                </manifest>
+                <manifestEntries>
+                  <Built-In>${buildTimestamp}</Built-In>
+                  <Git-Hash>${buildNumber}</Git-Hash>
+                  <JarInfo-version>${project.version}</JarInfo-version>
+                  <JarInfo-name>${project.artifactId}</JarInfo-name>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Built-In>${buildTimestamp}</Built-In>
+              <Git-Hash>${buildNumber}</Git-Hash>
+              <JarInfo-version>${project.version}</JarInfo-version>
+              <JarInfo-name>${project.artifactId}</JarInfo-name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+
+        <configuration>
+          <executable>/bin/true</executable>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para baixar) -->
+  <!-- ************************** -->
+  <repositories>
+
+    <repository>
+      <id>libs-release</id>
+      <name>libs-release</name>
+      <url>https://artefatos.techne.com.br/libs-release</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>libs-snapshot</id>
+      <name>libs-snapshot</name>
+      <url>https://artefatos.techne.com.br/libs-snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+  </repositories>
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para deploy) -->
+  <!-- ************************** -->
+  <distributionManagement>
+
+    <repository>
+      <id>gov-ergon-gerj-release</id>
+      <name>gov-ergon-gerj-release</name>
+      <url>https://artefatos.techne.com.br/gov-ergon-gerj-release</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>ergon-snapshot</id>
+      <name>ergon-snapshot</name>
+      <url>https://artefatos.techne.com.br/ergon-snapshot</url>
+    </snapshotRepository>
+
+  </distributionManagement>
+
+</project>

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/18/2017 11:16" nome="ERGadm00383">
+  <parametros>
+    <parametro ancest="true" id="pConcurso" tipo="NUMBER"/>
+    <parametro ancest="true" id="pVagaConcurso" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00383"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltro"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoConc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtConcurso"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="sbxCargoFiltro"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdConcurso">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrConcurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrTipoConcurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrTipovinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrJur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorenomesetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChave"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRegimejur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPublicEdital"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldResultado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObjetivo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo01"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo04"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo05"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProrrogacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCancelamento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAbrangencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtiniInscricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfimInscricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoConcurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipovinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInstituicao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInstituicaoRealizadora"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoPosse"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoProrrogPosse"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoExerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoProrrogExerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomesetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdVagas">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrEspecialidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrSexo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrLocal"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdVagas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Total"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0202">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Regulares"/>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdVagasDef">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Deficientes"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0102">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Negros / Índios"/>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChave02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChaveConcurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEspecialidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldHlocal"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0302"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0402"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0502"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSexo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPercentualVagasDef"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoPosse02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoProrrogPosse02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoExerc02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDiasPrazoProrrogExerc02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupoVagas"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrVaga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupoVagasDescr"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdLotes">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdePessoas"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0103">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Convocação"/>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdSelecionados"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdDesistentes"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTextoPubl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdLote"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChaveVaga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetor02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontlei"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0203"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0303"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0403"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0503"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo06"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo07"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo08"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo09"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo10"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo11"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo12"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo13"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo14"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo15"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo16"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo17"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo18"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo19"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo20"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg03"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recLote">
+                      <propriedades>
+                        <propriedade nome="onCommit" valor="getControl('recLote').setDateFormat('d/m/Y', 'txbFlexCampo01'); &#10;proceed();"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvLote"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfLote"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescricao"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfQtdPessoas"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfQtdSelecionados"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfQtdDesistentes"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfSetor"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Convocação"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="100"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="66"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCod"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidChave"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSetor"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidIdLote"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receLote">
+                          <propriedades>
+                            <propriedade nome="onEnterEdit" valor="proceed();&#10;&#10;getControl('recLote').setDateFormat('d/m/Y', 'txbFlexCampo01');&#10;&#10;var qtd1  = getParameter('$grdLotes.qtd_selecionados$');&#10;var qtd2  = getParameter('$grdLotes.qtd_desistentes$');&#10;setValue('txtSelecionados',qtd1);&#10;setValue('txtDesistentes',qtd2);&#10;&#10;&#10;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtLote"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtQtdPessoas"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtSelecionados"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDesistentes"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcSetor"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Convocação"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="100"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="66"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidChaveVaga"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpcodigo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidIdLoted"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Publicações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/HADadm_blk001" nome="blkPubl"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkLeis"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Selecionados"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuFiltro"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoLista">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Tipo lista"/>
+                                <propriedade nome="sqlParameters" valor="$grdLotes.id_lote$"/>
+                                <propriedade nome="sqlSelect" valor="SELECT DISTINCT flex_campo_01 as Tipo, flex_campo_01 as descr from erg_co_lote_inscrito WHERE id_lote = ? and emp_codigo = flag_pack.get_empresa"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.6"/>
+                              <propriedade nome="labelWidth" valor="95"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdSelecionados">
+                      <propriedades>
+                        <propriedade nome="sqlParameters" valor="$grdLotes.id_lote$,$grdLotes.emp_codigo$,#ddsTipoLista#"/>
+                        <propriedade nome="sqlSelect" valor="select&#10;id_lote&#10;,emp_codigo&#10;,chave_inscrito&#10;,flex_campo_01&#10;,flex_campo_02&#10;,flex_campo_03&#10;,flex_campo_04&#10;,flex_campo_05&#10;,flex_campo_06&#10;,flex_campo_07&#10;,flex_campo_08&#10;,flex_campo_09&#10;,flex_campo_10&#10;,flex_campo_11&#10;,flex_campo_12&#10;,flex_campo_13&#10;,flex_campo_14&#10;,flex_campo_15&#10;,flex_campo_16&#10;,flex_campo_17&#10;,flex_campo_18&#10;,flex_campo_19&#10;,flex_campo_20&#10;,chave&#10;,identificacao&#10;,nome&#10;,numvinc&#10;,numfunc&#10;,convocacao&#10;,nomeacao&#10;,posse&#10;,desistencia&#10;,classificacao&#10;,deficiente&#10;,descdeficiente&#10;,sexo&#10;,descsexo&#10;,data_nascimento&#10;,estado_civil&#10;,tiporg&#10;,orgaorg&#10;,descorgaorg&#10;,numrg &#10;,ufrg&#10;,descufrg&#10;,cpf&#10;,formatcpf&#10;,tipologender&#10;,nomelogender&#10;,numender&#10;,complender&#10;,bairroender&#10;,cidadeender&#10;,ufender&#10;,descufender&#10;,cepender&#10;,pontos_titulo&#10;,nacionalidade&#10;,ordem_chamada&#10;,setor&#10;,pontpubl&#10;,dt_emissao_rg&#10;,telefone&#10;,id_pessoa&#10;,ident_vinc&#10;,id_cotas_concursos&#10;,tipo_cota&#10;,nacionalidade_desc&#10;,tipologender_desc&#10;,tiporg_desc&#10;,setor_desc&#10;,rowid_reg&#10;from &#10;erg_vw_erg_co_lote_inscrito&#10;where id_lote = ?&#10;and emp_codigo = ?&#10;and flex_campo_01 = ?&#10;order by nome"/>
+                      </propriedades>
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNome"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldClassificacao"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldConvocacao"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNomeacao"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldPosse"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDesistencia"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldOrdemChamada"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSetor03"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDeficiente"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdLote02"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo04"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldChaveInscrito"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0104"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0204"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0304"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0404"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0504"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0602"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0702"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0802"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo0902"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1002"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1102">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo lista"/>
+                            <propriedade nome="grid" valor="true"/>
+                            <propriedade nome="hidden" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1202"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1302"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1402"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1502"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1602"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1702"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1802"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo1902"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFlexCampo2002"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldChave03"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdentificacao"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescdeficiente"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSexo02"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescsexo"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDataNascimento"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEstadoCivil"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTiporg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldOrgaorg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescorgaorg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumrg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldUfrg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescufrg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCpf"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFormatcpf"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTipologender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNomelogender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldComplender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldBairroender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCidadeender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldUfender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDescufender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCepender"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldPontosTitulo"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNacionalidade"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl03"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDtEmissaoRg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTelefone"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdPessoa"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdCotasConcursos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTipoCota"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNacionalidadeDesc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTipologenderDesc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTiporgDesc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSetorDesc02"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg04"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Execução de ações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panuAcao"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpAcao"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.6"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="metAcao"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtDescracao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdAuditoria">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDataExecDescr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldAcaoDesc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldUsuario"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdExec"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldChave04"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldIdLote03"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo05"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldAcao"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldLoteDesc"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDataExec"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg05"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="hidConcurso"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="hidVagaConcurso"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

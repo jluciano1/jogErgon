@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="11/30/2017 14:21" nome="ERGadm_mnu012">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm_mnu012"/>
+    <layouts>
+      <layout tipo="CONT">
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuMnu01"/>
+            <propriedades>
+              <propriedade nome="style" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0101">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010102"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010103"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010104"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010105"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010106"/>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk010107">
+                          <propriedades>
+                            <propriedade nome="application" valor="C_Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.RJadm00023"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk010108">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00417"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk010109">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00265"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk010110">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00427"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk010111">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00401"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0102">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk010101"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0401">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk040101"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuMnu02"/>
+            <propriedades>
+              <propriedade nome="style" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0201">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020101"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020102"/>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlk020103">
+                          <propriedades>
+                            <propriedade nome="application" valor="C_Ergon"/>
+                            <propriedade nome="transacao" valor="Administracao.RJadm00031"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0202">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020201"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020202"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020203"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020204"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020205"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0203">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020301"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020302"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020303"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020304"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020305"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0204">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020401"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020402"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk020403"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuMnu05"/>
+            <propriedades>
+              <propriedade nome="style" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0501">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050101"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050102"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050103"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0505">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050501"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050502"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0504">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050401"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050402"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050403"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0502">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050201"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050202"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050203"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050204"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0503">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk050301"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuMnu03"/>
+            <propriedades>
+              <propriedade nome="style" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0301">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk030101"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/hyperLinkList" nome="hll0302">
+                      <componentes>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk030201"/>
+                        <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlk030202"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.33"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

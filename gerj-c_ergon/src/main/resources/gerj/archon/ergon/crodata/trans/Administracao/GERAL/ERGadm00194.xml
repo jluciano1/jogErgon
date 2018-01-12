@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/18/2017 12:02" nome="ERGadm00194">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00194">
+      <propriedades>
+        <propriedade nome="title" valor="Solicitação de Execução"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpModo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcGrupo"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbExp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpDestino"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSituacao"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpEmpresa"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk007" nome="blkVinc"/>
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select execucao, tipo, modo, grupo, destino, expiracao, situacao, emp_codigo, nome_empresa, numfunc, numvinc, descr_destino,&#10;       ident_vinc, nome_func, rowid_reg,time_stamp,&#10;       ident_vinc ||' – '||nome_func descr_func, responsavel, descricao, stamp_h, opcoes, descr_eleitos, FLEX_CAMPO_01, FLEX_CAMPO_02&#10;from ( select execucao, tipo, modo, grupo, destino, expiracao, situacao, emp_codigo, nome_empresa, numfunc, numvinc, rowid_reg,&#10;              pack_ergon.get_ident_func( i.numfunc, i.numvinc, 1) ident_vinc, nome_func, responsavel, descricao, to_char(time_stamp,'dd/mm/yyyy hh24:mi:ss') stamp_h, opcoes,time_stamp,&#10;(select grupo ||' - '|| obs from grupo_eleitos g where g.grupo = i.grupo ) descr_eleitos, FLEX_CAMPO_01, FLEX_CAMPO_02,&#10;(select c.destino||' - '||c.nome nome_d from calculo_destinos c where c.habilitado='S' and c.destino = i.destino ) descr_destino&#10;       from ergadm00194_execucoes i  &#10;       where decode ( ?, null, 1, modo, 1, 0 ) = 1&#10;         and decode ( ?, null, 1, destino, 1, 0 ) = 1&#10;         and pack_hades.eh_concomitante ( pack_had_util.data_minima, ?, nvl(expiracao, pack_hades.data_maxima), expiracao ) = 1 &#10;         and decode ( ?, null, 1, situacao, 1, 0 ) = 1 &#10;         and emp_codigo = nvl( ?, emp_codigo)   &#10;         and decode ( ?, null, 1, numfunc, 1, 0 ) = 1&#10;         and decode ( ?, null, 1, numvinc, 1, 0 ) = 1&#10;         and decode ( ?, null, 1, grupo, 1, 0 ) = 1&#10;         and emp_codigo in (select e.empresa from  had_vw_usuario_empresa e&#10;                            where e.usuario = flag_pack.get_usuario  )&#10;         and tipo &lt;&gt; 'CALCULO')&#10;order by execucao desc &#10;"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExecucao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldModo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDestino"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExpiracao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpresa"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_func"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldResponsavel"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldtime_stamp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldOpcoes"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldemp_codigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrFunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrEleitos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTimestamp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrdestino"/>
+                <componente classe="component/gridPanelField" nome="fldFinalidades">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Grp. Finalidades"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="fldDesconto">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Gera descontos?"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="rec1"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recv1"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfNumero"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfTipo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfModo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfGrupo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfHora"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDestino"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfExpiracao"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfSituacao"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfReponsavel"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescricao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfEmpresa"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfVinc"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFinalidades">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Grp. Finalidades"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                            <propriedade nome="width" valor="418"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfDesconto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Gera descontos?"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                            <propriedade nome="width" valor="20"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="146"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfOpcoes"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidGrupo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpresa"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidreg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidStamp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidDestino"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rece1"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtNumero"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtTipo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpModo2"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcGrupo2"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpHora"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpDestino2"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtExpiracao"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpSituacao2"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtResponsavel"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpEmp"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <bloco ancest="true" classe="component/ERGadm_blk008" nome="blkVincEd"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/dropDownSelect" nome="drpFinalidades">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Grp. Finalidades"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                            <propriedade nome="sqlSelect" valor="select grupo_finalidade from erg_grupo_finalidade where tipo_grupo_finalidade='CONTAGEM'"/>
+                            <propriedade nome="validators" valor="length(0,20);"/>
+                            <propriedade nome="width" valor="418"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckbDesconto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Gera descontos?"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                            <propriedade nome="width" valor="20"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelAlign" valor="right"/>
+                          <propriedade nome="labelWidth" valor="146"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtOpcoes"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/editorGrid" nome="edt1">
+              <componentes>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtExecucao"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtProcesso"/>
+                <componente ancest="true" classe="component/editorGridField/dropDown" nome="drpSit"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtinfo_para_retomada"/>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

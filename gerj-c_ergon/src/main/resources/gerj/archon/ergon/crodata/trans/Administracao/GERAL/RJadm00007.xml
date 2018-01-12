@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="09/19/2016 14:48" nome="RJadm00007">
+  <layout>
+    <componente classe="component/page" nome="RJadm00007">
+      <propriedades>
+        <propriedade nome="title" valor="Lista de requisitados"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione os filtros desejados:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="tbtUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &#10;&#10;&lt;p&gt;No quadro abaixo você poderá selecionar o(s) filtro(s) desejado(s).&lt;/p&gt; &#10;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panFiltros">
+              <propriedades>
+                <propriedade nome="frame" valor="S"/>
+                <propriedade nome="title" valor="Filtros de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoRequis">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Tipo de requisição"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlSelect" valor="select distinct upper(item) item, upper(descr) descr from itemtabela&#10;where tab='ERG_TIPO_REQUIS'&#10;order by upper(item) "/>
+                        <propriedade nome="valueProperty" valor="item"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbFuncao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Função"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoOrgao">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Tipo de órgão"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlParameters" valor="$ddsTipoRequis.item$, $ddsTipoRequis.item$"/>
+                        <propriedade nome="sqlSelect" valor="select distinct upper(tipo) tipo, upper(descr) descr from(&#10;SELECT item tipo, descr &#10;  FROM itemtabela &#10; WHERE tab = 'GRJ_TIPO_ORGAO_EXT' &#10;   AND item1 = 'INTERNO' &#10;   AND upper(?) = 'INTERNA' &#10;UNION ALL &#10;SELECT item tipo, descr &#10;  FROM itemtabela &#10; WHERE tab = 'GRJ_TIPO_ORGAO_EXT' &#10;   AND item1= 'EXTERNO' &#10;   AND upper(?) = 'EXTERNA')&#10;ORDER BY 1"/>
+                        <propriedade nome="valueProperty" valor="tipo"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoOnus">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Tipo de ônus"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlSelect" valor="SELECT UPPER(ITEM) item, upper(DESCR) descr FROM ITEMTABELA WHERE TAB = 'ERG_ONUS' ORDER BY UPPER(ITEM)"/>
+                        <propriedade nome="valueProperty" valor="item"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsOragaoRequis">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Órgão requisitante"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlParameters" valor="$ddsTipoOrgao.tipo$, $ddsTipoRequis.item$, $ddsTipoRequis.item$, $ddsTipoOrgao.tipo$"/>
+                        <propriedade nome="sqlSelect" valor="SELECT se.nome orgao, se.nome descr&#10;  FROM subempresas se, empresas e, itemtabela it&#10; WHERE se.nome NOT LIKE 'A DEFINIR%' &#10;   AND se.emp_codigo = e.empresa&#10;   AND upper(e.flex_campo_04) = upper(?)&#10;   AND it.item = e.flex_campo_04&#10;   AND it.tab = 'GRJ_TIPO_ORGAO_EXT' &#10;   AND it.item1 = 'INTERNO'&#10;   AND upper(?) = 'INTERNA'&#10;UNION ALL&#10;SELECT oe.descr orgao, oe.descr descr&#10;  FROM orgaos_externos oe&#10; WHERE upper(?) = 'EXTERNA'&#10;   AND upper(oe.flex_campo_01) = upper(?)&#10;ORDER BY 1"/>
+                        <propriedade nome="valueProperty" valor="orgao"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoRessarc">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Tipo ressarcimento"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlSelect" valor="SELECT upper(ITEM) item, upper(DESCR) descr&#10;FROM ITEMTABELA&#10;WHERE TAB = 'ERG_RESSARCIMENTO'&#10;ORDER BY 1"/>
+                        <propriedade nome="valueProperty" valor="item"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você  poderá selecionar um registro para visualizar as demais informações&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="tbtUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &#10;&#10;&lt;p&gt;No bloco abaixo você poderá selecionar um registro para que as demais informações sejam exibidas. &lt;/p&gt; &#10;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRequisitados">
+              <propriedades>
+                <propriedade nome="caption" valor="Requisitados"/>
+                <propriedade nome="sqlParameters" valor="$ddsTipoRequis.item$, $ddsTipoOrgao.tipo$, $ddsOragaoRequis.orgao$, #txbFuncao#,$ddsTipoOnus.item$,$ddsTipoRessarc.item$"/>
+                <propriedade nome="sqlSelect" valor="select NUMFUNC, NOME, NUMERO, NUMFUNC||'/'||NUMERO ID_FUNC, DTEXERC, ORGAO_EXT_REQ, FUNCAO_REQ, TIPOORG_REQ, TIPO_REQ, TIPO_ONUS_REQ, TIPO_RESSARC_REQ, EMP_CODIGO, FLEX_CAMPO_08&#10;  from table (ttgorj_rjadm00007(?,?,?,?,?,?))"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNumeroFuncional">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="field" valor="ID_FUNC"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="NOME"/>
+                    <propriedade nome="width" valor="300"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtexerc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data de exercício"/>
+                    <propriedade nome="field" valor="DTEXERC"/>
+                    <propriedade nome="width" valor="135"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldOrgaoExtReq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Órgão requisitante"/>
+                    <propriedade nome="field" valor="ORGAO_EXT_REQ"/>
+                    <propriedade nome="width" valor="480"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumfunc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Número funcional"/>
+                    <propriedade nome="field" valor="NUMFUNC"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldVinculo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="field" valor="NUMERO"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFuncao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Função"/>
+                    <propriedade nome="field" valor="FUNCAO_REQ"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoOrgReq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo org. req."/>
+                    <propriedade nome="field" valor="TIPOORG_REQ"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoReq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Req"/>
+                    <propriedade nome="field" valor="TIPO_REQ"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoOnusReq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Onus Req"/>
+                    <propriedade nome="field" valor="TIPO_ONUS_REQ"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoRessarceq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo ressarc Req"/>
+                    <propriedade nome="field" valor="TIPO_RESSARC_REQ"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldEmpresa">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Empresa"/>
+                    <propriedade nome="field" valor="EMP_CODIGO"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo08">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Flex 08"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_08"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr03">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;3&lt;/div&gt;Aqui você pode visualizar as informações do registro selecionado&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="tbtUso03">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &#10;&#10;&lt;p&gt;No bloco abaixo seerá listado as demais informações referente ao registro selecionado no painel &quot;Requisitados&quot;. &lt;/p&gt; &#10;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recRequisitados">
+              <propriedades>
+                <propriedade nome="caption" valor=""/>
+                <propriedade nome="master" valor="grdRequisitados"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvRequis"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoReq">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo de requisição"/>
+                            <propriedade nome="field" valor="TIPO_REQ"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoOrg">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo de órgão"/>
+                            <propriedade nome="field" valor="TIPOORG_REQ"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfOrgaoReq">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Órgão requisitante"/>
+                            <propriedade nome="field" valor="ORGAO_EXT_REQ"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFuncaoReq">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Função"/>
+                            <propriedade nome="field" valor="FUNCAO_REQ"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfVincOrigem">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo na origem"/>
+                            <propriedade nome="field" valor="FLEX_CAMPO_08"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoOnus">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo de ônus"/>
+                            <propriedade nome="field" valor="TIPO_ONUS_REQ"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoRessarc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo de ressarcimento"/>
+                            <propriedade nome="field" valor="TIPO_RESSARC_REQ"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

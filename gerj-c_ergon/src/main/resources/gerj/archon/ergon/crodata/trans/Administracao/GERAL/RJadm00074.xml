@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/23/2017 13:07" nome="RJadm00074">
+  <layout>
+    <componente classe="component/page" nome="RJadm00074">
+      <propriedades>
+        <propriedade nome="title" valor="Envia Arq XFB Nova Versão"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Geração de Arquivo"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdFolhasEmp">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Folhas"/>
+                        <propriedade nome="idField" valor="ROWID"/>
+                        <propriedade nome="pageSize" valor="5"/>
+                        <propriedade nome="sqlSelect" valor="select mes_ano, to_char(mes_ano, 'mm/yyyy') mes_ano_char, numero, emp_codigo from folhas_emp where emp_codigo = flag_pack.get_empresa and data_consol is not null&#10;order by mes_ano desc, numero"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldMesAno02">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="caption" valor="MES_ANO"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="mes_ano"/>
+                            <propriedade nome="format" valor="date"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMesAnoChar">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="caption" valor="Mês/Ano"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="mes_ano_char"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumero02">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="caption" valor="Número"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="format" valor="integer"/>
+                            <propriedade nome="maxLength" valor="1"/>
+                            <propriedade nome="precision" valor="8"/>
+                            <propriedade nome="width" valor="200"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpCodigo02">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="caption" valor="EMP_CODIGO"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor="1"/>
+                            <propriedade nome="precision" valor="2"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuGeraFita"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsDataFita">
+                              <propriedades>
+                                <propriedade nome="addNullOption" valor="S"/>
+                                <propriedade nome="caption" valor="Mês/Ano Folha"/>
+                                <propriedade nome="displayProperty" valor="mes_ano_folha"/>
+                                <propriedade nome="sqlSelect" valor="select distinct a.mes_ano_folha as mes_ano, to_char(a.mes_ano_folha,'mm/yyyy') mes_ano_folha&#10;  from tgrj_arquivo_retorno a&#10;where a.num_nova_fita is not null&#10;  and a.dt_inclusao &gt; to_date('01/05/2012', 'dd/mm/yyyy')&#10;  and  nvl(A.flag_cancela,'N') &lt;&gt; 'S'&#10;  and substr(a.reserv_emp,1,5) = 'SIGRH'&#10;  and nvl(a.qtde_erros,0) &gt; 0&#10;  and a.mes_ano_folha is not null&#10;order by a.mes_ano_folha desc"/>
+                                <propriedade nome="valueProperty" valor="mes_ano"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.4"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsNumFolha">
+                              <propriedades>
+                                <propriedade nome="addNullOption" valor="S"/>
+                                <propriedade nome="caption" valor="Título&#9;N. Folha"/>
+                                <propriedade nome="sqlParameters" valor="$grdFolhasEmp.mes_ano$"/>
+                                <propriedade nome="sqlSelect" valor="SELECT numero&#10;FROM folhas_emp f&#10;WHERE f.emp_codigo = flag_pack.get_empresa&#10;  AND mes_ano = ?&#10;ORDER BY numero&#10;"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dateBox" nome="dtbCredInativo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Crédito Inativo"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dateBox" nome="dtbCredAtivo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Crédito Ativo"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.4"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dateBox" nome="dtbEnvio">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Envio"/>
+                                <propriedade nome="width" valor="100"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/checkBox" nome="chkDtCalendario">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Datas Calendário"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/linkMethod" nome="lkmGeraFitaBanco">
+                              <propriedades>
+                                <propriedade nome="label" valor="Gerar Fita Bancaria"/>
+                                <propriedade nome="rotina" valor="db:tgrj_gera_fita_banco"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuBloqDesbloqFita"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/linkMethod" nome="lkmBloqueiaFita">
+                              <propriedades>
+                                <propriedade nome="label" valor="Bloquear Fita"/>
+                                <propriedade nome="onClick" valor="var funcOK = function() {  proceed(); };   &#10;var funcNOT = function() { };   &#10;var buttons = {     ok: {text: 'Sim', callback: funcOK},     cancel: {text: 'Não', callback: funcNOT}   };  &#10;var msg1 = 'Deseja Realmente Bloquear as Fitas selecionadas?';  &#10;prompt(msg1, buttons);"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.4"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/linkMethod" nome="lkmDesbloqueiaFita">
+                              <propriedades>
+                                <propriedade nome="label" valor="Desbloquear Fita"/>
+                                <propriedade nome="onClick" valor="var funcOK = function() {  proceed(); };   &#10;var funcNOT = function() { };   &#10;var buttons = {     ok: {text: 'Sim', callback: funcOK},     cancel: {text: 'Não', callback: funcNOT}   };  &#10;var msg1 = 'Deseja Realmente Bloquear as Fitas selecionadas?';  &#10;prompt(msg1, buttons);"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.6"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editorGrid" nome="edgFitaBanco">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Fita Bancária"/>
+                            <propriedade nome="enableInsert" valor="false"/>
+                            <propriedade nome="multiSelect" valor="true"/>
+                            <propriedade nome="pageSize" valor="6"/>
+                            <propriedade nome="sqlParameters" valor="$grdFolhasEmp.mes_ano$, $grdFolhasEmp.numero$, $grdFolhasEmp.emp_codigo$"/>
+                            <propriedade nome="sqlSelect" valor="select numfita, banco,data_credito, data_envio,obs, mes_ano_folha, num_folha, flex_campo_01 ,  flex_campo_02, flex_campo_03,flex_campo_04, flex_campo_05, flex_campo_06, flex_campo_07, flex_campo_08 &#10;from tgrj_rjadm00074_vw_fitabanco&#10;where mes_ano_folha = ?&#10;and num_folha = ?&#10;and to_number(flex_campo_04) = ?"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/editorGridField/textBox" nome="tbfNumfita">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Fita"/>
+                                <propriedade nome="field" valor="numfita"/>
+                                <propriedade nome="readOnly" valor="S"/>
+                                <propriedade nome="width" valor="50"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/dropDownSelect" nome="ddsfBanco">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Banco"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="displayProperty" valor="nome"/>
+                                <propriedade nome="field" valor="banco"/>
+                                <propriedade nome="sqlSelect" valor="select banco, banco||'-'||nome nome from &#10;bancos &#10;order by banco"/>
+                                <propriedade nome="valueProperty" valor="banco"/>
+                                <propriedade nome="width" valor="130"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/textBox" nome="tbfDataCredito">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Crédito"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="data_credito"/>
+                                <propriedade nome="width" valor="65"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/textBox" nome="tbfEnvio">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Envio"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="data_envio"/>
+                                <propriedade nome="width" valor="65"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/textBox" nome="tbfObs">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Observação"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="obs"/>
+                                <propriedade nome="width" valor="370"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/textBox" nome="tbfVersao">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Versão"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="flex_campo_07"/>
+                                <propriedade nome="width" valor="55"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/textBox" nome="tbfBloqueio">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Bloqueio"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="flex_campo_08"/>
+                                <propriedade nome="width" valor="70"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/editorGridField/checkBox" nome="cbxFolhaEstorno">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Envia Folha Estorno?"/>
+                                <propriedade nome="width" valor="145"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuGeraFitaChequeOP"/>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/linkMethod" nome="lkmGeraFitaChequeOP">
+                          <propriedades>
+                            <propriedade nome="label" valor="Gera Fita em Cheque OP"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuGeraArq">
+                      <propriedades>
+                        <propriedade nome="title" valor="Geração de Arquivos"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/linkMethod" nome="lkmGerarArq">
+                          <propriedades>
+                            <propriedade nome="label" valor="Gerar Arquivos"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdArqGer">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Arquivos Gerados"/>
+                            <propriedade nome="idField" valor="ROWID"/>
+                            <propriedade nome="multiSelect" valor="true"/>
+                            <propriedade nome="pageSize" valor="6"/>
+                            <propriedade nome="sqlParameters" valor="'arq_gerado', 'arq_gerado', 'arq_gerado', null"/>
+                            <propriedade nome="sqlSelect" valor="select ID_ROTINA_EXEC, ID_TIPO_ROT,TIMESTAMP_CAD,DATAHORA_INICIO,DATAHORA_FIM,USUARIO_CAD&#10;,  (select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL) STATUS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO'&#10;, SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.txt', '') ARQUIVOS,&#10;(select id_exec&#10;from LOG_PROCESSO_HEADER&#10;where upper(param) like upper('%' || ? || '%')) log_processo&#10;from had_rotina_exec where id_rotina_exec = ?"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldIdRotinaExec">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_ROTINA_EXEC"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_rotina_exec"/>
+                                <propriedade nome="format" valor="money"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor="1"/>
+                                <propriedade nome="precision" valor="20"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdTipoRot">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_TIPO_ROT"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="id_tipo_rot"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldTimestampCad">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="TIMESTAMP_CAD"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="timestamp_cad"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraInicio">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Início"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_inicio"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraFim">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Término"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_fim"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldUsuarioCad">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Usuário"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="usuario_cad"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="90"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldStatus">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Status"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="status"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldArquivos">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Arquivo gerado"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="arquivos"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="450"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldLogProcesso">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="LOG_PROCESSO"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="log_processo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/fileDownload" nome="fdBaixaArqGerados">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techne-descarregar"/>
+                            <propriedade nome="parameters" valor="'ArqGerados', null, fldArquivos.checked"/>
+                            <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuGeraArqPerc">
+                      <propriedades>
+                        <propriedade nome="title" valor="Geração de Arquivos Percentual"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/linkMethod" nome="lkmGerarArqPercent">
+                          <propriedades>
+                            <propriedade nome="label" valor="Gerar Arquivos Percentual"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdArqGer_20171222_102335">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Arquivos Gerados Percentual"/>
+                            <propriedade nome="idField" valor="ROWID"/>
+                            <propriedade nome="multiSelect" valor="true"/>
+                            <propriedade nome="pageSize" valor="6"/>
+                            <propriedade nome="sqlParameters" valor="'arq_gerado', 'arq_gerado', 'arq_gerado', null"/>
+                            <propriedade nome="sqlSelect" valor="select ID_ROTINA_EXEC, ID_TIPO_ROT,TIMESTAMP_CAD,DATAHORA_INICIO,DATAHORA_FIM,USUARIO_CAD&#10;,  (select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL) STATUS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO'&#10;, SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.txt', '') ARQUIVOS,&#10;(select id_exec&#10;from LOG_PROCESSO_HEADER&#10;where upper(param) like upper('%' || ? || '%')) log_processo&#10;from had_rotina_exec where id_rotina_exec = ?"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldIdRotinaExec_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_ROTINA_EXEC"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_rotina_exec"/>
+                                <propriedade nome="format" valor="money"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor="1"/>
+                                <propriedade nome="precision" valor="20"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdTipoRot_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_TIPO_ROT"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="id_tipo_rot"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldTimestampCad_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="TIMESTAMP_CAD"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="timestamp_cad"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraInicio_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Início"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_inicio"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraFim_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Término"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_fim"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldUsuarioCad_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Usuário"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="usuario_cad"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="90"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldStatus_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Status"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="status"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldArquivosPerc">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Arquivo gerado"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="arquivos"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="450"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldLogProcesso_20171222_102335">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="LOG_PROCESSO"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="log_processo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/fileDownload" nome="fdBaixaArqGeradosPerc">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techne-descarregar"/>
+                            <propriedade nome="parameters" valor="'ArqGeradosPercent', null, fldArquivosPerc.checked"/>
+                            <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuReenvio">
+                          <propriedades>
+                            <propriedade nome="title" valor="Preparar Reenvio"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/value/unbound/linkMethod" nome="lkmLimpar">
+                                  <propriedades>
+                                    <propriedade nome="label" valor="Limpar Dados"/>
+                                    <propriedade nome="onClick" valor="var funcOK = function() {  proceed(); };   &#10;var funcNOT = function() { };   &#10;var buttons = {     ok: {text: 'Sim', callback: funcOK},     cancel: {text: 'Não', callback: funcNOT}   };  &#10;var msg1 = 'Deseja confirmar a operação?';  &#10;prompt(msg1, buttons);"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsTipoReenvio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo"/>
+                                    <propriedade nome="displayProperty" valor="descricao"/>
+                                    <propriedade nome="sqlSelect" valor="Select 'E' codigo, 'Envio' descricao from dual&#10;Union all&#10;Select 'R' codigo, 'Retorno' descricao from dual&#10;Union all&#10;Select 'T' codigo, 'Ambas' descricao from dual"/>
+                                    <propriedade nome="valueProperty" valor="codigo"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuExcluiFitas">
+                          <propriedades>
+                            <propriedade nome="title" valor="Excluir Fitas"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.5"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/linkMethod" nome="lkmExcluirFitas">
+                              <propriedades>
+                                <propriedade nome="label" valor="Excluir Fitas"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuRelatorios">
+                      <propriedades>
+                        <propriedade nome="title" valor="Geração de Relatórios"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/linkMethod" nome="lkmRelatorios">
+                          <propriedades>
+                            <propriedade nome="label" valor="Relatórios"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdRelatorios">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Execuções dos Relatórios"/>
+                            <propriedade nome="multiSelect" valor="true"/>
+                            <propriedade nome="sqlParameters" valor="#txbIdLote#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;  id,&#10;  id_lote,&#10;  data_hora,&#10;  relatorio,&#10;  status,&#10;  dtiniexec,&#10;  dtfimexec,&#10;  arquivo&#10;FROM tgrj_lote_relat_agend&#10;WHERE id_lote = NVL(?, (SELECT MAX(id_lote) FROM tgrj_lote_relat_agend WHERE TRANS = FLAG_PACK.GET_TRANSACAO))"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldRowidReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ROWID_REG"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldId">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ID"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id"/>
+                                <propriedade nome="format" valor="money"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor="1"/>
+                                <propriedade nome="precision" valor="15"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdLote">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ID_LOTE"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_lote"/>
+                                <propriedade nome="format" valor="money"/>
+                                <propriedade nome="maxLength" valor="1"/>
+                                <propriedade nome="precision" valor="15"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDataHora">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Execução"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="data_hora"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldRelatorio">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Relatório"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="relatorio"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldStatus02">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Status"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="status"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDtiniexec">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Início Execução"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="dtiniexec"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDtfimexec">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Fim execução"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="dtfimexec"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldArquivo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ARQUIVO"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="arquivo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/fileDownload" nome="fdBaixaRel">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techne-descarregar"/>
+                            <propriedade nome="parameters" valor="'Relatorios', null, fldArquivo.checked"/>
+                            <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbIdLote">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuGeraArq_20171222_105019">
+                      <propriedades>
+                        <propriedade nome="title" valor="Geração de Arquivo de Teste"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/linkMethod" nome="lkmGerarArq_20171222_105019">
+                          <propriedades>
+                            <propriedade nome="label" valor="Gerar Arq Teste"/>
+                            <propriedade nome="onClick" valor="var funcOK = function() {  proceed(); };   &#10;var funcNOT = function() { };   &#10;var buttons = {     ok: {text: 'Sim', callback: funcOK},     cancel: {text: 'Não', callback: funcNOT}   };  &#10;var msg1 = 'Deseja realmente apagar todas as fitas do mês ano e folha selecionado?';  &#10;prompt(msg1, buttons);"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdArqGer_20171222_105019">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Arquivo de Teste Gerado"/>
+                            <propriedade nome="idField" valor="ROWID"/>
+                            <propriedade nome="multiSelect" valor="true"/>
+                            <propriedade nome="pageSize" valor="6"/>
+                            <propriedade nome="sqlParameters" valor="'arq_gerado', 'arq_gerado', 'arq_gerado', null"/>
+                            <propriedade nome="sqlSelect" valor="select ID_ROTINA_EXEC, ID_TIPO_ROT,TIMESTAMP_CAD,DATAHORA_INICIO,DATAHORA_FIM,USUARIO_CAD&#10;,  (select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL) STATUS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO'&#10;, SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.txt', '') ARQUIVOS,&#10;(select id_exec&#10;from LOG_PROCESSO_HEADER&#10;where upper(param) like upper('%' || ? || '%')) log_processo&#10;from had_rotina_exec where id_rotina_exec = ?"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldIdRotinaExec_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_ROTINA_EXEC"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_rotina_exec"/>
+                                <propriedade nome="format" valor="money"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor="1"/>
+                                <propriedade nome="precision" valor="20"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdTipoRot_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="ID_TIPO_ROT"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="id_tipo_rot"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldTimestampCad_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="TIMESTAMP_CAD"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="timestamp_cad"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraInicio_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Início"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_inicio"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDatahoraFim_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Término"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="datahora_fim"/>
+                                <propriedade nome="format" valor="date"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldUsuarioCad_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Usuário"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="usuario_cad"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="90"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldStatus_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Status"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="status"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldArquivos_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="Arquivo gerado"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="arquivos"/>
+                                <propriedade nome="maxLength" valor=""/>
+                                <propriedade nome="width" valor="450"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldLogProcesso_20171222_105019">
+                              <propriedades>
+                                <propriedade nome="application" valor="Hades"/>
+                                <propriedade nome="caption" valor="LOG_PROCESSO"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="log_processo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="maxLength" valor=""/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/fileDownload" nome="fdBaixaArqGerados_20171222_105019">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techne-descarregar"/>
+                            <propriedade nome="parameters" valor="'ArqGerados', null, fldArquivos.checked"/>
+                            <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor=" Reagendamento de Pagamentos"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuCompetencias">
+                      <propriedades>
+                        <propriedade nome="title" valor="Filtro de pesquisa"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAno">
+                              <propriedades>
+                                <propriedade nome="addNullOption" valor="S"/>
+                                <propriedade nome="caption" valor="Mês/ano da folha"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="displayProperty" valor="descricao"/>
+                                <propriedade nome="sqlSelect" valor="select distinct mes_ano, to_char(mes_ano, 'mm/yyyy') descricao from FOLHAS_EMP where emp_codigo = flag_pack.get_empresa order by mes_ano desc"/>
+                                <propriedade nome="valueProperty" valor="mes_ano"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.4"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsNumero">
+                              <propriedades>
+                                <propriedade nome="addNullOption" valor="S"/>
+                                <propriedade nome="caption" valor="Número"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="sqlParameters" valor="#ddsMesAno#"/>
+                                <propriedade nome="sqlSelect" valor="select distinct numero from FOLHAS_EMP where emp_codigo = flag_pack.get_empresa and mes_ano = nvl(?, mes_ano) order by numero"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.6"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editorGrid" nome="edgCompetencias">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Competências"/>
+                        <propriedade nome="enableDelete" valor="false"/>
+                        <propriedade nome="enableInsert" valor="false"/>
+                        <propriedade nome="hideButtonAdd" valor="true"/>
+                        <propriedade nome="hideButtonRemove" valor="true"/>
+                        <propriedade nome="hideButtonSave" valor="true"/>
+                        <propriedade nome="hideButtonUndo" valor="true"/>
+                        <propriedade nome="pageSize" valor="6"/>
+                        <propriedade nome="sqlParameters" valor="#ddsMesAno#,#ddsNumero#"/>
+                        <propriedade nome="sqlSelect" valor="select mes_ano, numero from folhas_emp&#10;where emp_codigo = flag_pack.get_empresa&#10;and data_consol is not null&#10;and mes_ano = nvl(?, mes_ano)&#10;and numero = nvl(?, numero)&#10;order by mes_ano desc, numero"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/editorGridField/textBox" nome="tbfMesAno">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Mês/ano da folha"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="mes_ano"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="readOnly" valor="S"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/editorGridField/textBox" nome="tbfNumero">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="readOnly" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/editorGridField/dropDownSelect" nome="ddsfTipoAcao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Operação"/>
+                            <propriedade nome="displayProperty" valor="operacao"/>
+                            <propriedade nome="sqlSelect" valor="select 'R' codigo, 'REENVIO' operacao from dual&#10;union all&#10;select 'B' codigo, 'BLOQUEIO' operacao from dual&#10;"/>
+                            <propriedade nome="valueProperty" valor="codigo"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdReagendaPagto">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Reagendamento de Pagamentos"/>
+                        <propriedade nome="idField" valor="ROWID"/>
+                        <propriedade nome="multiSelect" valor="true"/>
+                        <propriedade nome="sqlParameters" valor="$edgCompetencias.mes_ano$,$edgCompetencias.numero$,#ddsfTipoAcao#"/>
+                        <propriedade nome="sqlSelect" valor="select numfunc&#9;&#10; ,numvinc&#10; ,pack_ergon.get_ident_vinc(numfunc,numvinc) idvinc&#9;&#10; ,numdepen&#10; ,numpens&#9;&#10; ,numrep&#9;&#10; ,valorliq&#10; ,emp_codigo&#10; ,subemp_codigo&#10; ,valor&#10; ,percentual&#10; ,numfita&#9;&#10; ,lancamento&#10; ,mes_ano&#9;&#10; ,numero&#9;&#10; ,agencia_salario&#10; ,conta_salario&#10; ,agencia&#9;&#10; ,conta&#9;&#10; ,nome&#9;&#10; ,situacao from table(tgrj_rjadm00074_reagpagto(?,?, ?))"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumfunc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="NUMFUNC"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumvinc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="NUMVINC"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldIdVinc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="ID Func."/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="idvinc"/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumdepen">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Dep."/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numdepen"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="45"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumpens">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pens."/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="45"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumrep">
+                          <propriedades>
+                            <propriedade nome="caption" valor="R. Legal"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numrep"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorliq">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vl. Líquido"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valorliq"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpCodigo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="EMP_CODIGO"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSubempCodigo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="SUBEMP_CODIGO"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="subemp_codigo"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vl. a Pagar"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPercentual">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Perc. %"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="percentual"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumfita">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Fita Atual"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfita"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="78"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLancamento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="LANCAMENTO"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="lancamento"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMesAno">
+                          <propriedades>
+                            <propriedade nome="caption" valor="MES_ANO"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="mes_ano"/>
+                            <propriedade nome="format" valor="date"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumero">
+                          <propriedades>
+                            <propriedade nome="caption" valor="NUMERO"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldAgenciaSalario">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Ag. Sal."/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="agencia_salario"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="80"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldContaSalario">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta Sal."/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="conta_salario"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="80"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldAgencia">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Agência"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="agencia"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="80"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldConta">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="conta"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                            <propriedade nome="width" valor="430"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSituacao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="SITUACAO"/>
+                            <propriedade nome="dataType" valor="VARCHAR2"/>
+                            <propriedade nome="field" valor="situacao"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="maxLength" valor=""/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recReagendaPagto">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdReagendaPagto"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvReagendaPagto"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfNome">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome"/>
+                                    <propriedade nome="field" valor="nome"/>
+                                    <propriedade nome="width" valor="720"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/linkMethod" nome="lkmGeraFita">
+                              <propriedades>
+                                <propriedade nome="label" valor="Gera Fita"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

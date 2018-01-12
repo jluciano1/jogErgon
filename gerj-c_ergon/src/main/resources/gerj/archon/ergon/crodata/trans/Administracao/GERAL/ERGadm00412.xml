@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/09/2017 15:27" nome="ERGadm00412">
+  <parametros>
+    <parametro ancest="true" id="pProcesso" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00412"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcFiltroProcesso"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFiltroTipoProc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="style" valor="{margin:'10px 5px 0 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hylFiltroTipo_Proc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtFiltroPesqFunc"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/panelu" nome="pnuPesquisa"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFiltroCampo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.42"/>
+                          <propriedade nome="labelAlign" valor="top"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbFiltroPesqCampo"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.58"/>
+                          <propriedade nome="labelAlign" valor="top"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdProcesso">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT &#10;  PROCESSO, &#10;  EMP_CODIGO, &#10;  NUMFUNC, &#10;  NUMVINC, &#10;  IDENT_VINC,&#10;  NOME_FUNC,&#10;  DESCR_IDENT_VINC, &#10;  ROWID_REG,&#10;  MOTIVO,&#10;  DESCR_MOTIVO,&#10;  TIPO,&#10;  DESCR_TIPO, &#10;  PROMOVIDO, &#10;  TABELA_VENC,&#10;  DESCR_TABELA_VENC,&#10;  REF_ANTIGA,&#10;  DESCR_REF_ANTIGA,&#10;  REF_NOVA,&#10;  DESCR_REF_NOVA,&#10;  PONTOS_MERITO,&#10;  PONTOS_ANTIGUIDADE, &#10;  TOTAL_PONTOS,&#10;  DESEMPATE1,&#10;  DESEMPATE2,&#10;  DESEMPATE3,&#10;  DESEMPATE4,&#10;  DESEMPATE5,&#10;  CARGO,&#10;  DESCR_CARGO,&#10;  FLEX_CAMPO_01,&#10;  FLEX_CAMPO_03&#10;FROM &#10;  TABLE(&#10;     CAST(&#10;       ERG_FNC_ERGADM00412_PROM_SERV(&#10;         ?,&#10;         ?,&#10;         NULL,&#10;         NULL,&#10;         ?,&#10;         ?,&#10;         ?&#10;       ) AS erg_typ_ergadm00412_tab&#10;     )&#10;   )&#10;ORDER BY&#10;  IDENT_VINC"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeFunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrIdentVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMotivo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrMotivo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoMotivo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPromovido"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTabelaVenc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrTabelaVenc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRefAntiga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrRefAntiga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRefNova"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrRefNova"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontosMerito"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontosAntiguidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTotalPontos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesempate1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesempate2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesempate3"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesempate4"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesempate5"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso"/>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Setor"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_03">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dispensado"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_03"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recProcesso"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recv"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panelv" nome="pnvProcesso"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescrIdentVinc"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/panelv" nome="pnvParametros"/>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Setor"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="width" valor="600"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Dispensado?"/>
+                            <propriedade nome="cssClass" valor="techneCheckBox"/>
+                            <propriedade nome="field" valor="flex_campo_03"/>
+                            <propriedade nome="isImageURL" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescrTipo">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescrMotivo"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfPontosMerito"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfPontosAntiguidade"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfTotalPontos"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfPromovido">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Acima da Média"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescrCargo"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfTabelaVenc"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfRefAntiga">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível na Carreira Ref. Antiga"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfRefNova">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível na Carreira Ref. Nova"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDesempate1"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDesempate2"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDesempate3"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDesempate4"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDesempate5"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCodigo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumFunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProcesso"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidIdentVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidMotivo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipo"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rece"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panele" nome="pneProcesso"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpDescrIdentVinc"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/panele" nome="pneParametros"/>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbFlex_Campo_01">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Setor"/>
+                            <propriedade nome="field" valor="flex_campo_01"/>
+                            <propriedade nome="width" valor="600"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/checkBox" nome="ckb2Flex_Campo_03">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Dispensado?"/>
+                            <propriedade nome="field" valor="flex_campo_03"/>
+                            <propriedade nome="width" valor="20"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcTipo">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/searchBox" nome="srcMotivo"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPontosMerito"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtPontosAntiguidade"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtTotalPontos"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkPromovido">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Acima da Média"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpCargo"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTabelaVenc"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpRefAntiga">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível na Carreira Ref. Antiga"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpRefNova">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nível na Carreira Ref. Nova"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDesempate1"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDesempate2"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDesempate3"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDesempate4"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDesempate5"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumFunc1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumVinc1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidProcesso1"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdCamposParam">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoProcesso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCampoprocEdit"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCampoprocView"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTitulocampo"/>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

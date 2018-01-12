@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/14/2017 16:59" nome="RJadm00044">
+  <layout>
+    <componente classe="component/page" nome="RJadm00044">
+      <propriedades>
+        <propriedade nome="title" valor="Informe de Rendimentos"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;    &lt;p&gt;Para facilitar a localização do relatório a ser manipulado, você pode utilizar a lista abaixo para selecionar um grupo específico.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdGrupoRel">
+              <propriedades>
+                <propriedade nome="caption" valor="Grupo de relatórios"/>
+                <propriedade nome="sqlSelect" valor="SELECT CODIGO,&#10;  DESCRICAO&#10;FROM GRUPO_RELATORIOS&#10;WHERE SISTEMA = 'C_Ergon'&#10;AND CODIGO    = '16 - Relatórios de Auditoria - Trilhas Auditoria'&#10;ORDER BY codigo"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldCodigo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Código"/>
+                    <propriedade nome="field" valor="codigo"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="550"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRel">
+              <propriedades>
+                <propriedade nome="caption" valor="Relatórios"/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlParameters" valor="$grdGrupoRel.codigo$"/>
+                <propriedade nome="sqlSelect" valor="SELECT * FROM RELATORIOS WHERE GRUPO_CODIGO = ? ORDER BY NOME"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricaoRel">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArquivo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Arquivo"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&#10;    &lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;    &lt;p&gt;Para efetuar o agendamento dos relatórios, você precisa informar o campo &quot;Mês ano - folha&quot;&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuParametros">
+              <propriedades>
+                <propriedade nome="title" valor="Agendar relatório"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpMesAno">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Mês ano - folha"/>
+                        <propriedade nome="displayProperty" valor="mes_ano"/>
+                        <propriedade nome="sqlSelect" valor="SELECT DISTINCT TO_CHAR(f.mes_ano,'MM/YYYY')&#10;  ||' - '&#10;  ||F.NUMERO MES_ANO,&#10;  f.mes_ano dummy&#10;FROM folhas_EMP f,&#10;  empresas e&#10;WHERE f.EMP_CODIGO = e.empresa&#10;ORDER BY f.mes_ano DESC"/>
+                        <propriedade nome="validators" valor="required();"/>
+                        <propriedade nome="valueProperty" valor="dummy"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/linkMethod" nome="lkmExecRel">
+                      <propriedades>
+                        <propriedade nome="label" valor="Executar"/>
+                        <propriedade nome="onClick" valor="var invalidControls = getInvalidControls('drpMesAno');&#10;displayWarningMsg(invalidControls);&#10;proceed();"/>
+                        <propriedade nome="onResponse" valor="invalidate('grdGrupoRel');&#10;invalidate('grdRel');&#10;invalidate('grdLoteRelatAgend');&#10;setValue('drpMesAno',null);"/>
+                        <propriedade nome="paramMensagem" valor="p_mens"/>
+                        <propriedade nome="parameters" valor="fldNome.checked,#drpMesAno#,%usuario%,%empresa%,fldArquivo.checked"/>
+                        <propriedade nome="rotina" valor="db:tgrj_cria_relat_inform_rend"/>
+                        <propriedade nome="rotinaGrupo" valor="RJERGNG"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbIdAgenda">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Id Agenda"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="visible" valor="N"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbIdLote">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Id Lote"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="visible" valor="N"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdLoteRelatAgend">
+              <propriedades>
+                <propriedade nome="caption" valor="Execuções"/>
+                <propriedade nome="sqlParameters" valor="#txbIdLote#"/>
+                <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;  id,&#10;  id_lote,&#10;  data_hora,&#10;  relatorio,&#10;  status,&#10;  dtiniexec,&#10;  dtfimexec,&#10;  arquivo&#10;FROM tgrj_lote_relat_agend&#10;WHERE id_lote = NVL(?, (SELECT MAX(id_lote) FROM tgrj_lote_relat_agend where trans = flag_pack.get_transacao))"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldId">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="id"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldIdLote">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="id_lote"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDataHora">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Execução"/>
+                    <propriedade nome="field" valor="data_hora"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRelatorio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Relatório"/>
+                    <propriedade nome="field" valor="relatorio"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldStatus">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="field" valor="status"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtiniexec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Início Execução"/>
+                    <propriedade nome="field" valor="dtiniexec"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtFimexec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fim execução"/>
+                    <propriedade nome="field" valor="dtfimexec"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArquivoLote">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Arquivo"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

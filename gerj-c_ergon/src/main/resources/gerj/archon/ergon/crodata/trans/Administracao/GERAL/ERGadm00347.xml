@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="08/29/2016 11:28" nome="ERGadm00347">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00347"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdCCusto">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT rowidtochar(ROWID) rowid_reg ,&#10;    SIGLA ,&#10;    DESCRICAO ,&#10;    EMP_CODIGO ,&#10;    FLEX_CAMPO_09 ,&#10;    FLEX_CAMPO_06 ,&#10;    FLEX_CAMPO_07 ,&#10;    FLEX_CAMPO_08 ,&#10;    FLEX_CAMPO_10&#10;  FROM erg_ccusto&#10;  WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA&#10;  ORDER BY sigla"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_Reg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmp_Codigo"/>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_09">
+                  <propriedades>
+                    <propriedade nome="caption" valor="CNPJ"/>
+                    <propriedade nome="field" valor="flex_campo_09"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_06">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Banco"/>
+                    <propriedade nome="field" valor="flex_campo_06"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_07">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Agência"/>
+                    <propriedade nome="field" valor="flex_campo_07"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_08">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Conta ativos"/>
+                    <propriedade nome="field" valor="flex_campo_08"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_10">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Conta inativos"/>
+                    <propriedade nome="field" valor="flex_campo_10"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recCCusto"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvCCusto"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfSigla"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDescricao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_09">
+                          <propriedades>
+                            <propriedade nome="caption" valor="CNPJ"/>
+                            <propriedade nome="field" valor="flex_campo_09"/>
+                            <propriedade nome="width" valor="270"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="1"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_06">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Banco"/>
+                            <propriedade nome="field" valor="flex_campo_06"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_07">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Agência"/>
+                            <propriedade nome="field" valor="flex_campo_07"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_10">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta inativos"/>
+                            <propriedade nome="field" valor="flex_campo_10"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfFlex_Campo_08">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta ativos"/>
+                            <propriedade nome="field" valor="flex_campo_08"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid_Reg"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receCCusto"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtSigla"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtFlex_Campo_09">
+                          <propriedades>
+                            <propriedade nome="caption" valor="CNPJ"/>
+                            <propriedade nome="field" valor="flex_campo_09"/>
+                            <propriedade nome="mask" valor="number"/>
+                            <propriedade nome="validators" valor="length(0,14)"/>
+                            <propriedade nome="width" valor="270"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="1"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/dropDownSelect" nome="drp_Flex_Campo_06">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Banco"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="flex_campo_06"/>
+                            <propriedade nome="sqlSelect" valor="SELECT banco, banco || ' - ' || nome NOME FROM bancos ORDER BY 1"/>
+                            <propriedade nome="width" valor="270"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/dropDownSelect" nome="drp_Flex_Campo_07">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Agência"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="flex_campo_07"/>
+                            <propriedade nome="sqlParameters" valor="#drp_Flex_Campo_06#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT a.agencia,&#10;  b.nome&#10;  ||' - '&#10;  ||a.nome nome&#10;FROM agencias a,&#10;  bancos b&#10;WHERE b.banco = a.banco&#10;AND b.banco    = ?&#10;ORDER BY a.banco,&#10;  a.agencia"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txt_Flex_Campo_10">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta inativos"/>
+                            <propriedade nome="field" valor="flex_campo_10"/>
+                            <propriedade nome="validators" valor="length(0,20)"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.4"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txt_Flex_Campo_08">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta ativos"/>
+                            <propriedade nome="field" valor="flex_campo_08"/>
+                            <propriedade nome="validators" valor="length(0,20)"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="labelAlign" valor="left"/>
+                          <propriedade nome="labelWidth" valor="100"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

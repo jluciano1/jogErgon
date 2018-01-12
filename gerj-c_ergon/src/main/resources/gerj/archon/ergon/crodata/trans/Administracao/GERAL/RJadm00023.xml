@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="08/24/2017 16:10" nome="RJadm00023">
+  <layout>
+    <componente classe="component/page" nome="RJadm00023">
+      <propriedades>
+        <propriedade nome="title" valor="Secretaria / Setor Avaliados"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltroAvaliacao">
+              <propriedades>
+                <propriedade nome="title" valor="Filtro"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcFiltroAvaliacao">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Processo, Descrição"/>
+                        <propriedade nome="caption" valor="Avaliação"/>
+                        <propriedade nome="sql" valor="SELECT processo, descricao FROM prom_processo WHERE busca_searchbox_varchar2(processo, ?, descricao, ?) = 1"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdSecSetor">
+              <propriedades>
+                <propriedade nome="caption" valor="Secretaria / Setor Avaliados"/>
+                <propriedade nome="sqlParameters" valor="#srcFiltroAvaliacao#"/>
+                <propriedade nome="sqlSelect" valor="SELECT&#10;  rowid_reg,&#10;  processo,&#10;  descricao,&#10;  subemp_codigo,&#10;  data_avaliacao,&#10;  emp_codigo,&#10;  pontuacao,&#10;  subempresa&#10;FROM tgrj_rjadm00023_sec_setor&#10;WHERE processo = nvl(?, processo)&#10;ORDER BY descricao"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldProcesso">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Processo"/>
+                    <propriedade nome="field" valor="processo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Avaliação"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSecretaria">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Secretaria"/>
+                    <propriedade nome="field" valor="subemp_codigo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDataAvaliacao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data Avaliação"/>
+                    <propriedade nome="field" valor="data_avaliacao"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldEmpCodigo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Empresa"/>
+                    <propriedade nome="field" valor="emp_codigo"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldPontuacao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Pontuação"/>
+                    <propriedade nome="field" valor="pontuacao"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSubempresa">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Subempresa"/>
+                    <propriedade nome="field" valor="subempresa"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro;&lt;/li&gt;&#10;&#10;     &lt;/ul&gt;    &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Avaliação por Secretaria"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recSecSetor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Detalhes"/>
+                        <propriedade nome="master" valor="grdSecSetor"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvSecSetor"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfAvaliacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Avaliação"/>
+                                    <propriedade nome="field" valor="descricao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfSecretaria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Secretaria"/>
+                                    <propriedade nome="field" valor="subempresa"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDataAvaliacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Avaliação"/>
+                                    <propriedade nome="field" valor="data_avaliacao"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPontuacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontuação"/>
+                                    <propriedade nome="field" valor="pontuacao"/>
+                                    <propriedade nome="format" valor="decimal09d02"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor="RowIdRegAg"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receSecSetor">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="PGOV_PONTUACAO_SUBEMPRESA"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcAvaliacao">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Processo, Descrição"/>
+                                    <propriedade nome="caption" valor="Avaliação"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="processo"/>
+                                    <propriedade nome="sql" valor="SELECT processo, descricao FROM prom_processo WHERE busca_searchbox_varchar2(processo, ?, descricao, ?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcSecretaria">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                                    <propriedade nome="caption" valor="Secretaria"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="subemp_codigo"/>
+                                    <propriedade nome="sql" valor="SELECT codigo,&#10;  fantasia&#10;FROM subempresas&#10;WHERE emp_codigo = 1&#10;AND fantasia NOT LIKE '%ADEFINIR%'&#10;AND busca_searchbox_varchar2(codigo, ?, fantasia , ?) = 1&#10;ORDER BY 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbDataAvaliacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Avaliação"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data_avaliacao"/>
+                                    <propriedade nome="onChanged" valor="var ini = new Date();&#10;var fim = getParameter('#txbDataAvaliacao#');&#10;&#10;var msgVerd = 'Data Avaliação da secretaria não pode ser posterior à data de hoje.';   &#10;var msgErr;&#10;&#10;if (Techne.Hades.comparaDatas(ini, fim, '&lt;', msgVerd, msgErr)){ setValue('txbDataAvaliacao', null); &#10;}"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbPontuacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontuação"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="pontuacao"/>
+                                    <propriedade nome="mask" valor="decimal09d02"/>
+                                    <propriedade nome="validators" valor="length(0,11);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbEmpCodigo">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Empresa"/>
+                                    <propriedade nome="field" valor="emp_codigo"/>
+                                    <propriedade nome="initialValue" valor="%empresa%"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Avaliação por Setor"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdAvalSetor">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="sqlParameters" valor="$grdSecSetor.subemp_codigo$,$grdSecSetor.processo$,$grdSecSetor.data_avaliacao$,$grdSecSetor.emp_codigo$"/>
+                        <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;  setor,&#10;  setordesc,&#10;  pontuacao,&#10;  emp_codigo,&#10;  subemp_codigo,&#10;  processo,&#10;  data_avaliacao,&#10;  subempresa,&#10;  subempresadesc&#10;FROM tgrj_rjadm00023_aval_setor&#10;WHERE subemp_codigo = ?&#10;AND processo        = ?&#10;AND data_avaliacao  = ?&#10;AND emp_codigo      = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldRowIdRegSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Setor"/>
+                            <propriedade nome="field" valor="setor"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSetorDesc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Setor"/>
+                            <propriedade nome="field" valor="setordesc"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPontuacaoSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pontuação"/>
+                            <propriedade nome="field" valor="pontuacao"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpCodigoSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSubEmpCodigo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subempresa"/>
+                            <propriedade nome="field" valor="subemp_codigo"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldProcessoSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Processo"/>
+                            <propriedade nome="field" valor="processo"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDataAvaliacaoSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Avaliação"/>
+                            <propriedade nome="field" valor="data_avaliacao"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSubempresaSetor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subempresa"/>
+                            <propriedade nome="field" valor="subempresa"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSubEmpDesc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subempresa"/>
+                            <propriedade nome="field" valor="subempresadesc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recAvalSetor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Detalhes"/>
+                        <propriedade nome="master" valor="grdAvalSetor"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvAvalSetor"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfAvaliacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Avaliação"/>
+                                    <propriedade nome="field" valor="processo"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfSecretariaSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Secretaria"/>
+                                    <propriedade nome="field" valor="subempresadesc"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDataAvaliacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Avaliação"/>
+                                    <propriedade nome="field" valor="data_avaliacao"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Setor"/>
+                                    <propriedade nome="field" valor="setordesc"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPontuacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontuação"/>
+                                    <propriedade nome="field" valor="pontuacao"/>
+                                    <propriedade nome="format" valor="decimal09d02"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegSetor">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receAvalSetor">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="PGOV_PONTUACAO_SETOR"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcAvaliacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Processo, Descrição"/>
+                                    <propriedade nome="caption" valor="Avaliação"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="processo"/>
+                                    <propriedade nome="initialValue" valor="$grdSecSetor.processo$"/>
+                                    <propriedade nome="sql" valor="SELECT DISTINCT prf.processo,&#10;  pp.descricao&#10;FROM prom_processo pp,&#10;  prom_respostas_ficha prf&#10;WHERE prf.processo IN&#10;  (SELECT processo FROM prom_processo WHERE fase = 'Final'&#10;  )&#10;AND prf.processo   = pp.processo&#10;AND pp.emp_codigo  = flag_pack.get_empresa&#10;AND prf.emp_codigo = flag_pack.get_empresa&#10;AND busca_searchbox_varchar2(prf.processo, ?, pp.descricao, ?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcSecretariaSetor">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                                    <propriedade nome="caption" valor="Secretaria"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="subemp_codigo"/>
+                                    <propriedade nome="initialValue" valor="$grdSecSetor.subemp_codigo$"/>
+                                    <propriedade nome="sql" valor="SELECT codigo,&#10;  fantasia&#10;FROM subempresas&#10;WHERE emp_codigo = 1&#10;AND fantasia NOT LIKE '%ADEFINIR%'&#10;AND busca_searchbox_varchar2(codigo, ?, fantasia , ?) = 1&#10;ORDER BY 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbDataAvaliacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Avaliação"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data_avaliacao"/>
+                                    <propriedade nome="initialValue" valor="$grdSecSetor.data_avaliacao$"/>
+                                    <propriedade nome="onChanged" valor="var ini = new Date();&#10;var fim = getParameter('#txbDataAvaliacaoSetor#');&#10;&#10;var msgVerd = 'Data Avaliação do setor não pode ser posterior à data de hoje.';   &#10;var msgErr;&#10;&#10;if (Techne.Hades.comparaDatas(ini, fim, '&lt;', msgVerd, msgErr)){ setValue('txbDataAvaliacaoSetor', null); &#10;}"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcSetor">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                                    <propriedade nome="caption" valor="Setor"/>
+                                    <propriedade nome="field" valor="setor"/>
+                                    <propriedade nome="sql" valor="SELECT DISTINCT(setor),&#10;  nomesetor&#10;FROM hsetor&#10;WHERE emp_codigo  = 1&#10;AND subemp_codigo = 12&#10;AND datafim      IS NULL&#10;AND busca_searchbox_varchar2(setor, ?, nomesetor, ?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="710"/>
+                                    <propriedade nome="widthKey" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbPontuacaoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontuação"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="pontuacao"/>
+                                    <propriedade nome="mask" valor="decimal09d02"/>
+                                    <propriedade nome="validators" valor="length(0,11);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbEmpCodigoSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Empresa"/>
+                                    <propriedade nome="field" valor="emp_codigo"/>
+                                    <propriedade nome="initialValue" valor="%empresa%"/>
+                                    <propriedade nome="visible" valor="N"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

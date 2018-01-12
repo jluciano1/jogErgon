@@ -1,0 +1,1568 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/19/2017 15:03" nome="ERGadm00182">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+    <parametro ancest="true" id="pRowid"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00182"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtControleNfunc"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtControleRowid"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk002" nome="blk002"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdDados">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select ident_vinc, numvinc,cargo_mesmo_vinculo,tipoevento,tipovinc,regimejur,descsetor,desccargo,cargo,setor,rowid_reg,numfunc,id_ingresso,&#10;matric,referencia,numero_vaga,libera_vaga,dtnom,dtposse,dtexerc,chave_concurso,classifconc,dt_s_efeito,motivo_s_efeito,pontpubl,obs,dtfim,pontlei,emp_codigo,banco,agencia,conta,dtini,tipopag,dtini_contrato,dtfim_contrato,formaprov,chave_inscrito,mot_prorrog_posse,mot_prorrog_exerc,pagina_edicao,categoria,' ' as atos,texto_publ,sigla,libera_vaga_desc,descr_evento,descr_regjur,descr_tipovinc,descr_formaprov,&#10;descr_categoria,nome_banco,nome_agencia,descr_tipopag,descr_prog_posse,descr_prog_exerc, flex_campo_01, flex_campo_02, flex_campo_04, flex_campo_09, flex_campo_26, flex_campo_27, flex_campo_28, flex_campo_29, flex_campo_30, flex_campo_24, flex_campo_25 &#10;from ergadm00180_erg_ingresso   &#10;where numfunc = ?      &#10;and upper(pagina_edicao) = upper('ERGadm00182')  &#10;and cargo_mesmo_vinculo = 'N'&#10;and pack_hades.mostra_setor(flag_pack.get_usuario,setor,flag_pack.get_empresa) = 1&#10;AND INSTR(pck_evento_func.perfil_tipoev(flag_pack.get_usuario, TIPOEVENTO, 'ERGadm00182'), 'C') &lt;&gt; 0&#10;order by numvinc"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldCargo_mesmo_vinculo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoevento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipovinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRegimejur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescsetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesccargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_reg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMatric"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldReferencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumero_vaga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLibera_vaga"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtnom"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtposse"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtexerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChave_concurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldClassifconc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDt_s_efeito"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMotivo_s_efeito"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontlei"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmp_codigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldBanco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAgencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldConta"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipopag"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini_contrato"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim_contrato"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFormaprov"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChave_inscrito"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMot_prorrog_posse"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMot_prorrog_exerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPagina_edicao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCategoria"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTexto_publ"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSiglaConcurso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLiberaVagaDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_evento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_regjur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_tipovinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_formaprov"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_categoria"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_banco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_agencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_tipopag"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="flddescr_prog_posse"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="flddescr_prog_exerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdIngresso"/>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Atividade/Espec"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Origem"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo04">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Ano do concurso"/>
+                    <propriedade nome="field" valor="flex_campo_04"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo26">
+                  <propriedades>
+                    <propriedade nome="caption" valor="É Servidor Público Estatutário e está tomando posse sem interrupção e sem acumulação?"/>
+                    <propriedade nome="field" valor="flex_campo_26"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo27">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Plano Previdenciário"/>
+                    <propriedade nome="field" valor="flex_campo_27"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo28">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Orgão anterior"/>
+                    <propriedade nome="field" valor="flex_campo_28"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo29">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data de posse"/>
+                    <propriedade nome="field" valor="flex_campo_29"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo30">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Estava sujeito à previdência complementar no vínculo anterior?"/>
+                    <propriedade nome="field" valor="flex_campo_30"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo24">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo de Órgão"/>
+                    <propriedade nome="field" valor="flex_campo_24"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo25">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Número do Vínculo/SIGRH Anterior"/>
+                    <propriedade nome="field" valor="flex_campo_25"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo09">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Subesp./Disciplina"/>
+                    <propriedade nome="field" valor="flex_campo_09"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recIngresso"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvIngresso"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipoev"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfVinc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfMatric"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtnom"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtposse"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="95"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtexerc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfRegime"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipovinc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfProvimento"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCargo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfReferencia"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Atividade/Espec"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo09">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Subesp./Disciplina"/>
+                                    <propriedade nome="field" valor="flex_campo_09"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCategoria">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Unidade Administrativa"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSetor"/>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo02">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Origem"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="width" valor="165"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfConcurso">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="245"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo04">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ano concurso"/>
+                                    <propriedade nome="field" valor="flex_campo_04"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfClassif">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfNumvaga"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfLiberavaga"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDtsemefeito"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfMotivo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="180"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfBanco"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAgencia"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfConta"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipopgto"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="180"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo26">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Serv. Púb. s/ interrupção e acumulação"/>
+                                    <propriedade nome="field" valor="flex_campo_26"/>
+                                    <propriedade nome="width" valor="100"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo27">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Plano Previdenciário"/>
+                                    <propriedade nome="field" valor="flex_campo_27"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="html1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfPosse"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="240"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfExerc"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="240"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/htmlControl" nome="htm2">
+                              <propriedades>
+                                <propriedade nome="html" valor="&lt;div class=&quot;techne-info-painel&quot;&gt;Informações do Vínculo Anterior ou 1º Vínculo Estatutário Ininterrupto&lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo28">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Orgão anterior"/>
+                                    <propriedade nome="field" valor="flex_campo_28"/>
+                                    <propriedade nome="toolTip" valor="Órgão Anterior"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo29">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data de posse"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_29"/>
+                                    <propriedade nome="toolTip" valor="Data de Posse"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo30">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Estava sujeito à previdência complementar no vínculo anterior?"/>
+                                    <propriedade nome="field" valor="flex_campo_30"/>
+                                    <propriedade nome="toolTip" valor="Estava sujeito à previdência complementar no vínculo anterior?"/>
+                                    <propriedade nome="width" valor="100"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo24">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo de órgão"/>
+                                    <propriedade nome="field" valor="flex_campo_24"/>
+                                    <propriedade nome="toolTip" valor="Tipo de Órgão"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo25">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Número do Vínculo/SIGRH Anterior"/>
+                                    <propriedade nome="field" valor="flex_campo_25"/>
+                                    <propriedade nome="toolTip" valor="Número do Vínculo/SIGRH Anterior"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEcodigo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumf"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidDtinic"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidDtfin"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidIniccontrato"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidFimcontrato"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCargoVinc"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidChaveinscr"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPagedicao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPontl"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPontp"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidChaveconc"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipoevento"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipovinc"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRegimejur"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCargo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidFormaprov"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidIdIngresso"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receIngresso"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcTipoEvento"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpMatric"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtnomeacao"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtposse"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="95"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtexerc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpRegime"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTpvinc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpProvimento"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcCargo"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpReferencia"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFlexcampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Atividade/Espec"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_01"/>
+                                    <propriedade nome="sql" valor="SELECT a.codigo CODIGO, &#10;a.nome,&#10;a.flex_campo_01 TIPO_AREA&#10;from rh_atividade_ a, rh_ativ_cargo ac&#10;where a.codigo = ac.atividade&#10;AND ac.CARGO = ? and a.flex_campo_02 in ('INGRESSO','ING/EXEC')&#10;"/>
+                                    <propriedade nome="sqlParameters" valor="#srcCargo#"/>
+                                    <propriedade nome="toolTip" valor="Especialidade / Disciplina de Ingresso"/>
+                                    <propriedade nome="validators" valor="length(0,6);"/>
+                                    <propriedade nome="valueMaxLength" valor="6"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFlexcampo09">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Subesp./Disciplina"/>
+                                    <propriedade nome="field" valor="flex_campo_09"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_09"/>
+                                    <propriedade nome="sql" valor="select d.DISCIPLINA, d.DESCRICAO &#10;from Rh_Disciplinas d,rh_ativ_disciplina ad&#10;where d.disciplina = ad.disciplina&#10;and ad.atividade = ?&#10;and ? is not null&#10;and d.flex_campo_02 in ('INGRESSO','ING/EXEC')&#10;union&#10;select d.DISCIPLINA,d.DESCRICAO&#10;from rh_disciplinas d, cargos_ c, rh_discip_cargo dc&#10;where d.disciplina = dc.cod_disciplina&#10;and  c.cargo = dc.cargo  &#10;and c.cargo = ?&#10;and ? is null&#10;and d.flex_campo_02 in ('INGRESSO','ING/EXEC')&#10;"/>
+                                    <propriedade nome="sqlParameters" valor="#srcFlexcampo01#, #srcFlexcampo01#, #srcCargo# ,#srcFlexcampo01#"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtCateg">
+                                  <propriedades>
+                                    <propriedade nome="visible" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcSetor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Unidade Administrativa"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexcampo02">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Origem"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_02"/>
+                                    <propriedade nome="toolTip" valor="Origem"/>
+                                    <propriedade nome="validators" valor="length(0,20);"/>
+                                    <propriedade nome="width" valor="165"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpConcurso">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="245"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexcampo04">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ano do concurso"/>
+                                    <propriedade nome="field" valor="flex_campo_04"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_04"/>
+                                    <propriedade nome="toolTip" valor="Informe o ano de realização do concurso"/>
+                                    <propriedade nome="validators" valor="length(0,6);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtClassif">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpNvaga"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkLiberaVaga"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="125"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtSemefeito"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpMotivosefeito"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="180"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcBanco"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcAgencia"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtConta"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.35"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipopgto"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.65"/>
+                                  <propriedade nome="labelWidth" valor="180"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="txbFlexcampo26">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Serv. Púb. s/ interrupção e acumulação"/>
+                                    <propriedade nome="displayProperty" valor="descr"/>
+                                    <propriedade nome="field" valor="flex_campo_26"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_26"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT 'SIM' as valor, 'SIM' as descr FROM DUAL UNION SELECT 'NAO' as valor, 'NÃO' as descr  FROM DUAL"/>
+                                    <propriedade nome="valueProperty" valor="valor"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexcampo27">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Plano Previdenciário"/>
+                                    <propriedade nome="field" valor="flex_campo_27"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_27"/>
+                                    <propriedade nome="toolTip" valor="Plano Previdenciário"/>
+                                    <propriedade nome="validators" valor="length(0,20)"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtObserv"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="html2"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcPosse"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="240"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcExerc"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="240"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/htmlControl" nome="htm">
+                              <propriedades>
+                                <propriedade nome="html" valor="&lt;div class=&quot;techne-info-painel&quot;&gt;Informações do Vínculo Anterior ou 1º Vínculo Estatutário Ininterrupto&lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFlexcampo28">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="NOME, DESCRIÇÃO"/>
+                                    <propriedade nome="caption" valor="Órgão anterior"/>
+                                    <propriedade nome="field" valor="flex_campo_28"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_28"/>
+                                    <propriedade nome="hideValue" valor="true"/>
+                                    <propriedade nome="sql" valor="SELECT valor, nome from(&#10;SELECT se.nome as valor, se.nome&#10;  FROM subempresas se, empresas e, itemtabela it&#10; WHERE se.nome NOT LIKE 'A DEFINIR%'&#10;   AND se.emp_codigo = e.empresa&#10;   AND e.flex_campo_04 = ?&#10;   AND ? = 'ADMINISTRACAO DIRETA'&#10;   AND SE.NOME &lt;&gt; 'FUNDACAO SAUDE DO ESTADO DO RIO DE JANEIRO'&#10;   AND it.item = e.flex_campo_04&#10;   AND it.tab = 'GRJ_TIPO_ORGAO_EXT'&#10;   AND it.item1 = 'INTERNO'&#10;UNION ALL&#10;SELECT e.nome as valor, e.nome&#10;  FROM empresas e, itemtabela it&#10; WHERE e.flex_campo_04 = ?&#10;   AND ? &lt;&gt; 'ADMINISTRACAO DIRETA'&#10;   AND it.item = e.flex_campo_04&#10;   AND it.tab = 'GRJ_TIPO_ORGAO_EXT'&#10;   AND it.item1 = 'INTERNO' &#10;UNION ALL&#10;SELECT oe.descr as valor, oe.descr&#10;  FROM orgaos_externos oe&#10; WHERE oe.flex_campo_01 = ?) where busca_searchbox_varchar2 (VALOR,?,NOME,?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="#ddsFlexcampo24#, #ddsFlexcampo24#, #ddsFlexcampo24#, #ddsFlexcampo24#, #ddsFlexcampo24#, search.value, search.description"/>
+                                    <propriedade nome="toolTip" valor="Órgão anterior"/>
+                                    <propriedade nome="width" valor="475"/>
+                                    <propriedade nome="widthKey" valor="50"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexcampo29">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data de posse"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_29"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_29"/>
+                                    <propriedade nome="toolTip" valor="Data de posse"/>
+                                    <propriedade nome="width" valor="160"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ckbFlexcampo30">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Estava sujeito à previdência complementar no vínculo anterior?"/>
+                                    <propriedade nome="displayProperty" valor="descr"/>
+                                    <propriedade nome="field" valor="flex_campo_30"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_30"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT 'SIM' as valor, 'SIM' as descr FROM DUAL UNION SELECT 'NAO' as valor, 'NÃO' as descr  FROM DUAL"/>
+                                    <propriedade nome="toolTip" valor="Estava sujeito à previdência complementar no vínculo anterior?"/>
+                                    <propriedade nome="valueProperty" valor="valor"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsFlexcampo24">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Tipo de órgão"/>
+                                    <propriedade nome="field" valor="flex_campo_24"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_24"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT item, descr FROM itemtabela WHERE tab = 'GRJ_TIPO_ORGAO_EXT' &#10;AND item1 in('INTERNO','EXTERNO')&#10;AND item NOT IN ('EMPRESA','COMPANHIA','INICIATIVA PRIVADA')&#10;"/>
+                                    <propriedade nome="toolTip" valor="Tipo de órgão"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlexcampo25">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Número do Vínculo/SIGRH Anterior"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="flex_campo_25"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_25"/>
+                                    <propriedade nome="toolTip" valor="Número do Vínculo/SIGRH Anterior"/>
+                                    <propriedade nome="validators" valor="length(0,10)"/>
+                                    <propriedade nome="width" valor="475"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidMesmovinculo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidChaveinscrito"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtfim"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtini"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpcodigo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvinc"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidPaginaedicao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidPontlei"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidpontpubl"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidRow"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtiniccontrato"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtfimcontrato"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidIdIngressoEd"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <bloco ancest="true" classe="component/HADadm_blk002" nome="hADadmBlk002"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Publicação"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/HADadm_blk001" nome="blkPubl"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocs"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr04"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso04"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/formPanel" nome="formIngr"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcSetorIngresso"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpJornadaIngresso"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpHorarioIngresso"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpVincAntIngresso"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/htmlControl" nome="htmMatricExterna"/>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtMatIngresso"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtMatIngresso1"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="158"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvincIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidCargoMesmoVinculoIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipoeventoIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidRegimejurIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidCargoIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfuncIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidMatricIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidReferenciaIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtexercIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidPontpublIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtiniIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidFormaprovIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidCategoriaIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidDtnomIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipovincIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidChaveConcursoIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/editField/hiddenField" nome="hidIdIngerssoIngresso"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/formPanelField/actionButton" nome="actIngresso"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/htmlControl" nome="htm3"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypIngresso"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpOpcaoBanco"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpOpcaoMatric"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

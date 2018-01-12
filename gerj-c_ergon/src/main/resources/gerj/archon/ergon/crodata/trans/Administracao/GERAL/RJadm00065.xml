@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/13/2017 17:47" nome="RJadm00065">
+  <layout>
+    <componente classe="component/page" nome="RJadm00065">
+      <propriedades>
+        <propriedade nome="title" valor="Carga Frequência Customizada"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o layout que você deseja editar:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Para a verificação/carga do arquivo de consignatárias, deverá ser selecionado o layout do arquivo que será utilizado. Como facilitador o botão Layout de Arquivos navegará para a página de edição de Layouts dos Arquivos.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panFiltro"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpLayout">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Layout"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="sqlSelect" valor="select NUMERO, NOME from CARGA_LAYOUT where tipo_layout = 'FERIAS'&#10;order by nome"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/hyperLink" nome="hypNovoLayout">
+                      <propriedades>
+                        <propriedade nome="application" valor="C_Ergon"/>
+                        <propriedade nome="parametros" valor="#drpLayout#,'FERIAS'"/>
+                        <propriedade nome="popup" valor="S"/>
+                        <propriedade nome="popupWidth" valor="1070"/>
+                        <propriedade nome="text" valor="LAYOUT DE ARQUIVOS"/>
+                        <propriedade nome="transacao" valor="Administracao.RJadm00065_popup"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Informe os dados para o carregamento no painel abaixo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Em &quot;Carregamento&quot; deverá ser selecionadas as informações necessárias, a ação que se deseja realizar e o arquivo a ser carregado.&lt;/p&gt; &lt;/div&gt;&#10;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuCarga">
+              <propriedades>
+                <propriedade nome="cssClass" valor="technePanelu2"/>
+                <propriedade nome="title" valor="Efetuar Carga"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpAction">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Ação"/>
+                        <propriedade nome="onChanged" valor="var acao = getParameter('#drpAction#'); &#10;&#10;if (acao == 3) {&#10;&#10;  show('ddsAuditoria'); &#10;  invalidate('ddsAuditoria');&#10;&#10;} else {&#10;&#10;  hide('ddsAuditoria');&#10;&#10;}"/>
+                        <propriedade nome="sqlSelect" valor="select cod, descr from (&#10;select 'I' cod, 'Somente inserir os registros novos' descr from dual)&#10;order by cod&#10;"/>
+                        <propriedade nome="toolTip" valor="Selecione uma chave de auditoria da carga executada para desfazer esta carga."/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsAuditoria">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Auditoria"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="minListWidth" valor="500"/>
+                        <propriedade nome="onRender" valor="hide('ddsAuditoria');"/>
+                        <propriedade nome="sqlSelect" valor="select l.id_exec id_exec, l.id_exec||': '|| l.sigla || ' - Executada em '||to_char(l.data_exec, 'dd/mm/yyyy hh24:mi') descr &#10;from log_processo_header l, pgov_auditoria_carga a&#10;where l.id_exec = a.id_exec&#10;  and l.sigla = 'CARGA DE FÉRIAS'&#10;order by l.id_exec desc"/>
+                        <propriedade nome="valueProperty" valor="id_exec"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/fileUpload" nome="fluArqErros">
+                      <propriedades>
+                        <propriedade nome="application" valor="C_Ergon"/>
+                        <propriedade nome="caption" valor="Arquivo"/>
+                        <propriedade nome="paramMensagem" valor="p_mens"/>
+                        <propriedade nome="parameters" valor="upload.arquivo,upload.nome,upload.tipo, #drpLayout#, #drpDelimitador#, #drpAction#,#ddsAuditoria#"/>
+                        <propriedade nome="rotina" valor="Carga Férias"/>
+                        <propriedade nome="rotinaGrupo" valor="RJERGNG"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panelu1">
+              <propriedades>
+                <propriedade nome="cssClass" valor="technePanelu2"/>
+                <propriedade nome="title" valor="Carregamento"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/dropDownSelect" nome="drpDelimitador">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Delimitador"/>
+                    <propriedade nome="sqlParameters" valor="#drpLayout#"/>
+                    <propriedade nome="sqlSelect" valor="select delimitador from carga_layout where numero = ?"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtIdRotina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="IdRotina"/>
+                    <propriedade nome="dataType" valor="number"/>
+                    <propriedade nome="initialValue" valor="$grdRotina.rotina$"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtNomeArq">
+                  <propriedades>
+                    <propriedade nome="initialValue" valor="$grdRotina.arquivo$"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr03">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;3&lt;/div&gt;Informe os dados para o carregamento no painel abaixo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso03">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;Campo 'Formato' deve  possuir formato válido de Oracle SQL. Ex. Data: DD/MM/YYYY; DDMMYYYY;Ex. Valor: 9999D99; 9999.99 Atenção: Dígitos que identificam separador decimal e de grupo em arquivo devem ser compatíveis com dígitos definidos em sessão do usuário para evitar erro de formatação de valores decimais e separados por grupo de milhar.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdExecucao">
+              <propriedades>
+                <propriedade nome="autoRefresh" valor="10"/>
+                <propriedade nome="caption" valor="Arquivos"/>
+                <propriedade nome="pageSize" valor="1"/>
+                <propriedade nome="sqlParameters" valor="#txtNomeArq#, #txtNomeArq#, #txtNomeArq#, #txtNomeArq#, #txtNomeArq#, #txtNomeArq#, #txtNomeArq#, #txtIdRotina#"/>
+                <propriedade nome="sqlSelect" valor="select ID_ROTINA_EXEC, ID_TIPO_ROT,TIMESTAMP_CAD,DATAHORA_INICIO,DATAHORA_FIM,USUARIO_CAD&#10;,  (select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL) STATUS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO'&#10;, SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.ac', '') ACEITOS&#10;, DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO',SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.err', '') ERROS&#10;,  DECODE((select PACK_EXEC_ROTINAS.GET_SITUACAO_EXEC(ID_ROTINA_EXEC) from DUAL)&#10;,'CONCLUIDO',SUBSTR(?, 1, INSTR(?, '.', -1)-1)||'.rej', '') REJEITADOS,&#10;(select id_exec&#10;from LOG_PROCESSO_HEADER&#10;where upper(param) like upper('%' || ? || '%')) log_processo&#10;from had_rotina_exec where id_rotina_exec = ?"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldId">
+                  <propriedades>
+                    <propriedade nome="caption" valor="ID rotina"/>
+                    <propriedade nome="field" valor="id_rotina_exec"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="width" valor="70"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTimeStamp">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Time stamp"/>
+                    <propriedade nome="field" valor="timestamp_cad"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtInicio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Início"/>
+                    <propriedade nome="field" valor="datahora_inicio"/>
+                    <propriedade nome="width" valor="85"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtTermino">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Término"/>
+                    <propriedade nome="field" valor="datahora_fim"/>
+                    <propriedade nome="width" valor="85"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldUsuario_cad">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Usuário"/>
+                    <propriedade nome="field" valor="usuario_cad"/>
+                    <propriedade nome="width" valor="170"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldStatus">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="field" valor="status"/>
+                    <propriedade nome="width" valor="85"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqErros">
+                  <propriedades>
+                    <propriedade nome="application" valor="Ergon"/>
+                    <propriedade nome="caption" valor="Erros"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.erros$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="erros"/>
+                    <propriedade nome="width" valor="155"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqAceitos">
+                  <propriedades>
+                    <propriedade nome="application" valor="Ergon"/>
+                    <propriedade nome="caption" valor="Aceitos"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.aceitos$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="aceitos"/>
+                    <propriedade nome="width" valor="155"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArqRej">
+                  <propriedades>
+                    <propriedade nome="application" valor="Ergon"/>
+                    <propriedade nome="downloadParameters" valor="$grdExecucao.rejeitados$,$grdExecucao.id_rotina_exec$"/>
+                    <propriedade nome="downloadRotina" valor="Download Arq. Rotina"/>
+                    <propriedade nome="downloadRotinaGrupo" valor="Ergon ADM"/>
+                    <propriedade nome="field" valor="rejeitados"/>
+                    <propriedade nome="width" valor="155"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldLog_processo">
+                  <propriedades>
+                    <propriedade nome="application" valor="Hades"/>
+                    <propriedade nome="caption" valor="Auditoria"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="log_processo"/>
+                    <propriedade nome="linkAplicacao" valor="Hades"/>
+                    <propriedade nome="linkParametros" valor="$grdExecucao.log_processo$"/>
+                    <propriedade nome="linkPopup" valor="S"/>
+                    <propriedade nome="linkPopupWidth" valor="1050"/>
+                    <propriedade nome="linkTransacao" valor="Administracao.HADadm00049"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

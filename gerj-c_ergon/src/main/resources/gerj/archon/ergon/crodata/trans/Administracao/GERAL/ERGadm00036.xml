@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 11:53" nome="ERGadm00036">
+  <parametros>
+    <parametro ancest="true" id="pTipofreq"/>
+    <parametro ancest="true" id="pTipovinc"/>
+    <parametro ancest="true" id="pRegjur"/>
+    <parametro ancest="true" id="pCateg"/>
+    <parametro ancest="true" id="pSubcateg"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00036"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panPesq"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/htmlControl" nome="htm1"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcTipoFreq"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCodigoFreq"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcTipoVinc"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcRegJur"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCateg"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcSubCateg"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/htmlControl" nome="htm2"/>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbIni"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbFim"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdFreq">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRegJur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCategDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSubCategDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoFreq"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCodigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_CodFreq"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtIni"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtFim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMax"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMin"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInt_Prorrog"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldNaoSeAplica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIntervMin"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMaxCon_Mes"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMaxInt_Mes"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMaxCon_Ano"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdMaxInt_Ano"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontlei"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRegimeJurDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpVincDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCateg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSubCateg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpFreqDesc"/>
+                <componente classe="component/gridPanelField" nome="fldFlex01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Quantidade máxima interpolada período"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dias no período"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex03">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Legislação referente à regra"/>
+                    <propriedade nome="field" valor="flex_campo_03"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recFreq"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvDetalheFreq"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetTipoVinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetRegJur"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetCateg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetSubcateg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetTipoFreq"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetDescrcod"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfDetCodigo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htm7c"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetDtIni"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetDtFim"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htm7"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetQtdMax"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetQtdMin"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetMaxCons_Mes"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetMaxCons_Ano"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetMaxInt_Mes"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetMaxInt_Ano"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetProrroga"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetInterMin"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex02">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Dias no período"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="width" valor="60"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Quantidade máxima interpolada período"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="60"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDetNaoAplica"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex03">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Legislação referente à regra"/>
+                                    <propriedade nome="field" valor="flex_campo_03"/>
+                                    <propriedade nome="width" valor="552"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receEditaFreq"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtTipovinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtRegjur"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtCateg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtSubcateg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtTipofreq"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcEdtCodigo"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htm7c1"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtDtIni"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtDtFim"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htm7b"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtQtdMax"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtQtdMin"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtMaxCons_Mes"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtMaxCons_Ano"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtMaxInt_Mes"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtMaxInt_Ano"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtProrroga"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtEdtInterMin"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlex02">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Dias no período"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="validators" valor="length(0,3);"/>
+                                    <propriedade nome="width" valor="60"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlex01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Quantidade máxima interpolada período"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="validators" valor="length(0,3);"/>
+                                    <propriedade nome="width" valor="60"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkEdtNaoAplica"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlex03">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Legislação referente à regra"/>
+                                    <propriedade nome="field" valor="flex_campo_03"/>
+                                    <propriedade nome="validators" valor="length(0,2000);"/>
+                                    <propriedade nome="width" valor="552"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Gerar combinações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/textPanelGroup" nome="info1"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/textPanel" nome="texto1"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombTipoFreq"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombCod"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombTipoVinc"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombRegJur"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombCateg"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCombSubcateg"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/htmlControl" nome="htm6"/>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbCombDtIni"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dateBox" nome="dtbCombDtFim"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombQtdMax"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombQtdMin"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombMaxCons_Mes"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombMaxCons_Ano"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombMaxInt_Mes"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombMaxInt_Ano"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombProrroga"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtCombInterMin"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/checkBox" nome="chkCombNaoAplica"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmGeraComb"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocs"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

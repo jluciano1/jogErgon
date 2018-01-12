@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="11/07/2017 16:57" nome="RJadm00028">
+  <parametros>
+    <parametro id="pNumfunc" tipo="NUMBER"/>
+    <parametro id="pNumvinc" tipo="NUMBER"/>
+    <parametro id="pEmpresa" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00028">
+      <propriedades>
+        <propriedade nome="title" valor="Lista histórico pagamento"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt; Selecione o servidor para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente. &lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <bloco classe="component/ERGadm_blk002" nome="blkFunc"/>
+              </layout>
+              <layout>
+                <componente classe="component/panelu" nome="panFiltro">
+                  <propriedades>
+                    <propriedade nome="title" valor="Filtros de pesquisa"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsVinculo">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="initialValue" valor="@pVinculo@"/>
+                            <propriedade nome="sqlParameters" valor="#blkFunc.srcFunc#"/>
+                            <propriedade nome="sqlSelect" valor="select numero cod, numero||' - '||categoria descr from vinculos where numfunc = ? order by numero"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsDependente">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Dependente"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="minListWidth" valor="415"/>
+                            <propriedade nome="sqlParameters" valor="#blkFunc.srcFunc#"/>
+                            <propriedade nome="sqlSelect" valor="select numero cod, numero||' - '||nome descr from dependentes &#10;where numfunc = ? order by numero"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsPensionista">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Pensionista"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="minListWidth" valor="415"/>
+                            <propriedade nome="sqlParameters" valor="#blkFunc.srcFunc#, #ddsVinculo#"/>
+                            <propriedade nome="sqlSelect" valor="select numero cod, numero||' - '||nome descr from pensionistas &#10;where numfunc = ? &#10;and   numvinc = ?&#10;order by numero"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbNumrep">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Representante"/>
+                            <propriedade nome="validators" valor="length(0,8);"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbCpf">
+                          <propriedades>
+                            <propriedade nome="caption" valor="CPF"/>
+                            <propriedade nome="mask" valor="cpf"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="145"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsEmpresa">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="initialValue" valor="@pEmpresa@"/>
+                            <propriedade nome="sqlSelect" valor="SELECT e.empresa cod, e.empresa || ' - ' || e.nome descr FROM empresas e order by e.empresa"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsSubEmpresa">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Secretaria"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="minListWidth" valor="415"/>
+                            <propriedade nome="sqlParameters" valor="#ddsEmpresa#"/>
+                            <propriedade nome="sqlSelect" valor="select codigo cod, codigo||' - '||nome descr  from subempresas  where emp_codigo = ?"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAno">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Mês/Ano"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="sqlParameters" valor="#ddsEmpresa#, #ddsSubEmpresa#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT DISTINCT ar.mes_ano_folha cod, ar.mes_ano_folha descr&#10;FROM tgrj_detalhe_retorno dr, tgrj_arquivo_retorno ar, fitabanco fb , tgrj_detalhe_retorno_falhas drf, ocorrecias_bradesco ob , empresas e, subempresas sub&#10;WHERE dr.id_arquivo_retorno = ar.id_arquivo_retorno &#10;AND dr.num_pagamento = fb.lancamento &#10;AND fb.lancamento = drf.num_pagamento(+) &#10;AND drf.codigo = ob.codigos(+)&#10;AND fb.emp_codigo = e.empresa&#10;AND fb.subemp_codigo = sub.codigo&#10;AND fb.emp_codigo = nvl(?,fb.emp_codigo)&#10;AND fb.subemp_codigo = nvl(?,fb.subemp_codigo)&#10;"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsNumFolha">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="caption" valor="Nr. Folha"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="sqlParameters" valor="#ddsEmpresa#, #ddsSubEmpresa#, #ddsMesAno#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT DISTINCT ar.num_folha cod, ar.num_folha descr&#10;FROM tgrj_detalhe_retorno dr, tgrj_arquivo_retorno ar, fitabanco fb , tgrj_detalhe_retorno_falhas drf, ocorrecias_bradesco ob , empresas e, subempresas sub&#10;WHERE dr.id_arquivo_retorno = ar.id_arquivo_retorno &#10;AND dr.num_pagamento = fb.lancamento &#10;AND fb.lancamento = drf.num_pagamento(+) &#10;AND drf.codigo = ob.codigos(+)&#10;AND fb.emp_codigo = e.empresa&#10;AND fb.subemp_codigo = sub.codigo&#10;AND fb.emp_codigo = nvl(?,fb.emp_codigo)&#10;AND fb.subemp_codigo = nvl(?,fb.subemp_codigo)&#10;AND ar.mes_ano_folha = nvl(?,ar.mes_ano_folha)&#10;AND ar.num_folha is not null"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="145"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbNumPgto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nr. Pagto"/>
+                            <propriedade nome="mask" valor="integer"/>
+                            <propriedade nome="validators" valor="length(0,38);"/>
+                            <propriedade nome="width" valor="400"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="80"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuDadosServ"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/dataPanel" nome="dp2VincDet">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="cssClass" valor="teste"/>
+                        <propriedade nome="sqlParameters" valor="$grdHistPag.numfunc$,$grdHistPag.numvinc$"/>
+                        <propriedade nome="sqlSelect" valor="select erg_ng_preenche_blockvinc (?, ?, 'B') linha from dual"/>
+                        <propriedade nome="toolTip" valor="850"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/dataPanelField" nome="dpf2VincDetClob">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="dataType" valor="CLOB"/>
+                            <propriedade nome="field" valor="linha"/>
+                            <propriedade nome="width" valor="850"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelAlign" valor=""/>
+                          <propriedade nome="labelWidth" valor="1"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdHistPag">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Servidor"/>
+                    <propriedade nome="sqlParameters" valor="#blkFunc.srcFunc#, &#10;#ddsVinculo#, #ddsVinculo#,&#10;#ddsDependente#, #ddsDependente#,&#10;#ddsPensionista#, #ddsPensionista#,&#10;#txbNumrep#, #txbNumrep#,&#10;#txbCpf#, #txbCpf#,&#10;#ddsEmpresa#,&#10;#ddsSubEmpresa#, #ddsSubEmpresa#,&#10;#ddsMesAno#, #ddsMesAno#,&#10;#ddsNumFolha#, #ddsNumFolha#,&#10;#txbNumPgto#, #txbNumPgto#&#10;&#10;&#10;"/>
+                    <propriedade nome="sqlSelect" valor="SELECT DISTINCT&#10;  NUMFUNC,&#10;  NUMVINC,&#10;  NUMPENS,&#10;  NUMDEPEN,&#10;  NUMREP,&#10;  FUNCIONARIO,&#10;  SUBEMPRESA,&#10;  CPF,&#10;  MES_ANO,&#10;  NUM_FOLHA,&#10;  SISTEMA&#10;FROM VW_HISTORICO_PAGAMENTO&#10;WHERE NUMFUNC = ?&#10;AND (NUMVINC = ? OR ? IS NULL )&#10;AND (NUMDEPEN = ? OR ? IS NULL)&#10;AND (NUMPENS = ? OR ? IS NULL)&#10;AND (NUMREP = ? OR ? IS NULL)&#10;AND (CPF = ? OR ? IS NULL)&#10;AND codempresa = ?&#10;AND (codsubempresa = ? OR ? IS NULL)&#10;AND (MES_ANO = ? OR ? IS NULL)&#10;AND (NUM_FOLHA = ? OR ? IS NULL)&#10;AND (NUM_PAGAMENTO = ? OR ? IS NULL)"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldNumvinc">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Vinc"/>
+                        <propriedade nome="field" valor="numvinc"/>
+                        <propriedade nome="width" valor="45"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumdepen">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dep"/>
+                        <propriedade nome="field" valor="numdepen"/>
+                        <propriedade nome="width" valor="45"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumpens">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Pen"/>
+                        <propriedade nome="field" valor="numpens"/>
+                        <propriedade nome="width" valor="45"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumrep">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Rep"/>
+                        <propriedade nome="field" valor="numrep"/>
+                        <propriedade nome="width" valor="45"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFuncionario">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Funcionario"/>
+                        <propriedade nome="field" valor="funcionario"/>
+                        <propriedade nome="width" valor="270"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCPF">
+                      <propriedades>
+                        <propriedade nome="caption" valor="CPF"/>
+                        <propriedade nome="field" valor="cpf"/>
+                        <propriedade nome="format" valor="cpf"/>
+                        <propriedade nome="width" valor="95"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldSistema">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Sistema"/>
+                        <propriedade nome="field" valor="sistema"/>
+                        <propriedade nome="width" valor="60"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldSumEmpresa">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Subempresa"/>
+                        <propriedade nome="field" valor="subempresa"/>
+                        <propriedade nome="width" valor="270"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldMesAno">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Mes Ano"/>
+                        <propriedade nome="field" valor="mes_ano"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFolha">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nr. Folha"/>
+                        <propriedade nome="field" valor="num_folha"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumfunc">
+                      <propriedades>
+                        <propriedade nome="field" valor="numfunc"/>
+                        <propriedade nome="grid" valor="false"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="instr02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode consultar detalhes do registro selecionado:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdPagamentos">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Pagamentos"/>
+                    <propriedade nome="sqlParameters" valor="$grdHistPag.numfunc$,$grdHistPag.numvinc$,$grdHistPag.numdepen$,$grdHistPag.numdepen$,$grdHistPag.numpens$,$grdHistPag.numpens$,$grdHistPag.numrep$,$grdHistPag.numrep$,$grdHistPag.cpf$,$grdHistPag.funcionario$,$grdHistPag.sistema$,$grdHistPag.subempresa$,$grdHistPag.mes_ano$,$grdHistPag.num_folha$&#10;"/>
+                    <propriedade nome="sqlSelect" valor="SELECT &#10;  NUMFUNC,&#10;  NUMFITA,&#10;  MOD_PAG,&#10;  NUMREP,&#10;  NUMDEPEN,&#10;  NUMPENS,&#10;  NUMVINC,&#10;  INSCRICAO,&#10;  DATA,&#10;  HORA,&#10;  SISTEMA,&#10;  MATRICULA,&#10;  MENSAGEM,&#10;  CPF,&#10;  NUM_FOLHA,&#10;  CODIGOS,&#10;  DATA_PAGTO,&#10;  VALOR_PAGTO,&#10;  C_CORRENTE,&#10;  COD_AGENCIA,&#10;  NUM_PAGAMENTO,&#10;  MES_ANO,&#10;  SUBEMPRESA,&#10;  CODSUBEMPRESA,&#10;  EMPRESA,&#10;  CODEMPRESA&#10;FROM VW_HISTORICO_PAGAMENTO&#10;WHERE NUMFUNC = ?&#10;AND   NUMVINC   = ?&#10;AND  (NUMDEPEN = ? OR (? IS NULL AND NUMDEPEN IS NULL))&#10;AND  (NUMPENS  = ? OR (? IS NULL AND NUMPENS IS NULL))&#10;AND  (NUMREP   = ? OR (? IS NULL AND NUMREP IS NULL))&#10;AND   CPF = ?&#10;AND   FUNCIONARIO = ?&#10;AND   SISTEMA = ?&#10;AND   SUBEMPRESA = ?&#10;AND   MES_ANO = ?&#10;AND   NUM_FOLHA = ?"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldNumPagto">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nr. Pagto"/>
+                        <propriedade nome="field" valor="num_pagamento"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldMatricula">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Matr."/>
+                        <propriedade nome="field" valor="matricula"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDataPagto">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Data Créd."/>
+                        <propriedade nome="field" valor="data_pagto"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCodAgencia">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Agência"/>
+                        <propriedade nome="field" valor="cod_agencia"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldContaCorr">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Conta"/>
+                        <propriedade nome="field" valor="c_corrente"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor"/>
+                        <propriedade nome="field" valor="valor_pagto"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldData">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dt. Proc. Banco"/>
+                        <propriedade nome="field" valor="data"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldHora">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Hora"/>
+                        <propriedade nome="field" valor="hora"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanel" nome="recRubricas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dados Complementares"/>
+                    <propriedade nome="idField" valor="rowid_reg"/>
+                    <propriedade nome="master" valor="grdPagamentos"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanelView" nome="recvRubricas"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfOcorr">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Ocorrências"/>
+                                <propriedade nome="field" valor="codigos"/>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfMensagem">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Mensagem"/>
+                                <propriedade nome="field" valor="mensagem"/>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfModoPagto">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Modo Pagto"/>
+                                <propriedade nome="field" valor="mod_pag"/>
+                                <propriedade nome="toolTip" valor="Data início da vigência da rubrica"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

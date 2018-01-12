@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/20/2017 13:47" nome="RJadm00051">
+  <parametros>
+    <parametro id="pNumfunc" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00051">
+      <propriedades>
+        <propriedade nome="title" valor="Disciplinas Correlatas"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt; Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuDisciplina"/>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/searchBox" nome="srcDisciplina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina"/>
+                    <propriedade nome="sql" valor="select disciplina, descricao &#10;from rh_disciplinas&#10;where busca_searchbox_varchar2(disciplina, ?, descricao, ?) =1&#10;order by disciplina"/>
+                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdDisciplinas">
+              <propriedades>
+                <propriedade nome="caption" valor="Disciplinas"/>
+                <propriedade nome="sqlParameters" valor="#srcDisciplina#"/>
+                <propriedade nome="sqlSelect" valor="select disciplina, descricao, rowid_reg from ttgrj_rjadm00051_vw_disciplina where disciplina = nvl(?, disciplina) order by disciplina"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldDisciplina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="disciplina"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="440"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowIdRegD">
+                  <propriedades>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Disciplinas Correlatas&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;     &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recDisciplina">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Detalhes"/>
+                        <propriedade nome="master" valor="grdDisciplinas"/>
+                        <propriedade nome="onCommit" valor="getControl('Capacitacoes').setDateFormat('d/m/Y', 'txbFlex01'); &#10;getControl('Capacitacoes').setDateFormat('d/m/Y', 'txbFlex02'); &#10;proceed();"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvDisciplina"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDisciplina">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina"/>
+                                    <propriedade nome="field" valor="disciplina"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDescricao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Descrição"/>
+                                    <propriedade nome="field" valor="descricao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegD">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="rowid_reg"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Disciplinas Correlatas"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdCorrelatas">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Disciplinas Correlatas"/>
+                        <propriedade nome="sqlParameters" valor="$grdDisciplinas.disciplina$"/>
+                        <propriedade nome="sqlSelect" valor="select disciplina, disciplina_correlata, descricao, chave, rowid_reg from ttgrj_rjadm00051_vw_correlatas WHERE disciplina = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldDisc">
+                          <propriedades>
+                            <propriedade nome="field" valor="disciplina"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCorrelata">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Disciplina Correlata"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="disciplina_correlata"/>
+                            <propriedade nome="width" valor="145"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDesc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Descrição"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="descricao"/>
+                            <propriedade nome="width" valor="440"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldChave">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="chave"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recCorrelata">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Detalhes"/>
+                        <propriedade nome="master" valor="grdCorrelatas"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvCorrelata"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCorrelata">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina Correlata"/>
+                                    <propriedade nome="field" valor="disciplina_correlata"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDesc">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Descrição"/>
+                                    <propriedade nome="field" valor="descricao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfDisciplina">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="disciplina"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="rowid_reg"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfChave">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="chave"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receCorrelata">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="tgrj_disci_correlatas"/>
+                            <propriedade nome="onResponse" valor="invalidate('grdCorrelatas');"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcCorrelata">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina Correlata"/>
+                                    <propriedade nome="field" valor="disciplina_correlata"/>
+                                    <propriedade nome="sql" valor="select disciplina, descricao &#10;from rh_disciplinas&#10;where busca_searchbox_varchar2(disciplina, ?, descricao, ?) =1&#10;order by disciplina"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="400"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfDisciplina">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="disciplina"/>
+                                    <propriedade nome="initialValue" valor="$grdDisciplinas.disciplina$"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfChave">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="chave"/>
+                                    <propriedade nome="readOnly" valor="S"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

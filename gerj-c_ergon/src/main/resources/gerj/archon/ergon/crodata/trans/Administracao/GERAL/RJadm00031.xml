@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/09/2017 15:25" nome="RJadm00031">
+  <layout>
+    <componente classe="component/page" nome="RJadm00031">
+      <propriedades>
+        <propriedade nome="title" valor="Formação/Capacitação"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr1">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o servidor para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso1">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/ERGadm_blk002" nome="blk001">
+              <blocoComponente classe="component/control/value/unbound/searchBox" nome="blk001.srcFunc">
+                <propriedades>
+                  <propriedade nome="application" valor="Ergon"/>
+                </propriedades>
+              </blocoComponente>
+            </bloco>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Formações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdFormacoes">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Curso de formação"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcFunc#"/>
+                        <propriedade nome="sqlSelect" valor="select ROWIDTOCHAR(ROWID) AS ROWID_REG, numfunc,cursoform,habilitacao,dtini,dtfim,escola,obs,cargahor,pts_que_conta,dt_contou_pts,bolsa,recinst,pontolib from formacoes where numfunc = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldFO_CursoForm">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Curso de formação"/>
+                            <propriedade nome="field" valor="cursoform"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Habilitacao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Modalidade"/>
+                            <propriedade nome="field" valor="habilitacao"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_DtIni">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Início"/>
+                            <propriedade nome="field" valor="dtini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_DtFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Término"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Entidade">
+                          <propriedades>
+                            <propriedade nome="field" valor="escola"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Obs">
+                          <propriedades>
+                            <propriedade nome="field" valor="obs"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_CargaHoraria">
+                          <propriedades>
+                            <propriedade nome="field" valor="cargahor"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Pontos">
+                          <propriedades>
+                            <propriedade nome="field" valor="pts_que_conta"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Data">
+                          <propriedades>
+                            <propriedade nome="field" valor="dt_contou_pts"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Bolsa">
+                          <propriedades>
+                            <propriedade nome="field" valor="bolsa"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_Pago">
+                          <propriedades>
+                            <propriedade nome="field" valor="recinst"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFO_PontoLiberado">
+                          <propriedades>
+                            <propriedade nome="field" valor="pontolib"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRowIdRegFormacoes">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/textPanelGroup" nome="instr01">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="techneInstr"/>
+                        <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/textPanel" nome="btUso01">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="uso"/>
+                            <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;     &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt; &lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recFormacoes">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdFormacoes"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvFormacoes"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_DtIni">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtini"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_DtFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Término"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtfim"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_CursoForm">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Curso de formação"/>
+                                    <propriedade nome="field" valor="cursoform"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Habilitacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Modalidade"/>
+                                    <propriedade nome="field" valor="habilitacao"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Entidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Entidade"/>
+                                    <propriedade nome="field" valor="escola"/>
+                                    <propriedade nome="width" valor="400"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Obs">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="obs"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_CargaHoraria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Carga Horária"/>
+                                    <propriedade nome="field" valor="cargahor"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Pontos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontos"/>
+                                    <propriedade nome="field" valor="pts_que_conta"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Data">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_contou_pts"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Bolsa">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Bolsa?"/>
+                                    <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                    <propriedade nome="field" valor="bolsa"/>
+                                    <propriedade nome="isImageURL" valor="S"/>
+                                    <propriedade nome="width" valor="25"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_Pago">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pago?"/>
+                                    <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                    <propriedade nome="field" valor="recinst"/>
+                                    <propriedade nome="isImageURL" valor="S"/>
+                                    <propriedade nome="width" valor="25"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFO_PontoLiberado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ponto Liberado?"/>
+                                    <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                    <propriedade nome="field" valor="pontolib"/>
+                                    <propriedade nome="isImageURL" valor="S"/>
+                                    <propriedade nome="width" valor="25"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfFO_NumFunc">
+                              <propriedades>
+                                <propriedade nome="field" valor="numfunc"/>
+                                <propriedade nome="visible" valor="N"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegFormacoes">
+                              <propriedades>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receFormacoes">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="formacoes"/>
+                            <propriedade nome="onEnterEdit" valor="var func = getParameter('#blk001.srcFunc#');&#10;&#10;if (func === null || func == -1 || func == '') {&#10;    alert('É necessário selecionar um funcionário!');&#10;} else {&#10;    proceed();&#10;}"/>
+                            <propriedade nome="onEnterInsert" valor="var func = getParameter('#blk001.srcFunc#');&#10;&#10;if (func === null || func == -1 || func == '') {&#10;    alert('É necessário selecionar um funcionário!');&#10;} else {&#10;    proceed();&#10;}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_DtIni">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtini"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_DtFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Término"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtfim"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFO_CursoForm">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Id,Curso"/>
+                                    <propriedade nome="caption" valor="Curso de formação"/>
+                                    <propriedade nome="field" valor="cursoform"/>
+                                    <propriedade nome="hideValue" valor="true"/>
+                                    <propriedade nome="sql" valor="SELECT DISTINCT F.CURSOFORM as ID, F.CURSOFORM AS CURSO&#10;FROM FORMACOES F&#10;WHERE busca_searchbox_varchar2(F.CURSOFORM, ?, F.CURSOFORM, ?) = 1&#10;ORDER BY CURSOFORM"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcFO_Habilitacao">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="modalidade, modalidade"/>
+                                    <propriedade nome="caption" valor="Modalidade"/>
+                                    <propriedade nome="displayProperty" valor="modalidade"/>
+                                    <propriedade nome="field" valor="habilitacao"/>
+                                    <propriedade nome="hideValue" valor="true"/>
+                                    <propriedade nome="sql" valor="SELECT DISTINCT A.HABILITACAO as ID, A.HABILITACAO AS MODALIDADE&#10;FROM HABILITACOES A&#10;WHERE busca_searchbox_varchar2(A.HABILITACAO, ?, A.HABILITACAO, ?) = 1&#10;   AND A.CURSOFORM = nvl(?, A.CURSOFORM)&#10;ORDER BY A.HABILITACAO"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description, #srcFO_CursoForm#"/>
+                                    <propriedade nome="valueProperty" valor="id"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_Entidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Entidade"/>
+                                    <propriedade nome="field" valor="escola"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_Obs">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="obs"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_CargaHoraria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Carga Horária"/>
+                                    <propriedade nome="field" valor="cargahor"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_Pontos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pontos"/>
+                                    <propriedade nome="field" valor="pts_que_conta"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFO_Data">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_contou_pts"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/checkBox" nome="ckFO_Bolsa">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Bolsa?"/>
+                                    <propriedade nome="field" valor="bolsa"/>
+                                    <propriedade nome="width" valor="20"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/checkBox" nome="ckFO_Pago">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pago?"/>
+                                    <propriedade nome="field" valor="recinst"/>
+                                    <propriedade nome="width" valor="20"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/checkBox" nome="ckFO_PontoLiberado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ponto Liberado?"/>
+                                    <propriedade nome="field" valor="pontolib"/>
+                                    <propriedade nome="width" valor="20"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="txbFO_NumFunc">
+                              <propriedades>
+                                <propriedade nome="caption" valor="NUMFUNC"/>
+                                <propriedade nome="field" valor="numfunc"/>
+                                <propriedade nome="initialValue" valor="#blk001.srcFunc#"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdCapacitacao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Capacitação"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcFunc#"/>
+                        <propriedade nome="sqlSelect" valor="  select &#10;    rowidtochar(a.rowid) as rowid_reg,&#10;&#9;a.automatico,&#10;a.data,&#10;&#9;a.curso,&#10;&#9;b.nome,&#10;&#9;a.instit,&#10;&#9;a.numfunc,&#10;&#9;a.cargahor,&#10;&#9;a.obs,&#10;    a.curso || ' - ' || b.nome as curso_desc&#10;from capacitacoes a inner join cursos b on a.curso = b.curso&#10; where a.numfunc = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldCA_Data">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data"/>
+                            <propriedade nome="field" valor="data"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_Evento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Evento"/>
+                            <propriedade nome="field" valor="curso"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_NomeEvento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome do evento"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="width" valor="600"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_Entidade">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Entidade"/>
+                            <propriedade nome="field" valor="instit"/>
+                            <propriedade nome="width" valor="170"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_CargaHoraria">
+                          <propriedades>
+                            <propriedade nome="field" valor="cargahor"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_Observacao">
+                          <propriedades>
+                            <propriedade nome="field" valor="obs"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_CursosDesc">
+                          <propriedades>
+                            <propriedade nome="field" valor="curso_desc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_RowIdReg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCA_Automatico">
+                          <propriedades>
+                            <propriedade nome="field" valor="automatico"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/textPanelGroup" nome="instr02">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="techneInstr"/>
+                        <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;3&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/textPanel" nome="btUso02">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="uso"/>
+                            <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;     &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt; &lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recCapacitacao">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdCapacitacao"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvCapacitacao"/>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCA_NomeEvento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome do evento"/>
+                                    <propriedade nome="field" valor="nome"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCA_Data">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCA_Entidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Entidade"/>
+                                    <propriedade nome="field" valor="instit"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCA_CargaHoraria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Carga horária"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="cargahor"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCA_Observacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="obs"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfCA_NumFunc">
+                              <propriedades>
+                                <propriedade nome="field" valor="numfunc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfCA_RowIdReg">
+                              <propriedades>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfAutomatico">
+                              <propriedades>
+                                <propriedade nome="field" valor="automatico"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receCapacitacao">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="capacitacoes"/>
+                            <propriedade nome="onEnterEdit" valor="var func = getParameter('#blk001.srcFunc#');&#10;&#10;if (func === null || func == -1 || func == '') {&#10;    alert('É necessário selecionar um funcionário!');&#10;} else {&#10;    proceed();&#10;}"/>
+                            <propriedade nome="onEnterInsert" valor="var func = getParameter('#blk001.srcFunc#');&#10;&#10;if (func === null || func == -1 || func == '') {&#10;    alert('É necessário selecionar um funcionário!');&#10;} else {&#10;    proceed();&#10;}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsCA_NomeEvento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome do evento"/>
+                                    <propriedade nome="field" valor="curso"/>
+                                    <propriedade nome="sqlSelect" valor="select curso,nome from cursos"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCA_Data">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCA_Entidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Entidade"/>
+                                    <propriedade nome="field" valor="instit"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCA_CargaHoraria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Carga horária"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="cargahor"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCA_Observacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="obs"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfAutomatico">
+                                  <propriedades>
+                                    <propriedade nome="initialValue" valor="N"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfCA_NumFunc">
+                              <propriedades>
+                                <propriedade nome="field" valor="numfunc"/>
+                                <propriedade nome="initialValue" valor="#blk001.srcFunc#"/>
+                                <propriedade nome="visible" valor="N"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

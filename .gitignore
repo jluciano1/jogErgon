@@ -1,0 +1,14 @@
+.classpath
+.project
+.settings/
+.tomcat/
+*.bak
+*.swp
+*.tmp
+/.metadata/
+/Servers/
+/updateexceptions.txt
+RemoteSystemsTempFiles/
+target/
+tmp/
+.recommenders/

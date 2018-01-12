@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 12:03" nome="ERGadm00189">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+    <parametro ancest="true" id="pNumvinc"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00189"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <bloco ancest="true" classe="component/ERGadm_blk001" nome="blk001"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdREGPEND">
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSis"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTrans"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldUsuario"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTexto_link"/>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/panelu" nome="panFiltros"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="dtbIni"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="dtbFim"/>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcTipoFreq"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcCodfreq"/>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsultas">
+                  <propriedades>
+                    <propriedade nome="sqlSelect" valor="SELECT f.dtini,        f.dtfim,        f.dias,        f.freq_descr,        f.tipofreq,        f.tipofreq_descr,        f.codfreq,        f.nome,        f.qtd_formatada,        f.formato_qtd,        f.obs,        f.quantidade,        f.pontpubl,        f.hora_entrada,        f.hora_saida,        f.rowid_reg ROWID_REG,        f.texto_publ,        f.perf_cad,        f.perf_alt,        f.perf_rem,        f.numfunc,        f.numvinc,        f.HORA_ENTRADA_SAIDA,        f.emp_codigo,        f.pontlei,        ' ' atos,        f.tipo_preenchimento,        f.formato_field,        f.permissao_usu,&#10;flex_campo_01   FROM ergadm00189_frequencias f  WHERE pack_hades.eh_concomitante(nvl(f.dtini, pack_had_util.data_minima),                                   nvl(f.dtfim, pack_ergon.data_maxima),                                   nvl(?, pack_had_util.data_minima),                                   nvl(?, pack_ergon.data_maxima)) = 1    and f.numfunc = ?    and f.numvinc = ?    and f.tipofreq = nvl(?, f.tipofreq)    and f.codfreq = nvl(?, f.codfreq)    and mostra_freq (flag_pack.get_usuario,f.tipofreq,f.codfreq) = 1  order by f.dtini desc "/>
+                  </propriedades>
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldIni"/>
+                    <componente classe="component/gridPanelField" nome="fldFlex01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Data prevista de retorno"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="width" valor="180"/>
+                      </propriedades>
+                    </componente>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldFim"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldDias"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldCodFreq"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldfreq_descr"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNome"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldQtde"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldFormatoQtde"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldPontPubl"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldHrEntrada"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldHrSaida"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowId_reg"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldAtosIndiv"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTextoPubl"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldCad"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldAlt"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRem"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldQuantidade"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldnumfunc"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldHoraEntSaida"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCod"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldPontlei"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipoPreenc"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipodescr"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldFormato_field"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldPermissao_usu"/>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout tipo="TAB">
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Detalhes"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="recDados">
+                          <propriedades>
+                            <propriedade nome="onCommit" valor="getControl('recDados').setDateFormat('d/m/Y', 'txbFlex01'); &#10;proceed();"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recvDados"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfIni"/>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfFlex01">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Previsão de retorno"/>
+                                        <propriedade nome="field" valor="flex_campo_01"/>
+                                        <propriedade nome="width" valor="120"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfFim"/>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.4"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfTipo"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvTipofreq"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfNome">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Cod. frequência"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfQtde"/>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfHoraEntrada"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfHoraSaida"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPont"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPontp"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfCodFrequencia"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="txfQuantidade"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvFormato_qtd"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="receDados">
+                              <propriedades>
+                                <propriedade nome="onEnterEdit" valor="var permite = getParameter('$grdConsultas.permissao_usu$'); if (permite === 0){ alert('Usuário sem permissão para alterar o registro de frequência.'); &#10;}else{ &#10;getControl('recDados').setDateFormat('d/m/Y', 'txbFlex01'); &#10;proceed();   &#10;var v_tipofreq = getParameter('$grdConsultas.tipofreq$');   &#10;var v_codfreq = getParameter('$grdConsultas.codfreq$');   &#10;&#10;setValue('hidTipoFreqEdit', v_tipofreq );   setValue('hidCodFreqEdit', v_codfreq ); }  "/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtInicio"/>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbFlex01">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data prevista de retorno"/>
+                                        <propriedade nome="dataType" valor="DATE"/>
+                                        <propriedade nome="field" valor="flex_campo_01"/>
+                                        <propriedade nome="fieldTarget" valor="pb_flex_campo_01"/>
+                                        <propriedade nome="width" valor="120"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtTermino"/>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.4"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/searchBox" nome="srcTipo"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/searchBox" nome="srcCodFrequencia"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpFormato"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtQtdee"/>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtHrEntrada"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtHrSaida"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtObss"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidnumfunc"/>
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidnumvinc"/>
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidRowidreg"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidemp_cod"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidPontpubl"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidPontlei"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidTipoFreqEdit"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidCodFreqEdit"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Publicações"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <bloco ancest="true" classe="component/HADadm_blk001" nome="hadblk001"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Documentos legais"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkLeis"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpControllerView"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpControllerEdit"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

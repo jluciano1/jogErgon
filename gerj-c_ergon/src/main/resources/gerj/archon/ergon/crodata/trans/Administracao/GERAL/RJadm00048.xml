@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/12/2017 00:10" nome="RJadm00048">
+  <layout>
+    <componente classe="component/page" nome="RJadm00048">
+      <propriedades>
+        <propriedade nome="title" valor="Download de Arquivos"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/panelu" nome="pnuDownload"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsOpcao">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="caption" valor="Opções"/>
+                        <propriedade nome="displayProperty" valor="descricao"/>
+                        <propriedade nome="forceSelection" valor="N"/>
+                        <propriedade nome="sqlSelect" valor="select 0, 'FINANCEIRO' VALOR, 'Financeiro' DESCRICAO from dual union&#10;select 1, 'AUDITORIA' VALOR, 'Auditoria' DESCRICAO from dual union&#10;select 2, 'DIRF' VALOR, 'DIRF' DESCRICAO from dual union&#10;select 3, 'RAIS' VALOR, 'RAIS' DESCRICAO from dual union&#10;select 4, 'ESOCIAL' VALOR, 'E-Social' DESCRICAO from dual union&#10;select 5, 'OUTROS' VALOR, 'Outros' DESCRICAO from dual"/>
+                        <propriedade nome="validators" valor="required();"/>
+                        <propriedade nome="valueProperty" valor="valor"/>
+                        <propriedade nome="width" valor="400"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.7"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="sbxSecretaria">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Secretaria"/>
+                        <propriedade nome="sql" valor="SELECT CODIGO, CODIGO || ' - ' || FANTASIA NOME&#10;FROM SUBEMPRESAS&#10;WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA&#10;AND NOME NOT LIKE '%A DEFINIR%'&#10;AND ((EMP_CODIGO = 1 AND CODIGO &lt;&gt; 0) OR (EMP_CODIGO &lt;&gt; 1))&#10;and busca_searchbox_varchar2(CODIGO, ?, FANTASIA, ?) = 1&#10;ORDER BY CODIGO"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.7"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/hyperLink" nome="hlkDownload">
+                      <propriedades>
+                        <propriedade nome="text" valor="Baixar arquivos marcados"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdArquivos">
+              <propriedades>
+                <propriedade nome="caption" valor=""/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlParameters" valor="#ddsOpcao#,#sbxSecretaria#"/>
+                <propriedade nome="sqlSelect" valor="select filename, data_arq, tam_arquivo from table(ttgrj_rjadm00048(?,?))"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNomeArquivo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome arquivo"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="filename"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTamanhoKB">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tamanho (KB)"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="field" valor="tam_arquivo"/>
+                    <propriedade nome="width" valor="250"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDataModificacao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data modificação"/>
+                    <propriedade nome="dataType" valor="DATE"/>
+                    <propriedade nome="field" valor="data_arq"/>
+                    <propriedade nome="width" valor="250"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

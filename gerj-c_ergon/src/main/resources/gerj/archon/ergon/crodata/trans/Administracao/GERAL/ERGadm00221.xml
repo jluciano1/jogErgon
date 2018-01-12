@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_2" data="09/26/2016 14:38" nome="ERGadm00221">
+  <parametros>
+    <parametro ancest="true" id="pFicha"/>
+    <parametro ancest="true" id="pNumdepen"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00221"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdInf">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select fb.setor,&#10;       pack_hades.setor_desc(fb.setor, LAST_DAY(fb.mes_ano), fb.emp_codigo) nome_setor,&#10;       nvl(ttgrj_fnc_ergadm00221_dados(fb.lancamento,'B'),fb.banco) as banco,&#10;       b.nome,&#10;       nvl(pack_hades.formata_mascara ( nvl( ttgrj_fnc_ergadm00221_dados(fb.lancamento,'A'),fb.agencia), b.maskag), fb.agencia) agencia,&#10;       nvl(pack_hades.formata_mascara ( nvl(ttgrj_fnc_ergadm00221_dados(fb.lancamento,'C'),fb.conta), b.maskconta), fb.conta) conta,&#10;       fb.lancamento    &#10;from fitabanco fb&#10;   , bancos b        &#10;where fb.banco = b.banco(+) &#10;  and fb.ficha = ? &#10;  and fb.numdepen = ?&#10;&#10;"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_setor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldBanco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_banco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAgencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldConta"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLancamento"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCampo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValor"/>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

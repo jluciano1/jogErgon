@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/19/2017 15:40" nome="ERGadm00390">
+  <parametros>
+    <parametro ancest="true" id="pProcesso" tipo="NUMBER"/>
+    <parametro ancest="true" id="pEmp_Codigo" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00390">
+      <propriedades>
+        <propriedade nome="title" valor="Processo de avaliação"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcTipoProcesso"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hylTipoProcesso"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFaseFiltro"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="104"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesqProcesso"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="104"/>
+                </propriedades>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbDtini"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.5"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbDtfim"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.5"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd2">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoProcesso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fld2Fase"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSiglaFase"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescSetor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_reg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_fase"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmp_codigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTrans"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="rp1"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="rcv"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfFase"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid_reg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidFase"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProcesso"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmp_codigo"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rceFase"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpFase"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidProcesso02"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmp_codigo02"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd4">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescAcao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldOrdem"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoAcao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAcao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPagAjuda"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbParamProcesso"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

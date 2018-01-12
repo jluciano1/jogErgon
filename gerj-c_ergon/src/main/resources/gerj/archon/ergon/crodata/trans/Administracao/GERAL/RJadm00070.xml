@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="10/04/2017 16:03" nome="RJadm00070">
+  <layout>
+    <componente classe="component/page" nome="RJadm00070">
+      <propriedades>
+        <propriedade nome="title" valor="Envio de Email a Grupo por Ação"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt; Selecione o tipos de beneficiário para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente. &lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/panelu" nome="panFiltro">
+                  <propriedades>
+                    <propriedade nome="title" valor="Filtros de pesquisa"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcIdFuncional">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Id,Nome"/>
+                        <propriedade nome="caption" valor="Id. Funcional"/>
+                        <propriedade nome="columnWidths" valor="60,650"/>
+                        <propriedade nome="sql" valor="SELECT E.NUMFUNC, E.NUMFUNC || ' - ' ||  F.NOME AS NOME&#10;FROM PGOV_EMAIL_ACAO E&#10;INNER JOIN FUNCIONARIOS F ON F.NUMERO = E.NUMFUNC&#10;WHERE busca_searchbox_varchar2(E.NUMFUNC, ?, F.NOME, ?) = 1"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdEmailAcao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Servidor/Ação de envio de email"/>
+                    <propriedade nome="sqlParameters" valor="#srcIdFuncional#"/>
+                    <propriedade nome="sqlSelect" valor="select id_email_acao, numfunc, nome, acao, rowid_reg, numfunc || ' - ' || nome as numfunc_nome, email from PGOV_RJADM00070_EMAIL_ACAO&#10;where numfunc = nvl(?, numfunc)&#10;order by nome"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldNumFunc">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Id. Funcional"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="numfunc"/>
+                        <propriedade nome="width" valor="150"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNome">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nome"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="nome"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldAcao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Ação"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="acao"/>
+                        <propriedade nome="width" valor="250"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                      <propriedades>
+                        <propriedade nome="caption" valor="RowIdReg"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldIdEmailAcao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="IdEmailAcao"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="id_email_acao"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFuncNome">
+                      <propriedades>
+                        <propriedade nome="caption" valor="numfunc_nome"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="numfunc_nome"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldEmail">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Email"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="email"/>
+                        <propriedade nome="width" valor="250"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recEmailAcao">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdEmailAcao"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvEmailAcao"/>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfIdFunciona">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id. Funcional"/>
+                                    <propriedade nome="field" valor="numfunc_nome"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfAcao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ação"/>
+                                    <propriedade nome="field" valor="acao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfEmail">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Email"/>
+                                    <propriedade nome="field" valor="email"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfIdEmailAcao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="IdEmailAcao"/>
+                                    <propriedade nome="field" valor="id_email_acao"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="rowid_reg"/>
+                                    <propriedade nome="field" valor="rowid_reg"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfNumFunc">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="NumFunc"/>
+                                    <propriedade nome="field" valor="numfunc"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receEmailAcao">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="pgov_email_acao"/>
+                            <propriedade nome="onEnterEdit" valor="var valor = getParameter('$grdEmailAcao.numfunc$'); if (valor === null || valor == -1 || valor == ''){ Techne.Hades.alerta('É necessário cadastrar um novo registro'); } else{ proceed(); } "/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/searchBox" nome="srcxIdFuncional">
+                                  <propriedades>
+                                    <propriedade nome="argsCaption" valor="Id,Nome"/>
+                                    <propriedade nome="caption" valor="Id. Funcional"/>
+                                    <propriedade nome="columnWidths" valor="60,650"/>
+                                    <propriedade nome="cssClass" valor="searchbox"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="displayProperty" valor="nome"/>
+                                    <propriedade nome="field" valor="numfunc"/>
+                                    <propriedade nome="sql" valor="SELECT F.NUMERO as NUMFUNC, F.NUMERO || ' - ' ||  F.NOME AS NOME&#10;FROM FUNCIONARIOS F&#10;WHERE busca_searchbox_varchar2(F.NUMERO, ?, F.NOME, ?) = 1"/>
+                                    <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="valueProperty" valor="numero"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsAcao">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Ação"/>
+                                    <propriedade nome="displayProperty" valor="descr"/>
+                                    <propriedade nome="field" valor="acao"/>
+                                    <propriedade nome="forceSelection" valor="N"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT ITEM, ITEM DESCR FROM ITEMTABELA WHERE TAB= 'CERG_ENVIO_EMAIL'  ORDER BY 1"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="valueProperty" valor="item"/>
+                                    <propriedade nome="width" valor="310"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbEmail">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Email"/>
+                                    <propriedade nome="field" valor="email"/>
+                                    <propriedade nome="maxLength" valor="200"/>
+                                    <propriedade nome="validators" valor="length(0,200);"/>
+                                    <propriedade nome="width" valor="710"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfIdEmailAcao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="IdEmailAcao"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="id_email_acao"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

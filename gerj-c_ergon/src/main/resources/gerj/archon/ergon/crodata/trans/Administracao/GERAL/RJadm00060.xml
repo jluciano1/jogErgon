@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/20/2017 12:04" nome="RJadm00060">
+  <layout>
+    <componente classe="component/page" nome="RJadm00060">
+      <propriedades>
+        <propriedade nome="title" valor="Índice Reajuste Pensões Previd."/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt; Selecione o tipos de beneficiário para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente. &lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/panelu" nome="panFiltro">
+                  <propriedades>
+                    <propriedade nome="title" valor="Filtros de pesquisa"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcMesReferencia">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Id,Mês Referência"/>
+                        <propriedade nome="caption" valor="Id"/>
+                        <propriedade nome="columnWidths" valor="60,650"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="sql" valor="SELECT ID_INDICE_REFER, to_char(DATA_REFERENCIA, 'mm/yyyy') DATA_REFERENCIA FROM TTGRJ_RJADM00060_INDICE_REFER WHERE busca_searchbox_varchar2(ID_INDICE_REFER, ?, to_char(DATA_REFERENCIA, 'mm/yyyy'), ?) = 1"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="160"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdMesReferencia">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Referência"/>
+                    <propriedade nome="sqlParameters" valor="#srcMesReferencia#"/>
+                    <propriedade nome="sqlSelect" valor="SELECT ID_INDICE_REFER, DATA_REFERENCIA, OBSERVACAO, ROWID_REG &#10;  FROM TTGRJ_RJADM00060_INDICE_REFER&#10;WHERE ID_INDICE_REFER = NVL(?, ID_INDICE_REFER)&#10; ORDER BY DATA_REFERENCIA"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldIdIndiceRefer">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Id"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="id_indice_refer"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDataReferencia">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Mês Referência"/>
+                        <propriedade nome="dataType" valor="DATE"/>
+                        <propriedade nome="field" valor="data_referencia"/>
+                        <propriedade nome="hideDay" valor="S"/>
+                        <propriedade nome="width" valor="315"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldObservacao">
+                      <propriedades>
+                        <propriedade nome="field" valor="observacao"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                      <propriedades>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recDetalhes">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdMesReferencia"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvDetalhes"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDataReferencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Referência"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data_referencia"/>
+                                    <propriedade nome="hideDay" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfObservacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="observacao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor="RowIdReg"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfId">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Id"/>
+                                <propriedade nome="field" valor="id_indice_refer"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receDetalhes">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="tgrj_indice_refer"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbDataReferencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Referência"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="data_referencia"/>
+                                    <propriedade nome="hideDay" valor="S"/>
+                                    <propriedade nome="mask" valor="mm/yyyy"/>
+                                    <propriedade nome="maxLength" valor=""/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbObservacao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Observação"/>
+                                    <propriedade nome="field" valor="observacao"/>
+                                    <propriedade nome="maxLength" valor=""/>
+                                    <propriedade nome="validators" valor="length(0,4000);required();"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfId">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Id"/>
+                                <propriedade nome="field" valor="id_indice_refer"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Índice"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdIndice">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Índice"/>
+                        <propriedade nome="sqlParameters" valor="$grdMesReferencia.id_indice_refer$"/>
+                        <propriedade nome="sqlSelect" valor="SELECT ID_INDICE_REFER, ANO_SUBSEQUENTE, INDICE_CORRECAO, ROWID_REG&#10;FROM TTGRJ_RJADM00060_INDIC_PENSPRV&#10;WHERE ID_INDICE_REFER = ?&#10; ORDER BY ANO_SUBSEQUENTE"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldIIdIndiceRefer">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Id"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="id_indice_refer"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldAnoSubSequente">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Ano"/>
+                            <propriedade nome="field" valor="ano_subsequente"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldIndiceCorrecao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Índice"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="indice_correcao"/>
+                            <propriedade nome="format" valor="decimal09d06"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldIRowIdReg">
+                          <propriedades>
+                            <propriedade nome="caption" valor="RowIdReg"/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recIndice">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdIndice"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvIndice"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfAno">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ano"/>
+                                    <propriedade nome="field" valor="ano_subsequente"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfIndice">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Índice"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="indice_correcao"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfIId">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_indice_refer"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receIndice">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="tgrj_indice_pensprev"/>
+                            <propriedade nome="onEnterEdit" valor="var valor = getParameter('$grdIndice.id_indice_refer$'); if (valor === null || valor == -1 || valor == ''){ Techne.Hades.alerta('É necessário informar o índice para editar um registro'); } else{ proceed(); } "/>
+                            <propriedade nome="onEnterInsert" valor="proceed();&#10;var valor = getParameter('$grdMesReferencia.id_indice_refer$'); if (valor === null || valor == -1 || valor == ''){ Techne.Hades.alerta('É necessário informar o mês referência para editar um registro'); } else{ proceed(); } "/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbAno">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ano"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="ano_subsequente"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="maxLength" valor="4"/>
+                                    <propriedade nome="validators" valor="required();range(1900,3000);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbIndice">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Índice"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="indice_correcao"/>
+                                    <propriedade nome="mask" valor="decimal09d06"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfIId">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_indice_refer"/>
+                                <propriedade nome="initialValue" valor="$grdMesReferencia.id_indice_refer$"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

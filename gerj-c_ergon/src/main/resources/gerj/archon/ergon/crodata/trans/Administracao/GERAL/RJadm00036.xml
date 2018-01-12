@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/09/2017 16:26" nome="RJadm00036">
+  <layout>
+    <componente classe="component/page" nome="RJadm00036">
+      <propriedades>
+        <propriedade nome="title" valor="Consulta Valores RAIS"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o vínculo funcional:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="BtUso01">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente.&lt;/p&gt;&lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <layouts>
+                  <layout>
+                    <bloco classe="component/ERGadm_blk002" nome="blkServidor"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="BtUso02">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/panelu" nome="pnuFiltro"/>
+                <layouts>
+                  <layout tipo="CONT">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxNumVinc">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="funcionario, vinculo"/>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select numero as numvinc2, numero as numvinc from vinculos where numfunc = ?"/>
+                            <propriedade nome="sqlParameters" valor="#blkServidor.srcFunc#"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxAnoBaseFiltro">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="anobase, descricao"/>
+                            <propriedade nome="caption" valor="Ano Base"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select distinct anobase, anobase as descricao from PGOV_VW_RAIS_INFO where busca_searchbox_varchar2(anobase, ?, descricao, ?) = 1"/>
+                            <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                            <propriedade nome="valueMaxLength" valor="4"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxEmpresasFiltro">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="empresa, nome"/>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select empresa, nome from empresas where busca_searchbox_varchar2(empresa, ?, nome, ?) = 1"/>
+                            <propriedade nome="sqlParameters" valor="search.value, search.description&#10;"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxSubEmpresasFiltro">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="codigo, nome"/>
+                            <propriedade nome="caption" valor="Secretaria"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select nome as codigo, nome from subempresas where   busca_searchbox_varchar2(codigo, null, lpad(CODIGO, 4, '0') || ' - '|| nome, ?) = 1"/>
+                            <propriedade nome="sqlParameters" valor="search.description"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbCpfFiltro">
+                          <propriedades>
+                            <propriedade nome="caption" valor="CPF"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="maxLength" valor="11"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/textBox" nome="txbPisPasespFiltro">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pis/Pasep"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="maxLength" valor="40"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdDadosRais">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dados RAIS"/>
+                    <propriedade nome="sqlParameters" valor="#blkServidor.srcFunc#, #sbxNumVinc#, #sbxAnoBaseFiltro#, #sbxEmpresasFiltro#, #sbxSubEmpresasFiltro#,  #txbCpfFiltro#, #txbPisPasespFiltro#"/>
+                    <propriedade nome="sqlSelect" valor="select anobase, numvinc, numfunc, PGOV_VW_RAIS_INFO.NUMFUNC||' - '|| PGOV_VW_RAIS_INFO.NUMVINC || ' - ' || PGOV_VW_RAIS_INFO.NOME as Funcionario, PGOV_VW_RAIS_INFO.CPF, PGOV_VW_RAIS_INFO.PISPASEP, PGOV_VW_RAIS_INFO.DESCRICAO, PGOV_VW_RAIS_INFO.REMUNERAÇÃO, PGOV_VW_RAIS_INFO.HORAS_TRAB, PGOV_VW_RAIS_INFO.HORAS_EXT, PGOV_VW_RAIS_INFO.EMP_CODIGO||' - ' || PGOV_VW_RAIS_INFO.NM_EMPRESA as Empresa, PGOV_VW_RAIS_INFO.SUBEMP_CODIGO||' – ' || PGOV_VW_RAIS_INFO.NM_SECRETARIA as Secretaria, PGOV_VW_RAIS_INFO.COD from PGOV_VW_RAIS_INFO &#10;&#10;&#10;&#10;WHERE PGOV_VW_RAIS_INFO.NUMFUNC = nvl(?, PGOV_VW_RAIS_INFO.NUMFUNC)AND PGOV_VW_RAIS_INFO.NUMVINC= nvl(?, PGOV_VW_RAIS_INFO.NUMVINC)AND anobase = ? AND PGOV_VW_RAIS_INFO.EMP_CODIGO = nvl(?, PGOV_VW_RAIS_INFO.EMP_CODIGO) AND PGOV_VW_RAIS_INFO.NM_SECRETARIA = nvl(TO_CHAR(?), PGOV_VW_RAIS_INFO.NM_SECRETARIA)  AND PGOV_VW_RAIS_INFO.CPF = nvl(?,PGOV_VW_RAIS_INFO.CPF) AND PGOV_VW_RAIS_INFO.pispasep = nvl(?, PGOV_VW_RAIS_INFO.pispasep)&#10;"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldAnoBaseDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Ano Base"/>
+                        <propriedade nome="field" valor="anobase"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFuncionarioDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Funcionário"/>
+                        <propriedade nome="field" valor="funcionario"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCpfDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="CPF"/>
+                        <propriedade nome="field" valor="cpf"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldPisPasepDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Pis/Pasep"/>
+                        <propriedade nome="field" valor="PISPASEP"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDescricaoDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="field" valor="descricao"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldRemuneracaoDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Remuneração"/>
+                        <propriedade nome="field" valor="REMUNERAÇÃO"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldHorasTrabDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Horas Trab."/>
+                        <propriedade nome="field" valor="HORAS_TRAB"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldHorasExtrasDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Hora Extra"/>
+                        <propriedade nome="field" valor="HORAS_EXT"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldEmpresaDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Empresa"/>
+                        <propriedade nome="field" valor="Empresa"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldSecretariaDR">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Secretaria"/>
+                        <propriedade nome="field" valor="secretaria"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCodDR">
+                      <propriedades>
+                        <propriedade nome="field" valor="COD"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFuncDR">
+                      <propriedades>
+                        <propriedade nome="field" valor="numfunc"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdDadosContraCheque">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dados Contra Cheque"/>
+                    <propriedade nome="sqlParameters" valor="$grdDadosRais.COD$, $grdDadosRais.anobase$, $grdDadosRais.numfunc$"/>
+                    <propriedade nome="sqlSelect" valor="select ANOBASE, MES_ANO_DIREITO, MES_FOLHA, NUM_FOL, COMPLEMENTO, FATOR, OBS, VALOR, NUMERO, NUMFUNC, NUMVINC from PGOV_VW_RAIS_FATORES WHERE NUMERO = ? AND ANOBASE = ? AND NUMFUNC = ?"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldMesAnoDireitoCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Competência"/>
+                        <propriedade nome="field" valor="MES_ANO_DIREITO"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldMesFolhaCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Mês Folha"/>
+                        <propriedade nome="field" valor="MES_FOLHA"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFolhaCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nr."/>
+                        <propriedade nome="field" valor="NUM_FOL"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldComplementoCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Complemento"/>
+                        <propriedade nome="field" valor="COMPLEMENTO"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFatorCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Fator"/>
+                        <propriedade nome="field" valor="FATOR"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldObsCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Obs"/>
+                        <propriedade nome="field" valor="OBS"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValorCQ">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor"/>
+                        <propriedade nome="field" valor="VALOR"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumeroCQ">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMERO"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFuncCQ">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMFUNC"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumVincCQ">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMVINC"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdDetalhesFator">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Detalhes Fator"/>
+                    <propriedade nome="sqlParameters" valor="$grdDadosContraCheque.MES_FOLHA$, $grdDadosContraCheque.NUM_FOL$, $grdDadosContraCheque.NUMERO$, $grdDadosContraCheque.FATOR$, $grdDadosContraCheque.NUMFUNC$, $grdDadosContraCheque.NUMVINC$,&#10;$grdDadosContraCheque.COMPLEMENTO$"/>
+                    <propriedade nome="sqlSelect" valor="select RUBRICA, VALOR, MES_FOLHA, NUM_FOL, NUMERO, FATOR, NUMFUNC, NUMVINC, COMPLEMENTO from PGOV_VW_RAIS_FATORES_RUBR WHERE MES_FOLHA = ? AND NUM_FOL = ? AND NUMERO = ? AND FATOR = ? AND NUMFUNC = ? AND NUMVINC = ? AND COMPLEMENTO = ?"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldRubricaDF">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Rubrica"/>
+                        <propriedade nome="field" valor="RUBRICA"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValorDF">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor"/>
+                        <propriedade nome="field" valor="VALOR"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldMesFolhaDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="MES_FOLHA"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFolhaDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUM_FOL"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumeroDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMERO"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFatorDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="FATOR"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumFuncDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMFUNC"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNumVincDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="NUMVINC"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldComplementoDF">
+                      <propriedades>
+                        <propriedade nome="field" valor="COMPLEMENTO"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

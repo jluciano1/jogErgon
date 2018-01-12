@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/11/2017 14:58" nome="RJadm00071">
+  <layout>
+    <componente classe="component/page" nome="RJadm00071">
+      <propriedades>
+        <propriedade nome="title" valor="Lista de Rubrica por Período"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr00">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione a pessoa para visualizar informações:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="btUso00">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número da pessoa desejada, pois esta página consulta apenas informações referentes a uma única pessoa. No campo destinado ao nome da pessoa, você pode digitar parte do nome desejado que o sistema o ajudará a localizar a pessoa mais facilmente.&lt;/p&gt;&lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <bloco classe="component/ERGadm_blk002" nome="blkFuncionario"/>
+              </layout>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="btUso01">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/panelu" nome="pnuRubrica">
+                  <propriedades>
+                    <propriedade nome="frame" valor="S"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="ddsNumVinc">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="Funcionário, Vinculo"/>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select numero as numvinc2, numero as numvinc from vinculos where numfunc = ?"/>
+                            <propriedade nome="sqlParameters" valor="#blkFuncionario.srcFunc#"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxRubrica">
+                          <propriedades>
+                            <propriedade nome="application" valor="C_Ergon"/>
+                            <propriedade nome="argsCaption" valor="Numero, Rubrica"/>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="columnWidths" valor="100,200"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="displayMaxLength" valor="30"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select rubrica, rubrica ||' - '|| nome as nome from RUBRICAS where &#10;busca_searchbox_number(rubrica, ?, rubrica ||' - ' ||nome, ?) = 1 order by nome"/>
+                            <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                            <propriedade nome="width" valor="300"/>
+                            <propriedade nome="widthKey" valor="200"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxDataDe">
+                          <propriedades>
+                            <propriedade nome="application" valor="C_Ergon"/>
+                            <propriedade nome="argsCaption" valor="data, Data de:"/>
+                            <propriedade nome="caption" valor="De:"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="mask" valor="MM/YYYY"/>
+                            <propriedade nome="sql" valor="SELECT TO_CHAR(MESANO,'DD/MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'DD/MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA) &#10;ORDER BY MESANO DESC"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxDataAte">
+                          <propriedades>
+                            <propriedade nome="application" valor="C_Ergon"/>
+                            <propriedade nome="argsCaption" valor="data, Data até:"/>
+                            <propriedade nome="caption" valor="Ate:"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="mask" valor="MM/YYYY"/>
+                            <propriedade nome="sql" valor="SELECT TO_CHAR(MESANO,'DD/MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'DD/MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA) &#10;ORDER BY MESANO DESC"/>
+                            <propriedade nome="width" valor="300"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdListaRubricas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Lista de Rubricas"/>
+                    <propriedade nome="sqlParameters" valor="#blkFuncionario.srcFunc#, #sbxRubrica#, #sbxDataDe#, #sbxDataDe#, #sbxDataAte#, #ddsNumVinc#"/>
+                    <propriedade nome="sqlSelect" valor="SELECT fr.rubrica, fc.numfunc as numfunc, fc.numvinc as numvinc, TO_CHAR(fc.mes_ano,'MM/YYYY') as mes_ano, fc.numero as numero, fr.tipo_rubrica as tipo_rubrica, &#10;TO_CHAR(fr.mes_ano_direito,'MM/YYYY') as ano_direito,   TRIM(fr.complemento ||' '||ERG_INFO_FICHA.TEXTO_INFO('ICC',fr.info)) as complemento, fr.valor as valor_fichas,  decode(fr.desc_vant, 1, 'GANHO', 'DESCONTO') as desc_vant FROM fitabanco fc inner join fichas_rubricas fr ON fc.rubrica = fr.rubrica where numfunc = ? AND fr.rubrica = ? AND ? is not null  AND PACK_HADES.EH_CONCOMITANTE(mes_ano, mes_ano, ?, ?) = 1 AND numvinc = nvl(?, numvinc)"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldVinculo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Vínculo"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="numvinc"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldMesAno">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Mês Ano"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="mes_ano"/>
+                        <propriedade nome="hideDay" valor="S"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldNmFolha">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nº Folha"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="numero"/>
+                        <propriedade nome="maxLength" valor="8"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldComplInfo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Complemento + Info"/>
+                        <propriedade nome="field" valor="complemento"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldTipo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Tipo"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="tipo_rubrica"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDireito">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Direito"/>
+                        <propriedade nome="dataType" valor="VARCHAR"/>
+                        <propriedade nome="field" valor="ano_direito"/>
+                        <propriedade nome="hideDay" valor="S"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldValor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Valor"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="valor_fichas"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldSituacao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Situação"/>
+                        <propriedade nome="field" valor="desc_vant"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

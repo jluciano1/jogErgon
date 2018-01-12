@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/20/2017 15:24" nome="RJadm00097">
+  <layout>
+    <componente classe="component/page" nome="RJadm00097">
+      <propriedades>
+        <propriedade nome="title" valor="Relatorios Agendados"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione um grupo de relatórios:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &#10;&lt;p&gt;&#10;Esta transação tem por finalidade disponibilizar uma consulta das execuções de relatórios agendadas no sistema, bem como cancelar uma execução se necessário.&#10;&#10;&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtExec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="N.Exec"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="mask" valor="number"/>
+                    <propriedade nome="maxLength" valor="15"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txtLote">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Lote"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="mask" valor="number"/>
+                    <propriedade nome="maxLength" valor="15"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dropDownSelect" nome="drpStatus">
+                  <propriedades>
+                    <propriedade nome="addNullOption" valor="S"/>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="displayProperty" valor="display"/>
+                    <propriedade nome="sqlSelect" valor="select item value,item display&#10;  from itemtabela&#10; where tab = 'HAD_STAT_AGEND_RELAT'&#10; order by 1"/>
+                    <propriedade nome="valueProperty" valor="value"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dateBox" nome="dtbIniAgenda">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Agendado em"/>
+                    <propriedade nome="onChanged" valor="setValue('dtbFimAgenda',null)"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dateBox" nome="dtbFimAgenda">
+                  <propriedades>
+                    <propriedade nome="caption" valor=" até "/>
+                    <propriedade nome="onChanged" valor="var ini = getParameter('#dtbIniAgenda#'); &#10;var fim = getParameter('#dtbFimAgenda#'); &#10;var msgVerd = 'Data de término do agendamento deve ser posterior ao início.'; &#10;var msgErr; &#10;Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr);&#10;"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dateBox" nome="dtbIniExec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Executado em"/>
+                    <propriedade nome="onChanged" valor="setValue('dtbFimExec',null)"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/dateBox" nome="dtbFimExec">
+                  <propriedades>
+                    <propriedade nome="caption" valor=" até "/>
+                    <propriedade nome="onChanged" valor="var ini = getParameter('#dtbIniExec#'); &#10;var fim = getParameter('#dtbFimExec#'); &#10;var msgVerd = 'Data de término da execução deve ser posterior ao início.'; &#10;var msgErr; &#10;Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr);&#10;"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="top"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRelat">
+              <propriedades>
+                <propriedade nome="autoRefresh" valor="5"/>
+                <propriedade nome="caption" valor="Agendamento"/>
+                <propriedade nome="idField" valor="rowid_reg"/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlLockTimeout" valor=""/>
+                <propriedade nome="sqlParameters" valor="#txtExec#,#txtExec#,#txtLote#,#txtLote#,#drpStatus#,#dtbIniAgenda#,#dtbIniAgenda#,#dtbFimAgenda#,#dtbFimAgenda#,#dtbIniExec#,#dtbIniExec#,#dtbFimExec#,#dtbFimExec#&#10;"/>
+                <propriedade nome="sqlSelect" valor="select &#10;rowid_reg,&#10;id                     ,&#10;id_lote                , &#10;usuario                , &#10;relatorio              ,&#10;data_hora_f            ,&#10;status                 ,&#10;mensagem               ,&#10;emp_codigo             ,&#10;data_expiracao_f       ,&#10;dias_expiracao         ,&#10;pid                    ,&#10;dtiniexec_f            ,&#10;dtfimexec_f            ,&#10;dtcancel_f             ,&#10;dtcadastro             ,&#10;dtcadastro_f           ,&#10;arquivo                ,&#10;mensagem_report&#10;from  rjadm00097_relat&#10;where (? is null or id=?)&#10; and (? is null or id_lote=?)&#10; and status = nvl(?,status) &#10; and (? is null or data_hora &gt;= ?) &#10; and (? is null or data_hora &lt; (? + 1)) &#10; and (? is null or dtiniexec &gt;= ?) &#10; and (? is null or dtiniexec &lt; (? + 1)) &#10;order by&#10;decode(status, 'EM FILA', 'A', &#10;               'EXECUTANDO', 'B', &#10;               'INTERROMPIDO', 'C', &#10;               'CONCLUIDO', 'D',&#10;               'E'), data_hora, id"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldId">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Execução"/>
+                    <propriedade nome="field" valor="id"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldIdLote">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Lote"/>
+                    <propriedade nome="field" valor="id_lote"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRelatorio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Relatório"/>
+                    <propriedade nome="field" valor="relatorio"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldStatus">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="field" valor="status"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldUsuario">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Usuário"/>
+                    <propriedade nome="field" valor="usuario"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDataHora">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data Execução"/>
+                    <propriedade nome="field" valor="data_hora_f"/>
+                    <propriedade nome="width" valor="130"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtiniexec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Início Exec."/>
+                    <propriedade nome="field" valor="dtiniexec_f"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtfimexec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fim Exec."/>
+                    <propriedade nome="field" valor="dtfimexec_f"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtcancel">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data Cancel."/>
+                    <propriedade nome="field" valor="dtcancel_f"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDiasExpiracao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="dias_expiracao"/>
+                    <propriedade nome="field" valor="dias_expiracao"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtcadastro">
+                  <propriedades>
+                    <propriedade nome="caption" valor="dtcadastro_f"/>
+                    <propriedade nome="field" valor="dtcadastro_f"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldData_Expiracao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="data_expiracao"/>
+                    <propriedade nome="field" valor="data_expiracao_f"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArquivo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="arquivo"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldPid">
+                  <propriedades>
+                    <propriedade nome="caption" valor="pid"/>
+                    <propriedade nome="field" valor="pid"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldEmp_Codigo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="emp_codigo"/>
+                    <propriedade nome="field" valor="emp_codigo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMensagemReport">
+                  <propriedades>
+                    <propriedade nome="field" valor="mensagem_report"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recRelat">
+              <propriedades>
+                <propriedade nome="caption" valor="Dados do relatório"/>
+                <propriedade nome="idField" valor="rowid_reg"/>
+                <propriedade nome="master" valor="grdRelat"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvRelat"/>
+                <layouts>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txtMensagemReport">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Mensagem"/>
+                        <propriedade nome="field" valor="mensagem_report"/>
+                        <propriedade nome="height" valor="200"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="width" valor="900"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelAlign" valor="top"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuOper"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/fileDownload" nome="fldDownload">
+                      <propriedades>
+                        <propriedade nome="application" valor="C_Ergon"/>
+                        <propriedade nome="cssClass" valor="techne-descarregar"/>
+                        <propriedade nome="onClick" valor="var valor = getParameter('$grdRelat.id$');&#10;if (valor === null || valor == -1 || valor == ''){&#10;alert('É necessário selecionar um relatório');&#10;} else {&#10;proceed();  &#10;}"/>
+                        <propriedade nome="paramArquivo" valor=""/>
+                        <propriedade nome="paramNome" valor=""/>
+                        <propriedade nome="paramTipo" valor=""/>
+                        <propriedade nome="parameters" valor="'RJadm00097', null, fldArquivo.checked"/>
+                        <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                        <propriedade nome="text" valor="Download do relatório"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.2"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpStatus2">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Novo Status"/>
+                        <propriedade nome="sqlSelect" valor="SELECT 'CANCELADO' ITEM  FROM DUAL&#10;UNION ALL&#10;SELECT 'EM FILA' ITEM FROM DUAL&#10;"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.55"/>
+                      <propriedade nome="labelWidth" valor="360"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/linkMethod" nome="lnkCancReport">
+                      <propriedades>
+                        <propriedade nome="application" valor="Hades"/>
+                        <propriedade nome="label" valor="Atualizar status do relatório"/>
+                        <propriedade nome="onClick" valor="var valor = getParameter('$grdRelat.id$');&#10;if (valor === null || valor == -1 || valor == ''){&#10;alert('É necessário selecionar um relatório');&#10;} else {&#10;proceed();&#10;invalidate('grdRelat');&#10;}&#10;"/>
+                        <propriedade nome="parameters" valor="fldId.checked, #drpStatus2#"/>
+                        <propriedade nome="rotina" valor="db:tgrj_cancela_report"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.25"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

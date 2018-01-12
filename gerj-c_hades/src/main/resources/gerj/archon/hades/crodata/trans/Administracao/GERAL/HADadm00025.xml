@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/12/2017 14:01" nome="HADadm00025">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="HADadm00025"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSistema"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpGrupo"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcRotina"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRotina"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo_descr"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldArquivo">
+                  <propriedades>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="width" valor="570"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/editorGrid" nome="edt1">
+              <componentes>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtSeq"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtNome_param"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtValor"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtLista"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtCarrega"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtNomeArquivo"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtValorPop"/>
+                <componente ancest="true" classe="component/editorGridField/textBox" nome="txtParam">
+                  <propriedades>
+                    <propriedade nome="grid" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmExecutar"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtNumeroAnt"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdExecRotina">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT SIS,&#10;       GRUPO,&#10;       ROTINA,&#10;       DATA_HORA,&#10;       to_CHAR(DTINIEXEC,'dd/mm/yyyy HH24:MM:SS') DTINIEXEC,&#10;       TO_CHAR(DTFIMEXEC,'dd/mm/yyyy HH24:MM:SS')DTFIMEXEC ,&#10;       pack_exec_rotinas.get_situacao_exec(ID) STATUS,&#10;       ID&#10;  FROM PGOV_AGENDA_ROTINA&#10;   where sis = ?&#10;   and grupo = ?&#10;   and rotina = ?&#10;order by DATA_HORA desc"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSistemaExec">
+                  <propriedades>
+                    <propriedade nome="field" valor="sis"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupoExec">
+                  <propriedades>
+                    <propriedade nome="field" valor="grupo"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRotinaExec"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDataAgendaExec">
+                  <propriedades>
+                    <propriedade nome="field" valor="data_hora"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldHoraIniExec">
+                  <propriedades>
+                    <propriedade nome="field" valor="dtiniexec"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldHoraFimExec">
+                  <propriedades>
+                    <propriedade nome="field" valor="dtfimexec"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSituacao">
+                  <propriedades>
+                    <propriedade nome="field" valor="status"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdExecAudit">
+                  <propriedades>
+                    <propriedade nome="field" valor="id"/>
+                    <propriedade nome="linkParametros" valor=""/>
+                    <propriedade nome="linkTransacao" valor=""/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Agendamento de Execução"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuAgendamento"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbData">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data da execução"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="mask" valor="dd/mm/rrrr hh24:mi"/>
+                                <propriedade nome="validators" valor="required();"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbHora">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Hora da execução"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="mask" valor="time"/>
+                                <propriedade nome="validators" valor="required();"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbDias">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Dias para expiração"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="initialValue" valor="1"/>
+                                <propriedade nome="validators" valor="length(0,3); required();"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.4"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbPeridiocidade">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Periodicidade em dias"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="initialValue" valor="0"/>
+                                <propriedade nome="validators" valor="length(0,3); required();"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbRepeticoes">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Número de repetições"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="initialValue" valor="1"/>
+                                <propriedade nome="validators" valor="length(0,3); required();"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/linkMethod" nome="lkmAgendar">
+                              <propriedades>
+                                <propriedade nome="label" valor="AGENDAR"/>
+                                <propriedade nome="paramMensagem" valor="p_mens"/>
+                                <propriedade nome="parameters" valor="#drpGrupo#, #drpSistema#, $grd1.rotina$, $grd1.arquivo$, #txbDias#, #txbPeridiocidade#, #txbData#, #txbHora#, #txbRepeticoes#"/>
+                                <propriedade nome="rotina" valor="db:tgrj_agenda_rot_proc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

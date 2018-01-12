@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/11/2017 15:52" nome="RJadm00041">
+  <layout>
+    <componente classe="component/page" nome="RJadm00041">
+      <propriedades>
+        <propriedade nome="title" valor="Bloqueio de Regras de Pensão"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="instr01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Preencha os campos para visualizar informações:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="btUso01">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe os filtros abaixo.&lt;/p&gt;&lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltro"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbDtini">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dt. Inicio"/>
+                        <propriedade nome="dataType" valor="DATE"/>
+                        <propriedade nome="validators" valor="length(0,10);required();"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbDtfim">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dt. Fim"/>
+                        <propriedade nome="dataType" valor="DATE"/>
+                        <propriedade nome="validators" valor="length(0,10);"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsLiberacao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Liberação"/>
+                        <propriedade nome="sqlSelect" valor="T|Total|A|Aberta|L|Liberada|"/>
+                        <propriedade nome="validators" valor="required();"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdConsulta">
+              <propriedades>
+                <propriedade nome="caption" valor=""/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlParameters" valor="#txbDtini#, #txbDtfim#, #ddsLiberacao#, #ddsLiberacao#"/>
+                <propriedade nome="sqlSelect" valor="select ROWIDTOCHAR(RP.ROWID) AS ROWID_REG, rp.numfunc ,rp.numvinc,rp.numpens,p.nome as nome_pensionista,f.nome as nome_funcionario,rp.tipopens,rp.dtini,rp.dtfim,rp.flex_campo_13, 'Regras de Pensão' link_regras_pens&#10;from regras_pensao rp&#10;left join funcionarios f on rp.numfunc = f.numero&#10;left join pensionistas p on rp.numpens = p.numero and rp.numfunc = p.numfunc and rp.numvinc = p.numvinc&#10;where (dtini between ? and nvl(?, PACK_ERGON.DATA_MAXIMA))&#9;&#10;and(nvl(rp.flex_campo_13, 'A') = ? OR ? = 'T') &#10;and tipopens = 'PENSÃO PREVID'&#10;&#10;"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNumfunc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nº Func."/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="field" valor="numfunc"/>
+                    <propriedade nome="width" valor="80"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumvinc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="numvinc"/>
+                    <propriedade nome="width" valor="60"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNomeinstituidor">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome instituidor"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="nome_funcionario"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumpens">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nº Pens."/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="numpens"/>
+                    <propriedade nome="width" valor="40"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNomepensionista">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome Pensionista"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="nome_pensionista"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipobenef">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Benef."/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="tipopens"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtinicio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dt. Inicio"/>
+                    <propriedade nome="dataType" valor="DATE"/>
+                    <propriedade nome="field" valor="dtini"/>
+                    <propriedade nome="width" valor="60"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDtfim">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Dt. Fim"/>
+                    <propriedade nome="dataType" valor="DATE"/>
+                    <propriedade nome="field" valor="dtfim"/>
+                    <propriedade nome="width" valor="60"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldLinRegrasPens">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="caption" valor="Regras de Pensão"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="link_regras_pens"/>
+                    <propriedade nome="linkParametros" valor="$grdConsulta.numfunc$, $grdConsulta.numvinc$"/>
+                    <propriedade nome="linkTransacao" valor="Administracao.RJadm00040"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/checkBoxColumn" nome="chkBloqueio">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Bloqueio"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_13"/>
+                    <propriedade nome="width" valor="80"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                  <propriedades>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/linkMethod" nome="lkmBloqueio">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="label" valor="Bloquear Regras"/>
+                    <propriedade nome="onResponse" valor="invalidate('grdConsulta');"/>
+                    <propriedade nome="parameters" valor="fldRowIdReg.checked"/>
+                    <propriedade nome="rotina" valor="db:tgrj_bloqueio_regra_de_pensao"/>
+                  </propriedades>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/linkMethod" nome="lkmDesbloqueio">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="label" valor="Desbloquear Regras"/>
+                    <propriedade nome="onResponse" valor="invalidate('grdConsulta');"/>
+                    <propriedade nome="parameters" valor="fldRowIdReg.checked"/>
+                    <propriedade nome="rotina" valor="db:tgrj_desbloq_regra_de_pensao"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

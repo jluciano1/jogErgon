@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/05/2017 18:33" nome="RJadm00064">
+  <layout>
+    <componente classe="component/page" nome="RJadm00064">
+      <propriedades>
+        <propriedade nome="title" valor="Parametrizar Datas Pagamentos"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout tipo="TAB">
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Parametrização das Datas de Pagamento"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/textPanelGroup" nome="instr01">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techneInstr"/>
+                            <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt; Selecione o tipos de beneficiário para visualizar informações:&lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/textPanel" nome="btUso01">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor="uso"/>
+                                <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente. &lt;/p&gt;&lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="panFiltro">
+                          <propriedades>
+                            <propriedade nome="title" valor="Filtros de pesquisa"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/searchBox" nome="srcEmpresa">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Código,Nome"/>
+                                <propriedade nome="caption" valor="Empresa"/>
+                                <propriedade nome="columnWidths" valor="60,650"/>
+                                <propriedade nome="cssClass" valor="searchboxCaption"/>
+                                <propriedade nome="sql" valor="SELECT EMPRESA, NOME FROM EMPRESAS WHERE busca_searchbox_varchar2(EMPRESA, ?, NOME, ?) = 1"/>
+                                <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                <propriedade nome="width" valor="710"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdEmpresa">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="sqlParameters" valor="#srcEmpresa#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT rowidtochar(rowid) rowid_reg,&#10;  empresa,&#10;  nome,&#10;  fantasia&#10;FROM empresas&#10;WHERE empresa = NVL(?,empresa)&#10;ORDER BY nome"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldRowIdReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldEmpresa">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Empresa"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="empresa"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldNome">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Nome"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="nome"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldFantasia">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Fantasia"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="fantasia"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdDataDePagamento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data de Pagamento"/>
+                            <propriedade nome="sqlParameters" valor="$grdEmpresa.empresa$"/>
+                            <propriedade nome="sqlSelect" valor="SELECT rowidtochar(rowid) rowid_reg,&#10;  dia_ativo,&#10;  dia_inativo,&#10;  id_dia_pagamento,&#10;  emp_codigo,&#10;  descricao&#10;FROM pgov_rjadm00064_dia_pagamento&#10;WHERE emp_codigo = ?"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldRowIdRegDataDePag">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDiaAtivo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Dia Ativo"/>
+                                <propriedade nome="field" valor="dia_ativo"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDiaInativo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Dia Inativo"/>
+                                <propriedade nome="field" valor="dia_inativo"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdDiaPag">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="id_dia_pagamento"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldEmpCodDataDePag">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="emp_codigo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDescricao">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Descrição"/>
+                                <propriedade nome="field" valor="descricao"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/textPanelGroup" nome="instr02">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techneInstr"/>
+                            <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/textPanel" nome="btUso02">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor="uso"/>
+                                <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recParametrizacaoDatasPagamento">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdDataDePagamento"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvParametrizacaoDatasPagamento"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDescricao">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Empresa"/>
+                                        <propriedade nome="field" valor="descricao"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDiaAtivo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Dia Ativo"/>
+                                        <propriedade nome="field" valor="dia_ativo"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfCodigoEmp">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="emp_codigo"/>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfIdDiaPagamento">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="id_dia_pagamento"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="id_dia_pagamento"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDiaInativo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Dia Inativo"/>
+                                        <propriedade nome="field" valor="dia_inativo"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/recordPanelEdit" nome="receParametrizacaoDatasPagamento">
+                              <propriedades>
+                                <propriedade nome="dataTable" valor="pgov_dia_pagamento"/>
+                                <propriedade nome="onEnterEdit" valor="var valor = getParameter('$grdDataDePagamento.id_dia_pagamento$');&#10;var descricao = getParameter('$grdDataDePagamento.descricao$');&#10;&#10;if (valor === null || valor == -1 || valor == '') {&#10;    Techne.Hades.alerta('É necessário selecionar um atributo em Data de Pagamento.');&#10;} else {&#10;    proceed();&#10;}&#10;&#10;setValue('txbDescricao', descricao);"/>
+                                <propriedade nome="onEnterInsert" valor="var valor = getParameter('$grdEmpresa.empresa$');&#10;var nome  = getParameter('$grdEmpresa.nome$');&#10;&#10;if (valor === null || valor == -1 || valor == '') {&#10;    Techne.Hades.alerta('É necessário cadastrar uma empresa.');&#10;} else {&#10;    proceed();&#10;}&#10;setValue('txbDescricao', valor+' - '+nome);"/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbDescricao">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Empresa"/>
+                                        <propriedade nome="readOnly" valor="S"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/hiddenField" nome="hidfEmpCodigo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor=""/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                        <propriedade nome="initialValue" valor="$grdEmpresa.empresa$"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/hiddenField" nome="hidfIdDiaPagamento">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="id_dia_pagamento"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="id_dia_pagamento"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="ddsDiaAtivo">
+                                      <propriedades>
+                                        <propriedade nome="addNullOption" valor="S"/>
+                                        <propriedade nome="caption" valor="Dia Ativo"/>
+                                        <propriedade nome="displayProperty" valor="item"/>
+                                        <propriedade nome="field" valor="dia_ativo"/>
+                                        <propriedade nome="forceSelection" valor="N"/>
+                                        <propriedade nome="sqlSelect" valor="select 1 id, 'Sim' valor, 'Sim' item from dual union&#10;select 2 id, 'PRIMEIRO - Primeiro dia útil' valor, 'PRIMEIRO - Primeiro dia útil' item from dual union&#10;select 3 id, 'SEGUNDO - Segundo dia útil' valor, 'SEGUNDO - Segundo dia útil' item from dual union&#10;select 4 id, 'ULTIMO - Último dia útil' valor, 'ULTIMO - Último dia útil' item from dual union&#10;select 5 id, 'PENULTIMO - Penúltimo dia útil' valor, 'PENULTIMO - Penúltimo dia útil' item from dual"/>
+                                        <propriedade nome="valueProperty" valor="valor"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="ddsDiaInativo">
+                                      <propriedades>
+                                        <propriedade nome="addNullOption" valor="S"/>
+                                        <propriedade nome="caption" valor="Dia Inativo"/>
+                                        <propriedade nome="displayProperty" valor="item"/>
+                                        <propriedade nome="field" valor="dia_inativo"/>
+                                        <propriedade nome="forceSelection" valor="N"/>
+                                        <propriedade nome="sqlSelect" valor="select 1 id, 'Sim' valor, 'Sim' item from dual union&#10;select 2 id, 'PRIMEIRO - Primeiro dia útil' valor, 'PRIMEIRO - Primeiro dia útil' item from dual union&#10;select 3 id, 'SEGUNDO - Segundo dia útil' valor, 'SEGUNDO - Segundo dia útil' item from dual union&#10;select 4 id, 'ULTIMO - Último dia útil' valor, 'ULTIMO - Último dia útil' item from dual union&#10;select 5 id, 'PENULTIMO - Penúltimo dia útil' valor, 'PENULTIMO - Penúltimo dia útil' item from dual"/>
+                                        <propriedade nome="valueProperty" valor="valor"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="1"/>
+                                      <propriedade nome="labelWidth" valor="120"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Parametrização das Datas de Pagamento Pensionistas"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdParametrizacaoDatasPagamentoPensionistas">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="sqlSelect" valor="select id_data_pens, mes, mes_ref, grupo_1, grupo_2, grupo_3, grupo_4, grupo_5, rowid_reg from pgov_rjadm00064_data_pens order by mes"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldMesReferencia">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Mês Referência"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="mes_ref"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldGrupo1">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Grupo 1"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="grupo_1"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldGrupo2">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Grupo 2"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="grupo_2"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldGrupo3">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Grupo 3"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="grupo_3"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldGrupo4">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Grupo 4"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="grupo_4"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldGrupo5">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Grupo 5"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="grupo_5"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldRowIdRegPens">
+                              <propriedades>
+                                <propriedade nome="caption" valor="RowIdReg"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldMes">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Mês"/>
+                                <propriedade nome="dataType" valor="VARCHAR"/>
+                                <propriedade nome="field" valor="mes"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldIdDataPens">
+                              <propriedades>
+                                <propriedade nome="caption" valor="id_data_pens"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="id_data_pens"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/textPanelGroup" nome="instr03">
+                          <propriedades>
+                            <propriedade nome="cssClass" valor="techneInstr"/>
+                            <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/textPanel" nome="btUso03">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor="uso"/>
+                                <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recParametrizacaoDatasPagamentoPensionistas">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdParametrizacaoDatasPagamentoPensionistas"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvParametrizacaoDatasPagamentoPensionistas"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfMesReferencia">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Mês Referência"/>
+                                        <propriedade nome="field" valor="mes_ref"/>
+                                        <propriedade nome="width" valor="170"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGrupo1">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 1"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_1"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGrupo2">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 2"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_2"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGrupo3">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 3"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_3"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGrupo4">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 4"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_4"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGrupo5">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 5"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_5"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegPens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor=""/>
+                                    <propriedade nome="field" valor="rowid_reg"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hiddenField" nome="hidvfIdDataPens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="id_data_pens"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="id_data_pens"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/recordPanelEdit" nome="receParametrizacaoDatasPagamentoPensionistas">
+                              <propriedades>
+                                <propriedade nome="dataTable" valor="pgov_data_pens"/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="ddsMesReferencia">
+                                      <propriedades>
+                                        <propriedade nome="addNullOption" valor="S"/>
+                                        <propriedade nome="caption" valor="Mês Referência"/>
+                                        <propriedade nome="displayProperty" valor="mes"/>
+                                        <propriedade nome="field" valor="mes_ref"/>
+                                        <propriedade nome="sqlSelect" valor="select 1 id, 'JANEIRO' valor, 'JANEIRO' as mes from dual union&#10;select 2 id, 'FEVEREIRO' valor, 'FEVEREIRO' as mes from dual union&#10;select 3 id, 'MARÇO' valor, 'MARÇO' as mes from dual union&#10;select 4 id, 'ABRIL' valor, 'ABRIL' as mes from dual union&#10;select 5 id, 'MAIO' valor, 'MAIO' as mes from dual union&#10;select 6 id, 'JULHO' valor, 'JULHO' as mes from dual union&#10;select 7 id, 'JUNHO' valor, 'JUNHO' as mes from dual union&#10;select 8 id, 'AGOSTO' valor, 'AGOSTO' as mes from dual union&#10;select 9 id, 'SETEMBRO' valor, 'SETEMBRO' as mes from dual union&#10;select 10 id, 'OUTUBRO' valor, 'OUTUBRO' as mes from dual union&#10;select 11 id, 'NOVEMBRO' valor, 'NOVEMBRO' as mes from dual union&#10;select 12 id, 'DEZEMBRO' valor, 'DEZEMBRO' as mes from dual"/>
+                                        <propriedade nome="valueProperty" valor="valor"/>
+                                        <propriedade nome="width" valor="170"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGrupo1">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 1"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_1"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGrupo2">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 2"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_2"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGrupo3">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 3"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_3"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGrupo4">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 4"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_4"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGrupo5">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Grupo 5"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="grupo_5"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.3"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfIdDataPens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="id_data_pens"/>
+                                    <propriedade nome="field" valor="id_data_pens"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="08/11/2017 15:28" nome="RJadm00029">
+  <layout>
+    <componente classe="component/page" nome="RJadm00029">
+      <propriedades>
+        <propriedade nome="title" valor="Habilitações"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltroVinc"/>
+            <layouts>
+              <layout>
+                <bloco classe="component/ERGadm_blk001" nome="blk001">
+                  <blocoComponente classe="component/control/value/unbound/hyperLink" nome="blk001.hlkHistorico">
+                    <propriedades>
+                      <propriedade nome="application" valor="Ergon"/>
+                    </propriedades>
+                  </blocoComponente>
+                </bloco>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdHabilitacoes">
+              <propriedades>
+                <propriedade nome="caption" valor="Habilitações"/>
+                <propriedade nome="sqlParameters" valor="#blk001.srcServidores#,#blk001.drpVinculo#"/>
+                <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;  numfunc,&#10;  numvinc,&#10;  disciplina,&#10;  chave,&#10;  descricao,&#10;  codDescr&#10;FROM tgrj_rjadm00029_habilitacoes&#10;WHERE numfunc = ?&#10;AND numvinc   = ?&#10;ORDER BY disciplina"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldRowidReg">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rowid"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumfunc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Funcionário"/>
+                    <propriedade nome="field" valor="numfunc"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumvinc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="field" valor="numvinc"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldChave">
+                  <propriedades>
+                    <propriedade nome="field" valor="chave"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldcodDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Código e Descrição"/>
+                    <propriedade nome="field" valor="codDescr"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDisciplina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina"/>
+                    <propriedade nome="field" valor="disciplina"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;    &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recHabilitacoes">
+              <propriedades>
+                <propriedade nome="caption" valor="Detalhes"/>
+                <propriedade nome="master" valor="grdHabilitacoes"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvHabilitacoes"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfNumfunc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Funcionário"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfNumvinc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="visible" valor="N"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfChave">
+                          <propriedades>
+                            <propriedade nome="field" valor="chave"/>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfcodDescr">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Disciplina"/>
+                            <propriedade nome="field" valor="codDescr"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/hiddenField" nome="hidvfRowidReg">
+                      <propriedades>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanelEdit" nome="receHabilitacoes">
+                  <propriedades>
+                    <propriedade nome="dataTable" valor="TGRJ_HABILITACOES"/>
+                    <propriedade nome="onEnterEdit" valor="var valor = getParameter('#blk001.drpVinculo#'); var atributo_old = getParameter('$grdHabilitacoes.chave$'); if (atributo_old == null || atributo_old == '') { alert('É necessário selecionar um atributo'); &#10;} else { if (valor === null || valor == -1 || valor == '') {&#10;alert('É necessário informar o vínculo do funcionário para incluir um novo registro'); &#10;} else {&#10;setValue('txtTipoDML','U'); &#10;setValue('txtAtributoOld', atributo_old);&#10;setValue('txtEdicao', 1);&#10;proceed();&#10;}&#10;}"/>
+                    <propriedade nome="onEnterInsert" valor="var valor = getParameter('#blk001.drpVinculo#');  if (valor === null || valor == -1 || valor == ''){  alert('É necessário informar o vínculo do funcionário para incluir um novo registro');  } else{  setValue('txtTipoDML','I'); proceed();  }"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/hiddenField" nome="hidfNumfunc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="initialValue" valor="#blk001.srcServidores#"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/hiddenField" nome="hidfNumvinc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="initialValue" valor="#blk001.drpVinculo#"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/hiddenField" nome="hidfChave">
+                          <propriedades>
+                            <propriedade nome="field" valor="chave"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/searchBox" nome="srcDisciplina">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="Código, Descrição"/>
+                            <propriedade nome="caption" valor="Disciplina"/>
+                            <propriedade nome="field" valor="disciplina"/>
+                            <propriedade nome="sql" valor="select disciplina, descricao from rh_disciplinas where busca_searchbox_varchar2(disciplina, ?, descricao, ?)=1 order by 1"/>
+                            <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                            <propriedade nome="validators" valor="required();"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4" data="08/26/2016 14:51" nome="ERGadm00413">
+  <parametros>
+    <parametro ancest="true" id="pProcesso" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00413">
+      <propriedades>
+        <propriedade nome="title" valor="Servidores e Respectivo Avaliador"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcProcesso"/>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="defaults" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="monitorResize" valor="true"/>
+                  <propriedade nome="style" valor=""/>
+                  <propriedade nome="title" valor=""/>
+                  <propriedade nome="width" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoProc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypTipoProc"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisaVinc"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdFunc">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT&#10;PROCESSO, EMP_CODIGO, NUMFUNC, NUMVINC, IDENT_VINC, NOME_FUNC, FLEX_CAMPO_01&#10;FROM TABLE( CAST( ERG_FNC_ERGADM00412_PROM_SERV(?, flag_pack.get_empresa, NULL, NULL, ?, NULL, NULL) AS erg_typ_ergadm00412_tab) )&#10;WHERE erg_mostra_func (NUMFUNC, NUMVINC, flag_pack.get_usuario) = 1&#10;ORDER BY IDENT_VINC"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVinc02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeFunc">
+                  <propriedades>
+                    <propriedade nome="width" valor="260"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc03"/>
+                <componente classe="component/gridPanelField" nome="fldFlex01Setor">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Setor"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="290"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdAval">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT TIPO       ,PROCESSO       ,EMP_CODIGO       ,NUMFUNC                            ,NUMVINC                            ,NUMFUNC_AV       ,NUMVINC_AV       ,IDENT_VINC_AV       ,NOME_FUNC_AV       ,DESCR_IDENT_VINC_AV       ,DTINI       ,DTFIM       ,SETOR                  ,DESCR_SETOR       ,PONDERACAO       ,SITUACAO       ,DESCR_SITUACAO       , FLEX_CAMPO_01, ROWID_REG FROM ERGADM00413_FUNC_AVALIADOR WHERE PROCESSO = ?   AND EMP_CODIGO = ?   AND NUMFUNC = ?   AND NUMVINC = ? ORDER BY TIPO"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso04"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo03"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc04"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc04"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfuncAv02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvincAv02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVincAv02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeFuncAv02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrIdentVincAv02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetor02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrSetor02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPonderacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recp"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recv02"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtTipo02"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtDtini02"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtDtfim02"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtDescrIdentVincAv02"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txtPonderacao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescrSetor"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescrSituacao"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProcesso"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCodigo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumvinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfuncAv"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumvincAv"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSetor"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSituacao"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rece"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbTipo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbDtini"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbDtfim"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="autoHeight" valor="true"/>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="cssClass" valor=""/>
+                          <propriedade nome="defaults" valor=""/>
+                          <propriedade nome="frame" valor="false"/>
+                          <propriedade nome="monitorResize" valor="true"/>
+                          <propriedade nome="style" valor=""/>
+                          <propriedade nome="title" valor=""/>
+                          <propriedade nome="width" valor="418"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <bloco ancest="true" classe="component/ERGadm_blk008" nome="blkVincAv"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbPonderacao"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcSetor"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpSituacao"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo02"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc02"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvinc02"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidProcesso02"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpRequest"/>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/11/2017 17:00" nome="RJadm00069">
+  <parametros>
+    <parametro id="pNumvinc" tipo="NUMBER"/>
+    <parametro id="pNumfunc" tipo="NUMBER"/>
+    <parametro id="pNumpens" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00069">
+      <propriedades>
+        <propriedade nome="title" valor="Dados do Benefício MS605"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o vínculo funcional para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/ERGadm_blk001" nome="blk001"/>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Dados do Benefício"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdDadosBeneficio">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dados do Benefício"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#,#blk001.drpVinculo#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numfunc, numvinc, dt_ini, dt_fim, vl_perc_reajuste, vl_mont, vl_mont_pg_sape, dt_ini_ref, dt_fim_ref, vl_ufir, st_beneficio, total_pago, rowid_reg, st_ben_desc FROM pgov_rjadm00069_benefici_ms605 where numfunc = ? and numvinc = ? order by dt_ini"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldDB_DataInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Início"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_ini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_DataFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Fim"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_fim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_ValorMontanteDevido">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor Montante Devido"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="vl_mont"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="width" valor="170"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_PagoSAPE">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pago pelo SAPE"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="vl_mont_pg_sape"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_PercentualReajustado">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Percentual Reajustado"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="vl_perc_reajuste"/>
+                            <propriedade nome="format" valor="decimal09d06"/>
+                            <propriedade nome="width" valor="170"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_BenDesc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Situação Benefício"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="st_ben_desc"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_SituacaoBeneficio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Situação Benefício"/>
+                            <propriedade nome="field" valor="st_beneficio"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_PeriodoReferencia">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Período de Referência"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_ini_ref"/>
+                            <propriedade nome="width" valor="170"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_A">
+                          <propriedades>
+                            <propriedade nome="caption" valor="à"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_fim_ref"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_RowIdReg">
+                          <propriedades>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_NumFunc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDB_NumVinc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recBeneficio">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdDadosBeneficio"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvBeneficio"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_DataInicio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_DataFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Fim"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_fim"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_ValorMontanteDevido">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Montante Devido"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_mont"/>
+                                    <propriedade nome="format" valor="money"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_PagoSAPE">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pago pelo SAPE"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_mont_pg_sape"/>
+                                    <propriedade nome="format" valor="money"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_PercentualReajustado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Percentual Reajustado"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_perc_reajuste"/>
+                                    <propriedade nome="format" valor="decimal03d02"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_SituacaoBeneficio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Situação Benefício"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="st_ben_desc"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_PeriodoReferencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Período de Referência"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini_ref"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfBE_A">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="à"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_fim_ref"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfBE_NumFunc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numfunc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfBE_NumVinc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numvinc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfBE_RowIdReg">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfBE_ST_benefic">
+                              <propriedades>
+                                <propriedade nome="field" valor="st_beneficio"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receBeneficio">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="pgov_beneficios_ms605"/>
+                            <propriedade nome="onEnterInsert" valor="var numfunc = getParameter('#blk001.srcServidores#');&#10;var numvinc = getParameter('#blk001.drpVinculo#');&#10;if(numfunc == null || numfunc == ''){&#10;Techne.Hades.alerta(&quot;Informar o numero funcional.&quot;);&#10;}&#10;else if(numvinc  == null || numvinc == ''){&#10;Techne.Hades.alerta(&quot;Informar o tipo de vinculo.&quot;);&#10;}&#10;else { proceed();}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_DataInicio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini"/>
+                                    <propriedade nome="onChanged" valor="setValue('txbBE_DataFim',null);"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_DataFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Fim"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_fim"/>
+                                    <propriedade nome="onChanged" valor="var ini = getParameter('#txbBE_DataInicio#'); var fim = getParameter('#txbBE_DataFim#'); var msgVerd = 'Data fim deve ser posterior ao início.'; var msgErr; if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)) { setValue('txbBE_DataFim',null); }"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_ValorMontanteDevido">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Montante Devido"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_mont"/>
+                                    <propriedade nome="mask" valor="money"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="validators" valor="required();length(0, 11)"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_PagoSAPE">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pago pelo SAPE"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_mont_pg_sape"/>
+                                    <propriedade nome="mask" valor="money"/>
+                                    <propriedade nome="validators" valor="length(0,11);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_PercentualReajustado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Percentual Reajustado"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_perc_reajuste"/>
+                                    <propriedade nome="mask" valor="decimal03d02"/>
+                                    <propriedade nome="maxLength" valor="5"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsBE_SituacaoBeneficio">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Situação Benefício"/>
+                                    <propriedade nome="displayProperty" valor="descr"/>
+                                    <propriedade nome="field" valor="st_beneficio"/>
+                                    <propriedade nome="sqlSelect" valor="select '1' idx, 'S' valor, 'S - Sem Processo' descr from dual union&#10;select '2' idx, 'A' valor, 'A - Ativo' descr from dual union&#10;select '3' idx, 'C' valor, 'C - Concluído' descr from dual"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="valueProperty" valor="valor"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_PeriodoReferencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Período de Referência"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini_ref"/>
+                                    <propriedade nome="onChanged" valor="setValue('txbBE_A',null);"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbBE_A">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="à"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_fim_ref"/>
+                                    <propriedade nome="onChanged" valor="var ini = getParameter('#txbBE_PeriodoReferencia#'); var fim = getParameter('#txbBE_A#'); var msgVerd = 'A data final do período atrasado deve ser posterior a data inicial.'; var msgErr; if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)) { setValue('txbBE_A',null); }"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfBE_NumFunc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numfunc"/>
+                                <propriedade nome="initialValue" valor="#blk001.srcServidores#"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfBE_NumVinc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numvinc"/>
+                                <propriedade nome="initialValue" valor="#blk001.drpVinculo#"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Dados dos Descontos"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdDadosDescontos">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dados dos Descontos"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numfunc, numvinc, dt_ini_benef, dt_fim_credito, dt_desc, vl_desc, vl_pago, matricula, dt_migracao, st_pago, obs, rowid_reg FROM pgov_rjadm00069_desconto_ms605&#10;"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldDD_DataDesconto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data do Desconto"/>
+                            <propriedade nome="field" valor="dt_desc"/>
+                            <propriedade nome="width" valor="140"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDD_ValorDesconto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor do Desconto"/>
+                            <propriedade nome="field" valor="vl_desc"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDD_ValorPago">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor Pago"/>
+                            <propriedade nome="field" valor="vl_pago"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDD_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDD_NumVinc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldfDD_RowIdReg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Parcelas Anuais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdParcelasAnuais">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Parcelas Anuais"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#,#blk001.drpVinculo#"/>
+                        <propriedade nome="sqlSelect" valor="select p.numfunc, p.numvinc, p.dt_ini, p.dt_fim, p.vl_perc_parcela, p.vl_parcela, p.nome_beneficio, p.data, p.vl_saldo, p.dtfim, p.dtini, p.rowid_reg&#10;from pgov_rjadm00069_parcelas_ms605 p&#10;where p.numfunc = ? and p.numvinc = ? order by p.dt_ini"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldPA_DataInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Início"/>
+                            <propriedade nome="field" valor="dt_ini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_DataFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Fim"/>
+                            <propriedade nome="field" valor="dt_fim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_ValorParcela">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor da Parcela"/>
+                            <propriedade nome="field" valor="vl_parcela"/>
+                            <propriedade nome="width" valor="140"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_Saldo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Saldo"/>
+                            <propriedade nome="field" valor="vl_saldo"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_DataAtualizaSaldo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Atualização Saldo"/>
+                            <propriedade nome="field" valor="data"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPA_NumVinc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPARowIdReg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Rateio"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRateio">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Rateio da Pensão Especial"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numpens, nome, dtini, dtfim, percentual, numfunc, numvinc, rowid_reg FROM pgov_rjadm00069_regras_pensao"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldRA_Pensionista">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pensionista"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numpens"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_Nome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="nome"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_DataInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Início"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_DataFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Fim"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_Percentual">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Percentual"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="percentual"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_NumFunc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRA_NumVinc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRateioPensaoAlimenticia">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Rateio da Pensão Alimentícia"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numpens, nome, dtini, dtfim, percentual, numfunc, numvinc, rowid_reg FROM pgov_rjadm00069_regras_pensao"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldRP_Pensionista">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pensionista"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numpens"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_Nome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="nome"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_DataInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Início"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_DataFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Fim"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_Percentual">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Percentual"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="percentual"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_NumFunc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_NumVinc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Conc. Benef."/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdConcBenef">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Conc. Benef."/>
+                        <propriedade nome="sqlSelect" valor="SELECT numfunc, numvinc, tipo, dt_ini, dt_fim, perc, valor, dtini_atraso, dtfim_atraso, mesano_pag, vl_atraso, &#10;flag_desligamento, rowidtochar(rowid) rowid_reg FROM pgov_conc_benef_ms605"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldCB_TipoConcessao">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo de Concessão"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="tipo"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_DataInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Início"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_ini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_DataFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Fim"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dt_fim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_Percentual">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Percentual"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="perc"/>
+                            <propriedade nome="format" valor="decimal09d06"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_PeriodoAtrasado">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Período do Atrasado"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtini_atraso"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_A">
+                          <propriedades>
+                            <propriedade nome="caption" valor="À"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="dtfim_atraso"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_MesAnoPagamento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Mês Ano Pagamento"/>
+                            <propriedade nome="dataType" valor="DATE"/>
+                            <propriedade nome="field" valor="mesano_pag"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="width" valor="160"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_ValorAtrasado">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor Atrasado"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="vl_atraso"/>
+                            <propriedade nome="format" valor="money"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_NumFunc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_NumVinc">
+                          <propriedades>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCB_RowIdReg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recConcBenef">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdConcBenef"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvConcBenef"/>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_TipoConcessao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo de Concessão"/>
+                                    <propriedade nome="field" valor="tipo"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_DataInicio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_DataFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Fim"/>
+                                    <propriedade nome="field" valor="dt_fim"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_Percentual">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Percentual"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="perc"/>
+                                    <propriedade nome="format" valor="decimal03d02"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_PeriodoAtrasado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Período do Atrasado"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtini_atraso"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_A">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="À"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtfim_atraso"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_MesAnoPagamento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Ano Pagamento"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="mesano_pag"/>
+                                    <propriedade nome="hideDay" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfCB_ValorAtrasado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Atrasado"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_atraso"/>
+                                    <propriedade nome="format" valor="money"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="124"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/linkMethod" nome="lkmCB_GerarValorRetroativo">
+                                  <propriedades>
+                                    <propriedade nome="application" valor="C_Ergon"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="label" valor="Gerar Valor Retroativo"/>
+                                    <propriedade nome="onClick" valor="var numfunc = getParameter('$grdConcBenef.numfunc$');&#10;var numvinc = getParameter('$grdConcBenef.numvinc$');&#10;getControl('recConcBenef').setDateFormat('d/m/Y', 'txfCB_DataFim');&#10;if((numfunc == null || numfunc == '') &amp;&amp; (numvinc  == null || numvinc == '')){&#10;Techne.Hades.alerta(&quot;Selecione um registro de concessão de beneficio.&quot;);&#10;}&#10;else { proceed();}"/>
+                                    <propriedade nome="paramMensagem" valor="p_mens"/>
+                                    <propriedade nome="parameters" valor="#hidvfCB_NumFunc#,#hidvfCB_NumVinc#,#txfCB_TipoConcessao#,#txfCB_DataFim#"/>
+                                    <propriedade nome="rotina" valor="db:ttgrj_dml_rjadm00069_Gerar"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/htmlControl" nome="htmCB">
+                                  <propriedades>
+                                    <propriedade nome="html" valor="&lt;div class=&quot;techne-info-painel&quot;&gt;Parametrizações:&lt;/div&gt;"/>
+                                    <propriedade nome="visible" valor="false"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfCB_NumFunc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numfunc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfCB_NumVinc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numvinc"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfRowIdReg">
+                              <propriedades>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receConcBenef">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="pgov_conc_benef_ms605"/>
+                            <propriedade nome="onEnterInsert" valor="var numfunc = getParameter('#blk001.srcServidores#');&#10;var numvinc = getParameter('#blk001.drpVinculo#');&#10;if(numfunc == null || numfunc == ''){&#10;Techne.Hades.alerta(&quot;Informar o numero funcional.&quot;);&#10;}&#10;else if(numvinc  == null || numvinc == ''){&#10;Techne.Hades.alerta(&quot;Informar o tipo de vinculo.&quot;);&#10;}&#10;else { proceed();}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsCB_TipoConcessao">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Tipo de Concessão"/>
+                                    <propriedade nome="displayProperty" valor="descr"/>
+                                    <propriedade nome="field" valor="tipo"/>
+                                    <propriedade nome="sqlSelect" valor="select '1' idx, 'MENSAL MS605' valor, 'MENSAL MS605' descr from dual union &#10;select '2' idx, 'ATRASADO MS605' valor, 'ATRASADO MS605' descr from dual"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="valueProperty" valor="valor"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_DataInicio">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Início"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_ini"/>
+                                    <propriedade nome="onChanged" valor="setValue('txbCB_DataFim',null);&#10;var ini = getParameter('#txbCB_DataInicio#');&#10;var atr = getParameter('#txbCB_PeriodoAtrasado#');&#10;&#10;var msgVerd = 'Periodo do Atraso deve ser anterior a data início.'; &#10;var msgErr; &#10;if(Techne.Hades.comparaDatas(ini, atr, '&lt;', msgVerd, msgErr)) {&#10; setValue('txbCB_DataInicio',null); &#10;}&#10;"/>
+                                    <propriedade nome="required" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_DataFim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Fim"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dt_fim"/>
+                                    <propriedade nome="onChanged" valor="var ini = getParameter('#txbCB_DataInicio#'); var fim = getParameter('#txbCB_DataFim#'); var msgVerd = 'Data fim deve ser posterior a data início.'; var msgErr; if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)) { setValue('txbCB_DataFim',null); }"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_Percentual">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Percentual"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="perc"/>
+                                    <propriedade nome="mask" valor="decimal03d02"/>
+                                    <propriedade nome="validators" valor="length(0,15);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_PeriodoAtrasado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Período do Atrasado"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtini_atraso"/>
+                                    <propriedade nome="onChanged" valor="setValue('txbCB_A',null);&#10;var ini = getParameter('#txbCB_DataInicio#');&#10;var atr = getParameter('#txbCB_PeriodoAtrasado#');&#10;&#10;var msgVerd = 'Periodo do Atraso deve ser anterior a data início.'; &#10;var msgErr; &#10;if(Techne.Hades.comparaDatas(ini, atr, '&lt;', msgVerd, msgErr)) {&#10; setValue('txbCB_PeriodoAtrasado',null); &#10;}&#10;"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_A">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="À"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="dtfim_atraso"/>
+                                    <propriedade nome="onChanged" valor="var ini = getParameter('#txbCB_PeriodoAtrasado#'); var fim = getParameter('#txbCB_A#'); var msgVerd = 'A data final do período atrasado deve ser posterior a data inicial.'; var msgErr; if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)) { setValue('txbCB_A',null); }"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_MesAnoPagamento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Ano Pagamento"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="mesano_pag"/>
+                                    <propriedade nome="hideDay" valor="S"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbCB_ValorAtrasado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Atrasado"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="vl_atraso"/>
+                                    <propriedade nome="mask" valor="money"/>
+                                    <propriedade nome="validators" valor="length(0,11);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfCB_NumFunc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numfunc"/>
+                                <propriedade nome="initialValue" valor="#blk001.srcServidores#"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfCB_NumVinc">
+                              <propriedades>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numvinc"/>
+                                <propriedade nome="initialValue" valor="#blk001.drpVinculo#"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

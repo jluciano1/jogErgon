@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="09/22/2017 17:31" nome="ERGadm00218_POPUP">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumvinc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pMesAno"/>
+    <parametro ancest="true" id="pNumpens" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumdep" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00218_POPUP"/>
+    <layouts>
+      <layout tipo="CONT">
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbMesAno"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbNumfunc"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbNumvinc"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbNumpens"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbNumdep"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdFolha">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#txbMesAno#,#txbMesAno#,#txbMesAno#,#txbMesAno#,#txbNumfunc#,#txbNumvinc#,#txbNumpens#,#txbNumpens#,#txbNumdep#,#txbNumdep#"/>
+                <propriedade nome="sqlSelect" valor="SELECT f.numero&#10;     , f.info&#10;     , f.mes_ano&#10;     , f.emp_codigo&#10;     , f.emp_codigo||' - '||h.nome empresa&#10;FROM  (SELECT numero numero, emp_codigo, mes_ano, 'Folha primária' info&#10;       FROM   folhas_emp fe, tipo_folha tp&#10;       WHERE  to_char(mes_ano,'MM/YYYY') = ?&#10;       AND    fe.tipo_folha = tp.tipo&#10;       AND    tp.prevalencia = 'P'&#10;         UNION ALL&#10;       SELECT DISTINCT numero_sec numero, emp_codigo, mes_ano, 'Folha secundária da folha '||numero info&#10;       FROM   folhas_emp&#10;       WHERE  to_char(mes_ano,'MM/YYYY') = ?&#10;       AND    numero_sec IS NOT NULL&#10;         UNION ALL&#10;       SELECT DISTINCT numero_terc numero, emp_codigo, mes_ano, 'Folha terciária da folha '||numero info&#10;       FROM   folhas_emp&#10;       WHERE  to_char(mes_ano,'MM/YYYY') = ?&#10;       AND    numero_terc IS NOT NULL&#10;      ) f&#10;      , had_vw_usuario_empresa h&#10;WHERE f.emp_codigo = h.empresa&#10;AND   h.USUARIO = flag_pack.get_usuario&#10;AND   ERG_MOSTRA_FOLHA(mes_ano, numero, emp_codigo, flag_pack.get_usuario, flag_pack.get_role) = 1&#10;AND   EXISTS (SELECT NULL &#10;              FROM   fitabanco fb &#10;              WHERE  to_char(fb.mes_ano,'MM/YYYY') = ? &#10;              AND    fb.numero     = f.numero&#10;              AND    fb.emp_codigo    = f.emp_codigo&#10;              AND    fb.numfunc       = ?&#10;              AND    fb.numvinc       = ?&#10;              AND   (fb.numpens       = ? or ? IS NULL)&#10;              AND    fb.numdepen      = ? or (? IS NULL AND fb.numdepen IS NOT NULL)&#10;             )&#10;ORDER BY f.mes_ano, f.numero, f.emp_codigo"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumFolha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMesAno"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCod"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpresa"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInfo"/>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="11/09/2017 11:59" nome="RJadm00042">
+  <layout>
+    <componente classe="component/page" nome="RJadm00042">
+      <propriedades>
+        <propriedade nome="title" valor="Consulta Benefícios por Beneficiários"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/panelu" nome="panFiltros">
+                  <propriedades>
+                    <propriedade nome="title" valor="Filtros de pesquisa"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbx_IdPensionista">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="Id,Id Pensionista - CPF - Nome"/>
+                            <propriedade nome="caption" valor="Id Pensionista ou CPF"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="onAfterSearch" valor="setValue('sbx_ouCPF',null);"/>
+                            <propriedade nome="sql" valor="select distinct f.numero id, 'Id: '||p.flex_campo_04 ||' - CPF: '||p.cpf||' - '||p.nome descr&#10;from funcionarios f, pensionistas p, &#10;(select r.* from regras_pensao r where r.tipopens = 'pensão previd') r &#10;where f.numero = p.numfunc &#10;and p.numfunc = r.numfunc (+)&#10;and p.numvinc = r.numvinc (+)&#10;and p.numero = r.numpens (+)&#10;and (busca_searchbox_number(f.numero, ?, NVL(p.flex_campo_04, ' '), ?) = 1 &#10;or busca_searchbox_number(f.numero, ?, NVL(p.cpf, -1), ?) = 1)"/>
+                            <propriedade nome="sqlParameters" valor="search.value,search.description,search.value,search.description"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="cssClass" valor="technePagina"/>
+                  <propriedade nome="title" valor="Dados Instituidor"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdDadosInstituidor">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dados Instituidor"/>
+                        <propriedade nome="sqlParameters" valor="#sbx_IdPensionista#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numfunc,&#10;       numvinc,&#10;       flex_campo_04,&#10;       nome,&#10;       cpf,&#10;       flex_campo_21,&#10;       emp_codigo,&#10;       matricula,&#10;       categoria,&#10;       desc_flex_campo_21,&#10;       dtaposent,&#10;       tipoapos&#10;FROM pgov_rjadm00042_institui_ms605&#10;where numfunc = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldDI_IdFuncional">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Id Funcional"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_Vínculo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_Nome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_DataObito">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Óbito"/>
+                            <propriedade nome="field" valor="flex_campo_21"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_Origem">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Origem"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_Matricula">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Matrícula"/>
+                            <propriedade nome="field" valor="matricula"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_Categoria">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Categoria"/>
+                            <propriedade nome="field" valor="categoria"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_FormaReajuste">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Forma Reajuste"/>
+                            <propriedade nome="field" valor="desc_flex_campo_21"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_DataAposentadoria">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Aposentadoria"/>
+                            <propriedade nome="field" valor="dtaposent"/>
+                            <propriedade nome="width" valor="140"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDI_TipoAposentadoria">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Aposentadoria"/>
+                            <propriedade nome="field" valor="tipoapos"/>
+                            <propriedade nome="width" valor="140"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recDadosInstituidor">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdDadosInstituidor"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvDadosInstituidor"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_IdFuncional">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id Funcional"/>
+                                    <propriedade nome="field" valor="numfunc"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_Vínculo">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Vínculo"/>
+                                    <propriedade nome="field" valor="numvinc"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_Nome">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome"/>
+                                    <propriedade nome="field" valor="nome"/>
+                                    <propriedade nome="width" valor="340"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_DataObito">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Óbito"/>
+                                    <propriedade nome="dataType" valor="DATE"/>
+                                    <propriedade nome="field" valor="flex_campo_21"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_Origem">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Origem"/>
+                                    <propriedade nome="field" valor="emp_codigo"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_Matricula">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Matrícula"/>
+                                    <propriedade nome="field" valor="matricula"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_Categoria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Categoria"/>
+                                    <propriedade nome="field" valor="categoria"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_FormaReajuste">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Forma Reajuste"/>
+                                    <propriedade nome="field" valor="desc_flex_campo_21"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_DataAposentadoria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Aposentadoria"/>
+                                    <propriedade nome="field" valor="dtaposent"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfDI_TipoAposentadoria">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo Aposentadoria"/>
+                                    <propriedade nome="field" valor="tipoapos"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="cssClass" valor="technePagina"/>
+                  <propriedade nome="title" valor="Pensionistas"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdPensionistas">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Pensionistas"/>
+                        <propriedade nome="sqlParameters" valor="#sbx_IdPensionista#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT numero,&#10;        nome,&#10;        cpf,&#10;        flex_campo_04,&#10;        tipopag,&#10;        banco,&#10;        agencia,&#10;        conta,&#10;        flex_campo_50,&#10;        flex_campo_49,&#10;        numfunc,&#10;        numvinc&#10;   FROM pgov_rjadm00042_pensioni_ms605&#10;where numfunc = ?"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldPE_NumPensionista">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nº Pens."/>
+                            <propriedade nome="field" valor="numero"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_Nome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="width" valor="150"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_CPF">
+                          <propriedades>
+                            <propriedade nome="caption" valor="CPF"/>
+                            <propriedade nome="field" valor="cpf"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_IdPens">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Id Pens."/>
+                            <propriedade nome="field" valor="flex_campo_04"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_TipoPag">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Pag."/>
+                            <propriedade nome="field" valor="tipopag"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_Banco">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Banco"/>
+                            <propriedade nome="field" valor="banco"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_Agencia">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Agência"/>
+                            <propriedade nome="field" valor="agencia"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_Conta">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta"/>
+                            <propriedade nome="field" valor="conta"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_AgContaSal">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Ag. Conta Sal."/>
+                            <propriedade nome="field" valor="flex_campo_50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_ContaSal">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Conta Sal."/>
+                            <propriedade nome="field" valor="flex_campo_49"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldPE_NumVinc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recPensionistas">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdPensionistas"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvPensionistas"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_NumPensionista">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nº Pens."/>
+                                    <propriedade nome="field" valor="numero"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_Nome">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome"/>
+                                    <propriedade nome="field" valor="nome"/>
+                                    <propriedade nome="width" valor="320"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_CPF">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="CPF"/>
+                                    <propriedade nome="field" valor="cpf"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_idPens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id Pens."/>
+                                    <propriedade nome="field" valor="flex_campo_04"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_TipoPag">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo Pag."/>
+                                    <propriedade nome="field" valor="tipopag"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_Banco">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Banco"/>
+                                    <propriedade nome="field" valor="banco"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_Agencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Agência"/>
+                                    <propriedade nome="field" valor="agencia"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_Conta">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Conta"/>
+                                    <propriedade nome="field" valor="conta"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_AgContaSal">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ag. Conta Sal."/>
+                                    <propriedade nome="field" valor="flex_campo_50"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfPE_ContaSal">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Conta Sal."/>
+                                    <propriedade nome="field" valor="flex_campo_49"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="cssClass" valor="technePagina"/>
+                  <propriedade nome="title" valor="Regras de Pensão Especial"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRegrasDePensaoEspecial">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Regras de Pensão Especial"/>
+                        <propriedade nome="sqlParameters" valor="$grdDadosInstituidor.numfunc$,$grdDadosInstituidor.numvinc$,$grdPensionistas.numero$,$grdDadosInstituidor.numfunc$,$grdDadosInstituidor.numvinc$,$grdPensionistas.numero$"/>
+                        <propriedade nome="sqlSelect" valor="select dtini,dtfim,tipo_benef,decisao_judicial,percentual,valor,numfunc,numvinc,numpens,info,valor_base from table(cast(ttgorj_rjadm00042(?,?,?) as ttgorj_typ_rjadm00042_tab)) where ? is not null and ? is not null and ? is not null&#10;"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldRP_DtInicio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Dt. Início"/>
+                            <propriedade nome="field" valor="dtini"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_DtFim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Dt. Fim"/>
+                            <propriedade nome="field" valor="dtfim"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_TipoBeneficio">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Benefício"/>
+                            <propriedade nome="field" valor="tipo_benef"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_DecisaoJudicial">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Decisão Judicial"/>
+                            <propriedade nome="field" valor="decisao_judicial"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_Percentual">
+                          <propriedades>
+                            <propriedade nome="caption" valor="%"/>
+                            <propriedade nome="field" valor="percentual"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_Valor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor"/>
+                            <propriedade nome="field" valor="valor"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_Suspenso">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Suspenso?"/>
+                            <propriedade nome="field" valor="info"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_VlrBase">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vlr. Base"/>
+                            <propriedade nome="field" valor="valor_base"/>
+                            <propriedade nome="format" valor="money"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_NumFunc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_NumVinc">
+                          <propriedades>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRP_NumPens">
+                          <propriedades>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/hyperLink" nome="hlk001">
+                      <propriedades>
+                        <propriedade nome="application" valor="C_Ergon"/>
+                        <propriedade nome="text" valor="Histórico Financeiro"/>
+                        <propriedade nome="transacao" valor="Administracao.RJadm00043"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

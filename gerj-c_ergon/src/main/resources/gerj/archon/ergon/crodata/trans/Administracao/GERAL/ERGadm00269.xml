@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/18/2017 19:00" nome="ERGadm00269">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumvinc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pProcesso"/>
+    <parametro ancest="true" id="pDtIni" tipo="DATE"/>
+    <parametro ancest="true" id="pDtFim" tipo="DATE"/>
+    <parametro ancest="true" id="pEtapa"/>
+    <parametro ancest="true" id="pTipoEtapa"/>
+    <parametro ancest="true" id="pAvaliacao"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00269">
+      <propriedades>
+        <propriedade nome="title" valor="Questionário para preenchimento"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuFiltro"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcProcesso">
+                  <propriedades>
+                    <propriedade nome="caption" valor="N° avaliação"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="120"/>
+                </propriedades>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoProc">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Avaliador"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txtFlex04">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Processo físico"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisaVinc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoQuestionario"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdFuncAvaliadores">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#srcProcesso#,#drpTipoQuestionario#,#txbPesquisaVinc#,#txbPesquisaVinc#,#txtFlex04#,#txtFlex04#"/>
+                <propriedade nome="sqlSelect" valor="select processo      , numfunc      , numvinc      , nome      , tipo      , numfunc_av      , nome_chefe      , emp_codigo      , dtini      , dtfim      , ponderacao      , setor      , informacao      , numvinc_av      , situacao      , rowid_reg      , ident_func_avaliado      , ident_func_avaliador      , descr_situacao      , comentario_av      , comentario_func      , descr_ident_vinc_avaliador      , descr_ident_vinc_avaliado, flex_campo_04    from ergadm00269_cerg_erg347   where processo = ?    &#10;and tipo = nvl(?,tipo)    &#10;and erg_mostra_func (numfunc, numvinc, flag_pack.get_usuario) = 1     and acesso_proc_aval (flag_pack.get_usuario, processo, emp_codigo, 'CON') = 'S'    &#10;and ( busca_searchbox_varchar2 (ident_func_avaliado, NULL, ident_func_avaliado ||' - '|| nome, nvl(?,' ')) = 1           or busca_searchbox_varchar2 (ident_func_avaliador, NULL, ident_func_avaliador ||' - '|| nome_chefe, nvl(?,' ')) = 1 )    and emp_codigo = flag_pack.get_empresa &#10;and (? is null OR busca_searchbox_varchar2 (flex_campo_04, NULL, flex_campo_04, ?) = 1)&#10;order by ident_func_avaliado,tipo "/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo avaliador"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNunFunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumVinc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdent_func_avaliado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumFuncAvaliador"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumVincAvaliador"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdent_func_avaliador"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_Avaliador">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome do avaliador"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex04">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Processo físico"/>
+                    <propriedade nome="field" valor="flex_campo_04"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmp_Codigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_Reg"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComentarioAv"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComentarioFunc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrIdentVincAvaliador"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrIdentVincAvaliado"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recFuncPorAval"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvFuncPorAval"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTipoQuest">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo avaliador"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex04">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Processo físico"/>
+                                    <propriedade nome="field" valor="flex_campo_04"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfSituacao"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfAvaliador">
+                              <propriedades>
+                                <propriedade nome="hideDay" valor="S"/>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfComentarioAv">
+                              <propriedades>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfAvaliado">
+                              <propriedades>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfComentarioFunc">
+                              <propriedades>
+                                <propriedade nome="width" valor="705"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidSituacao"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumfunc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumvinc"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProcesso"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCodigo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receFuncPorAval"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txbTipoQuest"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txbFlex04">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Processo físico"/>
+                                    <propriedade nome="field" valor="flex_campo_04"/>
+                                    <propriedade nome="maxLength" valor="20"/>
+                                    <propriedade nome="validators" valor="length(0,20);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcSituacao"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpAvaliador"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txbComentarioAv"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpAvaliado"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txbComentarioFunc"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumfunc02"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidNumvinc02"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidProcesso02"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo02"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Ficha de avaliação"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editorGrid" nome="grdFichaResposta">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Ficha de avaliação"/>
+                        <propriedade nome="controllerAfter" valor="Administracao.ERGadm00269Cust.calculaTotais()"/>
+                        <propriedade nome="sqlSelect" valor="SELECT&#10;  questionario,&#10;  grupo,&#10;  fator,&#10;  item,&#10;  numfunc,&#10;  nome,&#10;  numvinc,&#10;  processo,&#10;  tipo,&#10;  emp_codigo,&#10;  pontos,&#10;  rowid_reg,&#10;  'Ver critérios'                              criterio,&#10;  decode(sql_lista, 0, '', 'Lista de Valores') sql_lista,&#10;  desc_curto,&#10;  flex_campo_01,&#10;  flex_campo_02,&#10;  flex_campo_03,&#10;  flex_campo_04,&#10;  flex_campo_05&#10;FROM ergadm00269_prom_resp_ficha&#10;WHERE&#10;  emp_codigo = flag_pack.get_empresa AND acesso_proc_aval(flag_pack.get_usuario, processo, emp_codigo, 'CON') = 'S' AND&#10;  numfunc = ? AND numvinc = ? AND processo = ? AND tipo = ?&#10;ORDER BY fator"/>
+                      </propriedades>
+                      <componentes>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtRowid_Reg"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtQuestionario">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Questionário"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/dropDownSelect" nome="drpFator"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtPonto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pontuação"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="format" valor=""/>
+                            <propriedade nome="mask" valor=""/>
+                            <propriedade nome="maxLength" valor="2"/>
+                            <propriedade nome="validators" valor=""/>
+                            <propriedade nome="width" valor="110"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtFlex1">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Reconsideração"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="grid" valor="true"/>
+                            <propriedade nome="onClosePopup" valor="var a = getParameter('$txtFlex1.grdLov.valor$'); &#10;var b = getParameter('$txtFlex1.grdLov.desc_curto$');&#10;if (a != null ) &#10;{   setValue('txtFlex1', a);  &#10;    setValue('txtDescr_Curto', b);&#10;}"/>
+                            <propriedade nome="width" valor="110"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtFlex2">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Recurso"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="grid" valor="true"/>
+                            <propriedade nome="onClosePopup" valor="var a = getParameter('$txtFlex2.grdLov.valor$'); &#10;var b = getParameter('$txtFlex2.grdLov.desc_curto$');&#10;if (a != null ) &#10;{   setValue('txtFlex2', a);  &#10;    setValue('txtDescr_Curto', b);&#10;}"/>
+                            <propriedade nome="width" valor="110"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtitem"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtnumfunc"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtnumvinc"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtprocesso"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txttipo"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtEmp_Codigo"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtGrupo">
+                          <propriedades>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtFlex3"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtFlex4">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Processo físico"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtFlex5"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtCriterios"/>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtDescr_Curto">
+                          <propriedades>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente ancest="true" classe="component/editorGridField/textBox" nome="txtListaPontos">
+                          <propriedades>
+                            <propriedade nome="linkParametros" valor="$grdFichaResposta.fator$,$grdFichaResposta.desc_curto$, #ddsFaseProcesso#"/>
+                            <propriedade nome="onClosePopup" valor="var a = getParameter('$txtListaPontos.grdLov.valor$'); &#10;var b = getParameter('$txtListaPontos.grdLov.desc_curto$');&#10;&#10;if (a != null ){&#10;  switch (getParameter('#ddsFaseProcesso#')) {&#10;    case &quot;Reconsideração&quot;:&#10;      setValue('txtFlex1', a); &#10;      setValue('txtDescr_Curto', b);&#10;      break;&#10;    case &quot;Recurso&quot;: &#10;      setValue('txtFlex2', a); &#10;      setValue('txtDescr_Curto', b);&#10;      break;&#10;    default: &#10;      setValue('txtPonto', a);  &#10;      setValue('txtDescr_Curto', b);&#10;  }&#10;}&#10;   "/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuTotal"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbTotPontuacao">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Total pontuação"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.43"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbTotPontos">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="toolTip" valor="Total Pontuação"/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.12"/>
+                              <propriedade nome="labelWidth" valor="15"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbTotRecons">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="toolTip" valor="Pontuação após julgamento do pedido de reconsideração da avaliação."/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.12"/>
+                              <propriedade nome="labelWidth" valor="15"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbTotRecurso">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="toolTip" valor="Pontuação após julgamento do pedido de recurso."/>
+                                <propriedade nome="width" valor="80"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.33"/>
+                              <propriedade nome="labelWidth" valor="1"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Ações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/fileUpload" nome="fileArquivo"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpRequest"/>
+          </layout>
+          <layout>
+            <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsFaseProcesso">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="$grdFuncAvaliadores.processo$"/>
+                <propriedade nome="sqlSelect" valor="select fase, descricao &#10;from PROM_PROCESSO&#10;where processo = ?"/>
+                <propriedade nome="visible" valor="N"/>
+              </propriedades>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

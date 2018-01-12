@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_2" data="10/13/2016 10:49" nome="ERGadm00207">
+  <parametros>
+    <parametro ancest="true" id="pFicha"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00207"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina2"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_abrev">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição da rubrica"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComplemento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo_rubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCompetencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagens"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagensCorrecao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontoCorrecao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInfo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFicha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinha"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panResultado"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="defaults" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="monitorResize" valor="true"/>
+                  <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                  <propriedade nome="title" valor=""/>
+                  <propriedade nome="width" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpVantagem"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpDescontos"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpLiquido"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="autoHeight" valor="true"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="defaults" valor=""/>
+                  <propriedade nome="frame" valor="false"/>
+                  <propriedade nome="monitorResize" valor="true"/>
+                  <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                  <propriedade nome="title" valor=""/>
+                  <propriedade nome="width" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypCompCalc"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

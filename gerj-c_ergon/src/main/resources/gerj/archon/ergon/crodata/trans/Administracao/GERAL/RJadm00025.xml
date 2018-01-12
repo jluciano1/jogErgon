@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/01/2017 14:54" nome="RJadm00025">
+  <layout>
+    <componente classe="component/page" nome="RJadm00025">
+      <propriedades>
+        <propriedade nome="title" valor="Controle de GEE"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="btUso01">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/panelu" nome="pnuAtributoEmpresa"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/searchBox" nome="sbxSiglaAtributo">
+                          <propriedades>
+                            <propriedade nome="argsCaption" valor="GEE, GEE"/>
+                            <propriedade nome="caption" valor="Sigla do Atributo de GEE"/>
+                            <propriedade nome="hideValue" valor="true"/>
+                            <propriedade nome="sql" valor="select GEE, GEE || ' - ' || NOME as NOME from TGRJ_GEE WHERE busca_searchbox_varchar2(gee, ?, nome, ?) = 1 OR busca_searchbox_varchar2(nome, ?, gee, ?) = 1"/>
+                            <propriedade nome="sqlParameters" valor="search.value, search.description, search.value, search.description"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsFiltroEmpresa">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Listar Registros"/>
+                            <propriedade nome="initialValue" valor="1"/>
+                            <propriedade nome="sqlParameters" valor="%empresa%"/>
+                            <propriedade nome="sqlSelect" valor="SELECT 0 EMPRESA, 'Todas as Empresas' NOME FROM DUAL&#10;UNION ALL&#10;SELECT EMPRESA, NOME FROM EMPRESAS WHERE EMPRESA = ? "/>
+                            <propriedade nome="width" valor="250"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout tipo="TAB">
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="GEE"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdGee">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="sqlLockTimeout" valor="0"/>
+                            <propriedade nome="sqlParameters" valor="#sbxSiglaAtributo#&#10;"/>
+                            <propriedade nome="sqlSelect" valor="SELECT gee, dt_criacao, nome, rowid_reg&#10;FROM TGRJ_GEE where gee = nvl(?, gee) order by gee&#10;"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldGee">
+                              <propriedades>
+                                <propriedade nome="caption" valor="GEE"/>
+                                <propriedade nome="field" valor="gee"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldNomeGee">
+                              <propriedades>
+                                <propriedade nome="caption" valor="NOME"/>
+                                <propriedade nome="field" valor="nome"/>
+                                <propriedade nome="width" valor="500"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDtCriacaoGee">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data da Criação"/>
+                                <propriedade nome="field" valor="dt_criacao"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldRowIdRegGee">
+                              <propriedades>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recGeePanel">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdGee"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvGeeView"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfGeeView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Sigla do Atributo de GEE"/>
+                                        <propriedade nome="field" valor="gee"/>
+                                        <propriedade nome="width" valor="200"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfNomeGeeView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Nome do Atributo de GEE"/>
+                                        <propriedade nome="field" valor="nome"/>
+                                        <propriedade nome="width" valor="200"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDtCriacaoGeeView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data da Criação"/>
+                                        <propriedade nome="field" valor="dt_criacao"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegGeeView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor=""/>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/recordPanelEdit" nome="receGeeEdit">
+                              <propriedades>
+                                <propriedade nome="paramMensagem" valor="p_mens"/>
+                                <propriedade nome="rotina" valor="db:tgrj_dmlvw_tgrj_gee"/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbGeeEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Sigla do Atributo de GEE"/>
+                                        <propriedade nome="field" valor="gee"/>
+                                        <propriedade nome="fieldTarget" valor="pb_gee"/>
+                                        <propriedade nome="maxLength" valor="20"/>
+                                        <propriedade nome="required" valor="S"/>
+                                        <propriedade nome="validators" valor="length(0,20)"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbNomeGeeEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Nome do Atributo de GEE"/>
+                                        <propriedade nome="field" valor="nome"/>
+                                        <propriedade nome="fieldTarget" valor="pb_nome"/>
+                                        <propriedade nome="maxLength" valor="60"/>
+                                        <propriedade nome="validators" valor="length(0,60)"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbCriacaoGeeEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data da Criação"/>
+                                        <propriedade nome="dataType" valor="DATE"/>
+                                        <propriedade nome="field" valor="dt_criacao"/>
+                                        <propriedade nome="fieldTarget" valor="pb_dt_criacao"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/hiddenField" nome="hidfRowidReg">
+                                  <propriedades>
+                                    <propriedade nome="field" valor="rowid_reg"/>
+                                    <propriedade nome="fieldTarget" valor="p_rowid_reg"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Detalhes da GEE"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdDetalhesGee">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="sqlParameters" valor="#sbxSiglaAtributo#, #ddsFiltroEmpresa#, #ddsFiltroEmpresa#"/>
+                            <propriedade nome="sqlSelect" valor="select rowidtochar(rowid) as rowid_reg,chave, vantagem, complemento, setor, dtini, dtfim, valor, qtd, fundamentacao_legal, emp_codigo, gee from TGRJ_GEE_VANT where gee = nvl(?, gee) AND emp_codigo = DECODE(?,0,emp_codigo, ?)"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldChaveGeeDtl">
+                              <propriedades>
+                                <propriedade nome="field" valor="chave"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldVantagemGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Atributo"/>
+                                <propriedade nome="field" valor="vantagem"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldCompGeeDtl">
+                              <propriedades>
+                                <propriedade nome="field" valor="complemento"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldSetorGeeDtl">
+                              <propriedades>
+                                <propriedade nome="field" valor="setor"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDtIniGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data Início"/>
+                                <propriedade nome="field" valor="dtini"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldDtFimGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data Fim"/>
+                                <propriedade nome="field" valor="dtfim"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldValorGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Limite"/>
+                                <propriedade nome="field" valor="valor"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldQtdGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Qtd"/>
+                                <propriedade nome="field" valor="qtd"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldFundLegalGeeDtl">
+                              <propriedades>
+                                <propriedade nome="field" valor="fundamentacao_legal"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldEmpCodViewDtl">
+                              <propriedades>
+                                <propriedade nome="field" valor="emp_codigo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldRowIdRegGeeDtl">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recDetalhesGeePanel">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdDetalhesGee"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvDetalhesGeeView"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfChaveGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="chave"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfVantagemGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Atributo"/>
+                                        <propriedade nome="field" valor="vantagem"/>
+                                        <propriedade nome="width" valor="200"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfCompGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="complemento"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfSetorGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="setor"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDtIniGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data Início"/>
+                                        <propriedade nome="field" valor="dtini"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfDtFimGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data Fim"/>
+                                        <propriedade nome="field" valor="dtfim"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfValorGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Limite"/>
+                                        <propriedade nome="field" valor="valor"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfQtdGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Qtd"/>
+                                        <propriedade nome="field" valor="qtd"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfFundLegalGeeDtlView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Fundamentação Legal"/>
+                                        <propriedade nome="field" valor="fundamentacao_legal"/>
+                                        <propriedade nome="width" valor="800"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfEmpCodDtlView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegDtlView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/recordPanelEdit" nome="receDetalhesGeeEdit">
+                              <propriedades>
+                                <propriedade nome="dataTable" valor="TGRJ_GEE_VANT"/>
+                                <propriedade nome="enableDelete" valor="false"/>
+                                <propriedade nome="enableInsert" valor="false"/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbChaveGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="chave"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/searchBox" nome="txbVantagemGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="argsCaption" valor="GEE, GEE"/>
+                                        <propriedade nome="caption" valor="Atributo"/>
+                                        <propriedade nome="columnWidths" valor="50,250"/>
+                                        <propriedade nome="field" valor="vantagem"/>
+                                        <propriedade nome="hideValue" valor="true"/>
+                                        <propriedade nome="sql" valor="select GEE, GEE || ' - ' || NOME as NOME from TGRJ_GEE WHERE busca_searchbox_varchar2(gee, ?, nome, ?) = 1 OR busca_searchbox_varchar2(nome, ?, gee, ?) = 1"/>
+                                        <propriedade nome="sqlParameters" valor="search.value, search.description, search.value, search.description"/>
+                                        <propriedade nome="validators" valor="length(0,20)"/>
+                                        <propriedade nome="width" valor="300"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/searchBox" nome="srcCompGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Complemento"/>
+                                        <propriedade nome="field" valor="complemento"/>
+                                        <propriedade nome="hideValue" valor="true"/>
+                                        <propriedade nome="sql" valor="SELECT ti.info, ti.descricao&#10;  FROM tipo_infoatrib ti&#10; WHERE ti.vantagem = ?&#10;   AND ti.campo_vant = 'INFO1'&#10; ORDER BY 1&#10;"/>
+                                        <propriedade nome="sqlParameters" valor="#txfVantagemGeeDtlView#"/>
+                                        <propriedade nome="width" valor="300"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/searchBox" nome="srcSetorGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="argsCaption" valor="setor, descricao"/>
+                                        <propriedade nome="caption" valor="Setor"/>
+                                        <propriedade nome="field" valor="setor"/>
+                                        <propriedade nome="sql" valor="SELECT distinct h.setor, h.descricao_lov&#10;  FROM chad_hsetor_lov h, empresas e&#10; WHERE &#10; h.emp_codigo = e.empresa&#10;   AND h.emp_codigo = flag_pack.get_empresa&#10;   AND PACK_HADES.mostra_setor(flag_pack.get_usuario, h.setor, h.emp_codigo) = 1 AND busca_searchbox_varchar2(h.setor, ?, h.descricao_lov, ?) = 1&#10;   AND (h.dataini &lt;= ? or ? is null)&#10;   AND NVL(h.datafim, NVL(?, pack_ergon.data_maxima)) &gt;= ?&#10;AND (PACK_HADES.valida_setor(h.setor, ?, ?,flag_pack.get_empresa)  = 1)&#10; ORDER BY 1,2"/>
+                                        <propriedade nome="sqlParameters" valor="search.value, search.description, #txfDtFimGeeDtlView#, #txfDtFimGeeDtlView#, #txfDtFimGeeDtlView#,&#10;#txfDtIniGeeDtlView#, #txfDtIniGeeDtlView#, #txfDtFimGeeDtlView#"/>
+                                        <propriedade nome="width" valor="350"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbDtIniGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data Início"/>
+                                        <propriedade nome="dataType" valor="DATE"/>
+                                        <propriedade nome="field" valor="dtini"/>
+                                        <propriedade nome="maxLength" valor="10"/>
+                                        <propriedade nome="required" valor="S"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbDtFimGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Data Fim"/>
+                                        <propriedade nome="dataType" valor="DATE"/>
+                                        <propriedade nome="field" valor="dtfim"/>
+                                        <propriedade nome="maxLength" valor="10"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbValorGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Limite"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="valor"/>
+                                        <propriedade nome="mask" valor="decimal09d02"/>
+                                        <propriedade nome="maxLength" valor="14"/>
+                                        <propriedade nome="validators" valor="length(0,14)"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbQtdGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Qtd"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="qtd"/>
+                                        <propriedade nome="maxLength" valor="14"/>
+                                        <propriedade nome="validators" valor="length(0,14)"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbFundLegalGeeDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Fundamentação Legal"/>
+                                        <propriedade nome="field" valor="fundamentacao_legal"/>
+                                        <propriedade nome="maxLength" valor="1000"/>
+                                        <propriedade nome="validators" valor="length(0,1000)"/>
+                                        <propriedade nome="width" valor="800"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbEmpCodDtlEdit">
+                                      <propriedades>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                        <propriedade nome="maxLength" valor="2"/>
+                                        <propriedade nome="required" valor="S"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Saldo da GEE"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/gridPanelSelect" nome="grdSaldoGee">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="sqlParameters" valor="#ddsFiltroEmpresa#, #ddsFiltroEmpresa#"/>
+                            <propriedade nome="sqlSelect" valor="select rowidtochar(rowid) as rowid_reg, mesano, entradas, saidas, saldo_disponivel, emp_codigo, chave from TGRJ_GEE_MES where emp_codigo = DECODE(?,0,emp_codigo, ?)"/>
+                          </propriedades>
+                          <componentes>
+                            <componente classe="component/gridPanelField" nome="fldMesAnoGeeSld">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Mês/Ano"/>
+                                <propriedade nome="field" valor="mesano"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldEntradasGeeSld">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Entradas"/>
+                                <propriedade nome="field" valor="entradas"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldSaidasGeeSld">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Saídas"/>
+                                <propriedade nome="field" valor="saidas"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldSaldoDispGeeSld">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Disponível"/>
+                                <propriedade nome="field" valor="saldo_disponivel"/>
+                                <propriedade nome="width" valor="200"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldEmpCodGeeSld">
+                              <propriedades>
+                                <propriedade nome="field" valor="emp_codigo"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldChaveGeeSld">
+                              <propriedades>
+                                <propriedade nome="field" valor="chave"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                            <componente classe="component/gridPanelField" nome="fldRowIdRegGeeSld">
+                              <propriedades>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                                <propriedade nome="grid" valor="false"/>
+                                <propriedade nome="hidden" valor="true"/>
+                              </propriedades>
+                            </componente>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recSaldoGeePanel">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdSaldoGee"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvSaldoGeeView"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfMesAnoGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Mês/Ano"/>
+                                        <propriedade nome="field" valor="mesano"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfEntradasGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Entradas"/>
+                                        <propriedade nome="field" valor="entradas"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfSaidasGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Saídas"/>
+                                        <propriedade nome="field" valor="saidas"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfSaldoGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Saldo Disponível"/>
+                                        <propriedade nome="field" valor="saldo_disponivel"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="CONT">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfEmpCodigoGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfChaveGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="chave"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfRowIdRegGeeSldView">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/recordPanelEdit" nome="receSaldoGeeEdit">
+                              <propriedades>
+                                <propriedade nome="dataTable" valor="TGRJ_GEE_MES"/>
+                                <propriedade nome="enableDelete" valor="false"/>
+                                <propriedade nome="enableInsert" valor="false"/>
+                              </propriedades>
+                            </componente>
+                            <layouts>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbMesAnoGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Mês/Ano"/>
+                                        <propriedade nome="dataType" valor="DATE"/>
+                                        <propriedade nome="field" valor="mesano"/>
+                                        <propriedade nome="hideDay" valor="S"/>
+                                        <propriedade nome="mask" valor="MM/YYY"/>
+                                        <propriedade nome="maxLength" valor="10"/>
+                                        <propriedade nome="required" valor="S"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbEntradasGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Entradas"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="entradas"/>
+                                        <propriedade nome="mask" valor="decimal09d02"/>
+                                        <propriedade nome="maxLength" valor=""/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbSaidasGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Saídas"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="saidas"/>
+                                        <propriedade nome="mask" valor="decimal09d02"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbSaldoGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Saldo Disponível"/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="saldo_disponivel"/>
+                                        <propriedade nome="mask" valor="decimal09d02"/>
+                                        <propriedade nome="required" valor="S"/>
+                                        <propriedade nome="width" valor="100"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbEmpCodigoGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor=""/>
+                                        <propriedade nome="dataType" valor="NUMBER"/>
+                                        <propriedade nome="field" valor="emp_codigo"/>
+                                        <propriedade nome="maxLength" valor="2"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbChaveGeeSldEdit">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor=""/>
+                                        <propriedade nome="field" valor="chave"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

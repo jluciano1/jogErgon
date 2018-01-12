@@ -1,0 +1,61 @@
+<Configuration monitorInterval="5">
+  
+  <Appenders>
+    <Console name="stdout" target="SYSTEM_OUT">
+      <PatternLayout pattern="%-7level %-85class|%-4line : %message%n"/>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <Root level="info" includeLocation="true">
+      <AppenderRef ref="stdout"/>      
+    </Root>
+
+    <!-- 
+     | CronosFramework
+     -->
+    
+    <logger name="techne"                                            level="INFO"  />    
+    <logger name="techne.BeanFactory"                                level="WARN"  />
+    <logger name="techne.control.base.Initializer"                   level="ERROR" />
+    <logger name="techne.control.descriptor"                         level="INFO"  />
+    <logger name="techne.cronos.application.xml"                     level="ERROR" />
+    <logger name="techne.cronos.xml"                                 level="ERROR" />    
+    <logger name="techne.cronos.web.security.xsrf.filter.XSRFFilter" level="ERROR" />
+    <logger name="techne.data.ConnectionBase"                        level="ERROR" />
+    <logger name="techne.layout.LayoutAdjuster"                      level="ERROR" />
+    <logger name="techne.security.ContextSecurityConnection"         level="ERROR" />
+    <logger name="techne.websockets"                                 level="ERROR" />
+    
+
+    <logger name="techne.control.base.Pagina"                        level="DEBUG"  > <MarkerFilter marker="FINEST"                 onMatch="DENY" onMismatch="NEUTRAL" /> </logger>
+    <logger name="techne.control.description.io.DescriptionOutput"   level="TRACE"  > <MarkerFilter marker="CLIENT_ABORT_EXCEPTION" onMatch="DENY" onMismatch="NEUTRAL" /> </logger>    
+    <logger name="techne.data.description.ApplicationDescription"    level="DEBUG"  > <MarkerFilter marker="FINEST"                 onMatch="DENY" onMismatch="NEUTRAL" /> </logger>
+    <logger name="techne.migration.MigrationList"                    level="ERROR"  > <MarkerFilter marker="MIGRATIONS"             onMatch="DENY" onMismatch="NEUTRAL" /> </logger>
+    
+    <!-- 
+     | Hades/Ergon
+     -->
+     
+    <logger name="techne.archon.hades"                               level="INFO" />
+    <logger name="techne.archon.ergon"                               level="INFO" />
+
+    <!-- 
+     | Hibernate
+     -->
+    
+    <logger name="org.hibernate"                                     level="ERROR" />
+
+    <!-- 
+     | SpringFramework
+     -->
+
+    <logger name="org.springframework"                               level="INFO"  />
+    <logger name="org.springframework.cache"                         level="ERROR" />
+    <logger name="org.springframework.beans.factory"                 level="INFO"  />
+    <logger name="org.springframework.context.support"               level="INFO"  />
+    <logger name="org.springframework.context.annotation"            level="INFO"  />
+
+  </Loggers>
+
+</Configuration>

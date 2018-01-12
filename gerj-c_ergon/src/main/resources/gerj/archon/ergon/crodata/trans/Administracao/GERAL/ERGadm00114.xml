@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/20/2017 11:27" nome="ERGadm00114">
+  <parametros>
+    <parametro ancest="true" id="pComissao"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00114">
+      <propriedades>
+        <propriedade nome="title" valor="Reuniões dos Órgãos de Deliberação Coletiva"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="src1"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdComissComissao">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumeroNome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumComissao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeComissao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoComissao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtiniPrev"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfimPrev"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorOrigem"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorOrigemNome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorResp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSetorRespNome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfuncResp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvincResp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFinalidade"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdComissReuniao">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumReuniao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumComissao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeComissao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoReuniao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs12"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdReuniao1"/>
+                <componente classe="component/gridPanelField" nome="fldFlexcampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Modalidade de licitação"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontpubl1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTabela1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTextoPubl"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recComissReuniao"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvComissReuniao"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumComissao1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNomeComissao1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidPontpubl1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTabela1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg1"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfvNumReuniao1"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfvDtini1"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfvTipoReuniao1"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfvQtdReuniao1">
+                                  <propriedades>
+                                    <propriedade nome="width" valor="50"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexcampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Modalidade de licitação"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfvObs1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfvObs12"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receComissReuniao"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidvNumComissao"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hideRowidreg"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtReuniao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDtini1"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDown" nome="drpTipoReuniao1"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtQtdReuniao1"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsFlexcampo01">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Modalidade de licitação"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="fieldTarget" valor="pb_flex_campo_01"/>
+                                    <propriedade nome="sqlSelect" valor="select item SIGLA, DESCR DESCRICAO from itemtabela where tab='CERG_MODAL_LICIT'"/>
+                                    <propriedade nome="width" valor="240"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtObs1"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtObs12"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidePontpubl"/>
+                          </layout>
+                          <layout>
+                            <bloco ancest="true" classe="component/HADadm_blk002" nome="blkNovaPubl"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Publicações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/HADadm_blk001" nome="blkPubl"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdComissReunPart">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumReuniao2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldIdentVincOrd2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomefunc2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDetalhesVinc2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTabela2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumfunc2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumvinc2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrVinc2"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recComissReunPart"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvComissReunPart"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDescrVinc2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfvObs2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumeroReuniao2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCodigo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTabela2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumvinc2"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receComissReunPart"/>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk008" nome="blkVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtObs2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hideNumReuniao2"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuMembro"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmInsMemReun"/>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

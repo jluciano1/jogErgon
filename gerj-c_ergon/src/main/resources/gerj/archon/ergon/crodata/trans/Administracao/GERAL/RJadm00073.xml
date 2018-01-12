@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="09/28/2017 12:25" nome="RJadm00073">
+  <layout>
+    <componente classe="component/page" nome="RJadm00073">
+      <propriedades>
+        <propriedade nome="title" valor="Auditoria Órgão"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco &quot;Parâmetros Auditoria&quot;. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção. Caso você escolha o tipo de auditoria &quot;Operador&quot;, o campo &quot;Operador&quot; deverá ser informado.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltroAuditoria">
+              <propriedades>
+                <propriedade nome="title" valor="Parâmetros Auditoria"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpTipoAuditoria">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Tipo de auditoria"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlSelect" valor="SELECT item AS valor,&#10;  descr&#10;FROM itemtabela&#10;WHERE tab = 'PGOV_TP_AUDITORIA'&#10;AND item1 = 'S'&#10;AND item2 = 'S'&#10;ORDER BY descr"/>
+                        <propriedade nome="validators" valor="required();"/>
+                        <propriedade nome="valueProperty" valor="valor"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcOrgao">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Código,Descrição"/>
+                        <propriedade nome="caption" valor="Órgão"/>
+                        <propriedade nome="sql" valor="SELECT CODIGO,&#10;  NOME&#10;FROM&#10;  (SELECT s.codigo,&#10;    s.nome&#10;  FROM subempresas s,&#10;    empresas e&#10;  WHERE s.emp_codigo  = e.empresa&#10;  AND e.flex_campo_05 = 1&#10;  AND s.nome NOT LIKE 'A DEFINIR%'&#10;  AND s.emp_codigo  = flag_pack.get_empresa&#10;  AND s.emp_codigo &lt;&gt; 83&#10;  AND s.codigo     &lt;&gt; 0&#10;  UNION&#10;  SELECT NULL AS codigo,&#10;    e.nome&#10;  FROM empresas e&#10;  WHERE e.flex_campo_05 = 1&#10;  AND e.nome NOT LIKE 'A DEFINIR%'&#10;  AND (e.empresa = 83&#10;  AND e.empresa IN ( 77,83 )&#10;  OR (e.empresa &lt;&gt; 83&#10;  AND e.empresa &lt;&gt; 1 ))&#10;  )&#10;WHERE busca_searchbox_varchar2(codigo, ?, nome, ?)=1"/>
+                        <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                        <propriedade nome="width" valor="415"/>
+                        <propriedade nome="widthKey" valor="50"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.7"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbPeriodoAuditoria">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Período da Auditoria"/>
+                        <propriedade nome="onChanged" valor="setValue('dtbDataFim', null);"/>
+                        <propriedade nome="required" valor="S"/>
+                        <propriedade nome="toolTip" valor="Data inicial"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbDataFim">
+                      <propriedades>
+                        <propriedade nome="caption" valor="a"/>
+                        <propriedade nome="required" valor="S"/>
+                        <propriedade nome="validators" valor="required();"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/linkMethod" nome="lkmAuditar">
+                      <propriedades>
+                        <propriedade nome="controllerAfter" valor="Administracao.genericos.AtualizaTabelas('grdDadosAuditoria');"/>
+                        <propriedade nome="label" valor="Auditar"/>
+                        <propriedade nome="onClick" valor="var tipo = getParameter('#drpTipoAuditoria#');&#10;var orgao = getParameter('#srcOrgao#');&#10;var operador = getParameter('#srcOperador#');&#10;&#10;var invalidControls = getInvalidControls('dtbPeriodoAuditoria', 'dtbDataFim');&#10;&#10;var ini = getParameter('#dtbPeriodoAuditoria#');&#10;var fim = getParameter('#dtbDataFim#');&#10;&#10;var difDatas = &quot;&quot;;&#10;&#10;if (tipo == &quot;Operador&quot; &amp;&amp; operador === &quot;&quot;) {&#10;    alert('Para este tipo de auditoria, o campo Operador deve ser informado.');&#10;} else if (tipo == &quot;Individual&quot;) {&#10;&#10;    difDatas = (fim - ini) / (1000 * 3600 * 24);&#10;&#10;    if (difDatas &gt; 30) {&#10;        alert(&quot;Período da auditoria não pode ser maior do que 30 dias&quot;);&#10;    } else if (orgao === &quot;&quot;) {&#10;        alert('Para que a consulta retorne resultados, um órgão precisa ser selecionado.');&#10;    } else {&#10;        displayWarningMsg(invalidControls);&#10;    }&#10;} else if (orgao === &quot;&quot;) {&#10;    alert('Para que a consulta retorne resultados, um órgão precisa ser selecionado.');&#10;} else {&#10;&#10;    if (!displayWarningMsg(invalidControls)) {&#10;&#10;        setValue('txbAuditar', 'S');&#10;        setValue('TP_GRUPO', tipo);&#10;        invalidate('drpAuditar');&#10;        proceed();&#10;    }&#10;}"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcOperador">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Nome,Descrição"/>
+                        <propriedade nome="caption" valor="Operador"/>
+                        <propriedade nome="sql" valor="SELECT usuario,&#10;  nomeusuario&#10;FROM usuario&#10;WHERE busca_searchbox_varchar2(usuario,?,nomeusuario,?) = 1&#10;ORDER BY 1"/>
+                        <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                        <propriedade nome="width" valor="422"/>
+                        <propriedade nome="widthKey" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpAuditar">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Auditar"/>
+                        <propriedade nome="displayProperty" valor="descricao"/>
+                        <propriedade nome="sqlSelect" valor="SELECT sysdate valor, sysdate descricao FROM dual"/>
+                        <propriedade nome="valueProperty" valor="valor"/>
+                        <propriedade nome="visible" valor="N"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="TP_GRUPO">
+                      <propriedades>
+                        <propriedade nome="caption" valor="TP_GRUPO"/>
+                        <propriedade nome="initialValue" valor="#drpTipoAuditoria#"/>
+                        <propriedade nome="visible" valor="N"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpUsuario">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Usuario"/>
+                        <propriedade nome="displayProperty" valor="usuario"/>
+                        <propriedade nome="sqlParameters" valor="%usuario%"/>
+                        <propriedade nome="sqlSelect" valor="SELECT privil, usuario FROM usuario WHERE usuario = ?"/>
+                        <propriedade nome="valueProperty" valor="privil"/>
+                        <propriedade nome="visible" valor="N"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdDadosAuditoria">
+              <propriedades>
+                <propriedade nome="caption" valor="Dados de Auditoria"/>
+                <propriedade nome="onChanged" valor="alert('Por favor, refaça a consulta clicando sobre o botão Auditar');"/>
+                <propriedade nome="onRowSelect" valor="alert('teste');"/>
+                <propriedade nome="sqlParameters" valor="%empresa%,#srcOrgao#,#dtbPeriodoAuditoria#,#dtbDataFim#,#TP_GRUPO#,#srcOperador#,#drpAuditar#"/>
+                <propriedade nome="sqlSelect" valor="SELECT auditar,&#10;  transacao,&#10;  tabela,&#10;  inclusao,&#10;  alteracao,&#10;  exclusao,&#10;  total&#10;FROM&#10;  (SELECT sysdate AS auditar,&#10;    transacao,&#10;    tabela,&#10;    inclusao,&#10;    alteracao,&#10;    exclusao,&#10;    total&#10;  FROM TABLE(TTGRJ_RJADM00073(?,?,?,?,?,?))&#10;  )&#10;WHERE auditar = ?"/>
+                <propriedade nome="startSelected" valor="false"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldTransacao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Transação"/>
+                    <propriedade nome="field" valor="transacao"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTabela">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tabelas"/>
+                    <propriedade nome="field" valor="tabela"/>
+                    <propriedade nome="width" valor="415"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldInclusao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Inclusões"/>
+                    <propriedade nome="field" valor="inclusao"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldAlteracao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Alterações"/>
+                    <propriedade nome="field" valor="alteracao"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldExclusao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Exclusões"/>
+                    <propriedade nome="field" valor="exclusao"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTotal">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Total"/>
+                    <propriedade nome="field" valor="total"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_2" data="09/26/2016 09:44" nome="ERGadm00222">
+  <parametros>
+    <parametro ancest="true" id="pFicha"/>
+    <parametro ancest="true" id="pNumdepen"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00222"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select numfita,banco, numdepen, nome, valor, percentual, data_credito, fnc_getnome from ttgrj_ergadm00222_credbanc where ficha = ?  and numdepen = ?   &#10;order by numfita desc, numdepen, banco &#10;"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldnumfita"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldBanco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldnumdepen"/>
+                <componente classe="component/gridPanelField" nome="fldFnc_GetNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome do creditado"/>
+                    <propriedade nome="field" valor="fnc_getnome"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPercentual"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldData_credito"/>
+              </componentes>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

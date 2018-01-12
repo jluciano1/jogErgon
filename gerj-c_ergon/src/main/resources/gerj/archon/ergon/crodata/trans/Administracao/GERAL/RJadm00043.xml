@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/20/2017 15:37" nome="RJadm00043">
+  <parametros>
+    <parametro id="pNumfunc"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00043">
+      <propriedades>
+        <propriedade nome="title" valor="Histórico financeiro de beneficiários"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/ERGadm_blk002" nome="blk002">
+              <blocoComponente classe="component/control/value/unbound/searchBox" nome="blk002.srcFunc">
+                <propriedades>
+                  <propriedade nome="onAfterSearch" valor="if(options.scope._combo.store.data.length ==0){options.scope.setValue('')};"/>
+                  <propriedade nome="validators" valor="length(0,9)"/>
+                </propriedades>
+              </blocoComponente>
+            </bloco>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltroDisc">
+              <propriedades>
+                <propriedade nome="cssClass" valor="technePanelu"/>
+                <propriedade nome="frame" valor="S"/>
+                <propriedade nome="title" valor="Filtro de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="CONT">
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsVinculo">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="addNullText" valor="(Todos)"/>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="sqlParameters" valor="#blk002.srcFunc#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT V.NUMERO cod, V.NUMERO||' - '||V.CATEGORIA descr&#10;FROM VINCULOS V&#10;WHERE V.NUMFUNC = ?&#10;ORDER BY V.NUMERO&#10;"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsPens">
+                          <propriedades>
+                            <propriedade nome="addNullOption" valor="S"/>
+                            <propriedade nome="addNullText" valor="(Todos)"/>
+                            <propriedade nome="caption" valor="Pensionista"/>
+                            <propriedade nome="displayProperty" valor="descr"/>
+                            <propriedade nome="sqlParameters" valor="#blk002.srcFunc#, #ddsVinculo#,#ddsVinculo#,#ddsVinculo#"/>
+                            <propriedade nome="sqlSelect" valor="SELECT P.NUMERO cod, P.NOME descr&#10;FROM PENSIONISTAS P&#10;WHERE P.NUMFUNC = ?&#10;AND ((P.NUMVINC = ? AND ? IS NOT NULL) OR ? IS NULL)&#10;ORDER BY P.NUMERO&#10;"/>
+                            <propriedade nome="valueProperty" valor="cod"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsDtini">
+                          <propriedades>
+                            <propriedade nome="caption" valor="De:"/>
+                            <propriedade nome="sqlSelect" valor="SELECT TO_CHAR(MESANO,'MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = 77 AND PCK_FOLHAS.EH_CONSOLIDADA( MES_ANO, NUMERO, EMP_CODIGO) = 1) &#10;ORDER BY MESANO DESC&#10;"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsDtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Até:"/>
+                            <propriedade nome="sqlSelect" valor="SELECT TO_CHAR(MESANO,'MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = 77 AND PCK_FOLHAS.EH_CONSOLIDADA( MES_ANO, NUMERO, EMP_CODIGO) = 1) &#10;ORDER BY MESANO DESC&#10;"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdFinanPens">
+              <propriedades>
+                <propriedade nome="caption" valor="Histórico financeiro"/>
+                <propriedade nome="controllerAfter" valor="Administracao.RJadm00043.calculaTotais()"/>
+                <propriedade nome="sqlParameters" valor="#blk002.srcFunc#,#ddsVinculo#,#ddsVinculo#,#ddsVinculo#,#ddsPens#,#ddsPens#,#ddsPens#,#ddsDtini#,#ddsDtfim# "/>
+                <propriedade nome="sqlSelect" valor="SELECT FB.NUMVINC,&#10;           FB.NUMPENS,&#10;           FB.NUMDEPEN,&#10;           TO_CHAR(FB.MES_ANO,'MM/YYYY') MES_ANO,&#10;           FB.NUMERO,&#10;           NVL(FB.VALORVAN,0) VALORVAN,&#10;           NVL(FB.VALORDES,0) VALORDES,&#10;           NVL(FB.VALORLIQ,0) VALORLIQ,&#10;           FE.TIPO_FOLHA&#10;    FROM FITABANCO FB, FOLHAS_EMP FE&#10;    WHERE FB.MES_ANO = FE.MES_ANO&#10;    AND FB.NUMERO = FE.NUMERO&#10;    AND FB.EMP_CODIGO = FE.EMP_CODIGO&#10;    AND FB.NUMFUNC = ?&#10;    AND ((FB.NUMVINC = ?  AND ? IS NOT NULL) OR (?  IS NULL))&#10;    AND ((FB.NUMPENS = ? AND ?  IS NOT NULL) OR (?  IS NULL))&#10;    AND FB.MES_ANO BETWEEN '01/'||?  AND '01/'||NVL(?,TO_CHAR(PACK_HADES.DATA_MAXIMA,'mm/yyyy'))&#10;    AND PCK_FOLHAS.EH_CONSOLIDADA(FB.MES_ANO,FB.NUMERO,FB.EMP_CODIGO) = 1&#10;    AND FB.NUMPENS IS NOT NULL&#10;    ORDER BY FB.MES_ANO, FB.NUMERO, FB.NUMVINC, FB.NUMPENS, FB.NUMDEPEN"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNumvinc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="field" valor="numvinc"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumpens">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Pens."/>
+                    <propriedade nome="field" valor="numpens"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumdep">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Depen."/>
+                    <propriedade nome="field" valor="numdepen"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMesAno">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Mês Ano"/>
+                    <propriedade nome="field" valor="mes_ano"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumero">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nº Folha"/>
+                    <propriedade nome="field" valor="numero"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoFolha">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo folha"/>
+                    <propriedade nome="field" valor="tipo_folha"/>
+                    <propriedade nome="width" valor="230"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorVan">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Bruto"/>
+                    <propriedade nome="field" valor="valorvan"/>
+                    <propriedade nome="format" valor="money"/>
+                    <propriedade nome="width" valor="110"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorDes">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Desconto"/>
+                    <propriedade nome="field" valor="valordes"/>
+                    <propriedade nome="format" valor="money"/>
+                    <propriedade nome="width" valor="110"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorLiq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Líquido"/>
+                    <propriedade nome="field" valor="valorliq"/>
+                    <propriedade nome="format" valor="money"/>
+                    <propriedade nome="width" valor="110"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txbTotBruto">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Total:"/>
+                    <propriedade nome="horizontalAlign" valor="right"/>
+                    <propriedade nome="mask" valor="money"/>
+                    <propriedade nome="width" valor="95"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.74"/>
+                  <propriedade nome="labelWidth" valor="640"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txbTotDesc">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="horizontalAlign" valor="right"/>
+                    <propriedade nome="mask" valor="money"/>
+                    <propriedade nome="width" valor="95"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.11"/>
+                  <propriedade nome="labelWidth" valor="1"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txbTotLiq">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="horizontalAlign" valor="right"/>
+                    <propriedade nome="mask" valor="money"/>
+                    <propriedade nome="width" valor="95"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.15"/>
+                  <propriedade nome="labelWidth" valor="1"/>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

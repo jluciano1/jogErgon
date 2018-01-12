@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/14/2017 18:58" nome="ERGadm00218">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc"/>
+    <parametro ancest="true" id="pNumvinc"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00218"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk001" nome="blk001"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcDepen"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="130"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcPens"/>
+                <propriedades>
+                  <propriedade nome="labelWidth" valor="130"/>
+                </propriedades>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpMes_ano"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="130"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkPopUp"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.1"/>
+                      <propriedade nome="labelWidth" valor="40"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtNumFolha"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.2"/>
+                      <propriedade nome="labelWidth" valor="80"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpEmp"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.4"/>
+                      <propriedade nome="labelWidth" valor="80"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/htmlControl" nome="htmResultados"/>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpVantagens"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.2"/>
+                  <propriedade nome="labelWidth" valor="80"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpDescontos"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.2"/>
+                  <propriedade nome="labelWidth" valor="80"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpLiquido"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.2"/>
+                  <propriedade nome="labelWidth" valor="80"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsDtConsol"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpExecucao"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.4"/>
+                  <propriedade nome="labelWidth" valor="80"/>
+                </propriedades>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoFolha"/>
+                <propriedades>
+                  <propriedade nome="columnWidth" valor="0.5"/>
+                  <propriedade nome="labelWidth" valor="76"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRub"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_abrev"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComplemento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo_rubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCompetencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagens"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInfo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFicha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDesc_vant"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldItens_comp_calc"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan2"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/linkReport" nome="lnkContracheque">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor=" techne-descarregar"/>
+                        <propriedade nome="label" valor="IMPRIMIR"/>
+                        <propriedade nome="parameterNames" valor="DESNAME,DESTYPE,DESFORMAT,P_HADUSUARIO,P_HADEMPRESA,P_HADSENHA,P_HADROLE,P_MESANO,P_NUM_FOLHA,P_NUMFUNC,P_NUMVINC,P_NUMDEPEN,P_NUMPENS"/>
+                        <propriedade nome="parameters" valor="null,'cache','pdf',%usuario%,%empresa%,null,null,#drpMes_ano#,#txtNumFolha#,#blk001.srcServidores#,#blk001.drpVinculo#,#srcDepen#,null"/>
+                        <propriedade nome="relatorio" valor="01 RJERGNG"/>
+                        <propriedade nome="relatorioApplication" valor="C_Ergon"/>
+                        <propriedade nome="relatorioGrupo" valor="31 - RJERGNG"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypRub_aux"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypRetidos"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypInfo_pg"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypCredito"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkRet_aux"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkComposicao"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

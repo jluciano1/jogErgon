@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_2" data="10/07/2016 14:58" nome="ERGadm00064">
+  <parametros>
+    <parametro ancest="true" id="pAtributo"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00064"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="autoHeight" valor="true"/>
+          <propriedade nome="border" valor="false"/>
+          <propriedade nome="cssClass" valor="technePagina"/>
+          <propriedade nome="frame" valor="false"/>
+          <propriedade nome="style" valor=""/>
+          <propriedade nome="title" valor=""/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <propriedades>
+              <propriedade nome="autoHeight" valor="true"/>
+              <propriedade nome="border" valor="false"/>
+              <propriedade nome="cssClass" valor=""/>
+              <propriedade nome="frame" valor="false"/>
+              <propriedade nome="style" valor=""/>
+              <propriedade nome="title" valor=""/>
+            </propriedades>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <bloco ancest="true" classe="component/HADadm_blk003" nome="blk003"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/panelu" nome="panFiltros"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="defaults" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="monitorResize" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                      <propriedade nome="title" valor=""/>
+                      <propriedade nome="width" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtFiltroAtributo"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoAtrib"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsulta">
+                  <propriedades>
+                    <propriedade nome="sqlSelect" valor="SELECT VANTAGEM,&#10;       valor,&#10;       empcod,&#10;       empnome,&#10;       NOME,&#10;       tipo,&#10;       ATIVOS,&#10;       INATIVOS,&#10;       MANUAL,&#10;       funcdep2,&#10;       func_dep,&#10;       OBS,&#10;       FALECIDO,&#10;       SOBREPOE,&#10;       RUBRICA,&#10;       APARECE_FICHA_FUNCIONAL,&#10;       VACANCIA,&#10;       APOSENTADORIA,&#10;       LIMITE_MANUAL,&#10;       PONTLEI,&#10;       ROWID_REG,&#10;       nomerubrica,&#10;       link_emp,&#10;       link_valorinfo,&#10;       flex_campo_01,&#10;       flex_campo_02,&#10;       flex_campo_03&#10;  from ERGADM00064_TIPO_VANTAGEM&#10; where busca_searchbox_varchar2('null',null, VANTAGEM||' '||NOME,nvl(?,' ')) = 1&#10;   and func_dep = nvl(?, func_dep)&#10;   and valor = ?&#10; order by vantagem"/>
+                  </propriedades>
+                  <componentes>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldSigla"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNome"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldLinkEmp"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldLinkValorInfo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldTipo"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldAtivos"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldInativos"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldfalecido"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldManual"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldLimite_manual"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldVacancia"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldFichaFunc"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldSobrepoe"/>
+                    <componente ancest="true" classe="component/checkBoxColumn" nome="fldAposentadoria"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRubrica"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldValorAtrib"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCod"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldEmpNome"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldFunc_dep"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldFuncDep2"/>
+                    <componente ancest="true" classe="component/gridPanelField" nome="fldNomeRubrica"/>
+                    <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="flex_01"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFlexCampo02">
+                      <propriedades>
+                        <propriedade nome="caption" valor="flex_02"/>
+                        <propriedade nome="field" valor="flex_campo_02"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldFlexCampo03">
+                      <propriedades>
+                        <propriedade nome="caption" valor="flex_03"/>
+                        <propriedade nome="field" valor="flex_campo_03"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="hidden" valor="true"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="TAB">
+                <propriedades>
+                  <propriedade nome="activeTab" valor="0"/>
+                  <propriedade nome="border" valor="false"/>
+                  <propriedade nome="cssClass" valor=""/>
+                  <propriedade nome="deferredRender" valor="false"/>
+                  <propriedade nome="layoutOnTabChange" valor="true"/>
+                  <propriedade nome="plain" valor="true"/>
+                  <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                  <propriedade nome="width" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor="Detalhes"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="recDados"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recvDados"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfSigla"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfTipo"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescricao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/htmlControl" nome="htm1"/>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfFuncDep"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfLimiteManual"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfAtivos"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfInativos"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfFalecido"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfManual"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfSobrepoe"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfVacancia"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfApareceFichaFunc"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfAposentadoria"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="É GEE?"/>
+                                        <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                        <propriedade nome="field" valor="flex_campo_01"/>
+                                        <propriedade nome="isImageURL" valor="S"/>
+                                        <propriedade nome="width" valor="20"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.25"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfFlexCampo02">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Validade"/>
+                                        <propriedade nome="field" valor="flex_campo_02"/>
+                                        <propriedade nome="width" valor="120"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.5"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfFlexCampo03">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Bloqueia duplicidade?"/>
+                                        <propriedade nome="cssClass" valor="techneCheckBox"/>
+                                        <propriedade nome="field" valor="flex_campo_03"/>
+                                        <propriedade nome="isImageURL" valor="S"/>
+                                        <propriedade nome="width" valor="20"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.25"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/htmlControl" nome="html2"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfRubrica"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvDadosRubrica"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="receDados"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtSigla"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTipo"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtDescricao"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtObs"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/htmlControl" nome="htm2"/>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpFuncDep"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/textBox" nome="txtLimiteManual"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkAtivos"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkInativos"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkFalecido"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkManual"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkSobrepoe"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkVacancia"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkApareceFichaFunc"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/checkBox" nome="chkAposentadoria"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/editField/checkBox" nome="ckbFlexCampo01">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="É GEE?"/>
+                                        <propriedade nome="field" valor="flex_campo_01"/>
+                                        <propriedade nome="initialValue" valor="'N'"/>
+                                        <propriedade nome="width" valor="20"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.25"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/textBox" nome="txbFlexCampo02">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Validade"/>
+                                        <propriedade nome="field" valor="flex_campo_02"/>
+                                        <propriedade nome="mask" valor="number"/>
+                                        <propriedade nome="validators" valor="length(0,2);"/>
+                                        <propriedade nome="width" valor="120"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.5"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/checkBox" nome="ckbFlexCampo03">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Bloqueia duplicidade?"/>
+                                        <propriedade nome="field" valor="flex_campo_03"/>
+                                        <propriedade nome="initialValue" valor="'N'"/>
+                                        <propriedade nome="width" valor="20"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="border" valor="false"/>
+                                      <propriedade nome="columnWidth" valor="0.25"/>
+                                      <propriedade nome="frame" valor="false"/>
+                                      <propriedade nome="labelAlign" valor="left"/>
+                                      <propriedade nome="labelWidth" valor="200"/>
+                                      <propriedade nome="monitorResize" valor="true"/>
+                                      <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/htmlControl" nome="html3"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/searchBox" nome="srcRubrica"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor="Documentos legais"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocs"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor="Validação de atributos"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/panelu" nome="panFiltroValid"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpCategoria"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSubCateg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpRegimeJur"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTipoVinc"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/gridPanelSelect" nome="grdValid">
+                          <componentes>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldVantagem"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldCategoria"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldSubCateg"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldRegimeJur"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldTipoVinc"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldrowid"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="flddescr_regimejur"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="flddescr_categoria"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="flddescr_subcategoria"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="flddescr_tipovinc"/>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout tipo="TAB">
+                        <propriedades>
+                          <propriedade nome="activeTab" valor="0"/>
+                          <propriedade nome="border" valor="false"/>
+                          <propriedade nome="cssClass" valor=""/>
+                          <propriedade nome="deferredRender" valor="false"/>
+                          <propriedade nome="layoutOnTabChange" valor="true"/>
+                          <propriedade nome="plain" valor="true"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 5px'}"/>
+                          <propriedade nome="width" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor="Detalhes"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/recordPanel" nome="recValid"/>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/recordPanelView" nome="recvValid"/>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfCateg"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfSubcateg"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfRegimejur"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfTpVinc"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidcategoria"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidsubcategoria"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidregimejur"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidtipovinc"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvValidRowid_reg"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvvalidVantagem"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/recordPanelEdit" nome="receValid"/>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpCateg"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpSubcategoria"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpRegime"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpTpVinc"/>
+                                      </layout>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/hiddenField" nome="hideValidvantagem"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/panelu" nome="panGeraValid"/>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpCategor"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSubcategor"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpRegimej"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpTpVinculo"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmGera"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/label" nome="lblObs"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="autoHeight" valor="true"/>
+                              <propriedade nome="border" valor="false"/>
+                              <propriedade nome="cssClass" valor=""/>
+                              <propriedade nome="frame" valor="false"/>
+                              <propriedade nome="style" valor=""/>
+                              <propriedade nome="title" valor="Documentos legais"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocValid"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="autoHeight" valor="true"/>
+                      <propriedade nome="border" valor="false"/>
+                      <propriedade nome="cssClass" valor=""/>
+                      <propriedade nome="frame" valor="false"/>
+                      <propriedade nome="style" valor=""/>
+                      <propriedade nome="title" valor="Grupo de atributos"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/panelu" nome="panFiltroGrup"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtFiltroGrupo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/gridPanelSelect" nome="grdGrupAtrib">
+                          <componentes>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldDescr"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldVant"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldRowid_reg"/>
+                            <componente ancest="true" classe="component/gridPanelField" nome="fldemp_codigo"/>
+                          </componentes>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanel" nome="recGrupAtrib"/>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelView" nome="recvGrupAtrib"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/textField" nome="txfDescGrup"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowid"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanelEdit" nome="receGrupAtrib"/>
+                            <layouts>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="autoHeight" valor="true"/>
+                                  <propriedade nome="border" valor="false"/>
+                                  <propriedade nome="cssClass" valor=""/>
+                                  <propriedade nome="defaults" valor=""/>
+                                  <propriedade nome="frame" valor="false"/>
+                                  <propriedade nome="monitorResize" valor="true"/>
+                                  <propriedade nome="style" valor=""/>
+                                  <propriedade nome="title" valor=""/>
+                                  <propriedade nome="width" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/searchBox" nome="srcGrup"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidVantGrup"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/hiddenField" nome="hidRowidEdit"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/14/2017 15:25" nome="RJadm00018_popup">
+  <parametros>
+    <parametro id="pNumero"/>
+    <parametro id="pTipoLayout"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00018_popup">
+      <propriedades>
+        <propriedade nome="htmlFooter" valor=""/>
+        <propriedade nome="htmlHeader" valor=""/>
+        <propriedade nome="showMenu" valor="false"/>
+        <propriedade nome="title" valor="Layouts de arquivos de Frequência"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panFiltroGrid">
+              <propriedades>
+                <propriedade nome="title" valor="Filtros de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txtFiltroLayout">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Layout"/>
+                        <propriedade nome="initialValue" valor="@pNumero@"/>
+                        <propriedade nome="onChanged" valor="setValue('txtLayout', null);"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdLayout">
+              <propriedades>
+                <propriedade nome="caption" valor="Layout do arquivo"/>
+                <propriedade nome="orderBy" valor="numero, nome"/>
+                <propriedade nome="pageSize" valor="6"/>
+                <propriedade nome="sqlParameters" valor="#txtFiltroLayout#, #txtFiltroLayout#, #txtFiltroLayout#, #txtFiltroLayout#, #txtFiltroLayout#"/>
+                <propriedade nome="sqlSelect" valor="select numero,&#10;       nome,&#10;       path,&#10;       delimitador,&#10;       tipo_layout,&#10;       rowid_reg,&#10;       descr_delimitador&#10;from ergadm00252_carga_layout&#10;WHERE ((upper(nome) like '%'||upper(?)||'%' OR ? is null)&#10;OR      (numero like '%'||?||'%' OR ? is null)&#10;OR      (? IS NULL))&#10;and   tipo_layout = 'FREQUENCIA'&#10;order by nome, numero"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNumero">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Layout"/>
+                    <propriedade nome="field" valor="numero"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldPath">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Path"/>
+                    <propriedade nome="field" valor="path"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="220"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipo_layout">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo layout"/>
+                    <propriedade nome="field" valor="tipo_layout"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="270"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowid_reg">
+                  <propriedades>
+                    <propriedade nome="caption" valor="rowid_reg"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescrDelimitador">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Seperação coluna"/>
+                    <propriedade nome="field" valor="descr_delimitador"/>
+                    <propriedade nome="width" valor="250"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDelimitador">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Delimitador"/>
+                    <propriedade nome="field" valor="delimitador"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/value/unbound/dropDownSelect" nome="drpInicioTela">
+              <propriedades>
+                <propriedade nome="onChanged" valor="var valor = getParameter('#drpInicioTela#');&#10;&#10;if (valor == 'Delimitador'){&#10;  show('txtDelimitador');&#10;  show('grdDelimitador_');&#10;  show('recDelimitador');&#10;  show('txfDelimitador');&#10;  hide('grdPosicao_');&#10;  hide('recPosicao');  &#10; &#10;}else if(valor == 'Posição no arquivo'){&#10;  hide('grdDelimitador_');&#10;  hide('txtDelimitador');&#10;  hide('recDelimitador');&#10;  hide('txfDelimitador');&#10;  show('grdPosicao_');&#10;  show('recPosicao');&#10;&#10;}else{&#10;  hide('txtDelimitador');&#10;  hide('grdDelimitador_');&#10;  hide('recDelimitador');&#10;  hide('grdPosicao_');&#10;  hide('recPosicao');&#10;}"/>
+                <propriedade nome="onRender" valor="setValue('drpInicioTela','Valor');"/>
+                <propriedade nome="sqlParameters" valor="$grdLayout.descr_delimitador$"/>
+                <propriedade nome="sqlSelect" valor="select nvl(?, '-1') valor from dual&#10; "/>
+                <propriedade nome="visible" valor="N"/>
+              </propriedades>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recLayout">
+              <propriedades>
+                <propriedade nome="caption" valor="Detalhes"/>
+                <propriedade nome="master" valor="grdLayout"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvLayout"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfNumero">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Layout"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfNome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfDescrDelimitador">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Separação coluna"/>
+                            <propriedade nome="field" valor="descr_delimitador"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfDelimitador">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Delimitador"/>
+                            <propriedade nome="field" valor="delimitador"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.7"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/hiddenField" nome="hidRowid">
+                      <propriedades>
+                        <propriedade nome="caption" valor="rowid_reg"/>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfTipoLayout">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo layout"/>
+                            <propriedade nome="field" valor="tipo_layout"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanelEdit" nome="receLayout">
+                  <propriedades>
+                    <propriedade nome="controllerAfter" valor="Administracao.RJadm00018_popupImpl.testeRec('#txfNumero#')"/>
+                    <propriedade nome="dataTable" valor="CARGA_LAYOUT"/>
+                    <propriedade nome="onEnterEdit" valor="var v_delimitador = getParameter('$grdLayout.descr_delimitador$');&#10;var v_existe_del = getParameter('$grdDelimitador_.rowid_reg$');&#10;var v_existe_pos = getParameter('$grdPosicao_.rowid_reg$');&#10;&#10;proceed();&#10;&#10;if(v_delimitador != null){&#10;  &#10;  setValue('#drpDelimitador#', v_delimitador ); &#10;&#10;  if (v_existe_del != null || v_existe_pos != null){&#10;    setReadOnly('drpDelimitador', true);&#10;  }else{&#10;    setReadOnly('drpDelimitador', false);&#10;  }&#10;}&#10;"/>
+                    <propriedade nome="onEnterInsert" valor="proceed();&#10;&#10;setReadOnly('drpDelimitador', false);&#10;&#10;setValue('txfDescrDelimitador', null);&#10;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtNome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="field" valor="nome"/>
+                            <propriedade nome="validators" valor="required();length(1,60);"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/dropDownSelect" nome="drpDelimitador">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Separação coluna"/>
+                            <propriedade nome="displayProperty" valor="nome"/>
+                            <propriedade nome="onChanged" valor="var valor = getParameter('#drpDelimitador#');&#10;&#10;if (valor == 'Delimitador'){&#10;  show('txtDelimitador');&#10;  show('grdDelimitador_');&#10;  show('recDelimitador');&#10;  show('txfDelimitador');&#10;  hide('grdPosicao_');&#10;  hide('recPosicao');&#10;  setValue('drpColunaPos', null);&#10;  setValue('txtInicioPos', null);&#10;  setValue('txtFimPos', null);&#10;  setValue('txtValorPos', null);&#10;  setValue('txtFormatoPos', null);&#10;  setValue('hidNumeroPosEdit', null);&#10; &#10;}else if(valor == 'Posição no arquivo'){&#10;  hide('grdDelimitador_');&#10;  hide('txtDelimitador');&#10;  hide('recDelimitador');&#10;  hide('txfDelimitador');&#10;  show('grdPosicao_');&#10;  show('recPosicao');&#10;  setValue('hidNumeroEdit', null);&#10;  setValue('drpColuna', null);&#10;  setValue('txtOrdem', null);&#10;  setValue('txtValor', null);&#10;  setValue('txtFormato', null);&#10;  setValue('txtDelimitador', null);&#10;&#10;}"/>
+                            <propriedade nome="onRender" valor="setValue('drpDelimitador', null);"/>
+                            <propriedade nome="sqlParameters" valor="#txtDelimitador#"/>
+                            <propriedade nome="sqlSelect" valor="select valor, valor nome&#10;from(select 'Delimitador' valor, 2 ord from dual &#10;     union &#10;     select 'Posição no arquivo' valor, decode(?, null, 1, 3) ord  from dual&#10;    )&#10;order by ord"/>
+                            <propriedade nome="valueProperty" valor="valor"/>
+                            <propriedade nome="width" valor="130"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txtDelimitador">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Delimitador"/>
+                            <propriedade nome="field" valor="delimitador"/>
+                            <propriedade nome="validators" valor="length(0,1);"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.6"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/editField/textBox" nome="txbTipoLayout">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo layout"/>
+                            <propriedade nome="field" valor="tipo_layout"/>
+                            <propriedade nome="initialValue" valor="FREQUENCIA"/>
+                            <propriedade nome="readOnly" valor="S"/>
+                            <propriedade nome="width" valor="415"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/hiddenField" nome="hideNumero">
+                      <propriedades>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="numero"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panDelimitador"/>
+            <layouts>
+              <layout tipo="CONT">
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdDelimitador_">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dados do arquivo"/>
+                        <propriedade nome="sqlParameters" valor="$grdLayout.numero$"/>
+                        <propriedade nome="sqlSelect" valor="select numero,coluna,ordem,inicio,fim,largura,valor,formato,rowid_reg from ergadm00252_carga_colunas where numero = ?&#10;order by ordem"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumertoDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldColunaDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Coluna"/>
+                            <propriedade nome="field" valor="coluna"/>
+                            <propriedade nome="width" valor="380"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldOrdemDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Ordem"/>
+                            <propriedade nome="field" valor="ordem"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldInicioDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Início"/>
+                            <propriedade nome="field" valor="inicio"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFimDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Fim"/>
+                            <propriedade nome="field" valor="fim"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor fixo"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFormatoDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Formato"/>
+                            <propriedade nome="field" valor="formato"/>
+                            <propriedade nome="width" valor="380"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRowidDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="rowid_reg"/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLarguraDel">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Largura"/>
+                            <propriedade nome="field" valor="largura"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recDelimitador">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdDelimitador_"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvDelimitador"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfColuna">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Coluna"/>
+                                    <propriedade nome="field" valor="coluna"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfOrdem">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ordem"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="ordem"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfValor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor fixo"/>
+                                    <propriedade nome="field" valor="valor"/>
+                                    <propriedade nome="width" valor="160"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFormato">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Formato"/>
+                                    <propriedade nome="field" valor="formato"/>
+                                    <propriedade nome="width" valor="410"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidNumero">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Número"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numero"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidRowidDel">
+                              <propriedades>
+                                <propriedade nome="caption" valor="rowid_reg"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receDelimitador">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="CARGA_COLUNAS"/>
+                            <propriedade nome="onEnterInsert" valor="var v_layout = getParameter('$grdLayout.numero$');&#10;&#10;if (v_layout == '' || v_layout === null){&#10;  Techne.Hades.alerta('É necessário selecionar o layout do arquivo para incluir dados do arquivo.');&#10;}else{&#10;  proceed();&#10;}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidNumeroEdit">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Número"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="numero"/>
+                                <propriedade nome="initialValue" valor="$grdLayout.numero$"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="drpColuna">
+                                  <propriedades>
+                                    <propriedade nome="addNullText" valor=" "/>
+                                    <propriedade nome="caption" valor="Coluna"/>
+                                    <propriedade nome="displayProperty" valor="coluna"/>
+                                    <propriedade nome="field" valor="coluna"/>
+                                    <propriedade nome="forceSelection" valor="N"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT COLUNA, DESCRICAO FROM (&#10;SELECT 'NUMFUNC' coluna, 'Número Funcional' descricao, 1 ordem FROM DUAL UNION&#10;SELECT 'NUMVINC' coluna, 'Vínculo' descricao, 2 ordem FROM DUAL UNION&#10;SELECT 'DTINI' coluna, 'Data Inicial' descricao, 3 ordem FROM DUAL UNION&#10;SELECT 'DTFIM' coluna, 'Data Fim' descricao, 4 ordem FROM DUAL UNION&#10;SELECT 'TIPOFREQ' coluna, 'Tipo Frequência' descricao, 5 ordem FROM DUAL UNION&#10;SELECT 'CODFREQ' coluna, 'Código da Frequência' descricao, 6 ordem FROM DUAL UNION&#10;SELECT 'OBS' coluna, 'Observação' descricao, 7 ordem FROM DUAL)&#10;ORDER BY ORDEM"/>
+                                    <propriedade nome="valueProperty" valor="coluna"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtOrdem">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ordem"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="ordem"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="validators" valor="length(0,5);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtValor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor fixo"/>
+                                    <propriedade nome="field" valor="valor"/>
+                                    <propriedade nome="validators" valor="length(0,100);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtFormato">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Formato"/>
+                                    <propriedade nome="field" valor="formato"/>
+                                    <propriedade nome="validators" valor="length(0,22);"/>
+                                    <propriedade nome="width" valor="410"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panPosicao"/>
+            <layouts>
+              <layout tipo="CONT">
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdPosicao_">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Dados do arquivo"/>
+                        <propriedade nome="sqlParameters" valor="$grdLayout.numero$"/>
+                        <propriedade nome="sqlSelect" valor="select numero,coluna,ordem,inicio,fim,largura,valor,formato,rowid_reg from ergadm00252_carga_colunas where numero = ? order by ordem"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumeroPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número"/>
+                            <propriedade nome="field" valor="numero"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldColunaPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Coluna"/>
+                            <propriedade nome="field" valor="coluna"/>
+                            <propriedade nome="width" valor="250"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldOrdemPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Ordem"/>
+                            <propriedade nome="field" valor="ordem"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldInicioPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Início"/>
+                            <propriedade nome="field" valor="inicio"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFimPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Fim"/>
+                            <propriedade nome="field" valor="fim"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLarguraPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Largura"/>
+                            <propriedade nome="field" valor="largura"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor fixo"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldFormatoPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Formato"/>
+                            <propriedade nome="field" valor="formato"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRowidPos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="rowid_reg"/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recPosicao">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdPosicao_"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvPosicao"/>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidNumeroPos">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="numero"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfColunaPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Coluna"/>
+                                    <propriedade nome="field" valor="coluna"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfInicioPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Início"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="inicio"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFimPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Fim"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="fim"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfValorPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor fixo"/>
+                                    <propriedade nome="field" valor="valor"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFormatoPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Formato"/>
+                                    <propriedade nome="field" valor="formato"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfLarguraPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Largura"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="largura"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="recePosicao">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="CARGA_COLUNAS"/>
+                            <propriedade nome="onEnterInsert" valor="var v_layout = getParameter('$grdLayout.numero$');&#10;&#10;if (v_layout == '' || v_layout === null){&#10;  Techne.Hades.alerta('É necessário selecionar o layout do arquivo para incluir dados do arquivo.');&#10;}else{&#10;  proceed();&#10;}"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="drpColunaPos">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="addNullText" valor="(Não informado)"/>
+                                    <propriedade nome="caption" valor="Coluna"/>
+                                    <propriedade nome="displayProperty" valor="coluna"/>
+                                    <propriedade nome="field" valor="coluna"/>
+                                    <propriedade nome="forceSelection" valor="N"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT COLUNA, DESCRICAO FROM (&#10;SELECT 'NUMFUNC' coluna, 'Número Funcional' descricao, 1 ordem FROM DUAL UNION&#10;SELECT 'NUMVINC' coluna, 'Vínculo' descricao, 2 ordem FROM DUAL UNION&#10;SELECT 'DTINI' coluna, 'Data Inicial' descricao, 3 ordem FROM DUAL UNION&#10;SELECT 'DTFIM' coluna, 'Data Fim' descricao, 4 ordem FROM DUAL UNION&#10;SELECT 'TIPOFREQ' coluna, 'Tipo Frequência' descricao, 5 ordem FROM DUAL UNION&#10;SELECT 'CODFREQ' coluna, 'Código da Frequência' descricao, 6 ordem FROM DUAL UNION&#10;SELECT 'OBS' coluna, 'Observação' descricao, 7 ordem FROM DUAL)&#10;ORDER BY ORDEM"/>
+                                    <propriedade nome="validators" valor="required();"/>
+                                    <propriedade nome="valueProperty" valor="coluna"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtInicioPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Início"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="inicio"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="validators" valor="length(0,5);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtFimPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Fim"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="field" valor="fim"/>
+                                    <propriedade nome="mask" valor="number"/>
+                                    <propriedade nome="validators" valor="length(0,5);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtValorPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor fixo"/>
+                                    <propriedade nome="field" valor="valor"/>
+                                    <propriedade nome="validators" valor="length(0,100);"/>
+                                    <propriedade nome="width" valor="150"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txtFormatoPos">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Formato"/>
+                                    <propriedade nome="field" valor="formato"/>
+                                    <propriedade nome="validators" valor="length(0,22);"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidNumeroPosEdit">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="field" valor="numero"/>
+                                <propriedade nome="initialValue" valor="$grdLayout.numero$"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/value/unbound/textBox" nome="hidLayout">
+              <propriedades>
+                <propriedade nome="initialValue" valor="@pNumero@"/>
+                <propriedade nome="visible" valor="N"/>
+              </propriedades>
+            </componente>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

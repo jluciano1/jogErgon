@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 11:58" nome="ERGadm00083">
+  <parametros>
+    <parametro ancest="true" id="pFin"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00083"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/HADadm_blk003" nome="drpSelecEmpresa"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuPes"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbFinalidade"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="90"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDown" nome="drpAposent"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDown" nome="drpCodContagem"/>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="180"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdFinConta">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="select finalidade,obs,associado, link_emp, nome_info1,tipo_info1,sql_info1,tit_lov1,alias1_info1,alias2_info1,valmax_info1,valmin_info1,nome_info2,tipo_info2,sql_info2,tit_lov2,alias1_info2,alias2_info2,valmax_info2,valmin_info2,tem_complemento,label_complemento,tipo_complemento,sql_lista_complemento,tit_complementolov2,alias1_complemento,alias2_complemento,valmax_complemento,valmin_complemento,func_valid_compl,para_aposent,gera_codcont,rowid_reg,valor,empcod,empnome,descr_info1,descr_info2,descr_compl, flex_campo_05, flex_campo_06, flex_campo_07, flex_campo_08, flex_campo_09, flex_campo_10 FROM ergadm00083_finalidade_conta WHERE valor = ? &#10;AND busca_searchbox_varchar2('null',null, finalidade ,nvl(?,' ')) = 1&#10;AND DECODE(?,NULL,1,para_aposent,1,0) = 1 AND nvl(gera_codcont,'N') = nvl(?,nvl(gera_codcont,'N')) ORDER BY finalidade"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFinal"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldObs"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="chkAssociado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinkEmp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNmInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSQLInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTitLOV1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias1Info1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias2Info1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValmaxInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValminInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNmInfo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTpInfo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSQLInfo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTitLOV2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias1Info2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias2Info2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValmaxInfo2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValminInfo2"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldTCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipoCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSQLListaCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTitCompLOV2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias1Comp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAlias2Comp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValmaxCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValminCompl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFuncValidCompl"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldAposent"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldGeraCodCont"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValor"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpcod"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpnome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_compl"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_info2"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescr_info1"/>
+                <componente classe="component/gridPanelField" nome="fldFlex05">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Visível para simulação?"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_05"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex06">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Regra a ser aplicada"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_06"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex07">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fundamento"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_07"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex10">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Reajuste"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_10"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex09">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Teto"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_09"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlex08">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Cálculo"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_08"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recFin"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvDetFin"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetFin"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex05">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Visível para simulação?"/>
+                        <propriedade nome="cssClass" valor="techneCheckBox"/>
+                        <propriedade nome="field" valor="flex_campo_05"/>
+                        <propriedade nome="isImageURL" valor="S"/>
+                        <propriedade nome="width" valor="20"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetObs"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html1"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetEhAposent"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetGeraCodCont"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html2"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetNomeInfo1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetTipoInfo1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias1Info1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias2Info1"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex06">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Regra a ser aplicada"/>
+                        <propriedade nome="field" valor="flex_campo_06"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex07">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Fundamento"/>
+                        <propriedade nome="field" valor="flex_campo_07"/>
+                        <propriedade nome="height" valor="30"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex10">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Reajuste"/>
+                        <propriedade nome="field" valor="flex_campo_10"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex09">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Teto"/>
+                        <propriedade nome="field" valor="flex_campo_09"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex08">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Cálculo"/>
+                        <propriedade nome="field" valor="flex_campo_08"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetSQLInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetTitLOV1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValminInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValmaxInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html3"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetNomeInfo2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetTipoInfo2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias1Info2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias2Info2"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetSQLInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetTitLOV2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValminInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValmaxInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="html4"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetLabelCompl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetTipoCompl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias1Compl"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetAlias2Compl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetFuncValid"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDetTemCompl"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetSQLCompl"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetTitComplLOV"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValminCompl"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDetValmaxCompl"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipo_info1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipo_info2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidTipo_complemento"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receEdtFin"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtFin"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/checkBox" nome="ckbFlex05">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Visível para simulação?"/>
+                        <propriedade nome="field" valor="flex_campo_05"/>
+                        <propriedade nome="width" valor="20"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtObs"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="htmle1"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkEdtEhAposent"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkEdtGeraCodCont"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="htmle2"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtNomeInfo1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDown" nome="drpEdtTipoInfo1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias1Info1"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias2Info1"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex06">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Regra a ser aplicada"/>
+                        <propriedade nome="validators" valor="length(0,100);"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex07">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Fundamento"/>
+                        <propriedade nome="field" valor="flex_campo_07"/>
+                        <propriedade nome="height" valor="30"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="validators" valor="length(0,200)"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex10">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Reajuste"/>
+                        <propriedade nome="field" valor="flex_campo_10"/>
+                        <propriedade nome="validators" valor="length(0,30)"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex09">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Teto"/>
+                        <propriedade nome="field" valor="flex_campo_09"/>
+                        <propriedade nome="validators" valor="length(0,30);"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex08">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Cálculo"/>
+                        <propriedade nome="field" valor="flex_campo_08"/>
+                        <propriedade nome="validators" valor="length(0,60)"/>
+                        <propriedade nome="width" valor="710"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtSQLInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtTitLOV1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValminInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValmaxInfo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="htmle3"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtNomeInfo2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDown" nome="drpEdtTipoInfo2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias1Info2"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias2Info2"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtSQLInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtTitLOV2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValminInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValmaxInfo2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/htmlControl" nome="htmle4"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtLabelCompl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/dropDown" nome="drpEdtTipoCompl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias1Compl"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtAlias2Compl"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txtEdtFuncValid"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/checkBox" nome="chkEdtTemCompl"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtSQLCompl"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtTitComplLOV2"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValminCompl"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtEdtValmaxCompl"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

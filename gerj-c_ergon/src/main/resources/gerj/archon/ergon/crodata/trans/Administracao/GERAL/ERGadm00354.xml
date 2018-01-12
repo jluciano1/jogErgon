@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 13:53" nome="ERGadm00354">
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00354"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuFiltro"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbElemDesp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsFiltroDescVant"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbDescrFiltro">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="validators" valor="length(0,200);"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="1"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdElemDesp">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#txbElemDesp#,#ddsFiltroDescVant#,#txbDescrFiltro#"/>
+                <propriedade nome="sqlSelect" valor="select elemento,nome,FLEX_CAMPO_01,vant_desc,desc_vant_desc,rowid_reg &#10;from ERGADM00354_ELEM_DESP  &#10;where busca_searchbox_varchar2('null',null, elemento || ' ' || nome,nvl(?,' ')) = 1 and vant_desc = nvl(?,vant_desc) and lower(FLEX_CAMPO_01) like nvl(lower('%'|| ? || '%'),FLEX_CAMPO_01)&#10;order by ELEMENTO"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldElemento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                    <propriedade nome="width" valor="450"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescVantDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantDesc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowidReg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recElemDesp"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recvElemDesp"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtElemento"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfNome"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfDescricao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                        <propriedade nome="height" valor="60"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="width" valor="450"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txtDescVantDesc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfRowid"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="receElemDesp"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtElemDesp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txtNome">
+                      <propriedades>
+                        <propriedade nome="validators" valor="required();length(1,20);"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbDescricao">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Descrição"/>
+                        <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                        <propriedade nome="height" valor="60"/>
+                        <propriedade nome="textMode" valor="multiLine"/>
+                        <propriedade nome="validators" valor="length(0,2000);"/>
+                        <propriedade nome="width" valor="450"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpDescVant"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

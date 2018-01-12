@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/15/2017 14:41" nome="ERGadm00417">
+  <parametros>
+    <parametro ancest="true" id="pProcesso" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00417"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panelu1"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcFiltroProcesso">
+                      <propriedades>
+                        <propriedade nome="caption" valor="N° da avaliação"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFiltroTipoProc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                      <propriedade nome="style" valor="{margin:'10px 5px 0 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hylFiltroTipo_Proc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbPesquisa"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdPromServ">
+              <propriedades>
+                <propriedade nome="sqlSelect" valor="SELECT PROCESSO               &#10;      ,CARGO &#10;      ,NOME_CARGO&#10;      ,DESCR_CARGO&#9;&#9;&#10;      ,EMP_CODIGO             &#10;      ,QUESTIONARIO &#10;      ,DESCR_QUESTIONARIO    &#9;&#9;&#10;      ,RESPONSAVEL                                &#10;      ,DTINI                  &#10;      ,DTFIM                  &#10;      ,PONTOS_PROMOCAO        &#10;      ,LIMITE_PERC            &#10;      ,MIN_LIMITE             &#10;      ,NO_ABAIXO_LIMITE&#10;      ,MOTIVO          &#10;      ,DESCR_MOTIVO&#9;&#9;&#9;&#9;&#9;&#10;      ,PRO_TIPO &#10;      ,DESCR_PRO_TIPO                  &#10;      ,ROWID_REG&#10;      ,FLEX_CAMPO_01 &#10;FROM ERGADM00417_PROM_CARGO&#10;WHERE PROCESSO = ?&#10;  AND busca_searchbox_number ( CARGO, NULL, DESCR_CARGO, NVL(?, ' ') ) = 1&#10;  AND EMP_CODIGO = flag_pack.get_empresa&#10;ORDER BY CARGO, DTINI DESC"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCargo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNomeCargo">
+                  <propriedades>
+                    <propriedade nome="width" valor="600"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrCargo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQuestionario"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrQuestionario"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldResponsavel">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Responsável pela avaliação deste cargo"/>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="300"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtini">
+                  <propriedades>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDtfim">
+                  <propriedades>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldPontosPromocao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLimitePerc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMinLimite"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNoAbaixoLimite"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMotivo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrMotivo02"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldProTipo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescrProTipo"/>
+                <componente classe="component/gridPanelField" nome="fldFlex_Campo_01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="%Normaliz"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/recordPanel" nome="recProcesso"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelView" nome="recv"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDescrCargo"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDtini">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfDtfim">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfQuestionario"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/viewField/textField" nome="txfFlex_Campo_01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="%Normaliz"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="toolTip" valor="Percentual da pontuação mínimo para promoção"/>
+                        <propriedade nome="width" valor="715"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfResponsavel">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Responsável pela avaliação deste cargo "/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfLimitePerc">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfPontosProm">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Média mínima para aprovação"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfMinLimite">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/viewField/textField" nome="txfLimiteProm">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfProTipo">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/textField" nome="txfDescrMotivo">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidEmpCodigo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumFunc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidNumVinc"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProcesso"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidRowidReg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidMotivo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidCargo"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidQuestionario"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidProTipo"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/recordPanelEdit" nome="rece"/>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcCargo"/>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbDtini">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbDtfim">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcQuestionario"/>
+                  </layout>
+                  <layout>
+                    <componente classe="component/editField/textBox" nome="txbFlex_Campo_01">
+                      <propriedades>
+                        <propriedade nome="caption" valor="%Normaliz"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="field" valor="flex_campo_01"/>
+                        <propriedade nome="maxLength" valor="3"/>
+                        <propriedade nome="toolTip" valor="Percentual da pontuação mínimo para promoção"/>
+                        <propriedade nome="validators" valor="length(0,3)"/>
+                        <propriedade nome="width" valor="715"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/textBox" nome="txbResponsavel">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Responsável pela avaliação deste cargo"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbLimitePerc">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbPontosProm">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Média mínima para aprovação"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbMinLimite">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/editField/textBox" nome="txbLimiteProm">
+                          <propriedades>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcProTipo">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/searchBox" nome="srcMotivo">
+                      <propriedades>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidEmpCodigo1"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/editField/hiddenField" nome="hidProcesso1"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

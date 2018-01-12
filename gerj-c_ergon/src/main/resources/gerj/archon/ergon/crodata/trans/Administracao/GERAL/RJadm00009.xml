@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_1" data="09/19/2017 14:27" nome="RJadm00009">
+  <parametros>
+    <parametro id="pNumfunc"/>
+    <parametro id="pNumvinc"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00009">
+      <propriedades>
+        <propriedade nome="title" valor="Consulta fichas financeiras por competência"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o vínculo funcional:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor e o vínculo desejado, pois esta página consulta apenas informações referentes a um único vínculo funcional.&lt;/p&gt; &lt;p&gt;No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente.&lt;/p&gt; &lt;p&gt;O campo destinado ao número do vínculo será carregado automaticamente com a lista de vínculos do servidor informado, você deverá escolher o vínculo desejado para consulta. &lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/ERGadm_blk001" nome="blk001"/>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Informe o pensionista e o mês / ano que será consultado:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Neste bloco você pode selecionar um determinado pensionista consultando as informações sobre suas rubricas.&lt;/p&gt;&lt;p&gt;É obrigatório que se informe a Competência(Mês/Ano) da folha para efetuar a pesquisa.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panPensionistas">
+              <propriedades>
+                <propriedade nome="title" valor="Filtros de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcPensionista">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Número, Nome"/>
+                        <propriedade nome="caption" valor="Pensionista"/>
+                        <propriedade nome="mask" valor="number"/>
+                        <propriedade nome="onAfterSearch" valor="if(options.scope._combo.store.data.length ==0){options.scope.setValue('')};"/>
+                        <propriedade nome="onChanged" valor="var controle = getParameter('#srcPensionista#');&#10;&#10;if (controle){      &#10;  setValue('txbEmpresa',77);&#10;}else{ &#10;  setValue('txbEmpresa', getParameter('#txbEmpresaInicial#') );&#10;}&#10;"/>
+                        <propriedade nome="sql" valor="select numero, nome&#10;from pensionistas&#10;where numfunc = ?&#10;  and numvinc = ?&#10;  and EMP_CODIGO = 77&#10;  and busca_searchbox_number(numero, ?, nome, ?) = 1&#10;order by numero"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#, #blk001.drpVinculo#, search.value, search.description"/>
+                        <propriedade nome="width" valor="417"/>
+                        <propriedade nome="widthKey" valor="100"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.95"/>
+                      <propriedade nome="labelWidth" valor="124"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbCompetencia">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Competência(Mês/Ano)"/>
+                        <propriedade nome="dataType" valor="MESANO"/>
+                        <propriedade nome="hideDay" valor="S"/>
+                        <propriedade nome="initialValue" valor="0"/>
+                        <propriedade nome="validators" valor="required();"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="124"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpConsolidada">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Consolidada ???"/>
+                        <propriedade nome="displayProperty" valor="op"/>
+                        <propriedade nome="sqlSelect" valor="select 'S' as valor,'Sim' as op from dual union select 'N' as valor,'Não' as op from dual union select null as valor,'Todos' as op from dual"/>
+                        <propriedade nome="valueProperty" valor="valor"/>
+                        <propriedade nome="width" valor="120"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                      <propriedade nome="labelWidth" valor="120"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txbEmpresa">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Empresa"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="initialValue" valor="%empresa%"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/textBox" nome="txbEmpresaInicial">
+                  <propriedades>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="initialValue" valor="%empresa%"/>
+                    <propriedade nome="visible" valor="N"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr03">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;3&lt;/div&gt;Consulte o registro selecionado nas listas abaixo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso03">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Neste bloco você pode visualizar as informações do registro selecionado tais como &quot;Rubricas&quot;, &quot;Lista retidos&quot; e &quot;Rubricas auxiliares&quot;.&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <propriedades>
+              <propriedade nome="border" valor="true"/>
+            </propriedades>
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Rubricas"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRubricas">
+                      <propriedades>
+                        <propriedade nome="caption" valor=" "/>
+                        <propriedade nome="cssClass" valor="techneGrid2"/>
+                        <propriedade nome="orderBy" valor="mes_ano_folha, rubrica, complemento, num_folha, tipo_rubrica"/>
+                        <propriedade nome="pageSize" valor="6"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#,#blk001.drpVinculo#,#drpConsolidada#,#drpConsolidada#, #dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#,#txbEmpresa#,&#10;#blk001.srcServidores#,#blk001.drpVinculo#,#drpConsolidada#, #drpConsolidada#,#dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#"/>
+                        <propriedade nome="sqlSelect" valor="select MES_ANO_FOLHA,&#10;       NUM_FOLHA,&#10;       LANCAMENTO,&#10;       NUMFUNC,&#10;       NUMVINC,&#10;       NUMPENS,&#10;       nome_abrev,&#10;       MES_ANO_DIREITO,&#10;       RUBRICA,&#10;       TIPO_RUBRICA,&#10;       DESC_VANT,&#10;       COMPLEMENTO,&#10;       VALOR,&#10;       TIPO_FOLHA,&#10;       TIPO_CALCULO,&#10;       DATA_CONSOL,&#10;       decode (PCK_FOLHAS.EH_CONSOLIDADA (mes_ano_folha, num_folha),1,'S','N') as consolidada,&#10;       null as linha,&#10;       EMP_CODIGO&#10;  from ttgrj_RJadm00009_vw&#10; where numfunc = ?&#10;   and numvinc = ?&#10;   and ( (? = 'S' and consolidada = 'S') or (? is null) )&#10;   and mes_ano_direito = ?&#10;   and ((? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa))&#10;   and PCK_FOLHAS.EH_CONSOLIDADA(mes_ano_folha, num_folha, ?) = 1&#10;union&#10;select MES_ANO_FOLHA,&#10;       NUM_FOLHA,&#10;       LANCAMENTO,&#10;       NUMFUNC,&#10;       NUMVINC,&#10;       NUMPENS,&#10;       nome_abrev,&#10;       MES_ANO_DIREITO,&#10;       RUBRICA,&#10;       TIPO_RUBRICA,&#10;       DESC_VANT,&#10;       COMPLEMENTO,&#10;       VALOR,&#10;       TIPO_FOLHA,&#10;       TIPO_CALCULO,&#10;       DATA_CONSOL,&#10;       decode (PCK_FOLHAS.EH_CONSOLIDADA (mes_ano_folha, num_folha),1,'S','N') as consolidada,&#10;       null as linha,&#10;       EMP_CODIGO&#10;  from ttgrj_RJadm00009_vw&#10; where numfunc = ?&#10;   and numvinc = ?&#10;   and ( (? = 'N' and consolidada = 'N') or (? is null) )&#10;   and mes_ano_direito = ?&#10;   and ((? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa))&#10; order by mes_ano_folha, rubrica, complemento, num_folha, tipo_rubrica&#10;"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumpens">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pens"/>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome_abrev">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="nome_abrev"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRubrica">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="width" valor="70"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldComplemento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Complemento"/>
+                            <propriedade nome="field" valor="complemento"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_folha">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Folha"/>
+                            <propriedade nome="field" valor="tipo_folha"/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_calculo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Cálculo"/>
+                            <propriedade nome="field" valor="tipo_calculo"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_direito">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Competência"/>
+                            <propriedade nome="field" valor="mes_ano_direito"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_folha">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Folha"/>
+                            <propriedade nome="field" valor="mes_ano_folha"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNum_folha">
+                          <propriedades>
+                            <propriedade nome="caption" valor="N° Folha"/>
+                            <propriedade nome="field" valor="num_folha"/>
+                            <propriedade nome="width" valor="70"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpresa">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Emp"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValor">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/checkBoxColumn" nome="fldConsolidada">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Consolidada"/>
+                            <propriedade nome="field" valor="consolidada"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/checkBoxColumn" nome="fldData_consol">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Consulta"/>
+                            <propriedade nome="field" valor="data_consol"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLancamento">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Lançamento"/>
+                            <propriedade nome="field" valor="lancamento"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumfunc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número Funcionário"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumvic">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_rubrica">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Rubrica"/>
+                            <propriedade nome="field" valor="tipo_rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDesc_vant">
+                          <propriedades>
+                            <propriedade nome="field" valor="desc_vant"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLinha">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Linha"/>
+                            <propriedade nome="field" valor="linha"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlkComposicao_Rub">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="parametros" valor="$grdRubricas.lancamento$,$grdRubricas.linha$,'RUB'"/>
+                            <propriedade nome="popup" valor="S"/>
+                            <propriedade nome="popupHeight" valor="500"/>
+                            <propriedade nome="popupWidth" valor="1130"/>
+                            <propriedade nome="text" valor="COMPOSIÇÃO DE CÁLCULO"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00465"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Lista retidos"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRetidos">
+                      <propriedades>
+                        <propriedade nome="caption" valor=" "/>
+                        <propriedade nome="cssClass" valor="techneGrid2"/>
+                        <propriedade nome="orderBy" valor="mes_ano_folha, rubrica, complemento, num_folha, tipo_rubrica"/>
+                        <propriedade nome="pageSize" valor="6"/>
+                        <propriedade nome="sqlParameters" valor=" #blk001.srcServidores#, #blk001.drpVinculo#, #drpConsolidada#, #drpConsolidada#, #dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#, #txbEmpresa#,&#10; #blk001.srcServidores#, #blk001.drpVinculo#, #drpConsolidada#, #drpConsolidada#, #dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#"/>
+                        <propriedade nome="sqlSelect" valor="select mes_ano_folha,&#10;       num_folha,&#10;       lancamento,&#10;       numfunc,&#10;       numvinc,&#10;       numpens,&#10;       mes_ano_direito,&#10;       rubrica,&#10;       nome_abrev,&#10;       tipo_rubrica,&#10;       desc_vant,&#10;       complemento,&#10;       trim(to_char(valor, '999g999d99')) valor,&#10;       tipo_folha,&#10;       tipo_calculo,&#10;       data_consol,&#10;       consolidada,&#10;       linha,&#10;       emp_codigo&#10;  from TTGRJ_RJADM00009_VW_LISTA_RET&#10; where numfunc = ?&#10;   and numvinc = ?&#10;   and ((? = 'S' and consolidada = 'S') or (? is null))&#10;   and mes_ano_direito = ?&#10;   and ((? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa))&#10;   and PCK_FOLHAS.EH_CONSOLIDADA(mes_ano_folha, num_folha, ?) = 1&#10;union&#10;select mes_ano_folha,&#10;       num_folha,&#10;       lancamento,&#10;       numfunc,&#10;       numvinc,&#10;       numpens,&#10;       mes_ano_direito,&#10;       rubrica,&#10;       nome_abrev,&#10;       tipo_rubrica,&#10;       desc_vant,&#10;       complemento,&#10;       trim(to_char(valor, '999g999d99')) valor,&#10;       tipo_folha,&#10;       tipo_calculo,&#10;       data_consol,&#10;       consolidada,&#10;       linha,&#10;       emp_codigo&#10;  from TTGRJ_RJADM00009_VW_LISTA_RET&#10; where numfunc = ?&#10;   and numvinc = ?&#10;   and ((? = 'N' and consolidada = 'N') or (? is null))&#10;   and mes_ano_direito = ?&#10;   and ((? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa)) &#10; order by mes_ano_folha, rubrica, complemento, num_folha, tipo_rubrica"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumpensL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pens"/>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome_abrev2">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="nome_abrev"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRubricaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldComplementoL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Complemento"/>
+                            <propriedade nome="field" valor="complemento"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_folhaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Folha"/>
+                            <propriedade nome="field" valor="tipo_folha"/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_calculoL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Cálculo"/>
+                            <propriedade nome="field" valor="tipo_calculo"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_direitoL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Competência"/>
+                            <propriedade nome="field" valor="mes_ano_direito"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_folhaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Folha"/>
+                            <propriedade nome="field" valor="mes_ano_folha"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNum_folhaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="N° Folha"/>
+                            <propriedade nome="field" valor="num_folha"/>
+                            <propriedade nome="width" valor="70"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpRetidos">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Emp"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/checkBoxColumn" nome="fldConsolidadaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Consolidada"/>
+                            <propriedade nome="field" valor="consolidada"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldData_consolL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Consulta"/>
+                            <propriedade nome="field" valor="data_consol"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLancamentoL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Lançamento"/>
+                            <propriedade nome="field" valor="lancamento"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumfuncL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número Funcionário"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumvincL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_rubricaL">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Rubrica"/>
+                            <propriedade nome="field" valor="tipo_rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDesc_vantL">
+                          <propriedades>
+                            <propriedade nome="field" valor="desc_vant"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLinha_Ret">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Linha"/>
+                            <propriedade nome="field" valor="linha"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlkComposicao_Ret">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="parametros" valor="$grdRetidos.lancamento$,&#10;$grdRetidos.linha$,&#10;'RET'"/>
+                            <propriedade nome="popup" valor="S"/>
+                            <propriedade nome="popupHeight" valor="500"/>
+                            <propriedade nome="popupWidth" valor="1130"/>
+                            <propriedade nome="text" valor="COMPOSIÇÃO DE CÁLCULO"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00465"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Rubricas auxiliares"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdAuxiliares">
+                      <propriedades>
+                        <propriedade nome="caption" valor=" "/>
+                        <propriedade nome="cssClass" valor="techneGrid2"/>
+                        <propriedade nome="orderBy" valor="mes_ano_folha, rubrica, complemento, num_folha, tipo_rubrica"/>
+                        <propriedade nome="pageSize" valor="6"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#, #blk001.drpVinculo#, #drpConsolidada#, #drpConsolidada#, #dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#, #dtbCompetencia#, #dtbCompetencia#,&#10;#blk001.srcServidores#, #blk001.drpVinculo#, #drpConsolidada#, #drpConsolidada#, #dtbCompetencia#, #srcPensionista#, #srcPensionista#, #srcPensionista#, #txbEmpresa#, #dtbCompetencia#, #dtbCompetencia#"/>
+                        <propriedade nome="sqlSelect" valor="select mes_ano_folha, num_folha, lancamento, numfunc, numvinc, numpens, mes_ano_direito, rubrica, nome_abrev, tipo_rubrica, desc_vant, complemento, trim(to_char(valor, '999g999d99')) valor,&#10;tipo_folha, tipo_calculo, data_consol, consolidada, linha, emp_codigo&#10;from ttgrj_rjadm00009_vw_rub_aux&#10;where numfunc = ?&#10;and numvinc = ?&#10;and ((? = 'N' and consolidada = 'N') or (? is null))&#10;and mes_ano_direito = ?&#10;and ((? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa))&#10;and desc_vant = 0 &#10;and (pack_had_seguranca.EH_USUARIO_PRIVIL(flag_pack.get_usuario) = 1 &#10;or (pack_had_seguranca.EH_USUARIO_PRIVIL(flag_pack.get_usuario) &lt;&gt; 1 and  rubrica in (select f.rubrica from fatores_rubrica f&#10;where f.fator = 'L CONTRACHEQUE' AND f.DTINI &lt;= ? AND (DTFIM IS NULL OR DTFIM &gt;= ?))))&#10;union all&#10;select mes_ano_folha, num_folha, lancamento, numfunc, numvinc, numpens, mes_ano_direito, rubrica, nome_abrev, tipo_rubrica, desc_vant, complemento, trim(to_char(valor, '999g999d99')) valor,&#10;tipo_folha, tipo_calculo, data_consol, consolidada, linha, emp_codigo&#10;from ttgrj_rjadm00009_vw_rub_aux&#10;where numfunc = ?&#10;and numvinc = ?&#10;and ((? = 'S' and consolidada = 'S') or (? is null))&#10;and mes_ano_direito = ?&#10;and ( (? is not null and numpens = ? and emp_codigo = 77) or (? is null and emp_codigo = flag_pack.get_empresa) )&#10;and (desc_vant = 0 and PCK_FOLHAS.EH_CONSOLIDADA (mes_ano_folha, num_folha, ?) = 1) &#10;and ( pack_had_seguranca.EH_USUARIO_PRIVIL(flag_pack.get_usuario) = 1 or ( pack_had_seguranca.EH_USUARIO_PRIVIL(flag_pack.get_usuario) &lt;&gt; 1 and  &#10;rubrica in (select f.rubrica from fatores_rubrica f where f.fator = 'L CONTRACHEQUE' AND f.DTINI &lt;= ? AND (DTFIM IS NULL OR DTFIM &gt;= ?))))"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumpensA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pens"/>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome_abrev3">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="nome_abrev"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRubricaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldComplementoA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Complemento"/>
+                            <propriedade nome="field" valor="complemento"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_folhaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Folha"/>
+                            <propriedade nome="field" valor="tipo_folha"/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_calculoA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Cálculo"/>
+                            <propriedade nome="field" valor="tipo_calculo"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_direitoA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Competência"/>
+                            <propriedade nome="field" valor="mes_ano_direito"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_folhaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Folha"/>
+                            <propriedade nome="field" valor="mes_ano_folha"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNum_folhaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="N° Folha"/>
+                            <propriedade nome="field" valor="num_folha"/>
+                            <propriedade nome="width" valor="70"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpAuxiliares">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Emp"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/checkBoxColumn" nome="fldConsolidadaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Consolidada"/>
+                            <propriedade nome="field" valor="consolidada"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldData_consolA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Consulta"/>
+                            <propriedade nome="field" valor="data_consol"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLancamentoA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Lançamento"/>
+                            <propriedade nome="field" valor="lancamento"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumfuncA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número Funcionário"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumvincA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_rubricaA">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Rubrica"/>
+                            <propriedade nome="field" valor="tipo_rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDesc_vantA">
+                          <propriedades>
+                            <propriedade nome="field" valor="desc_vant"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLinha_Aux">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Linha"/>
+                            <propriedade nome="field" valor="linha"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlkComposicao_RubAux">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="parametros" valor="$grdAuxiliares.lancamento$,$grdAuxiliares.linha$,'RUB'"/>
+                            <propriedade nome="popup" valor="S"/>
+                            <propriedade nome="popupHeight" valor="500"/>
+                            <propriedade nome="popupWidth" valor="1130"/>
+                            <propriedade nome="text" valor="COMPOSIÇÃO DE CÁLCULO"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00465"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Retidos Auxiliares"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdRetidosAux">
+                      <propriedades>
+                        <propriedade nome="caption" valor=" "/>
+                        <propriedade nome="cssClass" valor="techneGrid2"/>
+                        <propriedade nome="pageSize" valor="6"/>
+                        <propriedade nome="sqlParameters" valor="#blk001.srcServidores#,#blk001.drpVinculo#,#drpConsolidada#,#dtbCompetencia#,#srcPensionista#"/>
+                        <propriedade nome="sqlSelect" valor="select numpens,&#10;       nome_abrev,&#10;       rubrica,&#10;       complemento,&#10;       tipo_folha,&#10;       tipo_calculo,&#10;       mes_ano_direito,&#10;       mes_ano_folha,&#10;       num_folha,&#10;       valor,&#10;       consolidada,&#10;       data_consol,&#10;       lancamento,&#10;       numfunc,&#10;       numvinc,&#10;       tipo_rubrica,&#10;       desc_vant,&#10;       linha,&#10;       emp_codigo      &#10;  from ERGADM00171_FICHAS_RET_AUX  &#10; where numfunc = ? &#10;   and numvinc = ? &#10;   and consolidada = nvl(?, consolidada) &#10;   and mes_ano_direito = ? &#10;   and nvl(numpens, 0) = nvl(nvl(?, numpens), 0)&#10;order by rubrica, complemento, mes_ano_folha, num_folha, tipo_rubrica"/>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldNumpensRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Pens"/>
+                            <propriedade nome="field" valor="numpens"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome_abrevRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="nome_abrev"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRubricaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Rubrica"/>
+                            <propriedade nome="field" valor="rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldComplementoRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Complemento"/>
+                            <propriedade nome="field" valor="complemento"/>
+                            <propriedade nome="width" valor="120"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_folhaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Folhaaaa"/>
+                            <propriedade nome="field" valor="tipo_folha"/>
+                            <propriedade nome="width" valor="90"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_calculoRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Cálculo"/>
+                            <propriedade nome="field" valor="tipo_calculo"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_direitoRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Competência"/>
+                            <propriedade nome="field" valor="mes_ano_direito"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldMes_ano_folhaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Folha"/>
+                            <propriedade nome="field" valor="mes_ano_folha"/>
+                            <propriedade nome="hideDay" valor="S"/>
+                            <propriedade nome="width" valor="60"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNum_folhaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="N° Folha"/>
+                            <propriedade nome="field" valor="num_folha"/>
+                            <propriedade nome="width" valor="70"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldEmpRetidosAux">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Emp"/>
+                            <propriedade nome="field" valor="emp_codigo"/>
+                            <propriedade nome="width" valor="50"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldValorRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Valor"/>
+                            <propriedade nome="dataType" valor="NUMBER"/>
+                            <propriedade nome="field" valor="valor"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/checkBoxColumn" nome="fldConsolidadaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Consolidada"/>
+                            <propriedade nome="field" valor="consolidada"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldData_consolRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data Consulta"/>
+                            <propriedade nome="field" valor="data_consol"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLancamentoRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Lançamento"/>
+                            <propriedade nome="field" valor="lancamento"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumfuncRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Número Funcionário"/>
+                            <propriedade nome="field" valor="numfunc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNumvincRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Vínculo"/>
+                            <propriedade nome="field" valor="numvinc"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldTipo_rubricaRet">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Tipo Rubrica"/>
+                            <propriedade nome="field" valor="tipo_rubrica"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDesc_vantRet">
+                          <propriedades>
+                            <propriedade nome="field" valor="desc_vant"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldLinha_RetAux">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Linha"/>
+                            <propriedade nome="field" valor="linha"/>
+                            <propriedade nome="grid" valor="false"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/hyperLink" nome="hlkComposicao_RetAux">
+                          <propriedades>
+                            <propriedade nome="application" valor="Ergon"/>
+                            <propriedade nome="parametros" valor="$grdRetidosAux.lancamento$,$grdRetidosAux.linha$,'RET'"/>
+                            <propriedade nome="popup" valor="S"/>
+                            <propriedade nome="popupHeight" valor="500"/>
+                            <propriedade nome="popupWidth" valor="1130"/>
+                            <propriedade nome="text" valor="COMPOSIÇÃO DE CÁLCULO"/>
+                            <propriedade nome="transacao" valor="Administracao.ERGadm00465"/>
+                            <propriedade nome="visible" valor="N"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

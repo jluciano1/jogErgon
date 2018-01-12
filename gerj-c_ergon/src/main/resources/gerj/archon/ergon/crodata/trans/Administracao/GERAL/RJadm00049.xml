@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="11/28/2017 17:48" nome="RJadm00049">
+  <parametros>
+    <parametro id="pElemento" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente classe="component/page" nome="RJadm00049">
+      <propriedades>
+        <propriedade nome="title" valor="Rubricas por elemento de despesa"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="panPesquisa">
+              <propriedades>
+                <propriedade nome="height" valor="70"/>
+                <propriedade nome="title" valor="Filtro de Pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="srcRubr">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Rubrica, Nome"/>
+                        <propriedade nome="caption" valor="Rubrica"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                        <propriedade nome="mask" valor="number"/>
+                        <propriedade nome="sql" valor="select rubrica, nome from erg_vw_rubricas where busca_searchbox_number(rubrica, ?, nome, ?) = 1  order by nome"/>
+                        <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                        <propriedade nome="width" valor="430"/>
+                        <propriedade nome="widthKey" valor="100"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRubricas">
+              <propriedades>
+                <propriedade nome="caption" valor="Rubricas"/>
+                <propriedade nome="sqlParameters" valor="#srcRubr#"/>
+                <propriedade nome="sqlSelect" valor="SELECT rubrica&#10;     , tiporubr&#10;     , nome&#10;     , mnemonico&#10;     , nome_abrev&#10;     , fat_vant&#10;  FROM  erg_vw_rubricas&#10;WHERE rubrica = NVL(?, rubrica)&#10;ORDER BY rubrica"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldRubr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rubrica"/>
+                    <propriedade nome="field" valor="rubrica"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNomeRubr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMnemonico">
+                  <propriedades>
+                    <propriedade nome="caption" valor="mnemônico"/>
+                    <propriedade nome="field" valor="mnemonico"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNomeAbrev">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome abreviado"/>
+                    <propriedade nome="field" valor="nome_abrev"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFatVant">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fator"/>
+                    <propriedade nome="field" valor="fat_vant"/>
+                    <propriedade nome="width" valor="50"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoRubr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo"/>
+                    <propriedade nome="field" valor="tiporubr"/>
+                    <propriedade nome="width" valor="160"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btuso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;     &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRubrXElem">
+              <propriedades>
+                <propriedade nome="caption" valor="Rubricas x Elementos de despesas"/>
+                <propriedade nome="sqlParameters" valor="$grdRubricas.rubrica$"/>
+                <propriedade nome="sqlSelect" valor="SELECT &#10; ID,&#10; RUBRICA,&#10; RUBRICA_NOME,&#10; RUBRICA_ABREV,&#10; RUBRICA ||' - '|| RUBRICA_NOME as RUBRICA_DESCR,&#10; FAT_VANT,&#10; ELEMENTO,&#10; ELEMENTO_NOME,&#10; COMPLEMENTO,&#10; REGJUR,&#10; TIPOVINC,&#10; CATEGORIA,&#10; SUBCATEGORIA,&#10; SITUACAO,&#10; SITUACAO_DESCR,&#10; TEMPORALIDADE,&#10; TEMPORALIDADE_DESCR,&#10; REGJUR_DESCR,&#10; CATEGORIA_DESCR,&#10; SUBCATEGORIA_DESCR,&#10; TIPOVINC_DESCR,&#10; ROWID_REG&#10;FROM rjadm00049_elemento_despesa&#10;WHERE RUBRICA = ?"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldId">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Id"/>
+                    <propriedade nome="field" valor="id"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldComplemento">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Complemento"/>
+                    <propriedade nome="field" valor="complemento"/>
+                    <propriedade nome="width" valor="300"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSituacao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Situação"/>
+                    <propriedade nome="field" valor="situacao"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSituacaoDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Situação"/>
+                    <propriedade nome="field" valor="situacao_descr"/>
+                    <propriedade nome="width" valor="85"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTemporalidade">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Temporalidade"/>
+                    <propriedade nome="field" valor="temporalidade"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTemporalidadeDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Temporalidade"/>
+                    <propriedade nome="field" valor="temporalidade_descr"/>
+                    <propriedade nome="width" valor="230"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldElemento">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Elemento"/>
+                    <propriedade nome="field" valor="elemento"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldElementoDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Elemento"/>
+                    <propriedade nome="field" valor="elemento_nome"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRubricas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rubrica"/>
+                    <propriedade nome="field" valor="rubrica"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRubricaDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rubrica"/>
+                    <propriedade nome="field" valor="rubrica_descr"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="65"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRubricaNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="rubrica_nome"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRubricaNomeAbrev">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome abreviado"/>
+                    <propriedade nome="field" valor="rubrica_abrev"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="350"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldVantagemFator">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Fator"/>
+                    <propriedade nome="field" valor="fat_vant"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="50"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldCategoria">
+                  <propriedades>
+                    <propriedade nome="field" valor="categoria"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldCategoriaDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Categoria"/>
+                    <propriedade nome="field" valor="categoria_descr"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSubcategoria">
+                  <propriedades>
+                    <propriedade nome="field" valor="subcategoria"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSubCategDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Subcategoria"/>
+                    <propriedade nome="field" valor="subcategoria_descr"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRegjur">
+                  <propriedades>
+                    <propriedade nome="field" valor="regjur"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRegJurDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Regime jurídico"/>
+                    <propriedade nome="field" valor="regjur_descr"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldtipovinc">
+                  <propriedades>
+                    <propriedade nome="field" valor="tipovinc"/>
+                    <propriedade nome="grid" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldtipovincDescr">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo de vínculo"/>
+                    <propriedade nome="field" valor="tipovinc_descr"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Classificação contábil"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recpRubrXElem">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Detalhes"/>
+                        <propriedade nome="master" valor="grdRubrXElem"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvRubrXElem"/>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfRubricaDescr">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Rubrica"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="rubrica_descr"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfComplemento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Complemento"/>
+                                    <propriedade nome="field" valor="complemento"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfElemento">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Elemento"/>
+                                    <propriedade nome="field" valor="elemento_nome"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfTemporalidade">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Temporalidade"/>
+                                    <propriedade nome="field" valor="temporalidade_descr"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfSituação">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Situação"/>
+                                    <propriedade nome="field" valor="situacao_descr"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfRegimeJur">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Regime Jurídico"/>
+                                <propriedade nome="field" valor="regjur_descr"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfTipovinc">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Tipo de vínculo"/>
+                                <propriedade nome="field" valor="tipovinc_descr"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfCategoria">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Categoria"/>
+                                <propriedade nome="field" valor="categoria_descr"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfSubcategoria">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Subcategoria"/>
+                                <propriedade nome="field" valor="subcategoria_descr"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidRowidReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ROWID_REG"/>
+                                <propriedade nome="dataType" valor="VARCHAR2"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfElemento">
+                              <propriedades>
+                                <propriedade nome="field" valor="elemento"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvfId">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Id"/>
+                                <propriedade nome="field" valor="id"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receRubrXElem">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="TGRJ_RUB_ELEMENTO_DESPESA"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcRubrica">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Rubrica,Nome"/>
+                                <propriedade nome="caption" valor="Rubrica"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="rubrica"/>
+                                <propriedade nome="hideValue" valor="true"/>
+                                <propriedade nome="sql" valor="select rubrica, rubrica||' - '||nome nome from rubricas where busca_searchbox_number(rubrica, ?, rubrica||' - '||nome, ?) = 1  order by rubrica"/>
+                                <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                                <propriedade nome="validators" valor="required();"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsComplemento">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Complemento"/>
+                                    <propriedade nome="displayProperty" valor="descricao"/>
+                                    <propriedade nome="field" valor="complemento"/>
+                                    <propriedade nome="minListWidth" valor="200"/>
+                                    <propriedade nome="sqlParameters" valor="#srcRubrica#"/>
+                                    <propriedade nome="sqlSelect" valor="select valor, valor||' - '||descricao as descricao&#10;from table(CAST(ttgrj_fnc_lov_rjadm00049_compl(?) AS HAD_TYP_LOV_VARCHAR2_TAB)) order by 1"/>
+                                    <propriedade nome="validators" valor="required"/>
+                                    <propriedade nome="valueProperty" valor="valor"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsElemento">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Elemento"/>
+                                    <propriedade nome="field" valor="elemento"/>
+                                    <propriedade nome="minListWidth" valor="200"/>
+                                    <propriedade nome="sqlSelect" valor="select elemento, CASE WHEN FLEX_CAMPO_01 is null THEN nome END as nome&#10;from ELEMENTOS_DESPESA&#10;order by elemento"/>
+                                    <propriedade nome="validators" valor="required"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsTemporalidade">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Temporalidade"/>
+                                    <propriedade nome="field" valor="temporalidade"/>
+                                    <propriedade nome="sqlSelect" valor="select sigla, descricao &#10;from (&#10;&#10;    select 'A' as sigla, 'Dentro e fora da competência' as descricao from dual&#10;    union all&#10;    select 'C' as sigla, 'Dentro da competência' as descricao from dual&#10;    union all&#10;    select 'E' as sigla, 'Fora exercício' as descricao from dual&#10;    union all&#10;    select 'F' as sigla, 'Fora da competência' as descricao from dual&#10;    union all&#10;    select 'T' as sigla, 'Todos' as descricao from dual&#10;  )"/>
+                                    <propriedade nome="validators" valor="required"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsSituacao">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Situação"/>
+                                    <propriedade nome="displayProperty" valor="descricao"/>
+                                    <propriedade nome="field" valor="situacao"/>
+                                    <propriedade nome="sqlSelect" valor="select sigla, descricao &#10;from (&#10;&#10;    select 'A' as sigla, 'Ativos' as descricao from dual&#10;    union all&#10;    select 'I' as sigla, 'Inativos' as descricao from dual&#10;    union all&#10;    select 'P' as sigla, 'Pensionista' as descricao from dual&#10;    union all&#10;    select 'T' as sigla, 'Todos' as descricao from dual&#10;&#10;  )"/>
+                                    <propriedade nome="validators" valor="required"/>
+                                    <propriedade nome="valueProperty" valor="sigla"/>
+                                    <propriedade nome="width" valor="120"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcRegime">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Regime, Nome"/>
+                                <propriedade nome="caption" valor="Regime jurídico"/>
+                                <propriedade nome="field" valor="regjur"/>
+                                <propriedade nome="hideValue" valor="true"/>
+                                <propriedade nome="sql" valor="select sigla, sigla||' - '||nome nome from regimes_jur where busca_searchbox_varchar2(sigla, ?, sigla||' - '||nome, ?) = 1  order by sigla, nome"/>
+                                <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcTipovinc">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Tipo de vínculo, Nome"/>
+                                <propriedade nome="caption" valor="Tipo de vínculo"/>
+                                <propriedade nome="field" valor="tipovinc"/>
+                                <propriedade nome="hideValue" valor="true"/>
+                                <propriedade nome="sql" valor="select sigla, sigla||' - '||nome nome from TIPO_VINC where busca_searchbox_varchar2(sigla, ?, sigla||' - '||nome, ?) = 1  order by sigla, nome"/>
+                                <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcCategoria">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Categoria, Nome"/>
+                                <propriedade nome="caption" valor="Categoria"/>
+                                <propriedade nome="field" valor="categoria"/>
+                                <propriedade nome="hideValue" valor="true"/>
+                                <propriedade nome="sql" valor="select sigla, sigla||' - '||nome nome from CATEGORIAS where busca_searchbox_varchar2(sigla, ?, sigla||' - '||nome, ?) = 1  order by sigla, nome"/>
+                                <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcSubcategoria">
+                              <propriedades>
+                                <propriedade nome="argsCaption" valor="Subcategoria, Nome"/>
+                                <propriedade nome="caption" valor="Subcategoria"/>
+                                <propriedade nome="field" valor="subcategoria"/>
+                                <propriedade nome="hideValue" valor="true"/>
+                                <propriedade nome="sql" valor="select sigla, sigla||' - '||nome nome from SUBCATEGORIAS &#10;where busca_searchbox_varchar2(sigla, ?, sigla||' - '||nome, ?) = 1  &#10;and   categoria = ?&#10;order by sigla, nome"/>
+                                <propriedade nome="sqlParameters" valor="search.value,search.description, #srcCategoria#"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/hiddenField" nome="hidfId">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Id"/>
+                                <propriedade nome="field" valor="id"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

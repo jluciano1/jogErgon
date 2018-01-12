@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/02/2017 12:46" nome="ERGadm00296">
+  <parametros>
+    <parametro ancest="true" id="pMesAno" tipo="DATE"/>
+    <parametro ancest="true" id="pNumFolha" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00296"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="panFiltros"/>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpEmpresa">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Empresa"/>
+                        <propriedade nome="displayProperty" valor="descr"/>
+                        <propriedade nome="sqlSelect" valor="SELECT 0 valor, '(Todas)' descr FROM had_dual&#10;UNION ALL&#10;SELECT d.empresa valor ,&#10;  d.nome descr&#10;FROM empresas d&#10;WHERE empresa = flag_pack.get_empresa"/>
+                        <propriedade nome="valueProperty" valor="valor"/>
+                        <propriedade nome="width" valor="350"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="labelWidth" valor="80"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAno">
+                      <propriedades>
+                        <propriedade nome="sqlParameters" valor="#drpEmpresa#,#drpEmpresa#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT DISTINCT mes_ano valor ,&#10;  TO_CHAR(mes_ano,'mm/yyyy') descr&#10;FROM TABLE(ERG_FNC_LOV_FOLHAS(P_EMP_CODIGO =&gt; (&#10;  CASE TO_CHAR(?)&#10;    WHEN '0'&#10;    THEN NULL&#10;    WHEN to_char(flag_pack.get_empresa)&#10;    THEN to_char(?)&#10;    ELSE '0'&#10;  END), P_VERIFICA_PERMISSAO =&gt; 1))&#10;ORDER BY mes_ano DESC"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.2"/>
+                      <propriedade nome="labelWidth" valor="80"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpNumero">
+                      <propriedades>
+                        <propriedade nome="sqlParameters" valor="#drpEmpresa#,#drpEmpresa#,#ddsMesAno#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT DISTINCT f.numero valor ,&#10;  f.mes_ano,&#10;  f.numero&#10;  ||' - '&#10;  ||f.nome descricao&#10;FROM folhas_emp f,&#10;  tipo_folha tf&#10;WHERE f.tipo_folha                 = tf.tipo&#10;AND tf.calculavel                  = 'S'&#10;AND f.emp_codigo                   = NVL(DECODE(TO_NUMBER(?),0,NULL,flag_pack.get_empresa,TO_NUMBER(?) ), f.emp_codigo)&#10;AND ((? = f.mes_ano))&#10;ORDER BY f.numero"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.47"/>
+                      <propriedade nome="labelWidth" valor="90"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFinalidadeCalc"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcFolha"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.67"/>
+                      <propriedade nome="labelWidth" valor="80"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpConsolidada"/>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.3"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkCalculo"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#drpConsolidada#,#drpConsolidada#,#drpConsolidada#,#drpConsolidada#,#srcFolha#,#srcFolha#,#drpFinalidadeCalc#,#drpFinalidadeCalc#,#ddsMesAno#,#drpNumero#,#drpNumero#,#ddsMesAno#,#drpNumero#,#drpEmpresa#,#drpEmpresa#"/>
+                <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;  mes_ano,&#10;  numero,&#10;  tipo_folha,&#10;  nome ,&#10;  data_consol,&#10;  finalidade_calculo&#10;FROM ttgrj_ergadm00296_execucoes&#10;WHERE ((?                                                                                    = 'S'&#10;AND DATA_CONSOL                                                                             IS NOT NULL)&#10;OR (?                                                                                        = 'N'&#10;AND DATA_CONSOL                                                                             IS NULL)&#10;OR (?                                                                                        = 'A'&#10;OR ?                                                                                        IS NULL ))&#10;AND (tipo_folha                                                                              = ?&#10;OR ?                                                                                        IS NULL)&#10;AND (finalidade_calculo                                                                      = ?&#10;OR ?                                                                                        IS NULL)&#10;AND mes_ano                                                                                  = ?&#10;AND (numero                                                                                  = ?&#10;OR ?                                                                                        IS NULL)&#10;AND calculavel                                                                               = 'S'&#10;AND erg_mostra_folha(?, ?, flag_pack.get_empresa, flag_pack.get_usuario, flag_pack.get_role) = 1&#10;AND emp_codigo                                                                             = NVL(DECODE(TO_NUMBER(?),0,NULL,flag_pack.get_empresa,TO_NUMBER(?) ), emp_codigo)&#10;ORDER BY mes_ano DESC,&#10;  numero"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMes_Ano"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec_Numero"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec_TipoFolha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec_Nome"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec_FinCalc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExec_DataConsol"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdConsulta">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#drpEmpresa#,$grd1.mes_ano$,$grd1.numero$"/>
+                <propriedade nome="sqlSelect" valor="SELECT&#10;  MES_ANO_FOLHA,&#10;  NUM_FOLHA ,&#10;  EMP_CODIGO ,&#10;  EXECUCAO ,&#10;  DESTINO ,&#10;  MODO ,&#10;  SITUACAO ,&#10;  DESCRICAO ,&#10;  to_char(TIME_STAMP,'DD/MM/YYYY HH24:MI:SS')TIME_STAMP,&#10;  to_char(TIME_EXEC_INI ,'DD/MM/YYYY HH24:MI:SS')TIME_EXEC_INI,&#10;  to_char(TIME_EXEC_FIM ,'DD/MM/YYYY HH24:MI:SS')TIME_EXEC_FIM,&#10;  eo.GRUPO ,&#10;  DEBUG ,&#10;  OPCOES ,&#10;  EXPIRACAO ,&#10;  RESPONSAVEL ,&#10;  GRUPO_DEBUG ,&#10;  DEBUG_CALC_TODOS ,&#10;  ESPERAR_ATE ,&#10;  QUANTIDADE_LOTES ,&#10;  CHAVE_EXEC ,&#10;  eo.grupo&#10;  ||' '&#10;  ||ge.obs AS GRUPO_OBS ,&#10;  pack_hades.dif_datas_extenso(time_exec_ini,time_exec_fim) dif_time_exec,&#10;  ROWID_REG&#10;FROM&#10;  ERGADM00296_EXECUTA_OPCAO eo,&#10;  grupo_eleitos ge&#10;WHERE&#10;  eo.grupo     = ge.grupo (+)&#10;AND emp_codigo = NVL(DECODE(?,'0',null),emp_codigo) AND&#10;MES_ANO_FOLHA  = ? AND &#10;NUM_FOLHA = ? &#10;order by execucao desc"/>
+              </propriedades>
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDestino"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSituacao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldSolicitacao">
+                  <propriedades>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInicio"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTermino"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldResponsavel"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescricao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMesAno"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNumFolha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldChave_exec">
+                  <propriedades>
+                    <propriedade nome="grid" valor="true"/>
+                    <propriedade nome="hidden" valor="false"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRowid"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldDebug"/>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldDebugcalc"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldEsperar_ate"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldQtdelotes"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExpiracao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupo_obs"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldModo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDif_time_exec"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldGrupodebug"/>
+                <componente classe="component/gridPanelField" nome="fldEmpresa">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Empresa"/>
+                    <propriedade nome="field" valor="emp_codigo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldExecucao"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpAuxDestinoView"/>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpGrupoEleitos"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recDados"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvDados"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDescricao"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfResponsavel"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfTime_stamp"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="121"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recFolha"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvFolha"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDebug"/>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="150"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfExpiracao"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDestino"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfEsperar_ate"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfGrupoEleitos"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="160"/>
+                            </propriedades>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfGrupodebug"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfDebugcalc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.2"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfQtdlotes"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="121"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfObs"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="160"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/hiddenField" nome="hidGrupo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receFolha"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="chkDebug"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="220"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="dtbExpiracao"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDownSelect" nome="drpDestinoFolha"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.7"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="dtbEsperar_ate"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/searchBox" nome="srcGrupoEleitos">
+                              <propriedades>
+                                <propriedade nome="width" valor="572"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="160"/>
+                            </propriedades>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtGrupodebug"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.3"/>
+                                  <propriedade nome="labelWidth" valor="160"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/checkBox" nome="txtDebugcalc"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.2"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtQtdlotes"/>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.5"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtObs"/>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="160"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/hiddenField" nome="hidChave_exec"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panAltSituacao"/>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSituacao"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.65"/>
+                              <propriedade nome="labelWidth" valor="200"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmAltSituacao"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.35"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Ocorrências da folha"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panOcorrencia"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSeveridade"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="80"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtuProcuraMensagem"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.7"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpRecarregaGrid"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmBusca"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtuExecucao"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtuMesAno"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtuNumFolha"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtuSeveridade"/>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdFolha">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumero"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumeroLinha"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSeveridade"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldMensagem"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Ocorrências por funcionário"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/panelu" nome="panFolhas"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="ddsInfoQtd"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.9"/>
+                              <propriedade nome="labelAlign" valor="center"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <bloco ancest="true" classe="component/ERGadm_blk007" nome="blkVincFil">
+                              <blocoComponente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="blkVincFil.Ident">
+                                <propriedades>
+                                  <propriedade nome="application" valor="Ergon"/>
+                                </propriedades>
+                              </blocoComponente>
+                            </bloco>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.2"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcPens"/>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFicha"/>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpNumeroFiltro"/>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdFunc">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumFol"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumOcorr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCompet"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldServer"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldMens"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Subprocesso da execução"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdSubProcExec">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDestinoSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldProcesso"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTimeExecIniSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTimeExecFimSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldMesAnoSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumFolhaSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldEmpCodigoSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldExecucaoSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldChaveExecSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInfoParaRetomadaSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowIdRegSub"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTempoSub"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Lotes eleitos"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanelSelect" nome="grdLotesEleitos">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldLoteEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldDestinoEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInicioEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFinalEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTempoEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumfuncMinEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldNumfuncMaxEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoDcEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldProcessoDcEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInicioDcEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFinalDcEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTentativasDcEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoPgEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldProcessoPgEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInicioPgEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFinalPgEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTentativasPgEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoClEleitosl"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldChaveExecEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldProcessoClEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInicioClEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFinalClEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTentativasClEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSituacaoGrEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldProcessoGrEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldInicioGrEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldFinalGrEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldTentativasGrEleitos"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldRowidRegEleitos"/>
+                      </componentes>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

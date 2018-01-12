@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+  <security-domain>ArchonRealm</security-domain>
+  <valve>
+        <class-name>org.apache.catalina.authenticator.FormAuthenticator</class-name>
+        <param>
+            <param-name>characterEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </param>
+    </valve>
+  <context-root>/</context-root>
+</jboss-web>

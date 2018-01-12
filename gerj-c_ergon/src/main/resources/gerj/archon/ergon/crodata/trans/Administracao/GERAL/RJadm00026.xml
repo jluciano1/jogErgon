@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/20/2017 15:23" nome="RJadm00026">
+  <layout>
+    <componente classe="component/page" nome="RJadm00026">
+      <propriedades>
+        <propriedade nome="title" valor="Executa relatórios em lote"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="text" valor=" "/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione um grupo de relatórios:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do relatório a ser executado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pan">
+              <propriedades>
+                <propriedade nome="title" valor="Filtro de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/searchBox" nome="sbxFiltroGrupo">
+                      <propriedades>
+                        <propriedade nome="argsCaption" valor="Grupos, Grupos"/>
+                        <propriedade nome="caption" valor="Grupo"/>
+                        <propriedade nome="hideValue" valor="true"/>
+                        <propriedade nome="sql" valor="select codigo grupo, codigo ||' - '||descricao nome&#10;from grupo_relatorios&#10;where sistema = 'C_Ergon' &#10;and codigo in ('08 - Folha Mensal',&#10;               '14 - Erro Bradesco',&#10;               '18 - Relatórios de Auditoria - Pós-Processamento',&#10;               '08 - Folha Mensal Pensionista') &#10;and busca_searchbox_varchar2(codigo , ?, codigo ||' - '||descricao, ?) = 1&#10;&#10;order by 2"/>
+                        <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txtBusca">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Relatório"/>
+                        <propriedade nome="width" valor="415"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="0.6"/>
+                    </propriedades>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdEmpresas">
+              <propriedades>
+                <propriedade nome="caption" valor="Empresas"/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="pageSize" valor="5"/>
+                <propriedade nome="sqlSelect" valor="select to_char(codigo) codigo, nome &#10;from subempresas&#10;where emp_codigo = flag_pack.get_empresa()&#10;order by codigo, nome"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldSubEmpCod">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Código"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="field" valor="codigo"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSubEmpNome">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="width" valor="715"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdRel">
+              <propriedades>
+                <propriedade nome="caption" valor="Relatórios"/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlLockTimeout" valor=""/>
+                <propriedade nome="sqlParameters" valor="#txtBusca# , #txtBusca#,#sbxFiltroGrupo#"/>
+                <propriedade nome="sqlSelect" valor="SELECT &#10;sistema,grupo_codigo,nome,nome_rel,descr_tooltip,&#10;descricao,arquivo,funcao,LOGGING,executa_paramform,eh_agendavel,eh_executavel,requer_gestor,horaini,horafim,diasemana,titulo, 'Executa relatório'  exec_rel,rowid_reg&#10;FROM hadadm00011_relatorios&#10;WHERE (exists (SELECT null FROM usuario WHERE usuario = flag_pack.get_usuario and privil='S' ) OR&#10;        nome IN (SELECT relatorio_nome FROM padrel&#10;                  WHERE padaces_padaces IN (SELECT padaces FROM VW_PADACES_USU_ROLE&#10;                                            where usuario = flag_pack.get_usuario&#10;                                            )&#10;                 )&#10;       ) &#10;and (BUSCA_SEARCHBOX_VARCHAR2(null,null,busca_relat,?)=1  or ? is null)&#10;and sistema = 'C_Ergon'&#10;and grupo_codigo in ('08 - Folha Mensal',&#10;                     '14 - Erro Bradesco',&#10;                     '18 - Relatórios de Auditoria - Pós-Processamento',&#10;                     '08 - Folha Mensal Pensionista') &#10;and grupo_codigo = NVL(?, grupo_codigo)&#10;order by 1,2,3"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldSistema">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Sistema"/>
+                    <propriedade nome="field" valor="sistema"/>
+                    <propriedade nome="width" valor="120"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldGrupo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Grupo"/>
+                    <propriedade nome="field" valor="grupo_codigo"/>
+                    <propriedade nome="width" valor="390"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNomeRel">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome do relatório"/>
+                    <propriedade nome="field" valor="nome_rel"/>
+                    <propriedade nome="width" valor="400"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTooltip">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="cssClass" valor="techneIcoGrid"/>
+                    <propriedade nome="displayMode" valor="tooltip"/>
+                    <propriedade nome="field" valor="descr_tooltip"/>
+                    <propriedade nome="width" valor="50"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldArquivo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Arquivo"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="100"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldCodigo">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="field" valor="titulo"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="400"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowid">
+                  <propriedades>
+                    <propriedade nome="caption" valor="rowid"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNome">
+                  <propriedades>
+                    <propriedade nome="field" valor="nome"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="200"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="drpehAgendavel">
+                  <propriedades>
+                    <propriedade nome="field" valor="eh_agendavel"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="grdehExecutavel">
+                  <propriedades>
+                    <propriedade nome="field" valor="eh_executavel"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuExecRelat">
+              <propriedades>
+                <propriedade nome="title" valor="Execução"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAnoFolha">
+                      <propriedades>
+                        <propriedade nome="addNullOption" valor="S"/>
+                        <propriedade nome="addNullText" valor="Todos"/>
+                        <propriedade nome="caption" valor="Mês/Ano - Folha"/>
+                        <propriedade nome="dataType" valor="DATE"/>
+                        <propriedade nome="displayProperty" valor="mes_ano"/>
+                        <propriedade nome="sqlSelect" valor="SELECT MESANO mes, TO_CHAR(MESANO,'MM/YYYY')||' - '||NUMERO MES_ANO,  NUMERO numero&#10;FROM (SELECT DISTINCT MES_ANO mesano, NUMERO, NOME &#10;      from folhas_emp &#10;      where emp_codigo = flag_pack.get_empresa &#10;) &#10;order by MESANO desc, NUMERO&#10;"/>
+                        <propriedade nome="valueProperty" valor="mes"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbLoteOut">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Lote"/>
+                        <propriedade nome="visible" valor="N"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/checkBox" nome="chkAtivo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Ativos"/>
+                        <propriedade nome="initialValue" valor="S"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/checkBox" nome="chkInativo">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Inativos"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/control/value/unbound/linkMethod" nome="lkmExec">
+                  <propriedades>
+                    <propriedade nome="label" valor="Executa em lote"/>
+                    <propriedade nome="onClick" valor="setValue('txbLoteOut', null);&#10;proceed();&#10;"/>
+                    <propriedade nome="onResponse" valor="  var lote = result['p_lote'];&#10;  if (lote != null)&#10;  {&#10;    setValue('txbLoteOut', lote);&#10;    }"/>
+                    <propriedade nome="paramMensagem" valor="p_mens"/>
+                    <propriedade nome="parameters" valor="#ddsMesAnoFolha#, fldSubEmpCod.checked, fldNome.checked, #chkAtivo#, #chkInativo#"/>
+                    <propriedade nome="rotina" valor="db:TGRJ_EXEC_RELAT_LOTE"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdExec">
+              <propriedades>
+                <propriedade nome="autoRefresh" valor="5"/>
+                <propriedade nome="caption" valor="Execução"/>
+                <propriedade nome="multiSelect" valor="true"/>
+                <propriedade nome="sqlParameters" valor="#txbLoteOut#,#txbLoteOut#,#txbLoteOut#"/>
+                <propriedade nome="sqlSelect" valor="select l.ID_LOTE, l.sis, l.TRANS, a.ARQUIVO, a.RELATORIO, a.status&#10;  from TGRJ_LOTE_REPORT l,&#10;       had_agenda_relat a&#10;where l.ID_AGENDA = a.ID&#10;and   ID_LOTE = ?&#10;AND   ? IS NOT NULL&#10;UNION ALL&#10;select l.ID_LOTE, l.sis, l.TRANS, a.ARQUIVO, a.RELATORIO, a.status&#10;  from TGRJ_LOTE_REPORT l,&#10;       had_agenda_relat a&#10;where l.ID_AGENDA = a.ID&#10;and   ID_LOTE = (select MAX(ID_LOTE)&#10;                 from TGRJ_LOTE_REPORT l,&#10;                      had_agenda_relat a&#10;                 where l.ID_AGENDA = a.ID&#10;                 AND   USUARIO = FLAG_PACK.GET_USUARIO()&#10;                 and   l.TRANS = 'RJadm00026')&#10;AND   ? IS NULL"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldSis">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Sistema"/>
+                    <propriedade nome="field" valor="sis"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="width" valor="80"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTrans">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Transação"/>
+                    <propriedade nome="field" valor="trans"/>
+                    <propriedade nome="width" valor="80"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRelat">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Relatório"/>
+                    <propriedade nome="field" valor="relatorio"/>
+                    <propriedade nome="width" valor="340"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldCaminho">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Caminho"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="width" valor="450"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldIdLote">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Id Lote"/>
+                    <propriedade nome="field" valor="id_lote"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDownload">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="field" valor="status"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente classe="component/control/fileDownload" nome="fdZip">
+                  <propriedades>
+                    <propriedade nome="application" valor="C_Ergon"/>
+                    <propriedade nome="cssClass" valor="techne-descarregar"/>
+                    <propriedade nome="parameters" valor="'RJadm00026', null, fldCaminho.checked"/>
+                    <propriedade nome="rotina" valor="java:tgrjDownloadArq.downloadMult(String, String, String[])"/>
+                    <propriedade nome="text" valor="Baixar relatórios selecionados"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

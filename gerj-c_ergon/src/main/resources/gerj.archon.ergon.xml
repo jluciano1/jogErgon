@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<aplicacao nome="C_Ergon" versao="1.0" f_nome="Ergon" f_versao="1.0">
+	<modulos>
+		<modulo descricao="Administração" id="Administracao" />
+	</modulos>
+	<referencias>
+    <referencia aplicacao="Hades" versao="1.0" />
+    <referencia aplicacao="Ergon" versao="1.0" />
+		<referencia aplicacao="C_Hades" versao="1.0" />
+	</referencias>
+	<!-- Arquivo de configuração de apelidos das tabelas do C_Ergon -->
+ <tabelas>
+<!--
+    <tabela id="exemplo" nome="Apelido da tabela">
+      <colunas/>
+    </tabela>  
+-->
+  </tabelas>
+</aplicacao>

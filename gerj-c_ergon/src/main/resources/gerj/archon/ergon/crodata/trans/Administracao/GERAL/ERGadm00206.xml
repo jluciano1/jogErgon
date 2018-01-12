@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/04/2017 15:28" nome="ERGadm00206">
+  <parametros>
+    <parametro ancest="true" id="pNumfunc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pNumvinc" tipo="NUMBER"/>
+    <parametro ancest="true" id="pMesano"/>
+    <parametro ancest="true" id="pNumfolha" tipo="NUMBER"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00206"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/ERGadm_blk001" nome="blk001"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/searchBox" nome="srcPens"/>
+              </layout>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="style" valor=""/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpEmp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpMes_ano"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkPopUp"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbNumFolha"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtNumpens"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtNumfolha"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpFicha"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd1">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRub"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo_rubrica"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_abrev">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Descrição da Rubrica"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComplemento"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCompetencia"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagens"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontos"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagensCorrecao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontoCorrecao"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInfo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFicha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldUsuario"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinha"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldItens_comp_calc"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grd2">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldRubrica1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldTipo_rubrica1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldNome_abrev1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldComplemento1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldCompetencia1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagens1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontos1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldVantagensCorrecao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldDescontoCorrecao1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldInfo1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldFicha1"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldUsuario1"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/htmlControl" nome="htmlParam1"/>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSomaVantagens"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSomaDescontos"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpSomaTotal"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="COL">
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbSomaVantagens"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbSomaDescontos"/>
+              </layout>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbSomaTotal"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/dropDownSelect" nome="drpExecucao"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdParamRelat">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldMes_ano"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdParam">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldParEscondido"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldValEscondido"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanelSelect" nome="grdNomeParam">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldParametro"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtDestype"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtDesname"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtDesformat"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txtEleitos"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/value/unbound/linkReport" nome="lnkRelatorio"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pan2"/>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypRetidos"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypRub_aux"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypRet_aux"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypOcorrencia"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypInfo_pg"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypMensagens"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypCalculos"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hypCredito"/>
+                  </layout>
+                  <layout>
+                    <componente ancest="true" classe="component/control/value/unbound/hyperLink" nome="hlkComposicao"/>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

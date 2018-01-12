@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/10/2017 21:03" nome="RJadm00021">
+  <layout>
+    <componente classe="component/page" nome="RJadm00021">
+      <propriedades>
+        <propriedade nome="title" valor="Dados do Agendamento"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Informe os parâmetros abaixo para visualizar as informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe os filtros.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuConsulta">
+              <propriedades>
+                <propriedade nome="title" valor="Filtros"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/textBox" nome="txbId">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Nº Exec"/>
+                        <propriedade nome="dataType" valor="NUMBER"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsStatus">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Status"/>
+                        <propriedade nome="sqlSelect" valor="select item STATUS&#10;  from itemtabela&#10; where tab = 'HAD_STAT_AGEND_RELAT'&#10; order by 1&#10;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="COL">
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbDtagenda">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Agendado em"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbDtfimagenda">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Até"/>
+                      </propriedades>
+                    </componente>
+                    <propriedades>
+                      <propriedade nome="columnWidth" valor="300"/>
+                    </propriedades>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbDtiniexec">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Executado Em"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dateBox" nome="dtbDtfimexec">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Até"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdConsulta">
+              <propriedades>
+                <propriedade nome="caption" valor=""/>
+                <propriedade nome="sqlParameters" valor="#dtbDtagenda#, #dtbDtagenda#, #dtbDtfimagenda#, #dtbDtfimagenda#, #dtbDtiniexec#, #dtbDtiniexec#, #dtbDtfimexec#, #dtbDtfimexec#, #txbId#, #ddsStatus#"/>
+                <propriedade nome="sqlSelect" valor="select data_hora,dtiniexec,id,usuario,arquivo,status,mensagem, msg_usu, msg_gestor&#10;from &#10;PGOV_AGENDA_ROTINA&#10;where&#10;(? is null or dtiniexec &gt;= ?) and&#10;(? is null or dtiniexec &lt; ? + 1) and&#10;(?  is null or data_hora  &gt;= ?) and&#10;(?  is null or data_hora  &lt; ? +1)&#10;and id = ? and status = ?&#10; &#10;"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="flddatahora">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Data Execução"/>
+                    <propriedade nome="dataType" valor="DATE"/>
+                    <propriedade nome="field" valor="data_hora"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="flddtiniexec">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Início Execução"/>
+                    <propriedade nome="dataType" valor="DATE"/>
+                    <propriedade nome="field" valor="dtiniexec"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldid">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nº Exec"/>
+                    <propriedade nome="dataType" valor="NUMBER"/>
+                    <propriedade nome="field" valor="id"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldusuario">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Usuário"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="usuario"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldarquivo">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Rotina"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="arquivo"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldstatus">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Status"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="status"/>
+                    <propriedade nome="width" valor="150"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMsgusu">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="msg_usu"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMsggestor">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="msg_gestor"/>
+                    <propriedade nome="grid" valor="false"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout tipo="TAB">
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Dados Execução"/>
+                </propriedades>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recdadosexecucao">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdConsulta"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvdadosexecucao"/>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfMensagem">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mensagem"/>
+                                    <propriedade nome="field" valor="mensagem"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="width" valor="600"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfParâmetros">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Parâmetros"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="width" valor="600"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/linkMethod" nome="lkmDownload">
+                                  <propriedades>
+                                    <propriedade nome="label" valor="Download"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/hyperLink" nome="hplOperações2">
+                                  <propriedades>
+                                    <propriedade nome="popup" valor="S"/>
+                                    <propriedade nome="text" valor="Operações"/>
+                                    <propriedade nome="transacao" valor="Administracao.RJadm00021_popup"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Mensagens"/>
+                </propriedades>
+                <layouts>
+                  <layout tipo="COL">
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanel" nome="recMensagens">
+                          <propriedades>
+                            <propriedade nome="caption" valor=""/>
+                            <propriedade nome="master" valor="grdConsulta"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanelView" nome="recvmensagens"/>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfmensagemusu">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mensagem Usuário"/>
+                                    <propriedade nome="field" valor="msg_usu"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="width" valor="600"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfmensagemgestor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mensagem Gestor"/>
+                                    <propriedade nome="field" valor="msg_gestor"/>
+                                    <propriedade nome="textMode" valor="multiLine"/>
+                                    <propriedade nome="width" valor="600"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

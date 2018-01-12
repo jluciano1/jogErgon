@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 11:51" nome="ERGadm00025">
+  <parametros>
+    <parametro ancest="true" id="pAtividade"/>
+  </parametros>
+  <layout>
+    <componente ancest="true" classe="component/page" nome="ERGadm00025"/>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr01"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso01"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco ancest="true" classe="component/HADadm_blk003" nome="blkEmp"/>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr02"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso02"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/panelu" nome="pnuFiltro"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/value/unbound/textBox" nome="txbAtiv"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/gridPanel" nome="grdAtividade">
+              <componentes>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldaYAtivCodigo"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivNome"/>
+                <componente classe="component/gridPanelField" nome="fldFlex01TipoArea">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo/Área"/>
+                    <propriedade nome="field" valor="flex_campo_01"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="fldAtivEquipSegur">
+                  <propriedades>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/checkBoxColumn" nome="chkAssociado"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldLinkEmp"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivDescricao"/>
+                <componente classe="component/gridPanelField" nome="fldFlex02AtividadeDe">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Atividade De"/>
+                    <propriedade nome="field" valor="flex_campo_02"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivQualEquip"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivGrauRisco"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivGrupoSegur"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivGrupoMedicina"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivPontlei"/>
+                <componente ancest="true" classe="component/gridPanelField" nome="fldAtivRowidReg"/>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente ancest="true" classe="component/control/textPanelGroup" nome="instr03"/>
+            <layouts>
+              <layout>
+                <componente ancest="true" classe="component/control/textPanel" nome="btUso03"/>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <propriedades>
+              <propriedade nome="border" valor="true"/>
+              <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+            </propriedades>
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/recordPanel" nome="recAtividade"/>
+                    <layouts>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelView" nome="recvAtividade"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txftxfAtivCodigo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAtivNome"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex01TipoArea">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo/Área"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="width" valor="720"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfAtivDescricao"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlex02AtividadeDe">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Atividade de"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="width" valor="720"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htmlParam1"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAtivGrupoSegur"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAtivGrupoMedicina"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/viewField/textField" nome="txfAtivGrauRisco"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfAtivEquipSegur"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/viewField/textField" nome="txfAtivQualEquip"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente ancest="true" classe="component/recordPanelEdit" nome="receAtividade"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtAtivCodigo"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtAtivNome"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsFlex01TipoArea">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Tipo/Área"/>
+                                    <propriedade nome="field" valor="flex_campo_01"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT ITEM, ITEM||' - '||DESCR descricao FROM ITEMTABELA WHERE TAB = 'GOVRJ_TIPO_ATIVIDADE' ORDER BY ITEM"/>
+                                    <propriedade nome="width" valor="720"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtAtivDescricao"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="ddsFlex02AtividadeDe">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Atividade de"/>
+                                    <propriedade nome="field" valor="flex_campo_02"/>
+                                    <propriedade nome="sqlSelect" valor="select 'EXERCICIO' desc1 from dual union&#10;select 'INGRESSO' desc1 from dual union&#10;select 'ING/EXEC' desc1 from dual&#10;order by 1"/>
+                                    <propriedade nome="width" valor="720"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/htmlControl" nome="htmlParam2"/>
+                          </layout>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDown" nome="drpAtribGrupSeg"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/dropDown" nome="drpAtribGrupMed"/>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/editField/textBox" nome="txtAtivGrauRisco"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/checkBox" nome="chkAtribEquipSeg"/>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/editField/textBox" nome="txtAtivQualEquip"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Documentos legais"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocsAtividade"/>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Cargos associados"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanel" nome="grdAtivCargo">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoAtividade"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargo"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoDescr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoCateg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoSubCateg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoPontlei"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCargoRowidReg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategoria"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout tipo="TAB">
+                    <propriedades>
+                      <propriedade nome="border" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                    <layouts>
+                      <layout tipo="CONT">
+                        <propriedades>
+                          <propriedade nome="title" valor="Detalhes"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanel" nome="recAtivCargo"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/recordPanelView" nome="recvAtivCargo"/>
+                                <layouts>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfCargoDescr"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="txfCargo"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/recordPanelEdit" nome="receAtivCargo"/>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/hiddenField" nome="hideAtivCargo"/>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/searchBox" nome="srcCargo"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente ancest="true" classe="component/panelu" nome="panAtivCargo"/>
+                            <layouts>
+                              <layout tipo="CONT">
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/textPanelGroup" nome="textPanelGroup1"/>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/control/textPanel" nome="textPanel1"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <propriedades>
+                                  <propriedade nome="style" valor=""/>
+                                </propriedades>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDown" nome="drpAtivCateg"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/control/value/unbound/dropDown" nome="drpAtivSubCateg"/>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/control/value/unbound/linkMethod" nome="lkmCombina"/>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="CONT">
+                        <propriedades>
+                          <propriedade nome="title" valor="Documentos Legais"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkDocsAtivCargo"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Validações"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente ancest="true" classe="component/gridPanel" nome="grdAtivCateg">
+                      <componentes>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategAtividade"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategAtivDescr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCateg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategDescr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSubCateg"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldSubCategDescr"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategPontlei"/>
+                        <componente ancest="true" classe="component/gridPanelField" nome="fldCategRowidReg"/>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout tipo="TAB">
+                    <propriedades>
+                      <propriedade nome="border" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                    <layouts>
+                      <layout tipo="CONT">
+                        <propriedades>
+                          <propriedade nome="title" valor="Detalhes"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente ancest="true" classe="component/recordPanel" nome="recAtivCateg"/>
+                            <layouts>
+                              <layout>
+                                <componente ancest="true" classe="component/recordPanelView" nome="recvAtivCateg"/>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="hidvCategAtiv"/>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="txfCateg"/>
+                                  </layout>
+                                  <layout>
+                                    <componente ancest="true" classe="component/viewField/hiddenField" nome="txfSubCateg"/>
+                                  </layout>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfCategDescr"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/viewField/textField" nome="txfSubCategDescr"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente ancest="true" classe="component/recordPanelEdit" nome="receAtivCateg"/>
+                                <layouts>
+                                  <layout>
+                                    <componente ancest="true" classe="component/editField/hiddenField" nome="hideCategAtiv"/>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDown" nome="drpCategoria"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente ancest="true" classe="component/editField/dropDown" nome="drpSubCategoria"/>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="CONT">
+                        <propriedades>
+                          <propriedade nome="title" valor="Documentos legais"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <bloco ancest="true" classe="component/ERGadm_blk004" nome="blkAvaliacoes"/>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

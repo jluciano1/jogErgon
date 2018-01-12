@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="10/25/2017 16:38" nome="RJadm00056">
+  <layout>
+    <componente classe="component/page" nome="RJadm00056">
+      <propriedades>
+        <propriedade nome="title" valor="Rubricas Base Calc Pensão"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt; Selecione o tipos de beneficiário para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número do servidor desejado, pois esta página consulta apenas informações referentes a um único servidor. No campo destinado ao nome do servidor, você pode digitar parte do nome desejado que o sistema o ajudará a localizar o servidor mais facilmente. &lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/panelu" nome="panFiltro">
+                  <propriedades>
+                    <propriedade nome="title" valor="Filtros de pesquisa"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="style" valor=""/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dateBox" nome="dtbDtini">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data início"/>
+                            <propriedade nome="onChanged" valor="setValue('dtbDtfim',null);"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dateBox" nome="dtbDtfim">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Data fim"/>
+                            <propriedade nome="onChanged" valor="var ini = getParameter('#dbtDtini#');  var fim = getParameter('#dtbDtfim#');  var msgVerd = 'Data de término deve ser posterior ao início.';  var msgErr;  &#10;if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)){ &#10;  setValue('dtbDtfim', null); &#10;}"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="columnWidth" valor="0.3"/>
+                          <propriedade nome="labelWidth" valor="120"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/gridPanelSelect" nome="grdRubricas">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipos de beneficiários"/>
+                    <propriedade nome="idField" valor="rowid_reg"/>
+                    <propriedade nome="sqlParameters" valor="#dtbDtini#, #dtbDtfim#"/>
+                    <propriedade nome="sqlSelect" valor="SELECT rowid_reg,&#10;       id,&#10;       dtini,&#10;       dtfim,&#10;       rubrica,&#10;       rubrica_descr,&#10;       complemento,&#10;       compoe_base_pensao,&#10;       compoe_base_pensao_descr&#10;FROM RJADM00056_RUBR_BASE_CALC_PENS&#10;WHERE pack_hades.eh_concomitante(dtini, dtfim, nvl(?,pack_had_util.data_minima), ?) = 1&#10;ORDER BY dtini, dtfim, rubrica_descr"/>
+                  </propriedades>
+                  <componentes>
+                    <componente classe="component/gridPanelField" nome="fldRubricaDescr">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Rubrica"/>
+                        <propriedade nome="field" valor="rubrica_descr"/>
+                        <propriedade nome="toolTip" valor="Código da rubrica"/>
+                        <propriedade nome="width" valor="325"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCompl">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Complemento"/>
+                        <propriedade nome="field" valor="complemento"/>
+                        <propriedade nome="toolTip" valor="Complemento da rubrica"/>
+                        <propriedade nome="width" valor="300"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDtini">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Data início"/>
+                        <propriedade nome="field" valor="dtini"/>
+                        <propriedade nome="toolTip" valor="Data início da vigência da rubrica"/>
+                        <propriedade nome="width" valor="100"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldDtfim">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Data fim"/>
+                        <propriedade nome="field" valor="dtfim"/>
+                        <propriedade nome="toolTip" valor="Data fim da vigência da rubrica"/>
+                        <propriedade nome="width" valor="100"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCompoeBaseDescr">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Compõe base pensão?"/>
+                        <propriedade nome="field" valor="compoe_base_pensao_descr"/>
+                        <propriedade nome="toolTip" valor="Defini se a rubrica irá compor a base de pensão"/>
+                        <propriedade nome="width" valor="150"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldRubrica">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="field" valor="rubrica"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="toolTip" valor="Código da rubrica"/>
+                        <propriedade nome="width" valor="200"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldCompoeBase">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Compõe base pensão?"/>
+                        <propriedade nome="field" valor="compoe_base_pensao"/>
+                        <propriedade nome="grid" valor="false"/>
+                        <propriedade nome="toolTip" valor="Defini se a rubrica irá compor a base de pensão"/>
+                        <propriedade nome="width" valor="150"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldrowid_reg">
+                      <propriedades>
+                        <propriedade nome="field" valor="rowid_reg"/>
+                        <propriedade nome="grid" valor="false"/>
+                      </propriedades>
+                    </componente>
+                    <componente classe="component/gridPanelField" nome="fldId">
+                      <propriedades>
+                        <propriedade nome="caption" valor="id"/>
+                        <propriedade nome="field" valor="id"/>
+                        <propriedade nome="grid" valor="false"/>
+                      </propriedades>
+                    </componente>
+                  </componentes>
+                </componente>
+              </layout>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="instr02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="btUso02">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;ENo painel abaixo você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;    &lt;ul&gt;       &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;       &lt;li&gt;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout>
+                <componente classe="component/recordPanel" nome="recRubricas">
+                  <propriedades>
+                    <propriedade nome="caption" valor=""/>
+                    <propriedade nome="idField" valor="rowid_reg"/>
+                    <propriedade nome="master" valor="grdRubricas"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanelView" nome="recvRubricas"/>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfRubricas">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Rubrica"/>
+                                <propriedade nome="field" valor="rubrica_descr"/>
+                                <propriedade nome="toolTip" valor="Código da rubrica"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfComplemento">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Complemento"/>
+                                <propriedade nome="field" valor="complemento"/>
+                                <propriedade nome="toolTip" valor="Complemento da rubrica"/>
+                                <propriedade nome="width" valor="415"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfDtini">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data início"/>
+                                <propriedade nome="field" valor="dtini"/>
+                                <propriedade nome="toolTip" valor="Data início da vigência da rubrica"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfDtfim">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data fim"/>
+                                <propriedade nome="field" valor="dtfim"/>
+                                <propriedade nome="toolTip" valor="Data fim da vigência da rubrica"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/textField" nome="txfCompoeBasePens">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Compõe base pensão?"/>
+                                <propriedade nome="field" valor="compoe_base_pensao_descr"/>
+                                <propriedade nome="toolTip" valor="Defini se a rubrica irá compor a base de pensão"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/hiddenField" nome="txfCompoeBasePens_20171025_094851">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Compõe base pensão?"/>
+                            <propriedade nome="field" valor="compoe_base_pensao"/>
+                            <propriedade nome="toolTip" valor="Defini se a rubrica irá compor a base de pensão"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/hiddenField" nome="hidvfRubrica">
+                          <propriedades>
+                            <propriedade nome="field" valor="rubrica"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/hiddenField" nome="hidvfRowid_reg">
+                          <propriedades>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/hiddenField" nome="hidvfId">
+                          <propriedades>
+                            <propriedade nome="field" valor="id"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/recordPanelEdit" nome="receDados">
+                      <propriedades>
+                        <propriedade nome="dataTable" valor="tgrj_rubrica_pensao"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcRubrica">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Rubrica"/>
+                                <propriedade nome="dataType" valor="NUMBER"/>
+                                <propriedade nome="field" valor="rubrica"/>
+                                <propriedade nome="sql" valor="SELECT RUBRICA cod, RUBRICA||' - '||NOME descr&#10;FROM RUBRICAS&#10;WHERE BUSCA_SEARCHBOX_VARCHAR2(RUBRICA, ?, RUBRICA||' - '||NOME, ? ) = 1&#10;ORDER BY 1"/>
+                                <propriedade nome="sqlParameters" valor="search.value, search.description"/>
+                                <propriedade nome="toolTip" valor="Código da rubrica"/>
+                                <propriedade nome="validators" valor="required()"/>
+                                <propriedade nome="valueMaxLength" valor="120"/>
+                                <propriedade nome="width" valor="415"/>
+                                <propriedade nome="widthKey" valor="100"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/editField/searchBox" nome="srcCompl">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Complemento"/>
+                                <propriedade nome="field" valor="complemento"/>
+                                <propriedade nome="sql" valor="SELECT L.ITEM cod, L.ITEM descr&#10;FROM COMPL_LISTA_ITENS L, COMPL_RUBRICAS R&#10;WHERE L.LISTA = R.LISTA&#10;AND   R.RUBRICA = ?&#10;AND  (L.DTFIM IS NULL OR L.DTFIM &gt;= SYSDATE)&#10;AND   BUSCA_SEARCHBOX_VARCHAR2(L.ITEM, ?, L.ITEM, ? ) = 1"/>
+                                <propriedade nome="sqlParameters" valor="#srcRubrica#, search.value, search.description "/>
+                                <propriedade nome="toolTip" valor="Complemento da rubrica"/>
+                                <propriedade nome="valueMaxLength" valor="120"/>
+                                <propriedade nome="width" valor="415"/>
+                                <propriedade nome="widthKey" valor="100"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="COL">
+                        <propriedades>
+                          <propriedade nome="style" valor=""/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/editField/textBox" nome="txbDtini">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data início"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="dtini"/>
+                                <propriedade nome="onChanged" valor="setValue('txbDtfim',null);"/>
+                                <propriedade nome="toolTip" valor="Data início da vigência da rubrica"/>
+                                <propriedade nome="validators" valor="required();"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/textBox" nome="txbDtfim">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Data fim"/>
+                                <propriedade nome="dataType" valor="DATE"/>
+                                <propriedade nome="field" valor="dtfim"/>
+                                <propriedade nome="onChanged" valor="var ini = getParameter('#txbDtini#');  var fim = getParameter('#txbDtfim#');  var msgVerd = 'Data de término deve ser posterior ao início.';  var msgErr;  &#10;if(Techne.Hades.comparaDatas(ini, fim, '&gt;', msgVerd, msgErr)){ &#10;  setValue('txtDtfim', null); &#10;}"/>
+                                <propriedade nome="toolTip" valor="Data fim da vigência da rubrica"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/editField/dropDownSelect" nome="ddsCompBasePens">
+                              <propriedades>
+                                <propriedade nome="addNullOption" valor="S"/>
+                                <propriedade nome="caption" valor="Compõe base pensão?"/>
+                                <propriedade nome="field" valor="compoe_base_pensao"/>
+                                <propriedade nome="initialValue" valor="'N'"/>
+                                <propriedade nome="sqlSelect" valor="select cod, descr FROM (&#10;  SELECT&#10;    'S'   cod,&#10;    'SIM' descr&#10;  FROM dual&#10;  UNION ALL&#10;  SELECT&#10;    'N'   cod,&#10;    'NÃO' descr&#10;  FROM dual&#10;  UNION ALL&#10;  SELECT&#10;    'T'      cod,&#10;    'TALVEZ' descr&#10;  FROM dual&#10;)order by 1"/>
+                                <propriedade nome="toolTip" valor="Defini se a rubrica irá compor a base de pensão"/>
+                                <propriedade nome="width" valor="120"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="columnWidth" valor="0.3"/>
+                              <propriedade nome="labelWidth" valor="120"/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/editField/hiddenField" nome="hidfId">
+                          <propriedades>
+                            <propriedade nome="field" valor="id"/>
+                          </propriedades>
+                        </componente>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

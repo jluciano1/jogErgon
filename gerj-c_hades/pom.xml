@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+
+  <!-- **************** -->
+  <!-- Dados da empresa -->
+  <!-- **************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- **************** -->
+  <!-- Dados do projeto -->
+  <!-- **************** -->
+  <artifactId>gerj-c_hades</artifactId>
+  <packaging>jar</packaging>
+  <!-- groupId e version herdam do parent -->
+
+
+
+  <!-- ************** -->
+  <!-- Projeto parent -->
+  <!-- ************** -->
+  <parent>
+    <groupId>br.com.techne.gerj</groupId>
+    <artifactId>gerj-ergon-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>../gerj-ergon-parent</relativePath>
+  </parent>
+
+
+
+  <!-- ************ -->
+  <!-- Propriedades -->
+  <!-- ************ -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- ***************************** -->
+  <!-- Gerenciamento de dependencias -->
+  <!-- ***************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- ************ -->
+  <!-- Dependências -->
+  <!-- ************ -->
+  <dependencies>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon-hades</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>br.com.techne</groupId>
+      <artifactId>techne-archon-ergon</artifactId>
+    </dependency>    
+  </dependencies>
+
+
+
+  <!-- ********************** -->
+  <!-- Configuracoes de build -->
+  <!-- ********************** -->
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>        
+      </resource>
+      <resource>
+        <directory>${project.build.directory}/minified/</directory>
+        <targetPath>${project.build.outputDirectory}/META-INF/resources/</targetPath>
+      </resource>
+    </resources>
+    <plugins>
+      <!-- Comprime arquivos Javascript usando YUI-Compressor -->
+      <plugin>
+        <groupId>com.samaxes.maven</groupId>
+        <artifactId>minify-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-minify</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>minify</goal>
+            </goals>
+            <configuration>
+              <charset>UTF-8</charset>
+              <jsEngine>YUI</jsEngine>
+              <skipMerge>true</skipMerge>
+              <nosuffix>true</nosuffix>
+              <webappSourceDir>${basedir}/src/main/resources/META-INF/resources</webappSourceDir>
+              <webappTargetDir>${project.build.directory}/minified</webappTargetDir>
+              <jsSourceDir>script</jsSourceDir>
+              <jsSourceIncludes>
+                <jsSourceInclude>*.js</jsSourceInclude>
+              </jsSourceIncludes>
+              <cssSourceDir>style</cssSourceDir>
+              <cssSourceIncludes>
+                <cssSourceInclude>*.css</cssSourceInclude>
+              </cssSourceIncludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para baixar) -->
+  <!-- ************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+
+  <!-- ************************** -->
+  <!-- Repositorios (para deploy) -->
+  <!-- ************************** -->
+
+  <!-- Definido no projeto parent. NAO INFORMAR NADA AQUI! -->
+
+
+  
+</project>

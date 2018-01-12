@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/09/2017 15:33" nome="RJadm00066">
+  <layout>
+    <componente classe="component/page" nome="RJadm00066">
+      <propriedades>
+        <propriedade nome="title" valor="Resumo Financeiro por Período"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="tpgInstr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione a pessoa para visualizar informações:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="txpUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe o número da pessoa desejada, pois esta página consulta apenas informações referentes a uma única pessoa. No campo destinado ao nome da pessoa, você pode digitar parte do nome desejado que o sistema o ajudará a localizar a pessoa mais facilmente.&lt;/p&gt;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <bloco classe="component/ERGadm_blk002" nome="blkNumeroFuncionario">
+              <blocoComponente classe="component/control/value/unbound/searchBox" nome="blkNumeroFuncionario.srcFunc">
+                <propriedades>
+                  <propriedade nome="width" valor="700"/>
+                </propriedades>
+              </blocoComponente>
+            </bloco>
+          </layout>
+          <layout tipo="CONT">
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanelGroup" nome="tpgInstr02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="techneInstr"/>
+                    <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/textPanel" nome="txpUso02">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="uso"/>
+                        <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt; &lt;/div&gt;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuVinculo">
+              <propriedades>
+                <propriedade nome="title" valor="Histórico Financeiro"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout tipo="COL">
+                <propriedades>
+                  <propriedade nome="cssClass" valor="technePagina"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsNumVinc">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Vínculo"/>
+                        <propriedade nome="sqlParameters" valor="#blkNumeroFuncionario.srcFunc#"/>
+                        <propriedade nome="sqlSelect" valor="SELECT NUMERO, NUMERO AS CATEGORIA&#10;FROM VINCULOS &#10;WHERE NUMFUNC = ?  ORDER BY NUMERO&#10;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAnoIni">
+                      <propriedades>
+                        <propriedade nome="caption" valor="De:"/>
+                        <propriedade nome="sqlSelect" valor="SELECT TO_CHAR(MESANO,'MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA) &#10;ORDER BY MESANO DESC&#10;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                  <layout>
+                    <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsMesAnoFim">
+                      <propriedades>
+                        <propriedade nome="caption" valor="Até"/>
+                        <propriedade nome="sqlSelect" valor="SELECT TO_CHAR(MESANO,'MM/YYYY') MESANOFOLHA, &#10;       TO_CHAR(MESANO,'MM/YYYY') DESCRICAO &#10;FROM (SELECT DISTINCT MES_ANO MESANO FROM FOLHAS_EMP WHERE EMP_CODIGO = FLAG_PACK.GET_EMPRESA) &#10;ORDER BY MESANO DESC&#10;"/>
+                      </propriedades>
+                    </componente>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdResumoFinanceiro">
+              <propriedades>
+                <propriedade nome="caption" valor=""/>
+                <propriedade nome="sqlParameters" valor="#blkNumeroFuncionario.srcFunc#, #ddsNumVinc# , #ddsMesAnoIni# , #ddsMesAnoFim#&#10;"/>
+                <propriedade nome="sqlSelect" valor="   SELECT  FB.NUMVINC,&#10;           FB.NUMPENS,&#10;           FB.NUMDEPEN,&#10;           TO_CHAR(FB.MES_ANO,'MM/YYYY') MES_ANO,&#10;           FB.NUMERO,&#10;           NVL(FB.VALORVAN,0) VALORVAN,&#10;           NVL(FB.VALORDES,0) VALORDES,&#10;           NVL(FB.VALORLIQ,0) VALORLIQ,&#10;           FE.TIPO_FOLHA       &#10;    FROM FITABANCO FB, FOLHAS_EMP FE&#10;    WHERE FB.MES_ANO = FE.MES_ANO&#10;    AND FB.NUMERO = FE.NUMERO&#10;    AND FB.EMP_CODIGO = FE.EMP_CODIGO&#10;    AND FB.NUMFUNC = ?&#10;    AND FB.NUMVINC = ?&#10;    AND FB.MES_ANO BETWEEN '01/'|| ? AND '01/' ||NVL( ?,TO_CHAR(PACK_HADES.DATA_MAXIMA,'mm/yyyy'))   &#10;    AND PCK_FOLHAS.EH_CONSOLIDADA( &#10;    FB.MES_ANO,FB.NUMERO,FB.EMP_CODIGO) = 1&#10;    AND FB.EMP_CODIGO = FLAG_PACK.GET_EMPRESA&#10;    ORDER BY FB.MES_ANO desc, FB.NUMERO, FB.NUMVINC, FB.NUMPENS, FB.NUMDEPEN &#10;   &#10;&#10;   "/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldNumVinc">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Vínculo"/>
+                    <propriedade nome="field" valor="numvinc"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumPens">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Pens."/>
+                    <propriedade nome="field" valor="numpens"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumDepen">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Depen."/>
+                    <propriedade nome="field" valor="numdepen"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldMesAno">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Mês Ano"/>
+                    <propriedade nome="field" valor="mes_ano"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldNumero">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Número"/>
+                    <propriedade nome="field" valor="numero"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldTipoFolha">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Folha"/>
+                    <propriedade nome="field" valor="tipo_folha"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorVan">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Bruto"/>
+                    <propriedade nome="field" valor="valorvan"/>
+                    <propriedade nome="maskBody" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorDes">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Desconto"/>
+                    <propriedade nome="field" valor="valordes"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldValorLiq">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Líquido"/>
+                    <propriedade nome="field" valor="valorliq"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanelSelect" nome="grdSomaResumoFinanceiro">
+              <propriedades>
+                <propriedade nome="sqlParameters" valor="#blkNumeroFuncionario.srcFunc# , #ddsMesAnoIni# , #ddsMesAnoFim#&#10;"/>
+                <propriedade nome="sqlSelect" valor="   SELECT SUM(FB.VALORVAN)BRUTO,&#10;    SUM(FB.VALORDES)DESCONTO,&#10;    SUM(FB.VALORLIQ)LIQUIDO &#10;    FROM FITABANCO FB, FOLHAS_EMP FE&#10;    WHERE FB.MES_ANO = FE.MES_ANO&#10;    AND FB.NUMERO = FE.NUMERO&#10;    AND FB.EMP_CODIGO = FE.EMP_CODIGO&#10;    AND FB.NUMFUNC = ?&#10;    AND FB.MES_ANO BETWEEN '01/'|| NVL( ?,TO_CHAR(PACK_HADES.DATA_MAXIMA,'mm/yyyy'))    AND '01/' ||NVL( ?,TO_CHAR(PACK_HADES.DATA_MAXIMA,'mm/yyyy'))   &#10;    AND PCK_FOLHAS.EH_CONSOLIDADA( &#10;    FB.MES_ANO,FB.NUMERO,FB.EMP_CODIGO) = 1&#10;    AND FB.EMP_CODIGO = FLAG_PACK.GET_EMPRESA&#10;"/>
+                <propriedade nome="visible" valor="N"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldSomaBruto">
+                  <propriedades>
+                    <propriedade nome="field" valor="bruto"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSomaDesconto">
+                  <propriedades>
+                    <propriedade nome="field" valor="desconto"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldSomaLiquido">
+                  <propriedades>
+                    <propriedade nome="field" valor="liquido"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/recordPanel" nome="recResumoFinanceiro">
+              <propriedades>
+                <propriedade nome="caption" valor="Totais"/>
+                <propriedade nome="master" valor="grdSomaResumoFinanceiro"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/recordPanelView" nome="recvResumoFinanceiro"/>
+                <layouts>
+                  <layout tipo="COL">
+                    <propriedades>
+                      <propriedade nome="cssClass" valor="technePagina"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfResumoBruto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Total"/>
+                            <propriedade nome="field" valor="bruto"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="400"/>
+                          <propriedade nome="style" valor="{margin:'5px 5px 0 2px'}"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfResumoDesconto">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Desconto"/>
+                            <propriedade nome="field" valor="desconto"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelAlign" valor="rigth"/>
+                          <propriedade nome="labelWidth" valor="0"/>
+                        </propriedades>
+                      </layout>
+                      <layout>
+                        <componente classe="component/viewField/textField" nome="txfResumoLiquido">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Líquido"/>
+                            <propriedade nome="field" valor="liquido"/>
+                            <propriedade nome="width" valor="100"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelWidth" valor="0"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

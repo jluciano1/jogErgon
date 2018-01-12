@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.4_1" data="09/27/2016 12:27" nome="RJadm00005">
+  <layout>
+    <componente classe="component/page" nome="RJadm00005">
+      <propriedades>
+        <propriedade nome="title" valor="Disciplinas-Subespecialidades"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr01">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Selecione o registro que você deseja manipular:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso01">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Para facilitar a localização do registro a ser manipulado, você pode utilizar o bloco de filtros. Cada filtro informado será utilizado para restringir os registros consultados na lista de seleção. Os filtros não informados não serão considerados pela lista de seleção.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/panelu" nome="pnuFiltroDisc">
+              <propriedades>
+                <propriedade nome="cssClass" valor="technePanelu"/>
+                <propriedade nome="frame" valor="S"/>
+                <propriedade nome="title" valor="Filtro de pesquisa"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/value/unbound/searchBox" nome="srcDisciplina">
+                  <propriedades>
+                    <propriedade nome="argsCaption" valor="Disciplina, Nome"/>
+                    <propriedade nome="caption" valor="Disciplina"/>
+                    <propriedade nome="sql" valor="select disciplina, descricao from rh_disciplinas&#10;where busca_searchbox_varchar2(disciplina,?,descricao,?) = 1&#10;order by disciplina"/>
+                    <propriedade nome="sqlParameters" valor="search.value,search.description"/>
+                    <propriedade nome="width" valor="589"/>
+                    <propriedade nome="widthKey" valor="150"/>
+                  </propriedades>
+                </componente>
+                <propriedades>
+                  <propriedade nome="labelAlign" valor="right"/>
+                  <propriedade nome="labelWidth" valor="50"/>
+                </propriedades>
+              </layout>
+            </layouts>
+          </layout>
+          <layout>
+            <componente classe="component/gridPanel" nome="grdListDisciplinas">
+              <propriedades>
+                <propriedade nome="caption" valor="Disciplinas-Subespecialidades"/>
+                <propriedade nome="dataTable" valor="RJADM00005_DISCIPLINAS"/>
+                <propriedade nome="sqlOrder" valor="disciplina"/>
+                <propriedade nome="sqlWhere" valor="disciplina = nvl(#srcDisciplina#,disciplina)"/>
+              </propriedades>
+              <componentes>
+                <componente classe="component/gridPanelField" nome="fldDisciplina">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina"/>
+                    <propriedade nome="field" valor="disciplina"/>
+                    <propriedade nome="width" valor="140"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldDescricao">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Nome"/>
+                    <propriedade nome="field" valor="descricao"/>
+                    <propriedade nome="width" valor="545"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo01">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Tipo Área"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                    <propriedade nome="width" valor="140"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo02">
+                  <propriedades>
+                    <propriedade nome="caption" valor="Disciplina de"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                    <propriedade nome="width" valor="140"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo03">
+                  <propriedades>
+                    <propriedade nome="caption" valor="FLEX_CAMPO_03"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_03"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo04">
+                  <propriedades>
+                    <propriedade nome="caption" valor="FLEX_CAMPO_04"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_04"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldFlexCampo05">
+                  <propriedades>
+                    <propriedade nome="caption" valor="FLEX_CAMPO_05"/>
+                    <propriedade nome="dataType" valor="VARCHAR"/>
+                    <propriedade nome="field" valor="FLEX_CAMPO_05"/>
+                    <propriedade nome="hidden" valor="true"/>
+                    <propriedade nome="width" valor="90"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldPontlei">
+                  <propriedades>
+                    <propriedade nome="caption" valor="PONTLEI"/>
+                    <propriedade nome="field" valor="pontlei"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+                <componente classe="component/gridPanelField" nome="fldRowidReg">
+                  <propriedades>
+                    <propriedade nome="caption" valor="rowid"/>
+                    <propriedade nome="field" valor="rowid_reg"/>
+                    <propriedade nome="hidden" valor="true"/>
+                  </propriedades>
+                </componente>
+              </componentes>
+            </componente>
+          </layout>
+          <layout>
+            <componente classe="component/control/textPanelGroup" nome="instr02">
+              <propriedades>
+                <propriedade nome="cssClass" valor="techneInstr"/>
+                <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;2&lt;/div&gt;Aqui você pode manipular o registro selecionado ou cadastrar um novo:&lt;/div&gt;"/>
+              </propriedades>
+            </componente>
+            <layouts>
+              <layout>
+                <componente classe="component/control/textPanel" nome="btUso02">
+                  <propriedades>
+                    <propriedade nome="cssClass" valor="uso"/>
+                    <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;&#10;   &lt;p&gt;Em &quot;Detalhes&quot;, você pode manipular o registro selecionado ou cadastrar um registro novo. Para isso, utilize os botões existentes no bloco:&lt;/p&gt;&#10;   &lt;ul&gt;&#10;      &lt;li&gt;O botão &quot;Editar&quot; permite iniciar o modo de edição do registro selecionado;&lt;/li&gt;&#10;      &lt;li&gt;o&#9;O botão &quot;Apagar&quot; permite fazer a exclusão do registro selecionado;&lt;/li&gt;&#10;      &lt;li&gt;o&#9;O botão &quot;Novo&quot; permite abrir o modo de cadastro de um novo registro.&lt;/li&gt;&#10;    &lt;/ul&gt;&#10;    &lt;p&gt;Além disso, você pode manipular outras informações relativas ao registro selecionado. Para isso, utilize as demais fichas existentes.&lt;/p&gt;&#10;&lt;/div&gt;"/>
+                  </propriedades>
+                </componente>
+              </layout>
+            </layouts>
+          </layout>
+          <layout tipo="TAB">
+            <propriedades>
+              <propriedade nome="border" valor="true"/>
+              <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+            </propriedades>
+            <layouts>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Detalhes"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/recordPanel" nome="recDisciplinas">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="master" valor="grdListDisciplinas"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/recordPanelView" nome="recvDisciplinas"/>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfvDisciplina">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina"/>
+                                    <propriedade nome="field" valor="disciplina"/>
+                                    <propriedade nome="width" valor="220"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfvDescricao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome"/>
+                                    <propriedade nome="field" valor="descricao"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo Área"/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/viewField/textField" nome="txfFlexCampo02">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina de"/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                                    <propriedade nome="width" valor="220"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvPontlei">
+                              <propriedades>
+                                <propriedade nome="caption" valor="PONTLEI"/>
+                                <propriedade nome="field" valor="pontlei"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                          </layout>
+                          <layout>
+                            <componente classe="component/viewField/hiddenField" nome="hidvRowidReg">
+                              <propriedades>
+                                <propriedade nome="caption" valor="ROWID_REG"/>
+                                <propriedade nome="field" valor="rowid_reg"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/recordPanelEdit" nome="receDisciplinas">
+                          <propriedades>
+                            <propriedade nome="dataTable" valor="RH_DISCIPLINAS"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txfeDisciplina">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Disciplina"/>
+                                    <propriedade nome="field" valor="disciplina"/>
+                                    <propriedade nome="validators" valor="required(); length(0,20);"/>
+                                    <propriedade nome="width" valor="220"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/textBox" nome="txfeDescricao">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome"/>
+                                    <propriedade nome="field" valor="descricao"/>
+                                    <propriedade nome="validators" valor="required(); length(0,200);"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/editField/dropDown" nome="drpFlexCampo01">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo Área"/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_01"/>
+                                    <propriedade nome="minListWidth" valor="200"/>
+                                    <propriedade nome="sqlOrder" valor="ITEM asc"/>
+                                    <propriedade nome="sqlSelect" valor="select item, item||' - '||descr descricao &#10;from itemtabela"/>
+                                    <propriedade nome="sqlWhere" valor="tab = 'GOVRJ_TIPO_ATIVIDADE'"/>
+                                    <propriedade nome="toolTip" valor="Indica a classificação do tipo ou área da disciplina-subespecialidade"/>
+                                    <propriedade nome="width" valor="415"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.6"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/editField/dropDownSelect" nome="drpFlexCampo02">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Disciplina de"/>
+                                    <propriedade nome="field" valor="FLEX_CAMPO_02"/>
+                                    <propriedade nome="minListWidth" valor="200"/>
+                                    <propriedade nome="sqlSelect" valor="select 'EXERCICIO' disciplinaDe from dual&#10;union&#10;select 'INGRESSO' from dual&#10;union&#10;select 'ING/EXEC' from dual&#10;order by 1 asc"/>
+                                    <propriedade nome="toolTip" valor="Indica o uso da disciplina-subespecialidade"/>
+                                    <propriedade nome="width" valor="220"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="0.4"/>
+                                  <propriedade nome="labelWidth" valor="120"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuAssocSubesp">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="technePanelu"/>
+                        <propriedade nome="frame" valor="S"/>
+                        <propriedade nome="title" valor="Associação das subespecialidades"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout tipo="COL">
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/hyperLink" nome="hlkAssocSubesp">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor=""/>
+                                <propriedade nome="text" valor="Associar subespecialidades"/>
+                                <propriedade nome="transacao" valor="Administracao.RJadm00085"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+              <layout tipo="CONT">
+                <propriedades>
+                  <propriedade nome="title" valor="Cargos associados"/>
+                </propriedades>
+                <layouts>
+                  <layout>
+                    <componente classe="component/panelu" nome="pnuEmpresa">
+                      <propriedades>
+                        <propriedade nome="cssClass" valor="technePanelu"/>
+                        <propriedade nome="frame" valor="S"/>
+                        <propriedade nome="title" valor="Filtro de pesquisa"/>
+                      </propriedades>
+                    </componente>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/value/unbound/dropDown" nome="drpEmpresa">
+                          <propriedades>
+                            <propriedade nome="addAllOption" valor="N"/>
+                            <propriedade nome="caption" valor="Empresa"/>
+                            <propriedade nome="initialValue" valor="%empresa%"/>
+                            <propriedade nome="minListWidth" valor="350"/>
+                            <propriedade nome="sqlOrder" valor="valor"/>
+                            <propriedade nome="sqlSelect" valor="select valor, descr from SELEC_COMBO_EMPRESA_VW"/>
+                            <propriedade nome="width" valor="350"/>
+                          </propriedades>
+                        </componente>
+                        <propriedades>
+                          <propriedade nome="labelAlign" valor="right"/>
+                          <propriedade nome="labelWidth" valor="60"/>
+                        </propriedades>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout>
+                    <componente classe="component/gridPanelSelect" nome="grdValidacaoDisc">
+                      <propriedades>
+                        <propriedade nome="caption" valor=""/>
+                        <propriedade nome="cssClass" valor="techneGrid2"/>
+                        <propriedade nome="pageSize" valor="5"/>
+                        <propriedade nome="sqlParameters" valor="#drpEmpresa#, #drpEmpresa#, $grdListDisciplinas.disciplina$"/>
+                        <propriedade nome="sqlSelect" valor="select cargo, nomecargo, categoria, subcategoria, cod_disciplina, descr_cargo, rowid_reg&#10;from RJADM00005_DISCIP_CARGO&#10;where (FLAG_PACK.GET_EMPRESA = ? OR ? = -1)&#10;  and cod_disciplina = ?&#10;order by cargo"/>
+                      </propriedades>
+                      <componentes>
+                        <componente classe="component/gridPanelField" nome="fldCargo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Cargo"/>
+                            <propriedade nome="field" valor="cargo"/>
+                            <propriedade nome="linkAplicacao" valor="Ergon"/>
+                            <propriedade nome="linkParametros" valor="$grdValidacaoDisc.cargo$"/>
+                            <propriedade nome="linkTransacao" valor="Administracao.ERGadm00015"/>
+                            <propriedade nome="width" valor="80"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldNome">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Nome"/>
+                            <propriedade nome="field" valor="nomecargo"/>
+                            <propriedade nome="linkAplicacao" valor="Ergon"/>
+                            <propriedade nome="linkParametros" valor="$grdValidacaoDisc.cargo$"/>
+                            <propriedade nome="linkTransacao" valor="Administracao.ERGadm00015"/>
+                            <propriedade nome="width" valor="500"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCategoria">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Categoria"/>
+                            <propriedade nome="field" valor="categoria"/>
+                            <propriedade nome="linkAplicacao" valor="Ergon"/>
+                            <propriedade nome="linkParametros" valor="$grdValidacaoDisc.categoria$"/>
+                            <propriedade nome="linkTransacao" valor="Administracao.ERGadm00008"/>
+                            <propriedade nome="width" valor="200"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldSubcategoria">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Subcategoria"/>
+                            <propriedade nome="field" valor="subcategoria"/>
+                            <propriedade nome="linkAplicacao" valor="Ergon"/>
+                            <propriedade nome="linkParametros" valor="$grdValidacaoDisc.categoria$"/>
+                            <propriedade nome="linkTransacao" valor="Administracao.ERGadm00008"/>
+                            <propriedade nome="width" valor="180"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldCodDisciplina">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Código da Disciplina"/>
+                            <propriedade nome="field" valor="cod_disciplina"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldDescrCargo">
+                          <propriedades>
+                            <propriedade nome="caption" valor="Descrição do Cargo"/>
+                            <propriedade nome="dataType" valor="VARCHAR"/>
+                            <propriedade nome="field" valor="descr_cargo"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                        <componente classe="component/gridPanelField" nome="fldRowidValidDisc">
+                          <propriedades>
+                            <propriedade nome="caption" valor="rowid"/>
+                            <propriedade nome="field" valor="rowid_reg"/>
+                            <propriedade nome="grid" valor="false"/>
+                            <propriedade nome="hidden" valor="true"/>
+                          </propriedades>
+                        </componente>
+                      </componentes>
+                    </componente>
+                  </layout>
+                  <layout tipo="TAB">
+                    <propriedades>
+                      <propriedade nome="border" valor="true"/>
+                      <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                    </propriedades>
+                    <layouts>
+                      <layout tipo="CONT">
+                        <propriedades>
+                          <propriedade nome="title" valor="Detalhes"/>
+                        </propriedades>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/recordPanel" nome="recValidacaoDisc">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="master" valor="grdValidacaoDisc"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/recordPanelView" nome="recvValidacaoDisc"/>
+                                <layouts>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente classe="component/viewField/textField" nome="txfDescrCargo">
+                                          <propriedades>
+                                            <propriedade nome="caption" valor="Cargo"/>
+                                            <propriedade nome="field" valor="descr_cargo"/>
+                                            <propriedade nome="width" valor="415"/>
+                                          </propriedades>
+                                        </componente>
+                                        <propriedades>
+                                          <propriedade nome="labelAlign" valor="right"/>
+                                        </propriedades>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfCargo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Cargo"/>
+                                        <propriedade nome="field" valor="cargo"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfNomeCargo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Nome Cargo"/>
+                                        <propriedade nome="field" valor="nomecargo"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfCategoria">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Categoria"/>
+                                        <propriedade nome="field" valor="categoria"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/textField" nome="txfSubcategoria">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Subcategoria"/>
+                                        <propriedade nome="field" valor="subcategoria"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                        <propriedade nome="width" valor="415"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfDisciplina">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="cod_disciplina"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/viewField/hiddenField" nome="hidvfRowidReg">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente classe="component/recordPanelEdit" nome="receValidacaoDisc">
+                                  <propriedades>
+                                    <propriedade nome="rotina" valor="db:CERG_DML_RH_DISCIP_CARGO"/>
+                                  </propriedades>
+                                </componente>
+                                <layouts>
+                                  <layout tipo="COL">
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                    <layouts>
+                                      <layout>
+                                        <componente classe="component/editField/searchBox" nome="srcCargo">
+                                          <propriedades>
+                                            <propriedade nome="argsCaption" valor="Cargo,Cargo"/>
+                                            <propriedade nome="caption" valor="Cargo"/>
+                                            <propriedade nome="dataType" valor="NUMBER"/>
+                                            <propriedade nome="displayProperty" valor="nome"/>
+                                            <propriedade nome="field" valor="cargo"/>
+                                            <propriedade nome="fieldTarget" valor="pb_cargo"/>
+                                            <propriedade nome="hideValue" valor="true"/>
+                                            <propriedade nome="sql" valor="SELECT C.CARGO AS VALOR,C.CARGO||' - '||C.NOME AS DESCRICAO  &#10;FROM cargos C&#10;where busca_searchbox_number(C.cargo, ?, upper(C.cargo||' - '||C.nome), upper(?)) = 1  &#10;order by C.cargo"/>
+                                            <propriedade nome="sqlParameters" valor="search.value, search.description&#10;"/>
+                                            <propriedade nome="validators" valor="required();"/>
+                                            <propriedade nome="valueProperty" valor="cargo"/>
+                                            <propriedade nome="width" valor="415"/>
+                                            <propriedade nome="widthKey" valor="80"/>
+                                          </propriedades>
+                                        </componente>
+                                        <propriedades>
+                                          <propriedade nome="labelAlign" valor="right"/>
+                                        </propriedades>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="drpNomeCargo">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Nome Cargo"/>
+                                        <propriedade nome="fieldTarget" valor="pb_nomecargo"/>
+                                        <propriedade nome="sqlParameters" valor="$srcCargo.valor$"/>
+                                        <propriedade nome="sqlSelect" valor="select nome from CARGOS_ where cargo = ?"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="drpCategoria">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Categoria"/>
+                                        <propriedade nome="fieldTarget" valor="pb_categoria"/>
+                                        <propriedade nome="sqlParameters" valor="$srcCargo.valor$"/>
+                                        <propriedade nome="sqlSelect" valor="select categoria from cargos_ where cargo = ?"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/dropDownSelect" nome="drpSubcategoria">
+                                      <propriedades>
+                                        <propriedade nome="caption" valor="Subcategoria"/>
+                                        <propriedade nome="fieldTarget" valor="pb_subcategoria"/>
+                                        <propriedade nome="sqlParameters" valor="$srcCargo.valor$"/>
+                                        <propriedade nome="sqlSelect" valor="select subcategoria from cargos_ where cargo = ?"/>
+                                        <propriedade nome="visible" valor="N"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="style" valor=""/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/hiddenField" nome="hidfDisciplina">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="cod_disciplina"/>
+                                        <propriedade nome="fieldTarget" valor="pb_cod_disciplina"/>
+                                        <propriedade nome="initialValue" valor="$grdListDisciplinas.disciplina$"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/editField/hiddenField" nome="hideRowidReg">
+                                      <propriedades>
+                                        <propriedade nome="field" valor="rowid_reg"/>
+                                        <propriedade nome="fieldTarget" valor="p_rowid_reg"/>
+                                      </propriedades>
+                                    </componente>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/panelu" nome="pnuDiscCargo">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor="technePanelu2"/>
+                                <propriedade nome="frame" valor="S"/>
+                              </propriedades>
+                            </componente>
+                            <propriedades>
+                              <propriedade nome="style" valor="{margin:'5px 5px 5px 5px'}"/>
+                            </propriedades>
+                            <layouts>
+                              <layout tipo="CONT">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/control/textPanelGroup" nome="tpgDiscCargos">
+                                      <propriedades>
+                                        <propriedade nome="cssClass" valor="techneInstr"/>
+                                        <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;Gerar validação entre disciplina e cargos:&lt;/div&gt;"/>
+                                      </propriedades>
+                                    </componente>
+                                    <layouts>
+                                      <layout>
+                                        <componente classe="component/control/textPanel" nome="txpDiscCargos">
+                                          <propriedades>
+                                            <propriedade nome="cssClass" valor="uso"/>
+                                            <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;  &lt;p&gt;É possível gerar automaticamente registros de validação entre a disciplina selecionada e os cargos por categoria/subcategoria. Para isso, informe os campos abaixo e acione o botão &quot;Gerar Validade&quot;. Caso um dos campos abaixo seja deixado em branco, serão geradas combinações considerando todos os valores válidos para o campo em questão.&lt;/p&gt; &lt;/div&gt;"/>
+                                          </propriedades>
+                                        </componente>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout tipo="COL">
+                                <layouts>
+                                  <layout>
+                                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpDiscCateg">
+                                      <propriedades>
+                                        <propriedade nome="addNullOption" valor="S"/>
+                                        <propriedade nome="addNullText" valor="(Todos)"/>
+                                        <propriedade nome="caption" valor="Categoria"/>
+                                        <propriedade nome="sqlSelect" valor="select sigla, nome from categorias order by sigla"/>
+                                        <propriedade nome="width" valor="350"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.5"/>
+                                      <propriedade nome="labelAlign" valor="right"/>
+                                      <propriedade nome="labelWidth" valor="60"/>
+                                    </propriedades>
+                                  </layout>
+                                  <layout>
+                                    <componente classe="component/control/value/unbound/dropDownSelect" nome="drpDiscSubcateg">
+                                      <propriedades>
+                                        <propriedade nome="addNullOption" valor="S"/>
+                                        <propriedade nome="addNullText" valor="(Todos)"/>
+                                        <propriedade nome="caption" valor="Subcategoria"/>
+                                        <propriedade nome="sqlParameters" valor="#drpDiscCateg#"/>
+                                        <propriedade nome="sqlSelect" valor="select sigla, nome from subcategorias where categoria= ? order by sigla"/>
+                                        <propriedade nome="width" valor="350"/>
+                                      </propriedades>
+                                    </componente>
+                                    <propriedades>
+                                      <propriedade nome="columnWidth" valor="0.5"/>
+                                      <propriedade nome="labelAlign" valor="right"/>
+                                      <propriedade nome="labelWidth" valor="80"/>
+                                    </propriedades>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                              <layout>
+                                <componente classe="component/control/value/unbound/linkMethod" nome="lkmGeraValidade">
+                                  <propriedades>
+                                    <propriedade nome="application" valor="C_Ergon"/>
+                                    <propriedade nome="label" valor="Gera Validade"/>
+                                    <propriedade nome="paramMensagem" valor="p_mens"/>
+                                    <propriedade nome="parameters" valor="$grdListDisciplinas.disciplina$,#drpDiscCateg#,#drpDiscSubcateg#"/>
+                                    <propriedade nome="rotina" valor="Combina Cargos a Categoria"/>
+                                    <propriedade nome="rotinaGrupo" valor="RJERGNG"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

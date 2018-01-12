@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<transacao cronosVersion="2.5.5_2" data="12/15/2017 14:42" nome="RJadm00076">
+  <layout>
+    <componente classe="component/page" nome="RJadm00076">
+      <propriedades>
+        <propriedade nome="title" valor="Carrega SISOBI"/>
+      </propriedades>
+    </componente>
+    <layouts>
+      <layout tipo="CONT">
+        <propriedades>
+          <propriedade nome="cssClass" valor="technePagina"/>
+        </propriedades>
+        <layouts>
+          <layout tipo="CONT">
+            <layouts>
+              <layout tipo="TAB">
+                <layouts>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Carga"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/control/textPanelGroup" nome="instr01">
+                          <propriedades>
+                            <propriedade nome="title" valor="&lt;div class=&quot;techneInsTx&quot;&gt;&lt;div class=&quot;techneInsItem&quot;&gt;1&lt;/div&gt;Informe os parâmetros abaixo para visualizar as informações:&lt;/div&gt;"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/textPanel" nome="btUso01">
+                              <propriedades>
+                                <propriedade nome="cssClass" valor="uso"/>
+                                <propriedade nome="text" valor="&lt;div class=&quot;techneInsCont&quot;&gt;    &lt;p&gt;É obrigatório que se informe os filtros.&lt;/p&gt;&lt;/div&gt;"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuFiltros"/>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/control/value/unbound/textBox" nome="txbPeríodo">
+                              <propriedades>
+                                <propriedade nome="caption" valor="Período (YYYYMM)"/>
+                                <propriedade nome="validators" valor="length(0,6);"/>
+                              </propriedades>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuNomearquivo">
+                          <propriedades>
+                            <propriedade nome="title" valor="Procurar Arquivo"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/fileUpload" nome="fupArquivo">
+                                  <propriedades>
+                                    <propriedade nome="browseBtnMsg" valor="Procurar"/>
+                                    <propriedade nome="caption" valor="Nome do Arquivo"/>
+                                    <propriedade nome="width" valor="800"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuPasta">
+                          <propriedades>
+                            <propriedade nome="title" valor="Procurar Pasta"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/fileUpload" nome="fupPasta">
+                                  <propriedades>
+                                    <propriedade nome="browseBtnMsg" valor="Procurar"/>
+                                    <propriedade nome="caption" valor="Nome da Pasta"/>
+                                    <propriedade nome="width" valor="800"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                  <layout tipo="CONT">
+                    <propriedades>
+                      <propriedade nome="title" valor="Dados"/>
+                    </propriedades>
+                    <layouts>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuDados">
+                          <propriedades>
+                            <propriedade nome="title" valor="Filtros"/>
+                          </propriedades>
+                        </componente>
+                        <layouts>
+                          <layout tipo="COL">
+                            <propriedades>
+                              <propriedade nome="style" valor=""/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsAnomes">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Ano Mês"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT DISTINCT REFPROC FROM TGRJ_SISOBI_REL&#10;ORDER BY 1 DESC&#10;"/>
+                                    <propriedade nome="width" valor="200"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                  <propriedade nome="labelWidth" valor="105"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsColnivel">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nível"/>
+                                    <propriedade nome="sqlSelect" valor="SELECT 'NIVEL 1' NIVEL FROM DUAL&#10;UNION&#10;SELECT 'NIVEL 2' NIVEL FROM DUAL&#10;UNION&#10;SELECT 'NIVEL 3' NIVEL FROM DUAL&#10;"/>
+                                    <propriedade nome="width" valor="200"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsEmpresa">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Empresa"/>
+                                    <propriedade nome="dataType" valor="NUMBER"/>
+                                    <propriedade nome="sqlParameters" valor="#ddsAnomes#, #ddsColnivel#"/>
+                                    <propriedade nome="sqlSelect" valor="select empresa&#10;from TGRJ_SISOBI_REL&#10;where refproc = ?&#10;and tiporel = ?&#10;group by empresa&#10;order by empresa&#10;"/>
+                                    <propriedade nome="width" valor="200"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                              <layout>
+                                <componente classe="component/control/value/unbound/dropDownSelect" nome="ddsSecretaria">
+                                  <propriedades>
+                                    <propriedade nome="addNullOption" valor="S"/>
+                                    <propriedade nome="caption" valor="Secretaria"/>
+                                    <propriedade nome="sqlParameters" valor="#ddsAnomes#, #ddsColnivel#, #ddsEmpresa#"/>
+                                    <propriedade nome="sqlSelect" valor="select orgao&#10;from TGRJ_SISOBI_REL&#10;where refproc = ? &#10;and tiporel = ?&#10;and empresa = ?&#10;group by orgao&#10;order by orgao&#10;"/>
+                                    <propriedade nome="width" valor="200"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="columnWidth" valor="1"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="COL">
+                            <layouts>
+                              <layout>
+                                <componente classe="component/control/value/unbound/textBox" nome="txbNumfunc">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id. Funcional"/>
+                                    <propriedade nome="validators" valor="length(0,9);"/>
+                                  </propriedades>
+                                </componente>
+                              </layout>
+                              <layout>
+                                <componente classe="component/control/value/unbound/textBox" nome="txbIdinstituidor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id. Instituidor"/>
+                                    <propriedade nome="validators" valor="length(0,9);"/>
+                                  </propriedades>
+                                </componente>
+                                <propriedades>
+                                  <propriedade nome="labelWidth" valor="378"/>
+                                </propriedades>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout>
+                            <componente classe="component/gridPanelSelect" nome="grdSisobisigrh">
+                              <propriedades>
+                                <propriedade nome="caption" valor="SISOBI x SIGRH"/>
+                                <propriedade nome="sqlParameters" valor="#ddsAnomes#, #ddsColnivel#, #ddsEmpresa#, #ddsSecretaria# , #txbNumfunc# , #txbNumfunc#"/>
+                                <propriedade nome="sqlSelect" valor="SELECT NUMFUNC,NUMVINC,DTOBITO,NUMFUNC_INSTITUIDOR,NUMVINC_INSTITUIDOR,NUMPENS,DSC_MOTIVO,&#10;NOMESISOBI,NOMEMAESISOBI,CPFSISOBI,DTNASCSISOBI,decode(processado, null, 'N') as desc_processado, NOMERHFOLHA,&#10;NOMEMAERHFOLHA, CPFRHFOLHA,DTNASCRHFOLHA&#10;FROM TGRJ_SISOBI_REL WHERE&#10;REFPROC = ?&#10;AND TIPOREL = ?&#10;AND nvl(EMPRESA,0) = nvl(?,0)&#10;AND nvl(ORGAO,0) = nvl(?,0)&#10;AND NUMFUNC = NVL(?, NUMFUNC)&#10;AND NUMFUNC_INSTITUIDOR = &#10;NVL(?, NUMFUNC_INSTITUIDOR)&#10;AND ACAO IS NULL&#10;&#10;"/>
+                              </propriedades>
+                              <componentes>
+                                <componente classe="component/gridPanelField" nome="fldNumfunc">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id. Funcional"/>
+                                    <propriedade nome="field" valor="numfunc"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldnumvinc">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Vinc"/>
+                                    <propriedade nome="field" valor="numvinc"/>
+                                    <propriedade nome="width" valor="80"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDtobito">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Dt. Óbito Sisobi"/>
+                                    <propriedade nome="field" valor="dtobito"/>
+                                    <propriedade nome="width" valor="130"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDescprocessado">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Processado"/>
+                                    <propriedade nome="field" valor="desc_processado"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldNumfuncinstituidor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Id.Instituidor"/>
+                                    <propriedade nome="field" valor="numfunc_instituidor"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldNumvincinstituidor">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Vinc. Instit."/>
+                                    <propriedade nome="field" valor="numvinc_instituidor"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDcsmotivo">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Motivo de não confirmação do Falecimento"/>
+                                    <propriedade nome="field" valor="dsc_motivo"/>
+                                    <propriedade nome="width" valor="300"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldNumpens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pens."/>
+                                    <propriedade nome="field" valor="numpens"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldNomesisobi">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Nome "/>
+                                    <propriedade nome="field" valor="nomesisobi"/>
+                                    <propriedade nome="grid" valor="false"/>
+                                    <propriedade nome="hidden" valor="true"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldnomeaesisobi">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mãe"/>
+                                    <propriedade nome="dataType" valor="VARCHAR"/>
+                                    <propriedade nome="field" valor="nomemaesisobi"/>
+                                    <propriedade nome="grid" valor="false"/>
+                                    <propriedade nome="hidden" valor="true"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldCpfsisobi">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="CPF"/>
+                                    <propriedade nome="dataType" valor="VARCHAR"/>
+                                    <propriedade nome="field" valor="cpfsisobi"/>
+                                    <propriedade nome="format" valor="CPF"/>
+                                    <propriedade nome="grid" valor="false"/>
+                                    <propriedade nome="hidden" valor="true"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDtnassisobi">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Dt. Nasc."/>
+                                    <propriedade nome="field" valor="dtnascsisobi"/>
+                                    <propriedade nome="grid" valor="false"/>
+                                    <propriedade nome="hidden" valor="true"/>
+                                  </propriedades>
+                                </componente>
+                              </componentes>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout tipo="TAB">
+                        <layouts>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="title" valor="SISOB"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/panelu" nome="pnuSisob"/>
+                                <layouts>
+                                  <layout tipo="CONT">
+                                    <layouts>
+                                      <layout>
+                                        <componente classe="component/recordPanel" nome="recSisob">
+                                          <propriedades>
+                                            <propriedade nome="caption" valor=""/>
+                                            <propriedade nome="master" valor="grdSisobisigrh"/>
+                                          </propriedades>
+                                        </componente>
+                                        <layouts>
+                                          <layout>
+                                            <componente classe="component/recordPanelView" nome="recvSisobi"/>
+                                            <layouts>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfNomesisobi">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Nome"/>
+                                                    <propriedade nome="field" valor="nome"/>
+                                                    <propriedade nome="width" valor="500"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfNomemaesisobi">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Mãe"/>
+                                                    <propriedade nome="width" valor="500"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfCpfsisobi">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Cpf"/>
+                                                    <propriedade nome="field" valor="cpfsisobi"/>
+                                                    <propriedade nome="format" valor="cpf"/>
+                                                    <propriedade nome="width" valor="200"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfDtnascsisobi">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Dt. Nasc."/>
+                                                    <propriedade nome="field" valor="dtnascsisobi"/>
+                                                    <propriedade nome="format" valor="dd/mm/aaaa"/>
+                                                    <propriedade nome="width" valor="200"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                            </layouts>
+                                          </layout>
+                                        </layouts>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                          <layout tipo="CONT">
+                            <propriedades>
+                              <propriedade nome="title" valor="Sigrh"/>
+                            </propriedades>
+                            <layouts>
+                              <layout>
+                                <componente classe="component/panelu" nome="pnuSigrh"/>
+                                <layouts>
+                                  <layout tipo="CONT">
+                                    <layouts>
+                                      <layout>
+                                        <componente classe="component/recordPanel" nome="recSigrh">
+                                          <propriedades>
+                                            <propriedade nome="caption" valor=""/>
+                                            <propriedade nome="master" valor="grdSisobisigrh"/>
+                                          </propriedades>
+                                        </componente>
+                                        <layouts>
+                                          <layout>
+                                            <componente classe="component/recordPanelView" nome="recvSigrh"/>
+                                            <layouts>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfNomeinstituidor">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Nome"/>
+                                                    <propriedade nome="field" valor="nomeinstituidor"/>
+                                                    <propriedade nome="width" valor="500"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfNomemaerhfolha">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Mãe"/>
+                                                    <propriedade nome="field" valor="nomemaerhfolha"/>
+                                                    <propriedade nome="width" valor="500"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfCpfrhfolha">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Cpf"/>
+                                                    <propriedade nome="field" valor="cpfrhfolha"/>
+                                                    <propriedade nome="format" valor="cpf"/>
+                                                    <propriedade nome="width" valor="200"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                              <layout>
+                                                <componente classe="component/viewField/textField" nome="txfDtnascrhfolha">
+                                                  <propriedades>
+                                                    <propriedade nome="caption" valor="Dt. Nasc."/>
+                                                    <propriedade nome="field" valor="dtnascrhfolha"/>
+                                                    <propriedade nome="format" valor="dd/mm/aaaa"/>
+                                                    <propriedade nome="width" valor="200"/>
+                                                  </propriedades>
+                                                </componente>
+                                              </layout>
+                                            </layouts>
+                                          </layout>
+                                        </layouts>
+                                      </layout>
+                                      <layout>
+                                        <componente classe="component/control/value/unbound/checkBox" nome="chkMarcartodos">
+                                          <propriedades>
+                                            <propriedade nome="caption" valor="Marcar Todos"/>
+                                          </propriedades>
+                                        </componente>
+                                      </layout>
+                                    </layouts>
+                                  </layout>
+                                </layouts>
+                              </layout>
+                            </layouts>
+                          </layout>
+                        </layouts>
+                      </layout>
+                      <layout>
+                        <componente classe="component/panelu" nome="pnuVinculos"/>
+                        <layouts>
+                          <layout>
+                            <componente classe="component/gridPanelSelect" nome="grdGridvinculos">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="sqlParameters" valor="$grdSisobisigrh.numfunc$"/>
+                                <propriedade nome="sqlSelect" valor="SELECT NUMERO, DTVAC,FORMAVAC,EMP_CODIGO&#10;FROM VINCULOS WHERE NUMFUNC=?"/>
+                              </propriedades>
+                              <componentes>
+                                <componente classe="component/gridPanelField" nome="fldNumero">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Vínculo"/>
+                                    <propriedade nome="field" valor="numero"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDatavacan">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Vacância"/>
+                                    <propriedade nome="field" valor="dtvac"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldMotivovacan">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Motivo Vacância"/>
+                                    <propriedade nome="field" valor="formavac"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldEmpcodigo">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Emp."/>
+                                    <propriedade nome="field" valor="emp_codigo"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldSubempresa">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Sec."/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldMespagto">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Pagto."/>
+                                    <propriedade nome="field" valor="mes_pagto"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldValorbruto">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Bruto"/>
+                                    <propriedade nome="field" valor="Pagto. Bruto"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldValorliq">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Pagto Liq."/>
+                                    <propriedade nome="field" valor="valor_liquido"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldBanco">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Banco"/>
+                                    <propriedade nome="field" valor="banco"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldAgencia">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Agência"/>
+                                    <propriedade nome="field" valor="agencia"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldConta">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Conta"/>
+                                    <propriedade nome="field" valor="conta"/>
+                                  </propriedades>
+                                </componente>
+                              </componentes>
+                            </componente>
+                          </layout>
+                          <layout>
+                            <componente classe="component/gridPanelSelect" nome="grdTipopens">
+                              <propriedades>
+                                <propriedade nome="caption" valor=""/>
+                                <propriedade nome="sqlParameters" valor="$grdSisobisigrh.numfunc_instituidor$,&#10;$grdSisobisigrh.numvinc_instituidor$,&#10;$grdSisobisigrh.numpens$"/>
+                                <propriedade nome="sqlSelect" valor="SELECT TIPOPENS,DTFIM,FLEX_CAMPO_03&#10;&#10;FROM REGRAS_PENSAO WHERE &#10;NUMFUNC = ? AND&#10;NUMVINC = ? AND &#10;NUMPENS = ? "/>
+                              </propriedades>
+                              <componentes>
+                                <componente classe="component/gridPanelField" nome="fldTipopens">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Tipo Pens"/>
+                                    <propriedade nome="field" valor="tipopens"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldDtfim">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Data Término"/>
+                                    <propriedade nome="field" valor="dtfim"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldFlexcampo03">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Motivo Término"/>
+                                    <propriedade nome="field" valor="flex_campo_03"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldMespagtotp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Mês Pagto."/>
+                                    <propriedade nome="field" valor="mes_pagto"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldValorbrutotp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Bruto"/>
+                                    <propriedade nome="field" valor="valor_bruto"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldValorliquidotp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Valor Liquido"/>
+                                    <propriedade nome="field" valor="valor_liquido"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldBancotp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Banco"/>
+                                    <propriedade nome="field" valor="banco"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldAgenciatp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Agência"/>
+                                    <propriedade nome="field" valor="agencia"/>
+                                  </propriedades>
+                                </componente>
+                                <componente classe="component/gridPanelField" nome="fldContatp">
+                                  <propriedades>
+                                    <propriedade nome="caption" valor="Conta"/>
+                                    <propriedade nome="field" valor="conta"/>
+                                  </propriedades>
+                                </componente>
+                              </componentes>
+                            </componente>
+                          </layout>
+                        </layouts>
+                      </layout>
+                    </layouts>
+                  </layout>
+                </layouts>
+              </layout>
+            </layouts>
+          </layout>
+        </layouts>
+      </layout>
+    </layouts>
+  </layout>
+</transacao>

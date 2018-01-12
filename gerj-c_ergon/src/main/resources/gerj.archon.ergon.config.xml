@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application dataSource="C_Ergon" resourcesSubpath="silverblue">
+
+  <paginaWrapperClass>techne.archon.format.ext.PaginaWrapperSilverblue</paginaWrapperClass>
+
+  <connectionCustomizerClass>techne.archon.data.CustomizeConnection</connectionCustomizerClass>
+  
+  <defaultPage>Administracao/HADadm00038.tp</defaultPage>
+
+  <beanFactoryClass>gerj.archon.ergon.obj.BeanContainer</beanFactoryClass>
+  
+  <dbaccess>jdbc</dbaccess>
+  
+  <defaultMenu>Ergon.Ergon</defaultMenu>  
+  
+</application>
