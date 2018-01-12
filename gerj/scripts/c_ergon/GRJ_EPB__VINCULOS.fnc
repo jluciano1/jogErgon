@@ -1,7 +1,7 @@
-prompt ***ATEN«√O!!!*** Objeto GRJ_EPB__VINCULOS n„o possui replace e deve ser mesclado manualmente com a vers„o existente no banco.
+prompt ***ATEN√á√ÉO Esse ve√≠culo est√° sendo roubado!!!*** Objeto GRJ_EPB__VINCULOS n√£o possui replace e deve ser mesclado manualmente com a vers√£o existente no banco.
 --
 --  EP com get_transacao. 
---  N„o altere essa funÁ„o. Ela dever· ser alterado no cliente.
+--  N√£o altere essa fun√ß√£o. Ela dever√° ser alterado no cliente.
 --
 create FUNCTION "GRJ_EPB__VINCULOS" (
       P_ROW_NEW   IN OUT NOCOPY VINCULOS%ROWTYPE,
@@ -56,26 +56,26 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
   BEGIN
 
-    -- Verifica se o usu·rio È privilegiado --
+    -- Verifica se o usu√°rio √© privilegiado --
     select count(1)
     into v_privil
     from usuario
     where usuario = flag_pack.get_usuario
     and privil = 'S';
 
-    -- impedir que usu·rios n„o privilegiados alterem o campo SISOBI (FLEX_CAMPO_11) e
-    -- impedir a forma de vac‚ncia seja alterada quando SISOBI = 'S'
+    -- impedir que usu√°rios n√£o privilegiados alterem o campo SISOBI (FLEX_CAMPO_11) e
+    -- impedir a forma de vac√¢ncia seja alterada quando SISOBI = 'S'
     -- Reinaldo Mesquita, 21/06/2016, SGD 2841
-    if v_nome_transacao in ('Vac‚ncia','VÌnculo','ERGadm00153', 'ERGadm00229') then
+    if v_nome_transacao in ('Vac√¢ncia','V√≠nculo','ERGadm00153', 'ERGadm00229') then
       if (p_inserting) or (p_updating) then
         if v_privil = 0 then
           if P_ROW_NEW.FLEX_CAMPO_11 <> P_ROW_OLD.FLEX_CAMPO_11 then
-            p_mens := 'O usu·rio n„o possui permiss„o para alterar o campo SISOBI.';
+            p_mens := 'O usu√°rio n√£o possui permiss√£o para alterar o campo SISOBI.';
             return true;
           end if;
           if P_ROW_OLD.FLEX_CAMPO_11 = 'S' then
             if P_ROW_NEW.FORMAVAC <> P_ROW_OLD.FORMAVAC then
-              p_mens := 'O usu·rio n„o possui permiss„o para alterar a forma de desligamento de proveniente do SISOBI.';
+              p_mens := 'O usu√°rio n√£o possui permiss√£o para alterar a forma de desligamento de proveniente do SISOBI.';
               return true;
             end if;
           end if;
@@ -83,8 +83,8 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       end if;
     end if;
 
-  --caso exista uma vacancia para clt n„o permite gerar evento de instituidor de pens„o.
- IF P_UPDATING AND flag_pack.get_transacao in ( 'Vac‚ncia','ERGadm00153' ) THEN
+  --caso exista uma vacancia para clt n√£o permite gerar evento de instituidor de pens√£o.
+ IF P_UPDATING AND flag_pack.get_transacao in ( 'Vac√¢ncia','ERGadm00153' ) THEN
    --------------------------------------------------------------------------------
               --Inicio Inserido por Rodrigo Machado em 16/07/2015--
      --------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
      --------------------------------------------------------------------------------
  END IF;  
 
-  --Bernardo 04/08/2015 InÌcio
+  --Bernardo 04/08/2015 In√≠cio
   IF (P_INSERTING) OR (P_UPDATING) THEN
     IF P_ROW_NEW.FLEX_CAMPO_02 IS NOT NULL THEN
       IF (P_ROW_NEW.FLEX_CAMPO_02 = 'S') OR (P_ROW_NEW.FLEX_CAMPO_02 = 's') OR (P_ROW_NEW.FLEX_CAMPO_02 = 'sim') THEN
@@ -126,7 +126,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
          P_ROW_NEW.FLEX_CAMPO_02 := 'SIM';
 
       ELSIF (P_ROW_NEW.FLEX_CAMPO_02 = 'N') OR (P_ROW_NEW.FLEX_CAMPO_02 = 'n') OR (P_ROW_NEW.FLEX_CAMPO_02 = 'nao')
-         OR (P_ROW_NEW.FLEX_CAMPO_02 = 'n„o') OR (P_ROW_NEW.FLEX_CAMPO_02 = 'N√O') THEN
+         OR (P_ROW_NEW.FLEX_CAMPO_02 = 'n√£o') OR (P_ROW_NEW.FLEX_CAMPO_02 = 'N√ÉO') THEN
 
          P_ROW_NEW.FLEX_CAMPO_02 := 'NAO';
 
@@ -135,7 +135,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
   END IF;
   --Bernardo 04/08/2015 Fim
 
- --Bernardo 13/07/2015 InÌcio
+ --Bernardo 13/07/2015 In√≠cio
  if (P_INSERTING or P_UPDATING) and (v_nome_transacao IN ('Ingresso'))  then
 
    BEGIN
@@ -155,7 +155,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       in ('01 MAGISTERIO')
       and PCK_VINCULOS.V_ROW_NEW.FLEX_CAMPO_05 is null then
 
-        P_MENS := 'Para vÌnculos da educaÁ„o È necess·rio informar a disciplina';
+        P_MENS := 'Para v√≠nculos da educa√ß√£o √© necess√°rio informar a disciplina';
 
    end if;
 
@@ -164,10 +164,10 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 -- RETURN TRUE;
 
-  -- O seguinte trecho È feito para que na hora em que seja gerado um vÌnculo pela tela de Ingresso
+  -- O seguinte trecho √© feito para que na hora em que seja gerado um v√≠nculo pela tela de Ingresso
   -- seja carregada a SUBESPECIALIDADE utilizando os dados inseridos pela tela na tabela ERG_INGRESSO
   -- campos FLEX_CAMPO_09 e FLEX_CAMPO_10.
-  -- Bernardo C·mera, 23/10/2014.
+  -- Bernardo C√°mera, 23/10/2014.
    IF ((p_inserting) OR (p_updating)) AND (v_nome_transacao IN ('Ingresso')) THEN
      BEGIN
       SELECT FLEX_CAMPO_09,
@@ -185,7 +185,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
              V_COD_SUBESP := NULL;
              V_DESC_SUBESP := NULL;
         WHEN OTHERS THEN
-             P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (1): '||sqlerrm(sqlcode);
+             P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (1): '||sqlerrm(sqlcode);
              RETURN(TRUE);
       END;
 
@@ -201,15 +201,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
        P_ROW_NEW.FLEX_CAMPO_18 := V_SUBESP; --SGD-1469
       EXCEPTION
        WHEN OTHERS THEN
-            P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
+            P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
             RETURN(TRUE);
 
       END;
    END IF;
   ---
-  --SGD-875 05/02/2015 Bernardo C·mera InÌcio
+  --SGD-875 05/02/2015 Bernardo C√°mera In√≠cio
   /*
-  IF (P_INSERTING or P_UPDATING) AND V_NOME_TRANSACAO = 'VÌnculo' then
+  IF (P_INSERTING or P_UPDATING) AND V_NOME_TRANSACAO = 'V√≠nculo' then
    IF P_ROW_NEW.FLEX_CAMPO_41 IS NOT NULL AND P_ROW_NEW.FLEX_CAMPO_44 IS NOT NULL THEN
 
     BEGIN
@@ -231,15 +231,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
     IF (TRUNC(TO_DATE(P_ROW_NEW.FLEX_CAMPO_41,'DD/MM/YYYY')) != TRUNC(v_data_posse)) THEN
        P_MENS := '1: FLEX_CAMPO_41 :'||P_ROW_NEW.FLEX_CAMPO_41||' v_data_posse : '||to_char(v_data_posse,'DD/MM/YYYY')||
                  ' FLEX_CAMPO_44 :'||P_ROW_NEW.FLEX_CAMPO_44;
-       --P_MENS := 'A data de posse n„o condiz com o vÌnculo informado..|';
+       --P_MENS := 'A data de posse n√£o condiz com o v√≠nculo informado..|';
     END IF;
 
    END IF;
   END IF;
   */
-   --SGD-875 05/02/2015 Bernardo C·mera Fim
+   --SGD-875 05/02/2015 Bernardo C√°mera Fim
 
-  --Bernardo 30/06/2015 InÌcio
+  --Bernardo 30/06/2015 In√≠cio
   IF ((p_inserting) OR (p_updating)) AND (v_nome_transacao IN ('Ingresso')) THEN
 
    --Pego os codigos de atividade e disciplina da erg_ingresso
@@ -261,7 +261,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         V_CODIGO_DISCIPLINA := NULL;
     END;
 
-   --Pego a descriÁ„o da Atividade
+   --Pego a descri√ß√£o da Atividade
    IF V_CODIGO_ATIVIDADE IS NOT NULL THEN
     BEGIN
      SELECT NOME
@@ -270,11 +270,11 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
      WHERE A.CODIGO = V_CODIGO_ATIVIDADE;
     EXCEPTION
      WHEN OTHERS THEN
-       P_MENS := 'Erro n„o esperado ao tentar recuperar a descriÁ„o da atividade: '||sqlerrm;
+       P_MENS := 'Erro n√£o esperado ao tentar recuperar a descri√ß√£o da atividade: '||sqlerrm;
        RETURN(TRUE);
     END;
    END IF;
-   --Pego a descriÁ„o da Disciplina
+   --Pego a descri√ß√£o da Disciplina
    IF V_CODIGO_DISCIPLINA IS NOT NULL THEN
     BEGIN
       SELECT DESCRICAO
@@ -283,12 +283,12 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       WHERE D.DISCIPLINA = V_CODIGO_DISCIPLINA;
     EXCEPTION
       WHEN OTHERS THEN
-       P_MENS := 'Erro n„o esperado ao tentar recuperar a descriÁ„o da disciplina: '||sqlerrm;
+       P_MENS := 'Erro n√£o esperado ao tentar recuperar a descri√ß√£o da disciplina: '||sqlerrm;
        RETURN(TRUE);
     END;
    END IF;
 
-    --Concateno cÛdigos de atividade e disciplina com as respectivas descriÁıes.
+    --Concateno c√≥digos de atividade e disciplina com as respectivas descri√ß√µes.
     IF V_CODIGO_ATIVIDADE IS NOT NULL THEN
        P_ROW_NEW.FLEX_CAMPO_04 := V_CODIGO_ATIVIDADE || '-' || V_DESCRICAO_ATIVIDADE;
     END IF;
@@ -299,15 +299,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
   END IF;
   --Bernardo 30/06/2015 Fim
 
-  -- Trecho abaixo inserido para incluir uma crÌtica alertando ao usu·rio a exclus„o de campos
+  -- Trecho abaixo inserido para incluir uma cr√≠tica alertando ao usu√°rio a exclus√£o de campos
   -- caso o altere o FLEX_CAMPO_02 para NAO. Permitindo somente quando comfirmar, colocando SIM no FLEX_CAMPO_17.
   -- Reinaldo Mesquita, 23/07/2014, SGD 1266
   IF P_UPDATING
-  AND V_NOME_TRANSACAO = 'VÌnculo'
+  AND V_NOME_TRANSACAO = 'V√≠nculo'
   AND P_ROW_OLD.FLEX_CAMPO_02 = 'SIM'
   AND P_ROW_NEW.FLEX_CAMPO_02 = 'NAO'
   AND NVL(P_ROW_NEW.FLEX_CAMPO_17,'NAO') <> 'SIM' THEN
-    P_MENS := '… necessario confirmar a alteraÁ„o do campo: Servidor Estatut·rio tomando posse sem interrupÁ„o e sem acumulaÁ„o '||CHR(10)||'(essa confirmaÁ„o ir· excluir os dados da aba Vinculo Anterior).';
+    P_MENS := '√â necessario confirmar a altera√ß√£o do campo: Servidor Estatut√°rio tomando posse sem interrup√ß√£o e sem acumula√ß√£o '||CHR(10)||'(essa confirma√ß√£o ir√° excluir os dados da aba Vinculo Anterior).';
     RETURN(TRUE);
   END IF;
 
@@ -316,11 +316,11 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
   END IF;
   -- fim do trecho referente ao SGD 1266
 
-  -- Trecho abaixo inserido para atender a solicitaÁ„o de uma crÌtica para
+  -- Trecho abaixo inserido para atender a solicita√ß√£o de uma cr√≠tica para
   -- evitar o ingresso em CONCURSO PUBLICO de servidores com mais de 70 anos
   -- Reinaldo Mesquita, 14/05/2014, SGD 1430
   IF (p_inserting) OR (p_updating AND P_ROW_OLD.TIPOVINC <> P_ROW_NEW.TIPOVINC)
-  AND v_nome_transacao IN ('VÌnculo','Ingresso') THEN
+  AND v_nome_transacao IN ('V√≠nculo','Ingresso') THEN
 
     BEGIN
       SELECT ITEM1
@@ -332,7 +332,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       WHEN NO_DATA_FOUND THEN
         V_IDADE_TPVINC := NULL;
       WHEN OTHERS THEN
-        P_MENS := 'Erro n„o espedado GRJ_EPB__VINCULOS (3): '||sqlerrm(sqlcode);
+        P_MENS := 'Erro n√£o espedado GRJ_EPB__VINCULOS (3): '||sqlerrm(sqlcode);
         RETURN(TRUE);
     END;
 
@@ -345,16 +345,16 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         WHERE F.NUMERO = P_ROW_NEW.NUMFUNC;
       EXCEPTION
         WHEN OTHERS THEN
-          P_MENS := 'Erro n„o espedado GRJ_EPB__VINCULOS (4): '||sqlerrm(sqlcode);
+          P_MENS := 'Erro n√£o espedado GRJ_EPB__VINCULOS (4): '||sqlerrm(sqlcode);
           RETURN(TRUE);
       END;
 
       IF V_IDADE_FUNC IS NULL THEN
-        P_MENS := 'Para fazer o ingresso È necess·rio preencher a data de nascimento do servidor na tela de DADOS GERAIS';
+        P_MENS := 'Para fazer o ingresso √© necess√°rio preencher a data de nascimento do servidor na tela de DADOS GERAIS';
         RETURN (TRUE);
       ELSE
         IF V_IDADE_FUNC > V_IDADE_TPVINC THEN
-          P_MENS := 'N„o È permitido fazer o ingresso nesse tipo de vÌnculo servidor com mais de '||V_IDADE_TPVINC||' anos.';
+          P_MENS := 'N√£o √© permitido fazer o ingresso nesse tipo de v√≠nculo servidor com mais de '||V_IDADE_TPVINC||' anos.';
           RETURN (TRUE);
         END IF;
       END IF;
@@ -363,8 +363,8 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
   -- fim do trecho referente ao SGD 1430
   --
 /*
-  Quando implantar toda a AdministraÁ„o Direta:
-    Devemos verificar se o vinculo È de REQUISICAO INTERNA, deve ser informado o vinculo na origem (FLEX_08).
+  Quando implantar toda a Administra√ß√£o Direta:
+    Devemos verificar se o vinculo √© de REQUISICAO INTERNA, deve ser informado o vinculo na origem (FLEX_08).
    O treche de codigo abaixo deve ser liberado para consistencia.
 
     if p_row_new.tipovinc like 'REQUISICAO EXTERNA' then
@@ -378,10 +378,10 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 
 
-     -- Obrigar o preenchimento dos campos da aba "RequisiÁ„o/Contrato" em caso de tipovinc = REQUISICAO EXTERNA ou REQUISICAO INTERNA.
-     -- Em caso de REQUISICAO INTERNA obrigar o preenchimento do campo VÌnculo na Origem (FLEX_08).
+     -- Obrigar o preenchimento dos campos da aba "Requisi√ß√£o/Contrato" em caso de tipovinc = REQUISICAO EXTERNA ou REQUISICAO INTERNA.
+     -- Em caso de REQUISICAO INTERNA obrigar o preenchimento do campo V√≠nculo na Origem (FLEX_08).
      -- Reinaldo Mesquita - 04/10/2013 (SGD 1038)
-     IF ((p_inserting) or (p_updating)) and v_nome_transacao = 'VÌnculo' THEN
+     IF ((p_inserting) or (p_updating)) and v_nome_transacao = 'V√≠nculo' THEN
 
 
 
@@ -389,12 +389,12 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
        -- Impedir o ingresso de tipovinc = EFETIVO, ADM ESTAVEL e ADM NAO ESTAVEL
        -- Reinaldo Mesquita - 04/10/2013 (SGD 875)
        if P_ROW_NEW.Tipovinc = 'EFETIVO' and  p_row_new.dtexerc >= to_date('04/09/2013','dd/mm/yyyy') then
-         P_MENS := 'N„o pode ser realizado o ingressos de servidores EFETIVOS. A partir de 05/10/1988 todo EFETIVO dever· ser cadastrado como CONCURSO PUBLICO.';
+         P_MENS := 'N√£o pode ser realizado o ingressos de servidores EFETIVOS. A partir de 05/10/1988 todo EFETIVO dever√° ser cadastrado como CONCURSO PUBLICO.';
          return(true);
        end if;
 
        if P_ROW_NEW.Tipovinc in('ADM ESTAVEL','ADM NAO ESTAVEL') and  p_row_new.dtexerc >= to_date('04/09/2013','dd/mm/yyyy') then
-         P_MENS := 'N„o pode ser realizado o ingressos de servidores com Tipo de VÌnculo ADM ESTAVEL e ADM NAO ESTAVEL.';
+         P_MENS := 'N√£o pode ser realizado o ingressos de servidores com Tipo de V√≠nculo ADM ESTAVEL e ADM NAO ESTAVEL.';
          return(true);
        end if;
 
@@ -402,34 +402,34 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
        if P_ROW_NEW.Tipovinc = 'REQUISICAO EXTERNA' or P_ROW_NEW.Tipovinc = 'REQUISICAO INTERNA' then
 
          if P_ROW_NEW.Flex_Campo_06 is null then
-           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher o campo Tipo de ”rg„o na aba RequisiÁ„o/Contrato.';
+           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher o campo Tipo de √ìrg√£o na aba Requisi√ß√£o/Contrato.';
            return(true);
          end if;
 
          if P_ROW_NEW.Flex_Campo_07 is null then
-           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher o campo ”rg„o na aba RequisiÁ„o/Contrato.';
+           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher o campo √ìrg√£o na aba Requisi√ß√£o/Contrato.';
            return(true);
          end if;
 
          if P_ROW_NEW.Funcao_Req is null then
-           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher o campo Cargo na Origem na aba RequisiÁ„o/Contrato.';
+           P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher o campo Cargo na Origem na aba Requisi√ß√£o/Contrato.';
            return(true);
          end if;
 
          if P_ROW_NEW.Tipovinc = 'REQUISICAO EXTERNA' then
            if P_ROW_NEW.Tipo_Req <> 'EXTERNA' then
-             P_MENS := 'Para REQUISICAO EXTERNA È obrigatÛrio informar o Tipo de RequisiÁ„o como EXTERNA.';
+             P_MENS := 'Para REQUISICAO EXTERNA √© obrigat√≥rio informar o Tipo de Requisi√ß√£o como EXTERNA.';
              return(true);
            end if;
          end if;
 
          if P_ROW_NEW.Tipovinc = 'REQUISICAO INTERNA' then
            if P_ROW_NEW.Tipo_Req <> 'INTERNA' then
-             P_MENS := 'Para REQUISICAO INTERNA È obrigatÛrio informar o Tipo de RequisiÁ„o como INTERNA.';
+             P_MENS := 'Para REQUISICAO INTERNA √© obrigat√≥rio informar o Tipo de Requisi√ß√£o como INTERNA.';
              return(true);
            end if;
 
-           -- verifica se o org„o selecionado est· no SigRH --
+           -- verifica se o org√£o selecionado est√° no SigRH --
            begin
              select count(1)
              into v_cont_orgao
@@ -442,16 +442,16 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
              when no_data_found then
                v_cont_orgao := 0;
              when others then
-               P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (1): '||sqlerrm(sqlcode);
+               P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (1): '||sqlerrm(sqlcode);
                RETURN(TRUE);
            end;
 
            if v_cont_orgao >= 1 and P_ROW_NEW.FLEX_CAMPO_08 is null then
-             P_MENS := ' … obrigatÛrio informar o VÌnculo na Origem para servidores vindos do ”rg„o '||P_ROW_NEW.FLEX_CAMPO_07||'.';
+             P_MENS := ' √â obrigat√≥rio informar o V√≠nculo na Origem para servidores vindos do √ìrg√£o '||P_ROW_NEW.FLEX_CAMPO_07||'.';
              return(true);
            end if;
          end if;
-  --bernardo 01/07/2015 InÌcio
+  --bernardo 01/07/2015 In√≠cio
   elsif (P_ROW_NEW.tipovinc = 'PLANTAO EXTRA SESDEC') or (P_ROW_NEW.tipovinc = 'FORCA EST DE SAUDE') then
 
         begin
@@ -474,17 +474,17 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       if v_vinc_ = 1 then
 
         if P_ROW_NEW.Flex_Campo_06 is null then
-          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher a Origem na aba RequisiÁ„o/Contrato.';
+          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher a Origem na aba Requisi√ß√£o/Contrato.';
           return(true);
         end if;
 
         if P_ROW_NEW.Flex_Campo_07 is null then
-          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher a Origem na aba RequisiÁ„o/Contrato.';
+          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher a Origem na aba Requisi√ß√£o/Contrato.';
           return(true);
         end if;
 
         if P_ROW_NEW.Funcao_Req is null then
-          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' È obrigatÛrio preencher a Origem na aba RequisiÁ„o/Contrato.';
+          P_MENS := 'Para '||P_ROW_NEW.Tipovinc||' √© obrigat√≥rio preencher a Origem na aba Requisi√ß√£o/Contrato.';
           return(true);
         end if;
       end if;
@@ -505,18 +505,18 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
          or P_ROW_NEW.Numfunc_Permut_2 is not null
          or P_ROW_NEW.Numero_Permut_2  is not null
          then
-           P_MENS := ' O Bloco RequisiÁ„o n„o deve ser preenchido no caso de '||P_ROW_NEW.Tipovinc||'.';
+           P_MENS := ' O Bloco Requisi√ß√£o n√£o deve ser preenchido no caso de '||P_ROW_NEW.Tipovinc||'.';
            return(true);
          end if;
        end if;
         -- Ismael Lauro em 19/05/2016 SGD 2791
-        -- IncluÌdo o tipo de vÌnculo PREST TAREFA T CERTO para passar a regra das datas preenchidas
+        -- Inclu√≠do o tipo de v√≠nculo PREST TAREFA T CERTO para passar a regra das datas preenchidas
        if P_ROW_NEW.Tipovinc not in ('CONTR TEMPORARIO','PREST TAREFA T CERTO') then
          if P_ROW_NEW.Dtinicontr     is not null
          or P_ROW_NEW.Dtfimcontr     is not null
          or P_ROW_NEW.Dtprorrogcontr is not null
          then
-           P_MENS := ' O Bloco Contrato por Tempo Determinado n„o deve ser preenchido no caso de '||P_ROW_NEW.Tipovinc||'.';
+           P_MENS := ' O Bloco Contrato por Tempo Determinado n√£o deve ser preenchido no caso de '||P_ROW_NEW.Tipovinc||'.';
            return(true);
          end if;
        end if;
@@ -559,7 +559,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
      end if;
 
 
-     if v_nome_transacao = 'VÌnculo' or v_nome_transacao = 'Ingresso' then
+     if v_nome_transacao = 'V√≠nculo' or v_nome_transacao = 'Ingresso' then
 
        if p_row_new.regimejur = 'ESTATUTO CIVIL' and p_row_new.tipovinc = 'CONCURSO PUBLICO' then
 
@@ -572,7 +572,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 
            if p_row_new.flex_campo_02 is null then
-             p_mens := '… obrigatÛrio informar se o funcion·rio teve vÌnculo estatut·rio anterior!';
+             p_mens := '√â obrigat√≥rio informar se o funcion√°rio teve v√≠nculo estatut√°rio anterior!';
              RETURN (TRUE);
 
            elsif p_row_new.flex_campo_02 = 'NAO' then
@@ -592,38 +592,38 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
              --P_MENS := 'Linha 365';
 
              if p_row_new.flex_campo_42 is null then
-               p_mens := '… necess·rio informar se teve ou n„o PrevidÍncia Complementar no VÌnculo Ininterr˙pto.';
+               p_mens := '√â necess√°rio informar se teve ou n√£o Previd√™ncia Complementar no V√≠nculo Ininterr√∫pto.';
                RETURN (TRUE);
              end if;
 
              if p_row_new.flex_campo_43 is null then
-               p_mens := '… necess·rio informar o Tipo de ”rg„o do VÌnculo Ininterr˙pto.';
+               p_mens := '√â necess√°rio informar o Tipo de √ìrg√£o do V√≠nculo Ininterr√∫pto.';
                RETURN (TRUE);
              end if;
 
              if p_row_new.flex_campo_40 is null then
-               p_mens := '… necess·rio informar ”rg„o do VÌnculo Ininterr˙pto.';
+               p_mens := '√â necess√°rio informar √ìrg√£o do V√≠nculo Ininterr√∫pto.';
                RETURN (TRUE);
              end if;
 
              if p_row_new.flex_campo_41 is null then
-               p_mens := '… necess·rio informar a Data de Posse do VÌnculo Ininterr˙pto.';
+               p_mens := '√â necess√°rio informar a Data de Posse do V√≠nculo Ininterr√∫pto.';
                RETURN (TRUE);
              end if;
 
 
              if P_ROW_NEW.flex_campo_43 in ('ADMINISTRACAO DIRETA','FUNDACAO','AUTARQUIA','EMPRESA','COMPANHIA')
                 AND p_row_new.flex_campo_44 is null then
-                    p_mens := 'O N˙mero do VÌnculo Ininterr˙pto deve ser informado.';
+                    p_mens := 'O N√∫mero do V√≠nculo Ininterr√∫pto deve ser informado.';
                     RETURN (TRUE);
              end if;
 
-             -- Verificando se o campo Tipo de Org„o(flex_43) corresponde ao campo Org„o Anterior(flex_40)
-             -- AlteraÁ„o realizada para atender a demanda acrescentada ao SGD 875 no dia 21/01/2014
+             -- Verificando se o campo Tipo de Org√£o(flex_43) corresponde ao campo Org√£o Anterior(flex_40)
+             -- Altera√ß√£o realizada para atender a demanda acrescentada ao SGD 875 no dia 21/01/2014
              -- Reinaldo Mesquita - 21/01/2014 (SGD 875)
              
              -- Alterado por Giselle da Silva em 22/02/2016  SGD 2635  
-             -- Fazer a verificaÁ„o do Ûrg„o anterior separadamente para ADMINSTRA«√O DIRETA e FUNDA«√O/AUTARQUIA           
+             -- Fazer a verifica√ß√£o do √≥rg√£o anterior separadamente para ADMINSTRA√á√ÉO DIRETA e FUNDA√á√ÉO/AUTARQUIA           
              if P_ROW_NEW.flex_campo_43 = 'ADMINISTRACAO DIRETA' then 
 
                begin
@@ -644,12 +644,12 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
                    and oe.descr = p_row_new.flex_campo_40)a ;
                exception                 
                  WHEN OTHERS THEN
-                   P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (6): '||sqlerrm(sqlcode);
+                   P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (6): '||sqlerrm(sqlcode);
                    RETURN(TRUE);
                end;
 
                if v_cont_orgao_ant = 0 or v_cont_orgao_ant is null then
-                 p_mens := 'O Campo Org„o Anterior n„o est· de acordo com o Tipo de Org„o selecionado - 20.';
+                 p_mens := 'O Campo Org√£o Anterior n√£o est√° de acordo com o Tipo de Org√£o selecionado - 20.';
                  RETURN (TRUE);
                end if;
 
@@ -673,15 +673,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
                      and oe.descr = p_row_new.flex_campo_40)a ;
                  exception                   
                    WHEN OTHERS THEN
-                     P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (7): '||sqlerrm(sqlcode);
+                     P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (7): '||sqlerrm(sqlcode);
                      RETURN(TRUE);
                  end;
 
                  if v_cont_orgao_ant = 0 or v_cont_orgao_ant is null then
-                   p_mens := 'O Campo Org„o Anterior n„o est· de acordo com o Tipo de Org„o selecionado - 30.';
+                   p_mens := 'O Campo Org√£o Anterior n√£o est√° de acordo com o Tipo de Org√£o selecionado - 30.';
                    RETURN (TRUE);
                  end if;        
-           end if; -- Fim da validaÁ„o do campo do vÌnculo estatut·rio anterior
+           end if; -- Fim da valida√ß√£o do campo do v√≠nculo estatut√°rio anterior
            -- Fim Giselle
            
              /*
@@ -703,15 +703,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
                  and oe.descr = p_row_new.flex_campo_40)a ;
              exception
                when no_data_found then
-                 p_mens := 'O Campo Org„o Anterior n„o est· de acordo com o Tipo de Org„o selecionado.';
+                 p_mens := 'O Campo Org√£o Anterior n√£o est√° de acordo com o Tipo de Org√£o selecionado.';
                  return (true);
                WHEN OTHERS THEN
-                 P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (6): '||sqlerrm(sqlcode);
+                 P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (6): '||sqlerrm(sqlcode);
                  RETURN(TRUE);
              end;
 
              if v_cont_orgao_ant = 0 or v_cont_orgao_ant is null then
-               p_mens := 'O Campo Org„o Anterior n„o est· de acordo com o Tipo de Org„o selecionado.';
+               p_mens := 'O Campo Org√£o Anterior n√£o est√° de acordo com o Tipo de Org√£o selecionado.';
                RETURN (TRUE);
              end if;*/
 
@@ -719,7 +719,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
            else
 
-           --Controle de se possui atributo ou n„o
+           --Controle de se possui atributo ou n√£o
                    begin
                      select 1
                      into v_count
@@ -738,7 +738,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
                    end;
 
                    if v_count = 1 then
-                     P_MENS := 'Os atributos de PrevidÍncia Complementar devem ser fechados para que o plano possa ser alterado';
+                     P_MENS := 'Os atributos de Previd√™ncia Complementar devem ser fechados para que o plano possa ser alterado';
                      RETURN(TRUE);
                    end if;
 
@@ -747,7 +747,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
               select DECODE (planoprev_padrao, 'RPPS', 'RIOPREV FINANC', planoprev_padrao)
                 into p_row_new.flex_campo_16
                 from erg_tipovinc_valid t,
-                -- IncluÌdo por Giselle da Silva em 20/06/2016 / SGD 2840
+                -- Inclu√≠do por Giselle da Silva em 20/06/2016 / SGD 2840
                      erg_tipovinc_valid_empresa te
                where t.tipovinc = te.tipovinc
                  and t.categoria = te.categoria
@@ -761,7 +761,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
               when no_data_found then
                 p_row_new.flex_campo_16 := NULL;
               when others then
-                P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
+                P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
                 RETURN(TRUE);
             END;
 
@@ -796,7 +796,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 
          --setar regra antiga de plano previdenciario no flex_16--
-          --P_MENS := 'Entrou na parte de JUD EST e ”rg„o RJ 2';
+          --P_MENS := 'Entrou na parte de JUD EST e √ìrg√£o RJ 2';
           --     RETURN (TRUE);
 
             BEGIN
@@ -810,14 +810,14 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
               when no_data_found then
                 p_row_new.flex_campo_16 := NULL;
               when others then
-                P_MENS := 'Erro n„o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
+                P_MENS := 'Erro n√£o esperado GRJ_EPB__VINCULOS (2): '||sqlerrm(sqlcode);
                 RETURN(TRUE);
             END;
 
 
            --P_MENS := 'Linha 505 FLEX_CAMPO_41 :'||P_ROW_NEW.FLEX_CAMPO_41||' FLEX_CAMPO_44 :'||P_ROW_NEW.FLEX_CAMPO_44;
 
-           /* --Comentado SGD-875 Bernardo C·mera
+           /* --Comentado SGD-875 Bernardo C√°mera
            p_row_new.flex_campo_02 := null;
            p_row_new.flex_campo_40 := null;
            p_row_new.flex_campo_41 := null;
@@ -832,18 +832,18 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
  --    P_MENS := 'Linha 535 FLEX_CAMPO_41 :'||P_ROW_NEW.FLEX_CAMPO_41||' FLEX_CAMPO_44 :'||P_ROW_NEW.FLEX_CAMPO_44;
 
 
-     -- Permitir que seja atribuida uma vac‚ncia, mesmo que o tipo de pagamento seja ESPEC, SEMCC ou a conta corrente incorreta
-     -- mas impedir remover a vac‚ncia sem antes acertar tipo de pagamento e a conta-corrente.
+     -- Permitir que seja atribuida uma vac√¢ncia, mesmo que o tipo de pagamento seja ESPEC, SEMCC ou a conta corrente incorreta
+     -- mas impedir remover a vac√¢ncia sem antes acertar tipo de pagamento e a conta-corrente.
      -- Reinaldo Mesquita - 14/08/2013 (SGD 955)
-     if v_nome_transacao IN ('Vac‚ncia','Instituidor de Pens„o') then
+     if v_nome_transacao IN ('Vac√¢ncia','Instituidor de Pens√£o') then
 
-       if p_row_new.dtvac is null then -- quando remove uma vac‚ncia:
+       if p_row_new.dtvac is null then -- quando remove uma vac√¢ncia:
 
          if p_row_new.TIPOPAG = 'ESPEC' then
-           -- Impede atualizaÁ„o de tipo de pagamento em espÈcie na tela de cadstro de vÌnculo
-           -- Tarefa no Attask - CRIAR TIPO PAG "CONTA SAL¡RIO"
+           -- Impede atualiza√ß√£o de tipo de pagamento em esp√©cie na tela de cadstro de v√≠nculo
+           -- Tarefa no Attask - CRIAR TIPO PAG "CONTA SAL√ÅRIO"
            -- Rodrigo Machado - 24/08/2012
-           p_mens := 'N„o È mais possÌvel atualizar registros como EspÈcie! 002';
+           p_mens := 'N√£o √© mais poss√≠vel atualizar registros como Esp√©cie! 002';
            RETURN (TRUE);
          end if;
 
@@ -865,7 +865,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
            END;
 
            IF V_TEM_REPR_LEGAL = 0 THEN
-             p_mens := 'Funcionario n„o possui conta corrente v·lida ou representante legal com conta corrente v·lida.';
+             p_mens := 'Funcionario n√£o possui conta corrente v√°lida ou representante legal com conta corrente v√°lida.';
              RETURN (TRUE);
            END IF;
 
@@ -875,32 +875,32 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
     else
 
-      --Libera para quando o servidor tiver a liberaÁ„o para pagar em ESPEC
+      --Libera para quando o servidor tiver a libera√ß√£o para pagar em ESPEC
        if NVL(p_row_new.flex_campo_13,'NAO') <> 'SIM' then
 
          if p_row_new.TIPOPAG = 'ESPEC' then
-           -- Impede atualizaÁ„o de tipo de pagamento em espÈcie na tela de cadstro de vÌnculo
-           -- Tarefa no Attask - CRIAR TIPO PAG "CONTA SAL¡RIO"
+           -- Impede atualiza√ß√£o de tipo de pagamento em esp√©cie na tela de cadstro de v√≠nculo
+           -- Tarefa no Attask - CRIAR TIPO PAG "CONTA SAL√ÅRIO"
            -- Rodrigo Machado - 24/08/2012
-           p_mens := 'N„o È mais possÌvel atualizar registros como EspÈcie 10012!';
+           p_mens := 'N√£o √© mais poss√≠vel atualizar registros como Esp√©cie 10012!';
            RETURN (TRUE);
          end if;
 
        end if;
 
-         -- ValidaÁ„o do dÌgito da conta corrente do banco Itau
+         -- Valida√ß√£o do d√≠gito da conta corrente do banco Itau
          -- Dagoberto 09/05/2011
          --Modificado por Rodrigo Machado em 06/07/2015, coloquei o NVL abaixo,
-         --pois sem ele n„o estava entrando na validaÁ„o. SGD 2130
+         --pois sem ele n√£o estava entrando na valida√ß√£o. SGD 2130
          IF p_row_new.banco IS NOT NULL AND NVL(p_row_new.formavac,'XXXXX') <> 'FALECIMENTO' THEN
             --TGRJ_VALIDA_CC (p_row_new.banco,p_row_new.agencia, p_row_new.conta, p_row_new.tipopag);
 
             IF P_ROW_NEW.Conta is null and P_ROW_NEW.FLEX_CAMPO_20 IS NULL and P_ROW_NEW.Tipopag IN ('CONTA','POUPA') then
-              p_mens := 'Tipo de conta for CONTA ou POUPA, È obrigatÛrio o preenchimento do campo Conta ou Conta Sal·rio.' ;
+              p_mens := 'Tipo de conta for CONTA ou POUPA, √© obrigat√≥rio o preenchimento do campo Conta ou Conta Sal√°rio.' ;
             ELSE
                IF P_ROW_NEW.Conta is NOT null THEN
                   TGRJ_VALIDA_CC (p_row_new.banco,p_row_new.agencia,P_ROW_NEW.Conta, p_row_new.tipopag);
-             --     RETURN (TRUE); linha comentada de acordo com solicitaÁ„o do SGD 2151 05/08/2015
+             --     RETURN (TRUE); linha comentada de acordo com solicita√ß√£o do SGD 2151 05/08/2015
                END IF;
                IF P_ROW_NEW.FLEX_CAMPO_20 IS NOT NULL THEN
                  TGRJ_VALIDA_CC (p_row_new.banco,p_row_new.flex_campo_19,P_ROW_NEW.FLEX_CAMPO_20, p_row_new.tipopag);
@@ -910,16 +910,16 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
          END IF;
     end if;
 
-    -- Hor·cio - 31/03/2011 - Transferi para o EPB em 08/04/2011 pois no EPA n„o estava atualizando a dt_pgto_ate
-    -- verificar se esta havendo atualizaÁ„o na data de vacancia
-    -- Inclui separado pois haviam varios vinculos sem data de pagamento atÈ
-    -- A idÈia È que isto n„o ocorra mais.
+    -- Hor√°cio - 31/03/2011 - Transferi para o EPB em 08/04/2011 pois no EPA n√£o estava atualizando a dt_pgto_ate
+    -- verificar se esta havendo atualiza√ß√£o na data de vacancia
+    -- Inclui separado pois haviam varios vinculos sem data de pagamento at√©
+    -- A id√©ia √© que isto n√£o ocorra mais.
     IF (p_row_new.dtvac IS NOT NULL AND p_row_old.dtvac IS NULL) OR (p_row_new.dtvac IS NOT NULL AND p_row_old.dtvac IS NOT NULL AND p_row_new.dtvac <> p_row_old.dtvac) THEN
-      -- Seta a data de pagamento atÈ dois meses depois da vac‚ncia para o servidor
+      -- Seta a data de pagamento at√© dois meses depois da vac√¢ncia para o servidor
       p_row_new.dt_pgto_ate := last_day(add_months(sysdate,2));
     END IF;
     --
-    -- Hor·cio em 17/10/2011 - Incluir teste para verificar se est· sendo informada aposentadoria e o servidor
+    -- Hor√°cio em 17/10/2011 - Incluir teste para verificar se est√° sendo informada aposentadoria e o servidor
     -- possui evento de comissionado aberto;
     --
     if  p_updating and p_row_new.dtaposent is not null and p_row_old.dtaposent is null then
@@ -959,7 +959,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         WHEN NO_DATA_FOUND THEN
           v_flex_campo_02 := NULL;
         WHEN OTHERS THEN
-          P_MENS := 'Erro n„o espedado GRJ_EPB__VINCULOS (9): '||sqlerrm(sqlcode);
+          P_MENS := 'Erro n√£o espedado GRJ_EPB__VINCULOS (9): '||sqlerrm(sqlcode);
           RETURN(TRUE);
         END;
         IF v_flex_campo_02     IS NOT NULL THEN
@@ -968,14 +968,14 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         END IF;
       END IF;
 
-      --SGD-1678 Bernardo 01/10/2014 InÌcio
+      --SGD-1678 Bernardo 01/10/2014 In√≠cio
       IF p_row_new.matricula1 IS NOT NULL THEN
          V_MATRICULA1_AUX := p_row_new.matricula1;
          p_row_new.matricula1 := UPPER(V_MATRICULA1_AUX);
       END IF;
       --SGD-1678 Bernardo 01/10/2014 Fim
 
-      -- ValidaÁ„o do PISPASEP
+      -- Valida√ß√£o do PISPASEP
       --
       BEGIN
         SELECT 1
@@ -989,7 +989,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
       WHEN NO_DATA_FOUND THEN
         V_NAO_TEMP_PASEP := NULL;
       WHEN OTHERS THEN
-        P_MENS := 'Erro n„o espedado GRJ_EPB__VINCULOS (10): '||sqlerrm(sqlcode);
+        P_MENS := 'Erro n√£o espedado GRJ_EPB__VINCULOS (10): '||sqlerrm(sqlcode);
         RETURN(TRUE);
       END;
       --
@@ -1005,7 +1005,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         WHEN NO_DATA_FOUND THEN
           V_PRIVILEG_LIVRE := 'N';
         WHEN OTHERS THEN
-          P_MENS := 'Erro n„o espedado GRJ_EPB__VINCULOS (11): '||sqlerrm(sqlcode);
+          P_MENS := 'Erro n√£o espedado GRJ_EPB__VINCULOS (11): '||sqlerrm(sqlcode);
           RETURN(TRUE);
       END;
 
@@ -1016,21 +1016,21 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
                       P_ROW_NEW.REGIMEJUR IN ('LEIS DE PENSAO','LEIS PENSAO ESPECIAL','PENSAO ESPECIAL')
                       )
         THEN
-          p_mens           := 'O PIS/PASEP do servidor È obrigatÛrio.' ||' Cadastre primeiro o PISPASEP na tela de Funcion·rios para ' ||'depois incluir o Vinculo.';
+          p_mens           := 'O PIS/PASEP do servidor √© obrigat√≥rio.' ||' Cadastre primeiro o PISPASEP na tela de Funcion√°rios para ' ||'depois incluir o Vinculo.';
         END IF;
       END IF;
 
       --
-      -- Ricardo Nunes em 21/09/2012 - Todo Vinculo dever· ter a informaÁ„o do Banco Padrao,
+      -- Ricardo Nunes em 21/09/2012 - Todo Vinculo dever√° ter a informa√ß√£o do Banco Padrao,
       -- mesmo que o TIPOPAG = SEMCC ou ESPEC.
       --
       IF p_row_new.banco IS NULL THEN
          p_row_new.banco := pack_hades.get_opcao('C_Ergon', 'GOVRJ', 'BANCO_PADRAO');
       END IF;
       --
-      --ModificaÁ„o solicitada de acordo com o SGD 1499
+      --Modifica√ß√£o solicitada de acordo com o SGD 1499
       --Permitir cadastramento do vinculo PREST TAREFA T CERTO somente para servidor que tenham
-      --outro vÌnculo de CONCURSO PUBLICO ou EFETIVO e que esteja inativado.
+      --outro v√≠nculo de CONCURSO PUBLICO ou EFETIVO e que esteja inativado.
 
       /*IF P_ROW_NEW.Tipovinc = 'PREST TAREFA T CERTO' THEN
 
@@ -1047,8 +1047,8 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 
          IF V_COUNT_MILITAR = 0 THEN
-            p_mens := 'Tipo de vÌnculo PREST TAREFA T CERTO sÛ pode ser criado ou atualizado se '||
-                     'servidor possuir outro vÌnculo Regime JurÌdico ESTATUTO MILITAR e SituaÁ„o Inativo.';
+            p_mens := 'Tipo de v√≠nculo PREST TAREFA T CERTO s√≥ pode ser criado ou atualizado se '||
+                     'servidor possuir outro v√≠nculo Regime Jur√≠dico ESTATUTO MILITAR e Situa√ß√£o Inativo.';
          END IF;
 
       END IF;*/
@@ -1059,14 +1059,14 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
     -- Gera a matricula para o SAPE
     -- Dagoberto 27/01/2011
     --
-    IF (p_inserting) and p_row_new.matricula is null then--Alteracao conforme pedido de Horacio para acertar a gravaÁ„o da matricula.25/03/2013.
+    IF (p_inserting) and p_row_new.matricula is null then--Alteracao conforme pedido de Horacio para acertar a grava√ß√£o da matricula.25/03/2013.
       p_row_new.matricula := tgrj_calc_digito_mod10 (pack_hades.get_numero ('SAPE', 0));
       p_row_new.matricula := pack_hades.formata_mascara(p_row_new.matricula,'00-0000000-0');
     END IF;
     --
     --
-    -- Este procedimento foi adicionado para evitar matrÌcula nula vinda do ingresso.
-    -- Isto ocorria quando o servidor j· tinha vÌnculo cadastrado mas n„o tinha evento
+    -- Este procedimento foi adicionado para evitar matr√≠cula nula vinda do ingresso.
+    -- Isto ocorria quando o servidor j√° tinha v√≠nculo cadastrado mas n√£o tinha evento
     -- ainda. O campo matricula que vinha do form vinha nulo e sobrescrevia a tabela.
     --
     IF (p_updating) AND p_row_new.matricula IS NULL THEN
@@ -1074,7 +1074,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
     END IF;
     --
     IF (p_row_new.dtexerc > SYSDATE) OR (p_row_new.dtnom > SYSDATE) OR (p_row_new.dtposse > SYSDATE) THEN
-      p_mens             := 'N„o s„o permitidos lanÁamentos futuros.';
+      p_mens             := 'N√£o s√£o permitidos lan√ßamentos futuros.';
     END IF;
 
     --
@@ -1105,7 +1105,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
      IF (v_existe_categoria = 1) AND (PCK_VINCULOS.V_ROW_NEW.FLEX_CAMPO_04 IS NULL) THEN
 
-        P_MENS := 'Para esta Categoria do VÌnculo È Necess·rio informar a Atividade/Especialidade.';
+        P_MENS := 'Para esta Categoria do V√≠nculo √© Necess√°rio informar a Atividade/Especialidade.';
 
      END IF;
 
@@ -1115,7 +1115,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 
     --Inserido por Rodrigo Machado em 13/05/2016 para atender o SGD 2721 conforme regra
-    -- N„o permitir perÌodo entre a data inÌcio e fim superior a 2 anos e a data inÌcio e prorrogaÁ„o superior a 3 anos.
+    -- N√£o permitir per√≠odo entre a data in√≠cio e fim superior a 2 anos e a data in√≠cio e prorroga√ß√£o superior a 3 anos.
     IF P_INSERTING or P_UPDATING AND P_ROW_NEW.TIPOVINC = 'CONTR TEMPORARIO' THEN
 
       SELECT COUNT(1)
@@ -1128,14 +1128,14 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
       IF V_COUNT > 0 THEN
 
-        P_MENS := 'J· existe pelo menos um CONTRATO TEMPORARIO em aberto no perÌodo, n„o È permitido ter dois CONTRATOS TEMPORARIOS acumul·veis.';
+        P_MENS := 'J√° existe pelo menos um CONTRATO TEMPORARIO em aberto no per√≠odo, n√£o √© permitido ter dois CONTRATOS TEMPORARIOS acumul√°veis.';
         RETURN (TRUE);
 
       END IF;
 
       IF P_ROW_NEW.DTEXERC <> NVL(P_ROW_NEW.DTINICONTR,pack_hades.DATA_MAXIMA) THEN
 
-        P_MENS := 'Data de InÌcio do contrato n„o pode ser diferente da data de exercÌcio.';
+        P_MENS := 'Data de In√≠cio do contrato n√£o pode ser diferente da data de exerc√≠cio.';
         RETURN (TRUE);
 
       END IF;
@@ -1150,7 +1150,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         V_TEMPO_MAXIMO := add_months(NVL(P_ROW_NEW.DTINICONTR,pack_hades.DATA_MAXIMA),24) - NVL(P_ROW_NEW.DTINICONTR,pack_hades.DATA_MAXIMA);
 
         IF V_TEMPO > V_TEMPO_MAXIMO THEN
-          P_MENS := 'PerÌodo de contrataÁ„o n„o pode ser superior a 2 anos.';
+          P_MENS := 'Per√≠odo de contrata√ß√£o n√£o pode ser superior a 2 anos.';
           RETURN (TRUE);
         END IF;
 
@@ -1159,7 +1159,7 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
         V_TEMPO_MAXIMO := add_months(NVL(P_ROW_NEW.DTINICONTR,pack_hades.DATA_MAXIMA),36) - NVL(P_ROW_NEW.DTINICONTR,pack_hades.DATA_MAXIMA);
 
          IF V_TEMPO > V_TEMPO_MAXIMO THEN
-          P_MENS := 'PerÌodo de  prorrogaÁ„o n„o pode ser supeiror a 3 anos da data inÌcio do contrato.';
+          P_MENS := 'Per√≠odo de  prorroga√ß√£o n√£o pode ser supeiror a 3 anos da data in√≠cio do contrato.';
           RETURN (TRUE);
         END IF;
 
@@ -1169,15 +1169,15 @@ create FUNCTION "GRJ_EPB__VINCULOS" (
 
 --    IF P_INSERTING or P_UPDATING THEN
       /* Fernando Garatini da Silva
-         A verificaÁ„o abaixo foi desenvolvida com o intuito de n„o permitir cadastrar um novo vinculo
-         para o funcionario que estiver com uma GLP em aberto e com uma carga hor·ria maior do que 12 horas
+         A verifica√ß√£o abaixo foi desenvolvida com o intuito de n√£o permitir cadastrar um novo vinculo
+         para o funcionario que estiver com uma GLP em aberto e com uma carga hor√°ria maior do que 12 horas
       */
 
       /*and ( c.dtvac is null or c.dtvac >= P_DATA)
       and ( c.dtfimcontr is null or c.dtfimcontr >= p_data)
       and ( c.dtaposent is null or c.dtaposent >= p_data)*/
 /*
-Hor·cio:
+Hor√°cio:
 
       SELECT SUM(NVL(HORASSEM,0))HORASSEM
          INTO V_JORNADA
@@ -1189,11 +1189,11 @@ Hor·cio:
           and numvinc = p_row_new.numero;
 
       IF V_JORNADA > 12 THEN
-         p_mens := 'Funcion·rio possui GLP maior que 12 horas.';
+         p_mens := 'Funcion√°rio possui GLP maior que 12 horas.';
       END IF;
 */
 --    END IF;
-     /* Fim VerificaÁ„o Fernando Garatini da Silva */
+     /* Fim Verifica√ß√£o Fernando Garatini da Silva */
      /*
      IF PACK_HADES.GET_OPCAO('Ergon', 'ERGON', 'VAC_AUT') = 'N' THEN
         update had_opcoes_itens
@@ -1204,15 +1204,15 @@ Hor·cio:
     END IF;
     */
     
-    --IncluÌdo por Rodrigo Machado em 10/10/2016 
-    --conforme solicitaÁ„o do SGD 3045
-    IF v_nome_transacao = 'RequisiÁ„o' THEN
+    --Inclu√≠do por Rodrigo Machado em 10/10/2016 
+    --conforme solicita√ß√£o do SGD 3045
+    IF v_nome_transacao = 'Requisi√ß√£o' THEN
       
       IF P_ROW_NEW.TIPO_ONUS_REQ = 'Com Onus' THEN
       
          IF P_ROW_NEW.FLEX_CAMPO_23 IS NULL OR P_ROW_NEW.FLEX_CAMPO_23 <= 0 THEN
          
-            P_MENS := 'Quando tipo de Ùnus for Com Onus, o Valor do Ressarcimento È obrigatÛrio.';  
+            P_MENS := 'Quando tipo de √¥nus for Com Onus, o Valor do Ressarcimento √© obrigat√≥rio.';  
             RETURN (TRUE);
             
          END IF;
@@ -1231,7 +1231,7 @@ Hor·cio:
                            and grupo = 'ERGON'
                            and opcao = 'VAC_AUT' ;
 
-           p_mens := 'Erro n„o esperado GRJ_EPB__VINCULOS (0): '||sqlerrm(sqlcode);
+           p_mens := 'Erro n√£o esperado GRJ_EPB__VINCULOS (0): '||sqlerrm(sqlcode);
            return (true) ;
   END;
 /	
