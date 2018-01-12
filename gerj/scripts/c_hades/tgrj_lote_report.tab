@@ -1,4 +1,4 @@
-CREATE TABLE tgrj_lote_report
+CREATE TABLE tgrj_lote_report eeeee
   (
     id_lote   NUMBER(15),
     id_agenda NUMBER,
