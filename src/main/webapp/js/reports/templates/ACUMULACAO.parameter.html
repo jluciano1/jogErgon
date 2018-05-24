@@ -1,0 +1,9 @@
+<div class="form-group col-sm-12 ng-scope">
+    <label for="textinput-tipoRequerimento">Acumulação</label>
+    <ui-select ng-model="acumulacao" class="crn-select" id="textinput-acumulacao" ng-click="configuraAcumula(acumulacao)" name="acumulacao" required="required">
+      <ui-select-match>{{$select.selected}}</ui-select-match>
+      <ui-select-choices repeat="rowData in ['Não Acumula','Acumula', 'Acumulava'] | filter : $select.search">
+        <div data-container="true">{{rowData}}</div>
+      </ui-select-choices>
+    </ui-select>
+</div>

@@ -1,0 +1,14 @@
+<datasource name="dsTipoRequerimento" entity="api/rest/ergon/TipoRequerimento" keys="id"></datasource>
+<datasource filter="?idTipoRequerimento={{dsTipoRequerimento.filtro.id}}&amp;referencia={{referenciaFilter| date:'dd/MM/yyyy'}}" name="SelectParametrizacaoDocumentos" entity="api/rest/ergon/ParametrizacaoDocumentos/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+<label for="textinput-tipoRequerimento">Tipo de requerimento</label>
+<ui-select ng-disabled="todosSelect === 'S'" ng-model="SelectParametrizacaoDocumentos.active.idTipoRequerimento" crn-datasource="dsTipoRequerimento" class="crn-select" id="textinput-tipoRequerimento" name="tipoRequerimento" required="required">
+  <ui-select-match>{{$select.selected.tipoRequerimento}}</ui-select-match>
+  <ui-select-choices repeat="rowData in datasource.data | filter : $select.search | orderBy: 'tipoRequerimento'">
+    <div data-container="true">{{rowData.tipoRequerimento}}</div>
+    <small><b>{{rowData.descricao}}</b></small>
+  </ui-select-choices>
+</ui-select>
+<label for="textinput-temdireito">Todos</label> 
+<div style="position:relative"> 
+  <input type="checkbox" ng-model="todosSelect" ng-true-value="'S'" ng-false-value="'N'" id="textinput-entregaObrigatoria" placeholder="Entrega Obrigatória?">
+</div>

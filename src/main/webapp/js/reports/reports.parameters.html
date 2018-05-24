@@ -1,0 +1,25 @@
+<form name="andamentosForm" role="form" novalidate show-validation>
+    <div class="modal-header">
+        <h4 class="modal-title">Relatório {{report.reportShowName}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <fieldset>
+                    <legend>Edição dos parâmetros</legend>
+                    <div ng-if="htmlParameters.length > 0" ng-repeat="item in htmlParameters">
+                        <span compile ng-bind-html="item | trusted"></span>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-toggle="tooltip" title="Gerar arquivo PDF do relatório" ng-click="onPrint()">
+            <span class="glyphicon glyphicon-print"></span>&nbsp;<span>Imprimir</span>
+        </button>
+        <button type="button" class="btn btn-default" data-toggle="tooltip" title="Cancelar impressão" ng-click="onCancel()">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;<span>Cancelar</span>
+        </button>
+    </div>
+</form>
